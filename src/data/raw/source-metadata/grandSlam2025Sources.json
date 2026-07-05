@@ -50,6 +50,26 @@
     "notes": "Official Companies House filing for AELTC Championships Ltd, the principal contracting party for The Championships. It reports 2025 turnover of £423.626m, operating profit of £52.720m, and explains the net available surplus division to LTA Operations."
   },
   {
+    "id": "wimbledon-2024-prize-money-pdf",
+    "title": "The Championships, Wimbledon 2024 Prize Money",
+    "publisher": "The All England Lawn Tennis Club / Wimbledon",
+    "url": "https://www.wimbledon.com/pdf/Wimbledon_Prize_Money_2024.pdf",
+    "sourceType": "official_prize_money_page",
+    "accessedAt": "2026-07-05",
+    "confidence": "high",
+    "notes": "Official one-page PDF with 2024 gentlemen's and ladies' singles per-player round payouts, per-event singles total, total tennis events prize money, estimated per diems, and broader total prize money."
+  },
+  {
+    "id": "wimbledon-aeltc-championships-2024-accounts",
+    "title": "The All England Lawn Tennis Club (Championships) Limited full accounts made up to 31 July 2024",
+    "publisher": "Companies House / The All England Lawn Tennis Club (Championships) Limited",
+    "url": "https://find-and-update.company-information.service.gov.uk/company/07546773/filing-history/MzQ2MzQ1ODMzM2FkaXF6a2N4/document?download=0&format=pdf",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-05",
+    "confidence": "high",
+    "notes": "Official Companies House filing for AELTC Championships Ltd, the principal contracting party for The Championships. It reports 2024 turnover of £406.507m, operating profit of £54.332m, and explains the net available surplus division to LTA Operations."
+  },
+  {
     "id": "us-open-2025-prize-money-page",
     "title": "2025 US Open Prize Money",
     "publisher": "United States Tennis Association / US Open",

@@ -4,7 +4,7 @@
 
 Version `0.1.0` is a static React + TypeScript + Vite dashboard with a validated data layer, sourced seed data, tested calculation engine, CSS visualizations, and a server-side refresh pipeline under `tennis-prize-money/`.
 
-The dashboard currently renders from a small sourced 2025 Grand Slam seed dataset: four men's singles competition-prize rows, one Wimbledon tournament-total competition-prize row with compatible operating-company turnover/profit denominators, and one US Open total-player-compensation context row. Compatible tournament-level revenue, profit, surplus, and prior-year comparison values remain unavailable for the other records until clearer financial sources and additional years are added.
+The dashboard currently renders from a small sourced Grand Slam seed dataset: four 2025 men's singles competition-prize rows, Wimbledon 2025 and 2024 tournament-total competition-prize rows with compatible operating-company turnover/profit denominators, and one US Open total-player-compensation context row. Compatible tournament-level revenue, profit, surplus, and prior-year comparison values remain unavailable for the other records until clearer financial sources and additional years are added.
 
 ## App Structure
 
@@ -66,7 +66,7 @@ The calculation engine only computes ratios when values are compatible:
 
 Organizer-level financials, expenses, unknown values, total player compensation/support, incompatible currencies, missing values, and zero or negative profit/surplus denominators return unavailable results rather than percentages.
 
-The first active compatible denominator row is Wimbledon 2025. It uses AELTC Championships Ltd operating-company turnover and operating profit because the official filing ties that company directly to The Championships; the row caveats that these are not after-tax retained profit, dividends, LTA distributions, or broader organization-level values.
+The first active compatible denominator rows are Wimbledon 2025 and Wimbledon 2024. They use AELTC Championships Ltd operating-company turnover and operating profit because the official filings tie that company directly to The Championships; the rows caveat that these are not after-tax retained profit, dividends, LTA distributions, or broader organization-level values.
 
 ## Visualization Flow
 
@@ -80,7 +80,7 @@ Current panels focus on one question: how much prize money do players receive as
 - calculation caveats explaining missing, incompatible, zero, negative, or cross-currency denominators
 - selected-record source cards
 
-Payout curves, finalist comparisons, and year-over-year prize-pool growth remain available as tested helper logic, but they are no longer first-class dashboard visuals because they do not answer the primary revenue/profit-share question.
+Payout curves, finalist comparisons, and year-over-year prize-pool growth remain available as tested helper logic, but they are no longer first-class dashboard visuals because they do not answer the primary revenue/profit-share question. The current seed now has a compatible Wimbledon tournament-total 2025-over-2024 prize-money growth case for future reuse.
 
 Filtering by tournament, year, event, and confidence happens before chart view models are built. When the filtered set includes a primary-question-answerable record, the page selects that record first; otherwise it falls back to the first matching record. If filters produce zero matching records, the page renders explicit empty states instead of falling back to a hidden default record.
 

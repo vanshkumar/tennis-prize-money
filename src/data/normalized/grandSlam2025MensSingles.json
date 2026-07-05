@@ -555,6 +555,73 @@
     ]
   },
   {
+    "id": "wimbledon-2024-tournament-total",
+    "tournament": "Wimbledon",
+    "year": 2024,
+    "event": "Tournament total",
+    "confidence": "high",
+    "displayCurrency": "GBP",
+    "sourceIds": [
+      "wimbledon-2024-prize-money-pdf",
+      "wimbledon-aeltc-championships-2024-accounts"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total tennis events prize money across Wimbledon 2024 competition events. Excludes estimated per diems from the broader total prize money line."
+    },
+    "prizePool": {
+      "amount": 48550000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-2024-prize-money-pdf"
+      ],
+      "notes": "Official Wimbledon PDF line for total tennis events prize money. The broader total prize money line is £50.0m including £1.45m estimated per diems, which this clean competition-prize-money row excludes."
+    },
+    "revenue": {
+      "amount": 406507000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-aeltc-championships-2024-accounts"
+      ],
+      "notes": "AELTC Championships Ltd turnover for the year ended 31 July 2024. The company is the principal contracting party for The Championships; turnover includes ticket, broadcast, marketing, retail, food and drink income net of trade discounts, VAT, and other sales-related taxes.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": 54332000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-aeltc-championships-2024-accounts"
+      ],
+      "notes": "AELTC Championships Ltd operating profit for the year ended 31 July 2024, before net finance income, division of net available surplus to LTA Operations, taxation, and dividends.",
+      "kind": "tournament_profit"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is Wimbledon 2024 total tennis events prize money, excluding £1.45m estimated per diems from the broader £50.0m total prize money line.",
+      "Revenue denominator is AELTC Championships Ltd operating-company turnover for the year ended 31 July 2024, not a separate cash ledger for only the tournament fortnight.",
+      "Profit/surplus denominator is AELTC Championships Ltd operating profit before finance income, net available surplus division to LTA Operations, taxation, and dividends.",
+      "Net available surplus, after-tax profit, dividends, and AELTC/LTA organization-level values are not used as this row's denominator."
+    ]
+  },
+  {
     "id": "us-open-2025-ms",
     "tournament": "US Open",
     "year": 2025,

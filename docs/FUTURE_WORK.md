@@ -3,7 +3,7 @@
 ## Data Coverage
 
 - Add more full tournament competition-prize-money totals before adding more denominator ratios; event-level prize money should remain labeled as partial when compared with whole-tournament financials.
-- Extend the completed Wimbledon 2025 tournament-total slice with Wimbledon 2024 if a prior-year row is useful for year-over-year comparisons. Keep the same distinction between total tennis events prize money and broader prize money that includes estimated per diems.
+- Extend the completed Wimbledon 2025/2024 tournament-total series to older years only when official prize-money PDFs and AELTC Championships Ltd accounts keep the same clean numerator and operating-company denominator semantics.
 - Add Australian Open total competition-prize-money numerators next. For the US Open, replace or supplement the current total-player-compensation context row only when a clean official competition-prize-money total is parseable or otherwise verifiable.
 - Treat Roland Garros revenue leads as secondary-source candidates until FFT/Roland Garros official or audited tournament revenue is found.
 - Add more tournaments beyond the four Grand Slam men's singles rows, starting with women's singles and prior-year Grand Slam rows so year-over-year growth can become available.
@@ -21,7 +21,7 @@
 
 - Add FX conversion only if needed, with explicit FX source metadata, conversion date, source confidence, and tests that keep original and converted values distinct.
 - Model draw size and allocation basis more explicitly so round-payout percentages can distinguish per-player values from total draw allocation.
-- Keep organization-level financial context separate from tournament/event denominators unless a source provides a compatible bridge. The Wimbledon 2025 row should remain the pattern: operating-company turnover/profit can be ratio denominators only because the filing ties AELTC Championships Ltd directly to The Championships and the row carries explicit caveats.
+- Keep organization-level financial context separate from tournament/event denominators unless a source provides a compatible bridge. The Wimbledon 2025 and 2024 rows should remain the pattern: operating-company turnover/profit can be ratio denominators only because the filings tie AELTC Championships Ltd directly to The Championships and the rows carry explicit caveats.
 - Keep total player compensation/support separate from competition-prize-money numerators in every ratio path.
 
 ## Persistence And Refresh

@@ -48,7 +48,7 @@ describe('validated seed dashboard dataset', () => {
     expect(dashboardDataset.sources.every((source) => source.sourceType !== 'mock')).toBe(true);
   });
 
-  it('contains the expected 2025 Grand Slam prize-money and compensation records', () => {
+  it('contains the expected Grand Slam prize-money and compensation records', () => {
     expect(dashboardDataset.records).toHaveLength(seedDatasetExpectations.length);
 
     for (const expected of seedDatasetExpectations) {
@@ -58,7 +58,7 @@ describe('validated seed dashboard dataset', () => {
       expect(record).toMatchObject({
         tournament: expected.tournament,
         event: expected.event,
-        year: 2025,
+        year: expected.year,
         confidence: expected.confidence,
         displayCurrency: expected.currency,
         prizeMoneyScope: {
@@ -123,8 +123,13 @@ describe('validated seed dashboard dataset', () => {
   });
 
   it('keeps tournament financial denominators unavailable unless sourced clearly', () => {
+    const sourcedFinancialRecordIds = new Set([
+      'wimbledon-2025-tournament-total',
+      'wimbledon-2024-tournament-total',
+    ]);
+
     for (const record of dashboardDataset.records.filter(
-      (item) => item.id !== 'wimbledon-2025-tournament-total',
+      (item) => !sourcedFinancialRecordIds.has(item.id),
     )) {
       expect(record.revenue).toMatchObject({
         amount: null,
@@ -178,6 +183,40 @@ describe('validated seed dashboard dataset', () => {
     expect(record.caveats.join(' ')).toMatch(/not used as this row's denominator/i);
   });
 
+  it('normalizes the prior-year Wimbledon tournament-total denominator slice', () => {
+    const record = dashboardDataset.records.find(
+      (item) => item.id === 'wimbledon-2024-tournament-total',
+    );
+
+    expect(record).toBeDefined();
+    if (!record) {
+      throw new Error('Expected wimbledon-2024-tournament-total fixture to exist');
+    }
+
+    expect(record.prizePool).toMatchObject({
+      amount: 48550000,
+      currency: 'GBP',
+      status: 'official',
+    });
+    expect(record.revenue).toMatchObject({
+      amount: 406507000,
+      currency: 'GBP',
+      status: 'official',
+      kind: 'tournament_revenue',
+    });
+    expect(record.profitOrSurplus).toMatchObject({
+      amount: 54332000,
+      currency: 'GBP',
+      status: 'official',
+      kind: 'tournament_profit',
+    });
+    expect(record.prizePool.notes).toContain('£1.45m estimated per diems');
+    expect(record.revenue.notes).toContain('principal contracting party');
+    expect(record.profitOrSurplus.notes).toContain('before net finance income');
+    expect(record.caveats.join(' ')).toMatch(/£50\.0m total prize money/i);
+    expect(record.caveats.join(' ')).toMatch(/not used as this row's denominator/i);
+  });
+
   it('matches each event-level competition prize pool to the weighted main-draw round payouts', () => {
     for (const record of dashboardDataset.records.filter(
       (item) => item.prizeMoneyScope.type === 'event_main_draw',
@@ -209,7 +248,11 @@ describe('validated seed dashboard dataset', () => {
     );
 
     const unavailableOnlyRecords = dashboardDataset.records.filter(
-      (record) => record.id !== 'wimbledon-2025-tournament-total',
+      (record) =>
+        ![
+          'wimbledon-2025-tournament-total',
+          'wimbledon-2024-tournament-total',
+        ].includes(record.id),
     );
 
     expect(choosePrimaryQuestionRecord(unavailableOnlyRecords)?.id).toBe(normalRecord.id);
@@ -228,10 +271,10 @@ describe('validated seed dashboard dataset', () => {
       'Wimbledon',
     ]);
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'high', count: 3, share: 0.5 }),
+      expect.objectContaining({ confidence: 'high', count: 4, share: 4 / 7 }),
     );
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'medium', count: 3, share: 0.5 }),
+      expect.objectContaining({ confidence: 'medium', count: 3, share: 3 / 7 }),
     );
     expect(kpis).toHaveLength(9);
     expect(kpis.map((kpi) => kpi.label)).toContain('Prize pool YoY growth');
@@ -323,16 +366,16 @@ describe('validated seed dashboard dataset', () => {
     expect(coverage).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        value: '1/6',
-        answerableCount: 1,
-        totalCount: 6,
+        value: '2/7',
+        answerableCount: 2,
+        totalCount: 7,
         unavailable: false,
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        value: '1/6',
-        answerableCount: 1,
-        totalCount: 6,
+        value: '2/7',
+        answerableCount: 2,
+        totalCount: 7,
         unavailable: false,
       }),
     ]);
@@ -455,14 +498,21 @@ describe('validated seed dashboard dataset', () => {
     });
   });
 
-  it('builds unavailable year-over-year chart rows for the 2025-only seed', () => {
+  it('builds year-over-year chart rows for the Wimbledon prior-year slice', () => {
     const yearOverYearRows = getYearOverYearChartRows(
       dashboardDataset.records,
       dashboardDataset.records,
     );
+    const wimbledon2025Row = yearOverYearRows.find(
+      (row) => row.id === 'wimbledon-2025-tournament-total',
+    );
 
     expect(yearOverYearRows).toHaveLength(dashboardDataset.records.length);
-    expect(yearOverYearRows.every((row) => row.unavailable)).toBe(true);
+    expect(wimbledon2025Row).toMatchObject({
+      value: '+7.1%',
+      note: 'Compared with 2024 Tournament total.',
+      unavailable: false,
+    });
     expect(yearOverYearRows[0]).toMatchObject({
       id: normalRecord.id,
       value: 'Unavailable',

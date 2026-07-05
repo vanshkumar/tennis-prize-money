@@ -2,7 +2,7 @@
 
 Static-first React + TypeScript + Vite dashboard for exploring tennis prize money alongside tournament revenue, profit, or surplus where reliable data exists.
 
-Version `0.1.0` is a review-ready first release. The current unreleased data model renders a small sourced 2025 Grand Slam seed dataset with filters, a primary answer board for competition prize money as a percentage of revenue/profit, answerability coverage, source links, refresh status, and caveats. The first compatible primary-question row is Wimbledon 2025 tournament-total competition prize money against AELTC Championships Ltd operating-company turnover and operating profit.
+Version `0.1.0` is a review-ready first release. The current unreleased data model renders a small sourced Grand Slam seed dataset with filters, a primary answer board for competition prize money as a percentage of revenue/profit, answerability coverage, source links, refresh status, and caveats. The first compatible primary-question rows are Wimbledon 2025 and 2024 tournament-total competition prize money against AELTC Championships Ltd operating-company turnover and operating profit.
 
 ## Quickstart
 
@@ -48,7 +48,7 @@ npm run refresh:data
 
 - `src/data/static/` contains dataset-level static JSON metadata.
 - `src/data/raw/source-metadata/` contains source metadata JSON.
-- `src/data/normalized/` contains normalized tournament economics records, including explicit prize-money scope, numerator-category metadata, and the first compatible Wimbledon tournament-total financial denominator row.
+- `src/data/normalized/` contains normalized tournament economics records, including explicit prize-money scope, numerator-category metadata, and compatible Wimbledon tournament-total financial denominator rows.
 - `src/data/schemas.ts` validates the JSON contract at import time and rejects mock leakage in datasets labeled `real`.
 - `src/lib/metricEngine.ts` contains calculation utilities and unavailable-reason handling. Financial ratios require a `competition_prize_money` numerator.
 - `src/lib/dashboardMetrics.ts` contains dashboard formatting, filtering, primary-question view models, answerability coverage summaries, and visible caveat helpers.
@@ -70,9 +70,9 @@ npm run refresh:data
 
 ## v0.1 Limitations
 
-- The seed covers 2025 men's singles competition-prize rows for the four Grand Slam tournaments, one Wimbledon tournament-total competition-prize row with compatible operating-company denominators, and one US Open total-player-compensation context row.
-- The Wimbledon tournament-total row uses £52.0m total tennis events prize money as the clean competition-prize numerator. The broader £53.5m Wimbledon total prize money line includes £1.5m estimated per diems and is not used as the clean numerator.
-- Wimbledon revenue/profit ratios use AELTC Championships Ltd turnover and operating profit for the year ended 31 July 2025. They are operating-company denominators for The Championships, not after-tax profit, dividends, LTA distributions, or broader organization-level financials.
+- The seed covers 2025 men's singles competition-prize rows for the four Grand Slam tournaments, Wimbledon 2025 and 2024 tournament-total competition-prize rows with compatible operating-company denominators, and one US Open total-player-compensation context row.
+- The Wimbledon tournament-total rows use total tennis events prize money as the clean competition-prize-money numerator: £52.0m for 2025 and £48.55m for 2024. The broader Wimbledon total prize money lines include estimated per diems and are not used as clean numerators.
+- Wimbledon revenue/profit ratios use AELTC Championships Ltd turnover and operating profit for the years ended 31 July 2025 and 31 July 2024. They are operating-company denominators for The Championships, not after-tax profit, dividends, LTA distributions, or broader organization-level financials.
 - Total player compensation/support rows are not used as prize-money numerators in the primary revenue/profit answer.
 - Roland Garros and US Open prize-money rows remain medium confidence until clearer official, parseable sources replace the secondary/cross-check paths.
 - Non-Wimbledon Grand Slam rows still have unavailable revenue, profit, or surplus denominators.

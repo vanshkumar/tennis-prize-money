@@ -2,13 +2,13 @@
 
 ## Current Dataset
 
-The active dataset is a small sourced seed for 2025 Grand Slam economics. It includes 2025 men's singles competition-prize rows for the Australian Open, Roland Garros, Wimbledon, and the US Open, one Wimbledon tournament-level competition-prize row with compatible operating-company financial denominators, plus one US Open tournament-level total-player-compensation context row.
+The active dataset is a small sourced seed for Grand Slam economics. It includes 2025 men's singles competition-prize rows for the Australian Open, Roland Garros, Wimbledon, and the US Open, Wimbledon 2025 and 2024 tournament-level competition-prize rows with compatible operating-company financial denominators, plus one US Open tournament-level total-player-compensation context row.
 
-The seed includes compatible tournament-level revenue/profit ratios only for the Wimbledon tournament-total row. Other records keep revenue, profit, or surplus unavailable rather than estimated.
+The seed includes compatible tournament-level revenue/profit ratios only for the Wimbledon tournament-total rows. Other records keep revenue, profit, or surplus unavailable rather than estimated.
 
-The Wimbledon tournament-total row uses £52.0m total tennis events prize money as its clean competition-prize-money numerator. The official Wimbledon PDF also reports £1.5m estimated per diems and £53.5m broader total prize money. The broader total is not used as the clean competition-prize-money numerator because the current schema keeps competition prize money separate from support-style compensation.
+The Wimbledon tournament-total rows use total tennis events prize money as clean competition-prize-money numerators: £52.0m for 2025 and £48.55m for 2024. The official Wimbledon PDFs also report broader total prize money lines that include estimated per diems: £53.5m including £1.5m estimated per diems for 2025, and £50.0m including £1.45m estimated per diems for 2024. The broader totals are not used as clean competition-prize-money numerators because the current schema keeps competition prize money separate from support-style compensation.
 
-The Wimbledon denominators are AELTC Championships Ltd operating-company values for the year ended 31 July 2025: £423.626m turnover and £52.720m operating profit. The company filing says AELTC Championships Ltd is the principal contracting party for The Championships and that the statements reflect the results of, and division of surplus from, The Championships. These denominators are still caveated as operating-company values, not a separate two-week cash ledger, after-tax retained profit, dividends, LTA distributions, or broader organization-level values.
+The Wimbledon denominators are AELTC Championships Ltd operating-company values for the years ended 31 July 2025 and 31 July 2024. The 2025 row uses £423.626m turnover and £52.720m operating profit. The 2024 row uses £406.507m turnover and £54.332m operating profit. The company filings say AELTC Championships Ltd is the principal contracting party for The Championships and that the statements reflect the results of, and division of surplus from, The Championships. These denominators are still caveated as operating-company values, not a separate two-week cash ledger, after-tax retained profit, dividends, LTA distributions, or broader organization-level values.
 
 Roland Garros and US Open rows are medium confidence in this seed:
 
@@ -44,7 +44,7 @@ The app does not do currency conversion yet. A ratio is computed only when numer
 
 Competition prize money / profit or surplus is unavailable when profit/surplus is missing, zero, negative, semantically incompatible, or in another currency. Negative and zero denominators are shown as unavailable because a percentage would be misleading for this dashboard.
 
-For Wimbledon 2025, the selected profit denominator is operating profit before net finance income, division of net available surplus to LTA Operations, taxation, and dividends. The normalized row intentionally does not use net available surplus, profit before tax, profit after tax, or dividend values as the primary profit/surplus denominator.
+For Wimbledon 2025 and 2024, the selected profit denominator is operating profit before net finance income, division of net available surplus to LTA Operations, taxation, and dividends or distribution mechanics. The normalized rows intentionally do not use net available surplus, profit before tax, profit after tax, or dividend values as the primary profit/surplus denominator.
 
 ## Round Payout Caveats
 

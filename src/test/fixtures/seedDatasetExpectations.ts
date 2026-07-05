@@ -1,6 +1,7 @@
 export interface SeedDatasetExpectation {
   id: string;
   tournament: string;
+  year: number;
   event: string;
   currency: string;
   confidence: 'high' | 'medium';
@@ -18,6 +19,7 @@ export const seedDatasetExpectations: SeedDatasetExpectation[] = [
   {
     id: 'australian-open-2025-ms',
     tournament: 'Australian Open',
+    year: 2025,
     event: "Men's singles",
     currency: 'AUD',
     confidence: 'high',
@@ -31,6 +33,7 @@ export const seedDatasetExpectations: SeedDatasetExpectation[] = [
   {
     id: 'roland-garros-2025-ms',
     tournament: 'Roland Garros',
+    year: 2025,
     event: "Men's singles",
     currency: 'EUR',
     confidence: 'medium',
@@ -44,6 +47,7 @@ export const seedDatasetExpectations: SeedDatasetExpectation[] = [
   {
     id: 'wimbledon-2025-ms',
     tournament: 'Wimbledon',
+    year: 2025,
     event: "Men's singles",
     currency: 'GBP',
     confidence: 'high',
@@ -57,6 +61,7 @@ export const seedDatasetExpectations: SeedDatasetExpectation[] = [
   {
     id: 'wimbledon-2025-tournament-total',
     tournament: 'Wimbledon',
+    year: 2025,
     event: 'Tournament total',
     currency: 'GBP',
     confidence: 'high',
@@ -70,8 +75,25 @@ export const seedDatasetExpectations: SeedDatasetExpectation[] = [
     profitOrSurplus: 52720000,
   },
   {
+    id: 'wimbledon-2024-tournament-total',
+    tournament: 'Wimbledon',
+    year: 2024,
+    event: 'Tournament total',
+    currency: 'GBP',
+    confidence: 'high',
+    prizePool: 48550000,
+    numeratorCategory: 'competition_prize_money',
+    scopeType: 'tournament_total',
+    winner: null,
+    runnerUp: null,
+    sourceCount: 2,
+    revenue: 406507000,
+    profitOrSurplus: 54332000,
+  },
+  {
     id: 'us-open-2025-ms',
     tournament: 'US Open',
+    year: 2025,
     event: "Men's singles",
     currency: 'USD',
     confidence: 'medium',
@@ -85,6 +107,7 @@ export const seedDatasetExpectations: SeedDatasetExpectation[] = [
   {
     id: 'us-open-2025-total-player-compensation',
     tournament: 'US Open',
+    year: 2025,
     event: 'Tournament player compensation',
     currency: 'USD',
     confidence: 'medium',
