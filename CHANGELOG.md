@@ -4,6 +4,9 @@
 
 - Refocused the dashboard visuals around the primary question: prize money as a percentage of tournament revenue and profit/surplus.
 - Moved payout-curve, finalist, year-over-year, and broad coverage visuals out of the main dashboard flow in favor of answer cards, ratio inputs, answerability coverage, and calculation caveats.
+- Bumped the static data contract to schema version 2 with explicit prize-money scope and numerator-category metadata.
+- Added a US Open 2025 total-player-compensation context row while keeping it excluded from revenue/profit ratios.
+- Updated metric compatibility checks so revenue/profit ratios require `competition_prize_money`, not total player compensation/support.
 
 ## v0.1.0 - 2026-07-05
 

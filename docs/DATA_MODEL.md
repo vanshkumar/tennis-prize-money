@@ -2,15 +2,15 @@
 
 ## Current Status
 
-The active dataset is a small sourced seed dataset for 2025 Grand Slam men's singles prize money. Revenue and profit/surplus rows remain unavailable because the project has not added clear tournament-level financial denominators suitable for ratios.
+The active dataset is a small sourced seed dataset for 2025 Grand Slam competition prize money and clearly labeled player-compensation context. Revenue and profit/surplus rows remain unavailable because the project has not added clear tournament-level financial denominators suitable for ratios.
 
-Version `0.1.0` includes a server-side refresh pipeline that reads, validates, merges, and writes the same static JSON files. It does not change the schema version.
+The current static JSON contract is schema version `2`. Version `2` adds explicit prize-money scope and numerator-category metadata so player compensation/support totals cannot be mistaken for ratio-eligible competition prize money.
 
 ## File Layout
 
 - `src/data/static/seedDatasetMetadata.json` stores dataset-level metadata such as schema version, label, notice, data mode, and last refresh timestamp.
 - `src/data/raw/source-metadata/grandSlam2025Sources.json` stores the v0.1 source inventory for Grand Slam prize-money rows.
-- `src/data/normalized/grandSlam2025MensSingles.json` stores normalized 2025 men's singles records for the Australian Open, Roland Garros, Wimbledon, and US Open.
+- `src/data/normalized/grandSlam2025MensSingles.json` stores the active normalized 2025 Grand Slam records: four men's singles competition-prize rows plus one US Open total-player-compensation context row.
 - `src/data/schemas.ts` defines TypeScript types and runtime validation.
 - `src/data/dashboardDataset.ts` imports the static JSON files, validates them, and exports the typed dataset used by the dashboard.
 - `src/lib/metricEngine.ts` computes derived metrics from validated records.
@@ -20,7 +20,7 @@ Version `0.1.0` includes a server-side refresh pipeline that reads, validates, m
 
 Dataset metadata fields:
 
-- `schemaVersion`: currently `1`.
+- `schemaVersion`: currently `2`.
 - `datasetId`: stable dataset identifier.
 - `datasetLabel`: visible label. Mock datasets must include mock/sample wording.
 - `datasetNotice`: visible data-use notice. Mock datasets must state that values are not real facts.
@@ -46,11 +46,11 @@ Every available real value should be traceable to source metadata:
 - `confidence`: `high`, `medium`, `low`, or `mock`
 - `notes`
 
-Mock source type and mock confidence must be paired. The active v0.1 seed dataset uses real source metadata and has `dataMode: "real"`.
+Mock source type and mock confidence must be paired. The active seed dataset uses real source metadata and has `dataMode: "real"`.
 
 ## Tournament Records
 
-Each normalized record represents one tournament, year, and event. In the v0.1 seed, each row represents one 2025 men's singles event, not the entire tournament:
+Each normalized record represents one tournament, year, and event. The active seed includes four 2025 men's singles event rows and one US Open tournament-level player-compensation context row:
 
 - `id`
 - `tournament`
@@ -59,6 +59,7 @@ Each normalized record represents one tournament, year, and event. In the v0.1 s
 - `confidence`
 - `displayCurrency`
 - `sourceIds`
+- `prizeMoneyScope`
 - `prizePool`
 - `revenue`
 - `profitOrSurplus`
@@ -69,9 +70,19 @@ Each normalized record represents one tournament, year, and event. In the v0.1 s
 
 `displayCurrency` is a UI convenience. Calculations use each value's own `currency` and refuse to compare incompatible currencies.
 
-For the v0.1 seed, `prizePool` is the event-level men's singles allocation when an official per-event total is available. When only round payouts are available, `prizePool.status` is `derived` and the value is the weighted sum of the 128-player singles draw payouts.
+For the four event-level competition-prize rows, `prizePool` is the men's singles allocation when an official per-event total is available. When only round payouts are available, `prizePool.status` is `derived` and the value is the weighted sum of the 128-player singles draw payouts.
 
-Future tournament-total rows should add or otherwise model numerator scope explicitly, such as full tournament prize money, event-level prize money, included draws/categories, per-diem/player-support inclusion, and derivation method. This is required before the primary revenue/profit-share UI can distinguish a full tournament answer from a partial event-level comparison.
+The US Open total-player-compensation row uses the same money field for display, but `prizeMoneyScope.numeratorCategory` marks it as `total_player_compensation`. The metric engine excludes that category from revenue and profit/surplus ratios.
+
+## Prize-Money Scope
+
+Every record must include `prizeMoneyScope`:
+
+- `type`: `event_main_draw` or `tournament_total`.
+- `numeratorCategory`: `competition_prize_money` or `total_player_compensation`.
+- `notes`: source/normalization note for scope interpretation.
+
+`competition_prize_money` is eligible for primary revenue/profit ratios when the denominator is also compatible. `total_player_compensation` can include support, per diems, travel, hotel, stringing, or other expense coverage and is not eligible for those ratios.
 
 ## Value Objects
 
@@ -110,12 +121,12 @@ The metric engine returns structured results rather than only formatted strings.
 
 Supported calculations:
 
-- total prize pool
+- prize-money numerator
 - winner payout
 - runner-up payout
 - winner/runner-up payout ratio
-- prize pool / revenue
-- prize pool / profit or surplus
+- competition prize money / revenue
+- competition prize money / profit or surplus
 - year-over-year prize pool growth
 - round payout percentages
 
@@ -125,6 +136,7 @@ Unavailable reasons:
 - `zero_denominator`
 - `negative_denominator`
 - `incompatible_currency`
+- `incompatible_numerator_kind`
 - `incompatible_financial_kind`
 - `no_prior_record`
 
@@ -132,6 +144,7 @@ Compatible denominator rules:
 
 - `prizePool / revenue` accepts `tournament_revenue` and `event_revenue`.
 - `prizePool / profit or surplus` accepts `tournament_profit` and `tournament_surplus`.
+- Both financial ratios require `prizeMoneyScope.numeratorCategory: "competition_prize_money"`.
 - Organizer-level revenue/profit/surplus, tour-level revenue, expenses, and unknown values are not treated as compatible denominators.
 - Profit or surplus denominators that are zero or negative are unavailable.
 
@@ -152,6 +165,7 @@ The first refresh adapter accepts a JSON manifest with top-level `sources` and `
 The test suite covers:
 
 - active seed provenance and source metadata labels
+- required prize-money scope and numerator category
 - rejection of mock leakage in datasets labeled `real`
 - rejection of unpaired mock source type/confidence
 - rejection of available money values without source ids

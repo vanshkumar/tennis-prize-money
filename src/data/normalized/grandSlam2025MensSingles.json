@@ -10,6 +10,11 @@
       "ao-2025-prize-money-release",
       "ao-2025-prize-money-pdf"
     ],
+    "prizeMoneyScope": {
+      "type": "event_main_draw",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Men's singles main-draw competition prize money for one event, not the full tournament player-compensation package."
+    },
     "prizePool": {
       "amount": 33108000,
       "currency": "AUD",
@@ -167,6 +172,11 @@
     "sourceIds": [
       "roland-garros-2025-secondary-prize-money"
     ],
+    "prizeMoneyScope": {
+      "type": "event_main_draw",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Men's singles main-draw competition prize money derived from round allocations, not the full tournament player-compensation package."
+    },
     "prizePool": {
       "amount": 20509000,
       "currency": "EUR",
@@ -325,6 +335,11 @@
     "sourceIds": [
       "wimbledon-2025-prize-money-pdf"
     ],
+    "prizeMoneyScope": {
+      "type": "event_main_draw",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Gentlemen's singles main-draw competition prize money for one event, not the full tournament prize-money total."
+    },
     "prizePool": {
       "amount": 19414000,
       "currency": "GBP",
@@ -483,6 +498,11 @@
       "us-open-2025-prize-money-page",
       "us-open-2025-secondary-crosscheck"
     ],
+    "prizeMoneyScope": {
+      "type": "event_main_draw",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Men's singles main-draw competition prize money derived from round allocations, not total US Open player compensation."
+    },
     "prizePool": {
       "amount": 31620000,
       "currency": "USD",
@@ -640,6 +660,71 @@
       "Source confidence is medium because the official US Open page did not expose parseable text to this research crawler.",
       "Revenue and profit/surplus are unavailable because no compatible tournament-level financial source is included.",
       "Round payouts are per player."
+    ]
+  },
+  {
+    "id": "us-open-2025-total-player-compensation",
+    "tournament": "US Open",
+    "year": 2025,
+    "event": "Tournament player compensation",
+    "confidence": "medium",
+    "displayCurrency": "USD",
+    "sourceIds": [
+      "us-open-2025-compensation-release",
+      "us-open-2025-ap-compensation-split"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "total_player_compensation",
+      "notes": "Tournament-level total player compensation, including competition prize money plus support and expense coverage."
+    },
+    "prizePool": {
+      "amount": 90000000,
+      "currency": "USD",
+      "status": "reported",
+      "sourceIds": [
+        "us-open-2025-compensation-release",
+        "us-open-2025-ap-compensation-split"
+      ],
+      "notes": "Reported 2025 US Open total player compensation. AP parses the split as nearly $85 million in competition prize money across events plus additional player support and expense coverage to reach $90 million, so this value is not a clean competition-prize-money numerator."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear tournament-specific US Open 2025 revenue source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear tournament-specific US Open 2025 profit or surplus source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "This row is total player compensation, not clean competition prize money.",
+      "The AP source reports nearly $85 million in competition prize money across competitions and $90 million in total player compensation; the official US Open release URL was not parseable in this environment.",
+      "The $90 million total includes support and expense coverage, so it is excluded from revenue and profit/surplus ratios.",
+      "US Open revenue and profit/surplus remain unavailable because no tournament-specific financial denominator is included.",
+      "USTA organization-level financials must remain separate from US Open tournament denominators."
     ]
   }
 ]

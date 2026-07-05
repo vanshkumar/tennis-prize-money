@@ -59,7 +59,28 @@ describe('dashboard data validation hardening', () => {
     );
   });
 
-  it('keeps the active v0.1 seed in real-data mode with labeled sources', () => {
+  it('requires every record to declare prize-money scope and numerator category', () => {
+    const dataset = cloneDataset();
+    delete (dataset.records[0] as unknown as Record<string, unknown>).prizeMoneyScope;
+
+    expect(() => parseDashboardDataset(dataset)).toThrow(DataValidationError);
+    expect(() => parseDashboardDataset(dataset)).toThrow(
+      'records[0].prizeMoneyScope must be an object',
+    );
+  });
+
+  it('rejects unknown prize-money numerator categories', () => {
+    const dataset = cloneDataset();
+    (dataset.records[0].prizeMoneyScope as unknown as Record<string, unknown>).numeratorCategory =
+      'player_support';
+
+    expect(() => parseDashboardDataset(dataset)).toThrow(DataValidationError);
+    expect(() => parseDashboardDataset(dataset)).toThrow(
+      'records[0].prizeMoneyScope.numeratorCategory must be one of',
+    );
+  });
+
+  it('keeps the active seed in real-data mode with labeled sources', () => {
     expect(dashboardDataset.metadata.dataMode).toBe('real');
 
     for (const source of dashboardDataset.sources) {

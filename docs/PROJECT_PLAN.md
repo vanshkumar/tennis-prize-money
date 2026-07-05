@@ -2,17 +2,17 @@
 
 ## Product Goal
 
-Build a static-first dashboard that helps compare tennis tournament prize money with tournament revenue, profit, or surplus where reliable data exists. The dashboard should show winner and runner-up payouts, payout curves by round, total prize pool, prize-pool share of revenue, prize-pool share of profit/surplus, source confidence, and visible caveats for unavailable, estimated, semantically incompatible, or mock data.
+Build a static-first dashboard that helps compare tennis tournament competition prize money with tournament revenue, profit, or surplus where reliable data exists. The dashboard should show winner and runner-up payouts, payout curves by round, prize-money numerator, competition-prize-money share of revenue, competition-prize-money share of profit/surplus, source confidence, and visible caveats for unavailable, estimated, semantically incompatible, compensation/support, or mock data.
 
 The first version should be honest before it is comprehensive. Prize money is often easier to source than tournament-level financials, so gaps must be explicit rather than hidden.
 
 ## Current Release Status
 
-Version `0.1.0` is review-ready with a static dashboard, validated 2025 Grand Slam men's singles seed data, tested calculation/display/refresh logic, docs, changelog, and a secure non-configured browser refresh fallback. Remaining expansion work is tracked in `docs/FUTURE_WORK.md`.
+Version `0.1.0` is review-ready with a static dashboard, validated 2025 Grand Slam seed data, tested calculation/display/refresh logic, docs, changelog, and a secure non-configured browser refresh fallback. The current unreleased data model distinguishes competition prize money from total player compensation/support. Remaining expansion work is tracked in `docs/FUTURE_WORK.md`.
 
 ## Repository Context
 
-This folder is part of the larger `vanshkumar.github.io` personal-site repository, not a separate Git repository. The parent repo is an Astro 5 static site deployed to GitHub Pages.
+This folder is now a standalone `tennis-prize-money` Git repository. It originated as a sibling app inside the larger `vanshkumar.github.io` personal-site repository.
 
 Existing side apps establish the pattern:
 
@@ -20,7 +20,7 @@ Existing side apps establish the pattern:
 - `terminal-desires-ranker/` is a deployed React/Vite app at `/terminal-desires-ranker/`.
 - `vault-weather/` is a local-only React/Vite app.
 
-The GitHub Pages workflow currently builds the root Astro site, builds deployed side apps, copies their `dist/` folders into a combined `site/` artifact, preserves `site/.nojekyll`, and deploys that artifact.
+When deployed through the parent personal site, the GitHub Pages workflow builds the root Astro site, builds deployed side apps, copies their `dist/` folders into a combined `site/` artifact, preserves `site/.nojekyll`, and deploys that artifact.
 
 ## Stack Choice
 

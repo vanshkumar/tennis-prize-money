@@ -94,4 +94,9 @@
 - Action: Use Source `GitHub Actions` plus `.github/workflows/deploy.yml` to run `npm ci`, `npm run build`, upload `dist/`, and deploy; keep `base: '/tennis-prize-money/'` for the project-site URL.
 - Confidence: high
 
+**2026-07-05 - US Open numerator semantics**
+- Observation: Official US Open 2025 compensation URLs remained non-parseable in this environment, while AP provided a parseable split between nearly $85m competition prize money and $90m total player compensation/support.
+- Action: Keep US Open total-compensation rows marked as `total_player_compensation`, require `prizeMoneyScope.numeratorCategory` on every record, and reject non-`competition_prize_money` numerators in revenue/profit ratio calculations.
+- Confidence: high
+
 ## What Has Failed

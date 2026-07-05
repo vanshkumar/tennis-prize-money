@@ -2,9 +2,9 @@
 
 ## Current Scope
 
-Version `0.1.0` is a static React + TypeScript + Vite dashboard with a validated data layer, sourced seed data, tested calculation engine, CSS visualizations, and a server-side refresh pipeline under `tennis-prize-money/`. The app remains app-local inside the larger `vanshkumar.github.io` repository and is configured for GitHub Pages subpath hosting with `base: '/tennis-prize-money/'`.
+Version `0.1.0` is a static React + TypeScript + Vite dashboard with a validated data layer, sourced seed data, tested calculation engine, CSS visualizations, and a server-side refresh pipeline under `tennis-prize-money/`.
 
-The dashboard currently renders from a small sourced 2025 Grand Slam men's singles prize-money seed dataset. Compatible tournament-level revenue, profit, surplus, and prior-year comparison values remain unavailable until clearer financial sources and additional years are added.
+The dashboard currently renders from a small sourced 2025 Grand Slam seed dataset: four men's singles competition-prize rows and one US Open total-player-compensation context row. Compatible tournament-level revenue, profit, surplus, and prior-year comparison values remain unavailable until clearer financial sources and additional years are added.
 
 ## App Structure
 
@@ -17,7 +17,7 @@ The dashboard currently renders from a small sourced 2025 Grand Slam men's singl
 - `src/data/static/` contains dataset-level static JSON metadata.
 - `src/data/raw/source-metadata/` contains source metadata JSON.
 - `src/data/normalized/` contains normalized tournament economics records.
-- `src/data/schemas.ts` defines TypeScript types and runtime validation, including mock-leakage checks for datasets labeled `real`.
+- `src/data/schemas.ts` defines TypeScript types and runtime validation, including mock-leakage checks for datasets labeled `real` and required prize-money scope/category fields.
 - `src/data/dashboardDataset.ts` imports and validates JSON before exporting the typed dataset.
 - `src/lib/metricEngine.ts` computes trustworthy metrics with structured unavailable reasons.
 - `src/lib/dashboardMetrics.ts` adapts metric results into dashboard filters, primary-question answer rows, answerability coverage summaries, visible caveats, and formatting.
@@ -61,9 +61,10 @@ The calculation engine only computes ratios when values are compatible:
 - same currency
 - available numerator and denominator
 - positive denominator
+- `competition_prize_money` numerator category
 - compatible financial denominator semantics
 
-Organizer-level financials, expenses, unknown values, incompatible currencies, missing values, and zero or negative profit/surplus denominators return unavailable results rather than percentages.
+Organizer-level financials, expenses, unknown values, total player compensation/support, incompatible currencies, missing values, and zero or negative profit/surplus denominators return unavailable results rather than percentages.
 
 ## Visualization Flow
 
@@ -71,8 +72,8 @@ The visual layer is app-local and dependency-light. `DashboardPage.tsx` renders 
 
 Current panels focus on one question: how much prize money do players receive as a percentage of tournament revenue or profit/surplus?
 
-- primary answer cards for prize money / revenue and prize money / profit/surplus
-- ratio-input summaries for the prize-money numerator and the two financial denominators
+- primary answer cards for competition prize money / revenue and competition prize money / profit/surplus
+- ratio-input summaries for the selected numerator category and the two financial denominators
 - answerability coverage for the active filter set
 - calculation caveats explaining missing, incompatible, zero, negative, or cross-currency denominators
 - selected-record source cards
@@ -93,6 +94,7 @@ The optional dispatch endpoint requires a separate serverless host with server-s
 - Source rows must include title, publisher, URL, source type, accessed date, confidence, and notes before the dashboard can import them.
 - Filters return explicit empty states for zero-match combinations instead of falling back to the first record.
 - Financial rows remain visible but unavailable when denominators are missing, semantically incompatible, zero, negative, or in another currency.
+- Total player compensation/support rows remain visible as context but are unavailable for primary revenue/profit ratios.
 - The browser refresh button remains disabled unless `VITE_REFRESH_DISPATCH_URL` is an absolute external URL.
 
 ## Checks

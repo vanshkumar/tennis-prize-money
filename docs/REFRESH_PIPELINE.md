@@ -26,7 +26,7 @@ Optional local environment variables:
 - `REFRESH_UPDATE_TIMESTAMP`: defaults to `true`; set to `false` to preserve `lastRefreshedAt`.
 - `REFRESH_DRY_RUN`: set to `true` to report changes without writing files.
 
-The manifest must follow the existing source and tournament record schema. The pipeline validates merged output before writing any static JSON.
+The manifest must follow the existing source and tournament record schema, including schema-version-2 `prizeMoneyScope` fields on every record. The pipeline validates merged output before writing any static JSON.
 
 Useful hardening checks:
 
@@ -90,7 +90,7 @@ When `VITE_REFRESH_DISPATCH_URL` is absent or not an absolute `http`/`https` URL
 
 ## v0.1 Readiness Notes
 
-- The generic JSON manifest adapter is intentionally conservative: incoming rows must already match the validated source and record schema.
+- The generic JSON manifest adapter is intentionally conservative: incoming rows must already match the validated source and record schema, including explicit numerator category.
 - Merge behavior is by stable `id`; incoming rows replace matching ids and unrelated rows are preserved.
 - Static JSON files are written only after the full merged dataset validates.
 - Browser refresh remains a dispatch-only path; it does not fetch, parse, normalize, or commit data from the browser.

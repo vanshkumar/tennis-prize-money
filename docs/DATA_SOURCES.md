@@ -2,7 +2,7 @@
 
 ## Current Scope
 
-Version `0.1.0` ships a small seed dataset for 2025 Grand Slam men's singles prize money. The active dataset is stored in:
+Version `0.1.0` shipped a small seed dataset for 2025 Grand Slam men's singles prize money. The current unreleased dataset adds schema-version-2 numerator semantics and one US Open total-player-compensation context row. The active dataset is stored in:
 
 - `src/data/static/seedDatasetMetadata.json`
 - `src/data/raw/source-metadata/grandSlam2025Sources.json`
@@ -19,6 +19,8 @@ The first server-side refresh pipeline and generic JSON manifest adapter are imp
 | `roland-garros-2025-secondary-prize-money` | [2025 French Open prize money table](https://en.wikipedia.org/wiki/2025_French_Open#Prize_money) | Wikipedia, citing The Independent | Singles round payouts and total tournament prize money | Medium | No official Roland Garros/FFT prize-money URL was verified in this task; replace with official source when found. | No |
 | `wimbledon-2025-prize-money-pdf` | [The Championships, Wimbledon 2025 Prize Money](https://www.wimbledon.com/pdf/Wimbledon_Prize_Money_2025.pdf) | The All England Lawn Tennis Club / Wimbledon | Gentlemen's/ladies' singles per-player round payouts, singles event total, total tournament prize money | High | PDF parsing is manual in v0.1; future adapter should parse tables. | No |
 | `us-open-2025-prize-money-page` | [2025 US Open Prize Money](https://www.usopen.org/en_US/visit/prize_money.html) | United States Tennis Association / US Open | US Open prize-money table and total player compensation | Medium | Official page was reachable but did not expose crawler-readable text in this task. | No |
+| `us-open-2025-compensation-release` | [2025 US Open prize money sets record for largest purse in tennis history](https://www.usopen.org/en_US/news/articles/2025-08-06/2025_us_open_prize_money_sets_record_for_largest_purse_in_tennis_history.html) | United States Tennis Association / US Open | Official URL for 2025 player-compensation announcement | Medium | Official page URL is identified but not crawler-readable in this environment; AP is used for parseable corroboration. | No |
+| `us-open-2025-ap-compensation-split` | [US Open singles champions will get a record $5 million in 2025 and total compensation is up 20%](https://apnews.com/article/prize-money-us-open-2025-8134bd075f194c38011b3e8eff81fd56) | Associated Press | Parseable 2025 split: nearly $85m competition prize money across events and $90m total player compensation | Medium | Reputable secondary source; not a substitute for a parseable official competition-prize total. | No |
 | `us-open-2025-secondary-crosscheck` | [US Open prize-money table](https://en.wikipedia.org/wiki/US_Open_(tennis)#Prize_money) | Wikipedia, citing the official US Open prize-money page | Singles round payouts, combined singles total, total player compensation | Medium | Used only as a cross-check because the official page did not parse in this environment. | No |
 
 ## Refresh Adapter Status
@@ -38,16 +40,17 @@ Official tournament page adapters, PDF table parsers, and financial-report adapt
 
 ## Normalized Seed Rows
 
-| Record | Event scope | Prize-pool value | Currency | Status | Confidence | Notes |
-| --- | --- | ---: | --- | --- | --- | --- |
-| `australian-open-2025-ms` | Men's singles, 128-player main draw | 33,108,000 | AUD | Official | High | Official per-event singles total from Tennis Australia PDF. |
-| `roland-garros-2025-ms` | Men's singles, 128-player main draw | 20,509,000 | EUR | Derived | Medium | Weighted sum of listed singles round payouts from secondary source. |
-| `wimbledon-2025-ms` | Gentlemen's singles, 128-player main draw | 19,414,000 | GBP | Official | High | Official per-event singles total from Wimbledon PDF. |
-| `us-open-2025-ms` | Men's singles, 128-player main draw | 31,620,000 | USD | Derived | Medium | Weighted sum of listed singles round payouts, cross-checked against official-source citation. |
+| Record | Event scope | Numerator category | Prize/compensation value | Currency | Status | Confidence | Notes |
+| --- | --- | --- | ---: | --- | --- | --- | --- |
+| `australian-open-2025-ms` | Men's singles, 128-player main draw | `competition_prize_money` | 33,108,000 | AUD | Official | High | Official per-event singles total from Tennis Australia PDF. |
+| `roland-garros-2025-ms` | Men's singles, 128-player main draw | `competition_prize_money` | 20,509,000 | EUR | Derived | Medium | Weighted sum of listed singles round payouts from secondary source. |
+| `wimbledon-2025-ms` | Gentlemen's singles, 128-player main draw | `competition_prize_money` | 19,414,000 | GBP | Official | High | Official per-event singles total from Wimbledon PDF. |
+| `us-open-2025-ms` | Men's singles, 128-player main draw | `competition_prize_money` | 31,620,000 | USD | Derived | Medium | Weighted sum of listed singles round payouts, cross-checked against official-source citation. |
+| `us-open-2025-total-player-compensation` | Tournament-level player compensation | `total_player_compensation` | 90,000,000 | USD | Reported | Medium | AP parses USTA announcement as nearly $85m competition prize money plus support/expense coverage to reach $90m total compensation; excluded from revenue/profit ratios. |
 
 ## Financial Data Status
 
-No tournament-level revenue, profit, or surplus values are included in the v0.1 seed. The dashboard leaves those fields unavailable for every seed record. Organization-level revenues, press estimates, and player-share claims are not normalized as compatible denominators unless a future task can tie them to a specific tournament/event and currency.
+No tournament-level revenue, profit, or surplus values are included in the active seed. The dashboard leaves those fields unavailable for every seed record. USTA organization-level financials, other organization-level revenues, press estimates, and player-share claims are not normalized as compatible denominators unless a future task can tie them to a specific tournament/event and currency.
 
 ## Primary-Question Research Leads
 
@@ -58,7 +61,7 @@ The 2026-07-05 research sweep focused on the dashboard's primary question: prize
 | 1 | Wimbledon | Official total prize money: 2025 £53.5m and 2024 £50.0m from Wimbledon prize-money PDFs. | AELTC Championships Ltd turnover: 2025 £423.626m and 2024 £406.507m from Companies House filings; operating profit is available but needs an operating-company caveat. | Best next production candidate. Add as tournament-total records after verifying filings and labeling denominator as Championships operating-company turnover. |
 | 2 | Roland Garros | Total prize money lead: 2025 €56.352m and 2024 €53.478m from Roland Garros press-kit citations / secondary tables. | Revenue leads: 2025 €395m from Guardian reporting on a player statement; 2024 €340m from secondary/Bloomberg-cited reporting. No tournament profit/surplus found. | Possible revenue-share row only with medium/low confidence and visible secondary-source caveat; do not add profit/surplus. |
 | 3 | Australian Open | Official total prize money: 2025 A$96.5m and 2024 A$86.5m from AO/Tennis Australia sources. | Tennis Australia annual reports disclose organization-level revenue and surplus, not AO tournament revenue/profit. | Add official tournament-total numerator; keep revenue/profit unavailable unless AO-specific financial denominators are found. |
-| 4 | US Open | Official total player compensation/prize package: 2024 US$75.0m and 2025 US$90.0m from US Open sources. | USTA Form 990 values are organization-wide; a secondary FT operating-revenue lead needs primary confirmation. No tournament profit/surplus found. | Add official tournament-total numerator; keep revenue/profit unavailable until US Open-specific financial denominators are confirmed. |
+| 4 | US Open | Official total player compensation/prize package: 2024 US$75.0m and 2025 US$90.0m from US Open sources; AP parses 2025 competition prize money as nearly US$85.0m. | USTA Form 990 values are organization-wide; a secondary FT operating-revenue lead needs primary confirmation. No tournament profit/surplus found. | Keep the US$90.0m row as `total_player_compensation`; do not use it in revenue/profit ratios unless a clean competition-prize total and tournament denominator are verified. |
 
 Useful lead URLs:
 
@@ -74,7 +77,7 @@ Useful lead URLs:
 - Roland Garros revenue lead: <https://www.theguardian.com/sport/2026/may/03/tennis-french-open-prize-money-novak-djokovic-jannik-sinner-aryna-sabalenka>
 - Roland Garros 2025 prize-money lead: <https://de.wikipedia.org/wiki/French_Open_2025>
 
-Data-model implication: the primary ratio should prefer full tournament prize-money totals over event-level men's singles rows. Event-level rows can still exist, but any comparison to tournament revenue must be labeled as partial or kept unavailable until the numerator scope is made explicit.
+Data-model implication: the primary ratio should prefer full tournament competition-prize-money totals over event-level men's singles rows. Event-level rows can still exist, but any comparison to tournament revenue must be labeled as partial or kept unavailable. Total player compensation/support rows must remain separate from clean competition-prize-money numerators.
 
 ## v0.1 Audit Status
 

@@ -3,7 +3,11 @@ import sourcesJson from './raw/source-metadata/grandSlam2025Sources.json';
 import metadataJson from './static/seedDatasetMetadata.json';
 import { parseDashboardDataset } from './schemas';
 
-export { isTournamentProfitOrSurplusKind, isTournamentRevenueKind } from './schemas';
+export {
+  isCompetitionPrizeMoneyCategory,
+  isTournamentProfitOrSurplusKind,
+  isTournamentRevenueKind,
+} from './schemas';
 export type {
   Confidence,
   CurrencyCode,
@@ -15,6 +19,9 @@ export type {
   MoneyValue,
   PayoutAllocation,
   PayoutValue,
+  PrizeMoneyNumeratorCategory,
+  PrizeMoneyScope,
+  PrizeMoneyScopeType,
   RoundPayout,
   Source,
   SourceType,

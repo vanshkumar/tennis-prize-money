@@ -12,6 +12,7 @@ import {
   getPrimaryQuestionCaveats,
   getPrimaryQuestionCoverage,
   getPrimaryQuestionRows,
+  getPrizeMoneyNumeratorDisplayLabel,
   getSourcesForRecord,
 } from '../lib/dashboardMetrics';
 import { dispatchRefreshRequest, getRefreshConfig } from '../lib/refreshClient';
@@ -100,8 +101,9 @@ export function DashboardPage() {
           <p className="hero-copy">
             The answer is calculated only when prize money and the financial
             denominator are compatible: same currency, tournament-level scope,
-            and a positive revenue, profit, or surplus value. The current seed
-            has sourced prize money but no compatible financial denominator yet.
+            competition-prize-money numerator, and a positive revenue, profit,
+            or surplus value. Compensation/support totals are shown as context
+            but are not used in the primary percentage.
           </p>
         </div>
       </section>
@@ -377,9 +379,9 @@ function RatioInputStrip({ record }: RatioInputStripProps) {
 
   const inputs = [
     {
-      label: 'Prize money numerator',
+      label: `${getPrizeMoneyNumeratorDisplayLabel(record)} numerator`,
       value: formatMoney(record.prizePool.amount, record.prizePool.currency),
-      note: record.prizePool.notes ?? 'Normalized prize-pool value.',
+      note: record.prizePool.notes ?? 'Normalized prize-money numerator.',
     },
     {
       label: 'Revenue denominator',

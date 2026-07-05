@@ -311,3 +311,33 @@ Next:
 - Push the workflow to `main`.
 - In GitHub repo settings, set Pages Source to `GitHub Actions`.
 - Verify the first deployment at `https://vanshkumar.github.io/tennis-prize-money/` and, if inherited custom-domain routing is enabled, `https://vanshkumar.net/tennis-prize-money/`.
+
+## 2026-07-05 - Primary Question Data Normalization Guardrail
+
+Status: Complete
+
+Branch: `main`
+
+Summary:
+
+- Confirmed the standalone repo started clean on `main...origin/main`.
+- Read project memory, repo instructions, data docs, future-work notes, and the available primary-question handoff before editing.
+- Added schema version `2` with required `prizeMoneyScope.type` and `prizeMoneyScope.numeratorCategory`.
+- Marked existing Grand Slam men's singles rows as `competition_prize_money` event-main-draw records.
+- Added US Open 2025 total player compensation as a distinct `total_player_compensation` tournament-total context row using the official US Open release URL plus parseable AP corroboration.
+- Kept US Open revenue and profit/surplus unavailable; USTA organization-level financials remain separate from tournament denominators.
+- Updated metric compatibility checks so revenue/profit ratios require `competition_prize_money` and reject total compensation/support.
+- Updated dashboard labels, caveats, tests, README, data model, source inventory, caveats, future work, changelog, and handoff docs for the new numerator semantics.
+
+Checks:
+
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 38 tests.
+- `npm run build` - passed.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+
+Next:
+
+- Commit and push to `main`.
+- Create the next xhigh Codex handoff thread for the next primary-question data slice.

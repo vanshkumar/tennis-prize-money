@@ -1,4 +1,5 @@
 import {
+  isCompetitionPrizeMoneyCategory,
   isTournamentProfitOrSurplusKind,
   isTournamentRevenueKind,
   type CurrencyCode,
@@ -15,6 +16,7 @@ export type MetricUnavailableReason =
   | 'zero_denominator'
   | 'negative_denominator'
   | 'incompatible_currency'
+  | 'incompatible_numerator_kind'
   | 'incompatible_financial_kind'
   | 'no_prior_record';
 
@@ -91,8 +93,8 @@ export function calculateWinnerRunnerUpRatio(
 export function calculatePrizePoolToRevenue(
   record: TournamentEconomicsRecord,
 ): NumericMetricResult {
-  return calculateMoneyOverFinancialValue(
-    record.prizePool,
+  return calculateRecordPrizeMoneyOverFinancialValue(
+    record,
     record.revenue,
     isTournamentRevenueKind,
   );
@@ -101,8 +103,8 @@ export function calculatePrizePoolToRevenue(
 export function calculatePrizePoolToProfitOrSurplus(
   record: TournamentEconomicsRecord,
 ): NumericMetricResult {
-  return calculateMoneyOverFinancialValue(
-    record.prizePool,
+  return calculateRecordPrizeMoneyOverFinancialValue(
+    record,
     record.profitOrSurplus,
     isTournamentProfitOrSurplusKind,
   );
@@ -153,12 +155,16 @@ export function calculateRoundPayoutPercentages(
   }));
 }
 
-function calculateMoneyOverFinancialValue(
-  numerator: MoneyValue,
+function calculateRecordPrizeMoneyOverFinancialValue(
+  record: TournamentEconomicsRecord,
   denominator: FinancialValue,
   isCompatibleKind: (kind: FinancialMetricKind) => boolean,
 ): NumericMetricResult {
-  const numeratorValue = getAvailableMoneyValue(numerator);
+  if (!isCompetitionPrizeMoneyCategory(record.prizeMoneyScope.numeratorCategory)) {
+    return unavailable('incompatible_numerator_kind');
+  }
+
+  const numeratorValue = getAvailableMoneyValue(record.prizePool);
   const denominatorValue = getAvailableFinancialValue(denominator);
 
   if (!numeratorValue || !denominatorValue) {

@@ -47,7 +47,7 @@ describe('validated seed dashboard dataset', () => {
     expect(dashboardDataset.sources.every((source) => source.sourceType !== 'mock')).toBe(true);
   });
 
-  it('contains the expected 2025 Grand Slam men singles seed records', () => {
+  it('contains the expected 2025 Grand Slam prize-money and compensation records', () => {
     expect(dashboardDataset.records).toHaveLength(seedDatasetExpectations.length);
 
     for (const expected of seedDatasetExpectations) {
@@ -56,21 +56,25 @@ describe('validated seed dashboard dataset', () => {
       expect(record).toBeDefined();
       expect(record).toMatchObject({
         tournament: expected.tournament,
-        event: "Men's singles",
+        event: expected.event,
         year: 2025,
         confidence: expected.confidence,
         displayCurrency: expected.currency,
+        prizeMoneyScope: {
+          type: expected.scopeType,
+          numeratorCategory: expected.numeratorCategory,
+        },
         prizePool: {
           amount: expected.prizePool,
           currency: expected.currency,
         },
         winnerPayout: {
           amount: expected.winner,
-          currency: expected.currency,
+          currency: expected.winner === null ? null : expected.currency,
         },
         runnerUpPayout: {
           amount: expected.runnerUp,
-          currency: expected.currency,
+          currency: expected.runnerUp === null ? null : expected.currency,
         },
       });
     }
@@ -113,12 +117,14 @@ describe('validated seed dashboard dataset', () => {
         status: 'unavailable',
         sourceIds: [],
       });
-      expect(record.caveats.join(' ')).toContain('Revenue and profit/surplus are unavailable');
+      expect(record.caveats.join(' ')).toMatch(/revenue and profit\/surplus/i);
     }
   });
 
-  it('matches each seed prize pool to the weighted main-draw round payouts', () => {
-    for (const record of dashboardDataset.records) {
+  it('matches each event-level competition prize pool to the weighted main-draw round payouts', () => {
+    for (const record of dashboardDataset.records.filter(
+      (item) => item.prizeMoneyScope.type === 'event_main_draw',
+    )) {
       const weightedRoundTotal = record.roundPayouts.reduce((total, roundPayout) => {
         const multiplier = mainDrawRoundMultipliers[roundPayout.round] ?? 0;
         return total + (roundPayout.payout.amount ?? 0) * multiplier;
@@ -152,10 +158,10 @@ describe('validated seed dashboard dataset', () => {
       'Wimbledon',
     ]);
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'high', count: 2, share: 0.5 }),
+      expect.objectContaining({ confidence: 'high', count: 2, share: 0.4 }),
     );
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'medium', count: 2, share: 0.5 }),
+      expect.objectContaining({ confidence: 'medium', count: 3, share: 0.6 }),
     );
     expect(kpis).toHaveLength(9);
     expect(kpis.map((kpi) => kpi.label)).toContain('Prize pool YoY growth');
@@ -195,6 +201,7 @@ describe('validated seed dashboard dataset', () => {
     expect(financialRows).toEqual([
       expect.objectContaining({
         id: 'prize-pool',
+        label: 'Competition prize money',
         value: 'A$33,108,000',
         barPercent: 100,
         unavailable: false,
@@ -224,8 +231,9 @@ describe('validated seed dashboard dataset', () => {
     expect(rows).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        label: 'Prize money as % of tournament revenue',
+        label: 'Competition prize money as % of tournament revenue',
         value: 'Unavailable',
+        numeratorLabel: 'Competition prize money',
         numeratorValue: 'A$33,108,000',
         denominatorValue: 'Unavailable',
         barPercent: null,
@@ -233,8 +241,9 @@ describe('validated seed dashboard dataset', () => {
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        label: 'Prize money as % of tournament profit/surplus',
+        label: 'Competition prize money as % of tournament profit/surplus',
         value: 'Unavailable',
+        numeratorLabel: 'Competition prize money',
         numeratorValue: 'A$33,108,000',
         denominatorValue: 'Unavailable',
         barPercent: null,
@@ -244,22 +253,59 @@ describe('validated seed dashboard dataset', () => {
     expect(coverage).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        value: '0/4',
+        value: '0/5',
         answerableCount: 0,
-        totalCount: 4,
+        totalCount: 5,
         unavailable: true,
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        value: '0/4',
+        value: '0/5',
         answerableCount: 0,
-        totalCount: 4,
+        totalCount: 5,
         unavailable: true,
       }),
     ]);
     expect(caveats).toContain('Prize money / revenue is unavailable: Missing compatible data.');
     expect(caveats).not.toContain(
       'Year-over-year growth is unavailable: No matching prior-year record is available.',
+    );
+  });
+
+  it('keeps US Open total compensation visible but excluded from primary ratios', () => {
+    const compensationRecord = dashboardDataset.records.find(
+      (record) => record.id === 'us-open-2025-total-player-compensation',
+    );
+
+    expect(compensationRecord).toBeDefined();
+    if (!compensationRecord) {
+      throw new Error('Expected US Open total-compensation fixture to exist');
+    }
+
+    const rows = getPrimaryQuestionRows(compensationRecord);
+    const caveats = getPrimaryQuestionCaveats(compensationRecord);
+
+    expect(rows).toEqual([
+      expect.objectContaining({
+        id: 'revenue-share',
+        eyebrow: 'Needs competition prize money',
+        numeratorLabel: 'Total player compensation (not used)',
+        numeratorValue: '$90,000,000',
+        unavailable: true,
+      }),
+      expect.objectContaining({
+        id: 'profit-surplus-share',
+        eyebrow: 'Needs competition prize money',
+        numeratorLabel: 'Total player compensation (not used)',
+        numeratorValue: '$90,000,000',
+        unavailable: true,
+      }),
+    ]);
+    expect(caveats).toContain(
+      'Total player compensation is not competition prize money and is excluded from revenue/profit ratios.',
+    );
+    expect(caveats).toContain(
+      'Prize money / revenue is unavailable: Numerator is not competition prize money.',
     );
   });
 
@@ -330,10 +376,10 @@ describe('validated seed dashboard dataset', () => {
 
     const caveats = getVisibleCaveats(derivedRecord, dashboardDataset.records);
 
-    expect(caveats).toContain('Prize pool is derived from normalized source rows.');
+    expect(caveats).toContain('Competition prize money is derived from normalized source rows.');
     expect(caveats).toContain('Revenue is unavailable for this record.');
     expect(caveats).toContain(
-      'Prize pool / profit or surplus is unavailable: Missing compatible data.',
+      'Prize money / profit or surplus is unavailable: Missing compatible data.',
     );
     expect(caveats).toContain(
       'Year-over-year growth is unavailable: No matching prior-year record is available.',
@@ -434,7 +480,7 @@ describe('metric engine calculations', () => {
     });
   });
 
-  it('does not compute prize pool / profit when profit is negative', () => {
+  it('does not compute competition prize money / profit when profit is negative', () => {
     const record = cloneRecord(normalRecord, {
       profitOrSurplus: {
         amount: -250000,
@@ -451,7 +497,7 @@ describe('metric engine calculations', () => {
     });
   });
 
-  it('does not compute prize pool / profit when profit is zero', () => {
+  it('does not compute competition prize money / profit when profit is zero', () => {
     const record = cloneRecord(normalRecord, {
       profitOrSurplus: {
         amount: 0,
@@ -512,6 +558,43 @@ describe('metric engine calculations', () => {
     expect(calculatePrizePoolToProfitOrSurplus(profitRecord)).toMatchObject({
       status: 'unavailable',
       reason: 'incompatible_financial_kind',
+    });
+  });
+
+  it('does not compute financial ratios from total player compensation', () => {
+    const record = cloneRecord(normalRecord, {
+      prizeMoneyScope: {
+        type: 'tournament_total',
+        numeratorCategory: 'total_player_compensation',
+        notes: 'Fixture total player compensation.',
+      },
+      prizePool: {
+        ...normalRecord.prizePool,
+        amount: 90000000,
+      },
+      revenue: {
+        amount: 400000000,
+        currency: 'AUD',
+        kind: 'tournament_revenue',
+        status: 'reported',
+        sourceIds: ['ao-2025-prize-money-release'],
+      },
+      profitOrSurplus: {
+        amount: 50000000,
+        currency: 'AUD',
+        kind: 'tournament_surplus',
+        status: 'reported',
+        sourceIds: ['ao-2025-prize-money-release'],
+      },
+    });
+
+    expect(calculatePrizePoolToRevenue(record)).toMatchObject({
+      status: 'unavailable',
+      reason: 'incompatible_numerator_kind',
+    });
+    expect(calculatePrizePoolToProfitOrSurplus(record)).toMatchObject({
+      status: 'unavailable',
+      reason: 'incompatible_numerator_kind',
     });
   });
 });

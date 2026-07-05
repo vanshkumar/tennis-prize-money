@@ -2,6 +2,7 @@ import type {
   Confidence,
   DashboardDataset,
   MoneyValue,
+  PrizeMoneyNumeratorCategory,
   Source,
   TournamentEconomicsRecord,
   ValueStatus,
@@ -131,6 +132,12 @@ export function formatSourceType(sourceType: string): string {
   return sourceType.replace(/_/g, ' ');
 }
 
+export function getPrizeMoneyNumeratorDisplayLabel(
+  record: TournamentEconomicsRecord,
+): string {
+  return formatPrizeMoneyNumeratorLabel(record.prizeMoneyScope.numeratorCategory);
+}
+
 export function getFilterOptions(records: TournamentEconomicsRecord[]) {
   return {
     tournaments: uniqueSorted(records.map((record) => record.tournament)),
@@ -169,16 +176,17 @@ export function summarizeKpis(
   const prizePoolToProfitOrSurplus = calculatePrizePoolToProfitOrSurplus(record);
   const winnerRunnerUpRatio = calculateWinnerRunnerUpRatio(record);
   const yearOverYearGrowth = calculateYearOverYearPrizePoolGrowth(records, record);
+  const numeratorLabel = formatPrizeMoneyNumeratorLabel(record.prizeMoneyScope.numeratorCategory);
 
   return [
     {
-      label: 'Total prize pool',
+      label: numeratorLabel,
       value:
         totalPrizePool.status === 'available'
           ? formatMoneyValue(totalPrizePool.value)
           : 'Unavailable',
       eyebrow: valueEyebrow(record.prizePool.status),
-      note: record.prizePool.notes ?? 'Total prize pool from normalized data.',
+      note: record.prizePool.notes ?? 'Normalized prize-money numerator.',
       unavailable: totalPrizePool.status === 'unavailable',
     },
     {
@@ -198,7 +206,7 @@ export function summarizeKpis(
       unavailable: record.profitOrSurplus.status === 'unavailable',
     },
     {
-      label: 'Prize pool / revenue',
+      label: 'Competition prize money / revenue',
       value: formatMetricPercent(prizePoolToRevenue),
       eyebrow: derivedEyebrow(record, prizePoolToRevenue),
       note: ratioNote(
@@ -208,7 +216,7 @@ export function summarizeKpis(
       unavailable: prizePoolToRevenue.status === 'unavailable',
     },
     {
-      label: 'Prize pool / profit or surplus',
+      label: 'Competition prize money / profit or surplus',
       value: formatMetricPercent(prizePoolToProfitOrSurplus),
       eyebrow: derivedEyebrow(record, prizePoolToProfitOrSurplus),
       note: ratioNote(
@@ -302,14 +310,17 @@ export function getPrimaryQuestionRows(
   const prizePoolToRevenue = calculatePrizePoolToRevenue(record);
   const prizePoolToProfitOrSurplus = calculatePrizePoolToProfitOrSurplus(record);
   const prizePoolValue = formatMoneyValue(record.prizePool);
+  const numeratorLabel = formatPrimaryNumeratorLabel(
+    record.prizeMoneyScope.numeratorCategory,
+  );
 
   return [
     {
       id: 'revenue-share',
-      label: 'Prize money as % of tournament revenue',
+      label: 'Competition prize money as % of tournament revenue',
       value: formatMetricPercent(prizePoolToRevenue),
       eyebrow: primaryAnswerEyebrow(prizePoolToRevenue, 'revenue'),
-      numeratorLabel: 'Prize money',
+      numeratorLabel,
       numeratorValue: prizePoolValue,
       denominatorLabel: 'Revenue',
       denominatorValue: formatMoneyValue(record.revenue),
@@ -323,10 +334,10 @@ export function getPrimaryQuestionRows(
     },
     {
       id: 'profit-surplus-share',
-      label: 'Prize money as % of tournament profit/surplus',
+      label: 'Competition prize money as % of tournament profit/surplus',
       value: formatMetricPercent(prizePoolToProfitOrSurplus),
       eyebrow: primaryAnswerEyebrow(prizePoolToProfitOrSurplus, 'profit/surplus'),
-      numeratorLabel: 'Prize money',
+      numeratorLabel,
       numeratorValue: prizePoolValue,
       denominatorLabel: 'Profit/surplus',
       denominatorValue: formatMoneyValue(record.profitOrSurplus),
@@ -358,22 +369,24 @@ export function getPrimaryQuestionCoverage(
       'Records that can answer prize money / revenue',
       revenueAnswerableCount,
       totalCount,
-      'No active records have compatible tournament-level revenue yet.',
+      'No active records have both an eligible competition-prize-money numerator and compatible tournament-level revenue yet.',
     ),
     buildPrimaryCoverageRow(
       'profit-surplus-share',
       'Records that can answer prize money / profit/surplus',
       profitAnswerableCount,
       totalCount,
-      'No active records have positive compatible tournament-level profit or surplus yet.',
+      'No active records have both an eligible competition-prize-money numerator and positive compatible tournament-level profit or surplus yet.',
     ),
   ];
 }
 
 export function getPrimaryQuestionCaveats(record: TournamentEconomicsRecord): string[] {
   const caveats = new Set(record.caveats);
+  addPrizeMoneyScopeCaveats(caveats, record);
+
   const values = [
-    ['Prize pool', record.prizePool],
+    [formatPrizeMoneyNumeratorLabel(record.prizeMoneyScope.numeratorCategory), record.prizePool],
     ['Revenue', record.revenue],
     ['Profit/surplus', record.profitOrSurplus],
   ] as const;
@@ -417,10 +430,10 @@ export function getFinancialComparisonRows(
   const rows = [
     {
       id: 'prize-pool',
-      label: 'Prize pool',
+      label: formatPrizeMoneyNumeratorLabel(record.prizeMoneyScope.numeratorCategory),
       value: record.prizePool,
       status: record.prizePool.status,
-      note: record.prizePool.notes ?? 'Normalized prize-pool value.',
+      note: record.prizePool.notes ?? 'Normalized prize-money numerator.',
     },
     {
       id: 'revenue',
@@ -542,8 +555,10 @@ export function getVisibleCaveats(
   allRecords: TournamentEconomicsRecord[],
 ): string[] {
   const caveats = new Set(record.caveats);
+  addPrizeMoneyScopeCaveats(caveats, record);
+
   const values = [
-    ['Prize pool', record.prizePool],
+    [formatPrizeMoneyNumeratorLabel(record.prizeMoneyScope.numeratorCategory), record.prizePool],
     ['Winner payout', record.winnerPayout],
     ['Runner-up payout', record.runnerUpPayout],
     ['Revenue', record.revenue],
@@ -570,13 +585,13 @@ export function getVisibleCaveats(
 
   const revenueRatio = calculatePrizePoolToRevenue(record);
   if (revenueRatio.status === 'unavailable') {
-    caveats.add(`Prize pool / revenue is unavailable: ${describeUnavailableReason(revenueRatio.reason)}`);
+    caveats.add(`Prize money / revenue is unavailable: ${describeUnavailableReason(revenueRatio.reason)}`);
   }
 
   const profitRatio = calculatePrizePoolToProfitOrSurplus(record);
   if (profitRatio.status === 'unavailable') {
     caveats.add(
-      `Prize pool / profit or surplus is unavailable: ${describeUnavailableReason(profitRatio.reason)}`,
+      `Prize money / profit or surplus is unavailable: ${describeUnavailableReason(profitRatio.reason)}`,
     );
   }
 
@@ -598,6 +613,8 @@ export function describeUnavailableReason(reason: MetricUnavailableReason): stri
       return 'Denominator is negative.';
     case 'incompatible_currency':
       return 'Currency mismatch; no conversion has been applied.';
+    case 'incompatible_numerator_kind':
+      return 'Numerator is not competition prize money.';
     case 'incompatible_financial_kind':
       return 'Financial denominator is not a compatible tournament-level value.';
     case 'no_prior_record':
@@ -622,6 +639,10 @@ function primaryRatioNote(
     return availableNote;
   }
 
+  if (result.reason === 'incompatible_numerator_kind') {
+    return `${describeUnavailableReason(result.reason)} Use a competition-prize-money numerator before showing this percentage.`;
+  }
+
   return `${describeUnavailableReason(result.reason)} ${unavailableAction}`;
 }
 
@@ -631,6 +652,10 @@ function primaryAnswerEyebrow(
 ): string {
   if (result.status === 'available') {
     return 'Answer available';
+  }
+
+  if (result.reason === 'incompatible_numerator_kind') {
+    return 'Needs competition prize money';
   }
 
   return `Needs ${denominatorLabel} data`;
@@ -702,6 +727,36 @@ function formatAllocation(allocation: string): string {
 
 function formatFinancialKind(kind: string): string {
   return kind.replace(/_/g, ' ');
+}
+
+function formatPrizeMoneyNumeratorLabel(
+  category: PrizeMoneyNumeratorCategory,
+): string {
+  switch (category) {
+    case 'competition_prize_money':
+      return 'Competition prize money';
+    case 'total_player_compensation':
+      return 'Total player compensation';
+  }
+}
+
+function formatPrimaryNumeratorLabel(
+  category: PrizeMoneyNumeratorCategory,
+): string {
+  const label = formatPrizeMoneyNumeratorLabel(category);
+
+  return category === 'competition_prize_money' ? label : `${label} (not used)`;
+}
+
+function addPrizeMoneyScopeCaveats(
+  caveats: Set<string>,
+  record: TournamentEconomicsRecord,
+) {
+  if (record.prizeMoneyScope.numeratorCategory !== 'competition_prize_money') {
+    caveats.add(
+      `${formatPrizeMoneyNumeratorLabel(record.prizeMoneyScope.numeratorCategory)} is not competition prize money and is excluded from revenue/profit ratios.`,
+    );
+  }
 }
 
 function getRecordSourceIds(record: TournamentEconomicsRecord): string[] {

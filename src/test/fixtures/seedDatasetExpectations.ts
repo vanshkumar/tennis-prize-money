@@ -1,11 +1,14 @@
 export interface SeedDatasetExpectation {
   id: string;
   tournament: string;
+  event: string;
   currency: string;
   confidence: 'high' | 'medium';
   prizePool: number;
-  winner: number;
-  runnerUp: number;
+  numeratorCategory: 'competition_prize_money' | 'total_player_compensation';
+  scopeType: 'event_main_draw' | 'tournament_total';
+  winner: number | null;
+  runnerUp: number | null;
   sourceCount: number;
 }
 
@@ -13,9 +16,12 @@ export const seedDatasetExpectations: SeedDatasetExpectation[] = [
   {
     id: 'australian-open-2025-ms',
     tournament: 'Australian Open',
+    event: "Men's singles",
     currency: 'AUD',
     confidence: 'high',
     prizePool: 33108000,
+    numeratorCategory: 'competition_prize_money',
+    scopeType: 'event_main_draw',
     winner: 3500000,
     runnerUp: 1900000,
     sourceCount: 2,
@@ -23,9 +29,12 @@ export const seedDatasetExpectations: SeedDatasetExpectation[] = [
   {
     id: 'roland-garros-2025-ms',
     tournament: 'Roland Garros',
+    event: "Men's singles",
     currency: 'EUR',
     confidence: 'medium',
     prizePool: 20509000,
+    numeratorCategory: 'competition_prize_money',
+    scopeType: 'event_main_draw',
     winner: 2550000,
     runnerUp: 1275000,
     sourceCount: 1,
@@ -33,9 +42,12 @@ export const seedDatasetExpectations: SeedDatasetExpectation[] = [
   {
     id: 'wimbledon-2025-ms',
     tournament: 'Wimbledon',
+    event: "Men's singles",
     currency: 'GBP',
     confidence: 'high',
     prizePool: 19414000,
+    numeratorCategory: 'competition_prize_money',
+    scopeType: 'event_main_draw',
     winner: 3000000,
     runnerUp: 1520000,
     sourceCount: 1,
@@ -43,11 +55,27 @@ export const seedDatasetExpectations: SeedDatasetExpectation[] = [
   {
     id: 'us-open-2025-ms',
     tournament: 'US Open',
+    event: "Men's singles",
     currency: 'USD',
     confidence: 'medium',
     prizePool: 31620000,
+    numeratorCategory: 'competition_prize_money',
+    scopeType: 'event_main_draw',
     winner: 5000000,
     runnerUp: 2500000,
+    sourceCount: 2,
+  },
+  {
+    id: 'us-open-2025-total-player-compensation',
+    tournament: 'US Open',
+    event: 'Tournament player compensation',
+    currency: 'USD',
+    confidence: 'medium',
+    prizePool: 90000000,
+    numeratorCategory: 'total_player_compensation',
+    scopeType: 'tournament_total',
+    winner: null,
+    runnerUp: null,
     sourceCount: 2,
   },
 ];

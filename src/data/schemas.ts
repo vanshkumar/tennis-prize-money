@@ -35,6 +35,14 @@ export const payoutAllocations = [
   'per_team',
   'total_allocation',
 ] as const;
+export const prizeMoneyScopeTypes = [
+  'event_main_draw',
+  'tournament_total',
+] as const;
+export const prizeMoneyNumeratorCategories = [
+  'competition_prize_money',
+  'total_player_compensation',
+] as const;
 
 export type Confidence = (typeof confidenceLevels)[number];
 export type DataMode = (typeof dataModes)[number];
@@ -42,10 +50,13 @@ export type SourceType = (typeof sourceTypes)[number];
 export type ValueStatus = (typeof valueStatuses)[number];
 export type FinancialMetricKind = (typeof financialMetricKinds)[number];
 export type PayoutAllocation = (typeof payoutAllocations)[number];
+export type PrizeMoneyScopeType = (typeof prizeMoneyScopeTypes)[number];
+export type PrizeMoneyNumeratorCategory =
+  (typeof prizeMoneyNumeratorCategories)[number];
 export type CurrencyCode = string;
 
 export interface DatasetMetadata {
-  schemaVersion: 1;
+  schemaVersion: 2;
   datasetId: string;
   datasetLabel: string;
   datasetNotice: string;
@@ -85,6 +96,12 @@ export interface RoundPayout {
   payout: PayoutValue;
 }
 
+export interface PrizeMoneyScope {
+  type: PrizeMoneyScopeType;
+  numeratorCategory: PrizeMoneyNumeratorCategory;
+  notes: string;
+}
+
 export interface TournamentEconomicsRecord {
   id: string;
   tournament: string;
@@ -93,6 +110,7 @@ export interface TournamentEconomicsRecord {
   confidence: Confidence;
   displayCurrency: CurrencyCode;
   sourceIds: string[];
+  prizeMoneyScope: PrizeMoneyScope;
   prizePool: MoneyValue;
   revenue: FinancialValue;
   profitOrSurplus: FinancialValue;
@@ -119,7 +137,7 @@ export function parseDatasetMetadata(value: unknown): DatasetMetadata {
   const object = expectObject(value, 'metadata');
 
   return {
-    schemaVersion: expectLiteral(object.schemaVersion, 1, 'metadata.schemaVersion'),
+    schemaVersion: expectLiteral(object.schemaVersion, 2, 'metadata.schemaVersion'),
     datasetId: expectString(object.datasetId, 'metadata.datasetId'),
     datasetLabel: expectString(object.datasetLabel, 'metadata.datasetLabel'),
     datasetNotice: expectString(object.datasetNotice, 'metadata.datasetNotice'),
@@ -223,6 +241,12 @@ export function isTournamentProfitOrSurplusKind(kind: FinancialMetricKind): bool
   return kind === 'tournament_profit' || kind === 'tournament_surplus';
 }
 
+export function isCompetitionPrizeMoneyCategory(
+  category: PrizeMoneyNumeratorCategory,
+): boolean {
+  return category === 'competition_prize_money';
+}
+
 function parseTournamentRecord(value: unknown, index: number): TournamentEconomicsRecord {
   const path = `records[${index}]`;
   const object = expectObject(value, path);
@@ -235,6 +259,7 @@ function parseTournamentRecord(value: unknown, index: number): TournamentEconomi
     confidence: expectEnum(object.confidence, confidenceLevels, `${path}.confidence`),
     displayCurrency: expectCurrencyCode(object.displayCurrency, `${path}.displayCurrency`),
     sourceIds: expectStringArray(object.sourceIds, `${path}.sourceIds`),
+    prizeMoneyScope: parsePrizeMoneyScope(object.prizeMoneyScope, `${path}.prizeMoneyScope`),
     prizePool: parseMoneyValue(object.prizePool, `${path}.prizePool`, false),
     revenue: parseFinancialValue(object.revenue, `${path}.revenue`),
     profitOrSurplus: parseFinancialValue(object.profitOrSurplus, `${path}.profitOrSurplus`),
@@ -242,6 +267,20 @@ function parseTournamentRecord(value: unknown, index: number): TournamentEconomi
     runnerUpPayout: parsePayoutValue(object.runnerUpPayout, `${path}.runnerUpPayout`),
     roundPayouts: expectArray(object.roundPayouts, `${path}.roundPayouts`, parseRoundPayout),
     caveats: expectStringArray(object.caveats, `${path}.caveats`),
+  };
+}
+
+function parsePrizeMoneyScope(value: unknown, path: string): PrizeMoneyScope {
+  const object = expectObject(value, path);
+
+  return {
+    type: expectEnum(object.type, prizeMoneyScopeTypes, `${path}.type`),
+    numeratorCategory: expectEnum(
+      object.numeratorCategory,
+      prizeMoneyNumeratorCategories,
+      `${path}.numeratorCategory`,
+    ),
+    notes: expectString(object.notes, `${path}.notes`),
   };
 }
 
