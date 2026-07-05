@@ -139,4 +139,9 @@
 - Action: For future pre-2023 Wimbledon denominator rows, use the segmental reporting note as an extra cross-check when available, and keep looking up exact official PDF URLs instead of assuming one filename convention.
 - Confidence: high
 
+**2026-07-05 — Wimbledon current-year numerator normalization**
+- Observation: The current official Wimbledon Prize Money and Finance page lists headline historical total prize money, but recent headline totals include estimated per diems; the 2026 clean split is only clear in the official PDF at the `content.wimbledon.com/.../The%20Championships%202026_Prize%20Money.pdf` path, which separates £62.55m total tennis events prize money from £1.65m estimated per diems and £64.2m total prize money.
+- Action: For Wimbledon current-year or recent-year numerators, normalize only the PDF's `TOTAL TENNIS EVENTS PRIZE MONEY` line as `competition_prize_money`; treat official headline table totals as source leads until a PDF or equivalent source separates per diems/support.
+- Confidence: high
+
 ## What Has Failed

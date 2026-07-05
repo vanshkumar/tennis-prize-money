@@ -15,6 +15,7 @@
 - Added a Roland Garros 2025 total-player-compensation context row using AP's €56.352m support-inclusive semantics, while leaving a clean Roland Garros tournament-total competition-prize row unnormalized until an official split is verified.
 - Added a Wimbledon 2023 tournament-total prior-year row using £43.25m total tennis events prize money and compatible AELTC Championships Ltd operating-company turnover/profit denominators.
 - Added a Wimbledon 2022 tournament-total prior-year row using £38.9m total tennis events prize money and compatible AELTC Championships Ltd operating-company turnover/profit denominators.
+- Added a Wimbledon 2026 tournament-total competition-prize row using £62.55m total tennis events prize money while keeping 2026 revenue/profit unavailable until same-year AELTC Championships Ltd accounts exist.
 
 ## v0.1.0 - 2026-07-05
 

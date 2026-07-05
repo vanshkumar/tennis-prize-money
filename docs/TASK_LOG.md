@@ -615,3 +615,34 @@ Push:
 Next:
 
 - Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: continue primary-question expansion without weakening source semantics; likely candidates are another Wimbledon older year if official PDFs/accounts remain compatible, or a non-Wimbledon tournament-total numerator/denominator slice only when source semantics are clear.
+
+## 2026-07-05 - Wimbledon 2026 Tournament-Total Numerator Slice
+
+Status: Complete
+
+Branch: `main`
+
+Summary:
+
+- Confirmed latest `main` was up to date with `origin/main` at `df9577d` before editing.
+- Verified the official Wimbledon 2026 prize-money PDF from the current Wimbledon Prize Money and Finance page.
+- Added `wimbledon-2026-tournament-total` as a tournament-total `competition_prize_money` row using £62.55m total tennis events prize money.
+- Kept the broader £64.2m total prize money line separate because it includes £1.65m estimated per diems.
+- Kept Wimbledon 2026 revenue and profit/surplus unavailable because AELTC Championships Ltd accounts for the year ending 31 July 2026 were not available as of 2026-07-05.
+- Preserved schema version `2` and the default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated source metadata, normalized data, tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+- Primary-question answerability coverage is now `4/14` for both revenue and profit/surplus.
+
+Checks:
+
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 33 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 48 tests.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `npm run build` - passed.
+- `git diff --check` - passed.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: continue primary-question expansion without weakening source semantics; likely candidates are another Wimbledon older year only if official PDFs/accounts remain compatible, Wimbledon 2026 denominators after official AELTC Championships Ltd accounts exist, or a non-Wimbledon tournament-total numerator/denominator slice only when source semantics are clear.

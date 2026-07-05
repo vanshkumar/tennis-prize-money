@@ -744,6 +744,67 @@
     ]
   },
   {
+    "id": "wimbledon-2026-tournament-total",
+    "tournament": "Wimbledon",
+    "year": 2026,
+    "event": "Tournament total",
+    "confidence": "high",
+    "displayCurrency": "GBP",
+    "sourceIds": [
+      "wimbledon-2026-prize-money-pdf"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total tennis events prize money across Wimbledon 2026 competition events. Excludes estimated per diems from the broader total prize money line."
+    },
+    "prizePool": {
+      "amount": 62550000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-2026-prize-money-pdf"
+      ],
+      "notes": "Official Wimbledon PDF line for total tennis events prize money. The broader total prize money line is £64.2m including £1.65m estimated per diems, which this clean competition-prize-money row excludes."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No compatible Wimbledon 2026 operating-company revenue denominator is included. As of 2026-07-05, the AELTC Championships Ltd financial year ending 31 July 2026 had not ended, so same-year accounts were not available.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No compatible Wimbledon 2026 operating-company profit or surplus denominator is included. As of 2026-07-05, the AELTC Championships Ltd financial year ending 31 July 2026 had not ended, so same-year accounts were not available.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is Wimbledon 2026 total tennis events prize money, excluding £1.65m estimated per diems from the broader £64.2m total prize money line.",
+      "Revenue and profit/surplus remain unavailable because same-year AELTC Championships Ltd accounts for the year ending 31 July 2026 were not available as of 2026-07-05.",
+      "The official Wimbledon headline total prize money of £64.2m includes estimated per diems and is not used as this clean competition-prize-money numerator."
+    ]
+  },
+  {
     "id": "wimbledon-2024-tournament-total",
     "tournament": "Wimbledon",
     "year": 2024,
