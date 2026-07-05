@@ -38,11 +38,11 @@ The US Open 2025 modeling blocker is now handled by schema and calculation guard
 
 ## Commit Hash
 
-Pending until committed.
+Implementation commit: `5a0205c` (`feat: guard prize money numerator semantics`).
 
 ## Push Status
 
-Pending until pushed.
+Pushed to `origin/main`.
 
 ## Commands Run And Results
 
