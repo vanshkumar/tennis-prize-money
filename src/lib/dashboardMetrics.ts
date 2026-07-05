@@ -165,6 +165,18 @@ export function filterRecords(
   });
 }
 
+export function choosePrimaryQuestionRecord(
+  records: TournamentEconomicsRecord[],
+): TournamentEconomicsRecord | null {
+  return (
+    records.find((record) =>
+      getPrimaryQuestionRows(record).some((row) => !row.unavailable),
+    ) ??
+    records[0] ??
+    null
+  );
+}
+
 export function summarizeKpis(
   record: TournamentEconomicsRecord,
   records: TournamentEconomicsRecord[],

@@ -7,6 +7,7 @@
 - Bumped the static data contract to schema version 2 with explicit prize-money scope and numerator-category metadata.
 - Added a US Open 2025 total-player-compensation context row while keeping it excluded from revenue/profit ratios.
 - Updated metric compatibility checks so revenue/profit ratios require `competition_prize_money`, not total player compensation/support.
+- Added a Wimbledon 2025 tournament-total competition-prize row using £52.0m total tennis events prize money and compatible AELTC Championships Ltd operating-company turnover/profit denominators.
 
 ## v0.1.0 - 2026-07-05
 

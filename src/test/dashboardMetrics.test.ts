@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { dashboardDataset, type TournamentEconomicsRecord } from '../data/dashboardDataset';
 import {
+  choosePrimaryQuestionRecord,
   filterRecords,
   formatMetricPercent,
   getFinalistComparisonRows,
@@ -77,6 +78,26 @@ describe('validated seed dashboard dataset', () => {
           currency: expected.runnerUp === null ? null : expected.currency,
         },
       });
+
+      if (expected.revenue !== undefined) {
+        expect(record).toMatchObject({
+          revenue: {
+            amount: expected.revenue,
+            currency: expected.currency,
+            kind: 'tournament_revenue',
+          },
+        });
+      }
+
+      if (expected.profitOrSurplus !== undefined) {
+        expect(record).toMatchObject({
+          profitOrSurplus: {
+            amount: expected.profitOrSurplus,
+            currency: expected.currency,
+            kind: 'tournament_profit',
+          },
+        });
+      }
     }
   });
 
@@ -102,7 +123,9 @@ describe('validated seed dashboard dataset', () => {
   });
 
   it('keeps tournament financial denominators unavailable unless sourced clearly', () => {
-    for (const record of dashboardDataset.records) {
+    for (const record of dashboardDataset.records.filter(
+      (item) => item.id !== 'wimbledon-2025-tournament-total',
+    )) {
       expect(record.revenue).toMatchObject({
         amount: null,
         currency: null,
@@ -119,6 +142,40 @@ describe('validated seed dashboard dataset', () => {
       });
       expect(record.caveats.join(' ')).toMatch(/revenue and profit\/surplus/i);
     }
+  });
+
+  it('normalizes Wimbledon tournament-total competition prize money with compatible operating-company denominators', () => {
+    const record = dashboardDataset.records.find(
+      (item) => item.id === 'wimbledon-2025-tournament-total',
+    );
+
+    expect(record).toBeDefined();
+    if (!record) {
+      throw new Error('Expected wimbledon-2025-tournament-total fixture to exist');
+    }
+
+    expect(record.prizePool).toMatchObject({
+      amount: 52000000,
+      currency: 'GBP',
+      status: 'official',
+    });
+    expect(record.revenue).toMatchObject({
+      amount: 423626000,
+      currency: 'GBP',
+      status: 'official',
+      kind: 'tournament_revenue',
+    });
+    expect(record.profitOrSurplus).toMatchObject({
+      amount: 52720000,
+      currency: 'GBP',
+      status: 'official',
+      kind: 'tournament_profit',
+    });
+    expect(record.prizePool.notes).toContain('excludes');
+    expect(record.revenue.notes).toContain('principal contracting party');
+    expect(record.profitOrSurplus.notes).toContain('before net finance income');
+    expect(record.caveats.join(' ')).toMatch(/operating-company turnover/i);
+    expect(record.caveats.join(' ')).toMatch(/not used as this row's denominator/i);
   });
 
   it('matches each event-level competition prize pool to the weighted main-draw round payouts', () => {
@@ -146,6 +203,19 @@ describe('validated seed dashboard dataset', () => {
     expect(filtered[0].id).toBe(normalRecord.id);
   });
 
+  it('prefers the first answerable primary-question record for the selected comparison', () => {
+    expect(choosePrimaryQuestionRecord(dashboardDataset.records)?.id).toBe(
+      'wimbledon-2025-tournament-total',
+    );
+
+    const unavailableOnlyRecords = dashboardDataset.records.filter(
+      (record) => record.id !== 'wimbledon-2025-tournament-total',
+    );
+
+    expect(choosePrimaryQuestionRecord(unavailableOnlyRecords)?.id).toBe(normalRecord.id);
+    expect(choosePrimaryQuestionRecord([])).toBeNull();
+  });
+
   it('builds options, coverage, and KPI cards from validated records', () => {
     const options = getFilterOptions(dashboardDataset.records);
     const coverageSummary = getCoverageSummary(dashboardDataset);
@@ -158,10 +228,10 @@ describe('validated seed dashboard dataset', () => {
       'Wimbledon',
     ]);
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'high', count: 2, share: 0.4 }),
+      expect.objectContaining({ confidence: 'high', count: 3, share: 0.5 }),
     );
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'medium', count: 3, share: 0.6 }),
+      expect.objectContaining({ confidence: 'medium', count: 3, share: 0.5 }),
     );
     expect(kpis).toHaveLength(9);
     expect(kpis.map((kpi) => kpi.label)).toContain('Prize pool YoY growth');
@@ -253,17 +323,17 @@ describe('validated seed dashboard dataset', () => {
     expect(coverage).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        value: '0/5',
-        answerableCount: 0,
-        totalCount: 5,
-        unavailable: true,
+        value: '1/6',
+        answerableCount: 1,
+        totalCount: 6,
+        unavailable: false,
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        value: '0/5',
-        answerableCount: 0,
-        totalCount: 5,
-        unavailable: true,
+        value: '1/6',
+        answerableCount: 1,
+        totalCount: 6,
+        unavailable: false,
       }),
     ]);
     expect(caveats).toContain('Prize money / revenue is unavailable: Missing compatible data.');
@@ -347,6 +417,42 @@ describe('validated seed dashboard dataset', () => {
       expect.objectContaining({ id: 'revenue-share', value: '1/1', barPercent: 100 }),
       expect.objectContaining({ id: 'profit-surplus-share', value: '1/1', barPercent: 100 }),
     ]);
+  });
+
+  it('builds primary question answer cards for the normalized Wimbledon tournament-total row', () => {
+    const record = dashboardDataset.records.find(
+      (item) => item.id === 'wimbledon-2025-tournament-total',
+    );
+
+    expect(record).toBeDefined();
+    if (!record) {
+      throw new Error('Expected wimbledon-2025-tournament-total fixture to exist');
+    }
+
+    expect(getPrimaryQuestionRows(record)).toEqual([
+      expect.objectContaining({
+        id: 'revenue-share',
+        value: '12.3%',
+        numeratorValue: '£52,000,000',
+        denominatorValue: '£423,626,000',
+        unavailable: false,
+      }),
+      expect.objectContaining({
+        id: 'profit-surplus-share',
+        value: '98.6%',
+        numeratorValue: '£52,000,000',
+        denominatorValue: '£52,720,000',
+        unavailable: false,
+      }),
+    ]);
+    expect(calculatePrizePoolToRevenue(record)).toMatchObject({
+      status: 'available',
+      value: 52000000 / 423626000,
+    });
+    expect(calculatePrizePoolToProfitOrSurplus(record)).toMatchObject({
+      status: 'available',
+      value: 52000000 / 52720000,
+    });
   });
 
   it('builds unavailable year-over-year chart rows for the 2025-only seed', () => {

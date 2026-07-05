@@ -5,6 +5,7 @@ import {
   type DashboardFilters,
   type PrimaryQuestionCoverageRow,
   type PrimaryQuestionRow,
+  choosePrimaryQuestionRecord,
   filterRecords,
   formatMoney,
   formatSourceType,
@@ -38,7 +39,10 @@ export function DashboardPage() {
     () => filterRecords(dashboardDataset.records, filters),
     [filters],
   );
-  const selectedRecord = filteredRecords[0] ?? null;
+  const selectedRecord = useMemo(
+    () => choosePrimaryQuestionRecord(filteredRecords),
+    [filteredRecords],
+  );
   const primaryRows = useMemo(
     () => (selectedRecord === null ? [] : getPrimaryQuestionRows(selectedRecord)),
     [selectedRecord],

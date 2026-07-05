@@ -340,3 +340,32 @@ Checks:
 Next:
 
 - Continue in the next xhigh Codex handoff thread for the Wimbledon primary-question data slice.
+
+## 2026-07-05 - Wimbledon Primary-Question Denominator Slice
+
+Status: Complete
+
+Branch: `main`
+
+Summary:
+
+- Confirmed latest `main` was at `9576281` (`docs: finalize numerator guardrail handoff`) before editing.
+- Verified the official Wimbledon 2025 prize-money PDF. The normalized clean competition-prize numerator is £52.0m total tennis events prize money, excluding £1.5m estimated per diems from the broader £53.5m total prize money line.
+- Verified the official Companies House 2025 AELTC Championships Ltd accounts. The company is the principal contracting party for The Championships and reports turnover of £423.626m and operating profit of £52.720m for the year ended 31 July 2025.
+- Added `wimbledon-2025-tournament-total` as the first primary-question-ready tournament-total competition-prize row with compatible operating-company revenue/profit denominators.
+- Kept the row caveated: AELTC Championships Ltd turnover/profit are operating-company values for The Championships, not after-tax profit, dividends, LTA surplus distributions, or broader organization-level financials.
+- Updated the dashboard selection logic so the all-records view prefers the first answerable primary-question record.
+- Updated source metadata, normalized data, tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+
+Checks:
+
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 41 tests.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `npm run build` - passed.
+
+Next:
+
+- Commit and push to `main`.
+- Create the next xhigh Codex handoff thread for the next primary-question data slice.

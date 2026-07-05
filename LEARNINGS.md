@@ -99,4 +99,9 @@
 - Action: Keep US Open total-compensation rows marked as `total_player_compensation`, require `prizeMoneyScope.numeratorCategory` on every record, and reject non-`competition_prize_money` numerators in revenue/profit ratio calculations.
 - Confidence: high
 
+**2026-07-05 - Wimbledon primary-question normalization**
+- Observation: The official Wimbledon 2025 prize-money PDF separates £52.0m `TOTAL TENNIS EVENTS PRIZE MONEY` from £1.5m estimated per diems and the broader £53.5m `TOTAL PRIZE MONEY`; AELTC Championships Ltd accounts tie operating-company turnover/profit directly to The Championships.
+- Action: Use Wimbledon total tennis events prize money as the clean `competition_prize_money` numerator; keep broader total prize money/per diems out of competition-prize ratios, and label AELTC Championships Ltd turnover/profit as operating-company denominators with caveats.
+- Confidence: high
+
 ## What Has Failed

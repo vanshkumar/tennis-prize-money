@@ -10,6 +10,8 @@ export interface SeedDatasetExpectation {
   winner: number | null;
   runnerUp: number | null;
   sourceCount: number;
+  revenue?: number;
+  profitOrSurplus?: number;
 }
 
 export const seedDatasetExpectations: SeedDatasetExpectation[] = [
@@ -51,6 +53,21 @@ export const seedDatasetExpectations: SeedDatasetExpectation[] = [
     winner: 3000000,
     runnerUp: 1520000,
     sourceCount: 1,
+  },
+  {
+    id: 'wimbledon-2025-tournament-total',
+    tournament: 'Wimbledon',
+    event: 'Tournament total',
+    currency: 'GBP',
+    confidence: 'high',
+    prizePool: 52000000,
+    numeratorCategory: 'competition_prize_money',
+    scopeType: 'tournament_total',
+    winner: null,
+    runnerUp: null,
+    sourceCount: 2,
+    revenue: 423626000,
+    profitOrSurplus: 52720000,
   },
   {
     id: 'us-open-2025-ms',

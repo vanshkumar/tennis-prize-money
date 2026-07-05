@@ -37,7 +37,17 @@
     "sourceType": "official_prize_money_page",
     "accessedAt": "2026-07-05",
     "confidence": "high",
-    "notes": "Official one-page PDF with 2025 gentlemen's and ladies' singles per-player round payouts and per-event singles total."
+    "notes": "Official one-page PDF with 2025 gentlemen's and ladies' singles per-player round payouts, per-event singles total, total tennis events prize money, estimated per diems, and broader total prize money."
+  },
+  {
+    "id": "wimbledon-aeltc-championships-2025-accounts",
+    "title": "The All England Lawn Tennis Club (Championships) Limited full accounts made up to 31 July 2025",
+    "publisher": "Companies House / The All England Lawn Tennis Club (Championships) Limited",
+    "url": "https://find-and-update.company-information.service.gov.uk/company/07546773/filing-history/MzUxNzE0NjY3OGFkaXF6a2N4/document?format=pdf&download=0",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-05",
+    "confidence": "high",
+    "notes": "Official Companies House filing for AELTC Championships Ltd, the principal contracting party for The Championships. It reports 2025 turnover of £423.626m, operating profit of £52.720m, and explains the net available surplus division to LTA Operations."
   },
   {
     "id": "us-open-2025-prize-money-page",

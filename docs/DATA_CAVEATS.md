@@ -2,9 +2,13 @@
 
 ## Current Dataset
 
-The active dataset is a small sourced seed for 2025 Grand Slam economics. It includes 2025 men's singles competition-prize rows for the Australian Open, Roland Garros, Wimbledon, and the US Open, plus one US Open tournament-level total-player-compensation context row.
+The active dataset is a small sourced seed for 2025 Grand Slam economics. It includes 2025 men's singles competition-prize rows for the Australian Open, Roland Garros, Wimbledon, and the US Open, one Wimbledon tournament-level competition-prize row with compatible operating-company financial denominators, plus one US Open tournament-level total-player-compensation context row.
 
-The seed does not include compatible tournament-level revenue, profit, or surplus. Those values remain unavailable rather than estimated. Prize-pool share of revenue and prize-pool share of profit/surplus therefore show unavailable for the active records.
+The seed includes compatible tournament-level revenue/profit ratios only for the Wimbledon tournament-total row. Other records keep revenue, profit, or surplus unavailable rather than estimated.
+
+The Wimbledon tournament-total row uses £52.0m total tennis events prize money as its clean competition-prize-money numerator. The official Wimbledon PDF also reports £1.5m estimated per diems and £53.5m broader total prize money. The broader total is not used as the clean competition-prize-money numerator because the current schema keeps competition prize money separate from support-style compensation.
+
+The Wimbledon denominators are AELTC Championships Ltd operating-company values for the year ended 31 July 2025: £423.626m turnover and £52.720m operating profit. The company filing says AELTC Championships Ltd is the principal contracting party for The Championships and that the statements reflect the results of, and division of surplus from, The Championships. These denominators are still caveated as operating-company values, not a separate two-week cash ledger, after-tax retained profit, dividends, LTA distributions, or broader organization-level values.
 
 Roland Garros and US Open rows are medium confidence in this seed:
 
@@ -22,6 +26,7 @@ Competition prize money, total player compensation/support, revenue, profit, sur
 - Profit/surplus must describe compatible tournament-level profit or surplus before competition-prize-money share is computed.
 - Revenue and profit/surplus ratios require `prizeMoneyScope.numeratorCategory: "competition_prize_money"`.
 - Organizer-level revenue/profit/surplus can be useful context, but it is not automatically comparable to a single tournament/event prize pool.
+- Operating-company financials can be used only when source text bridges the company to the tournament/event and the row labels that scope clearly.
 - Expenses are not profit or surplus denominators.
 - Unknown and unavailable values should remain visible as unavailable rather than guessed.
 
@@ -38,6 +43,8 @@ The app does not do currency conversion yet. A ratio is computed only when numer
 ## Profit And Surplus Caveats
 
 Competition prize money / profit or surplus is unavailable when profit/surplus is missing, zero, negative, semantically incompatible, or in another currency. Negative and zero denominators are shown as unavailable because a percentage would be misleading for this dashboard.
+
+For Wimbledon 2025, the selected profit denominator is operating profit before net finance income, division of net available surplus to LTA Operations, taxation, and dividends. The normalized row intentionally does not use net available surplus, profit before tax, profit after tax, or dividend values as the primary profit/surplus denominator.
 
 ## Round Payout Caveats
 
@@ -70,5 +77,6 @@ The generic JSON manifest adapter expects already-normalized rows. Future offici
 
 - No active mock/sample rows are present. If mock rows are reintroduced, the dataset mode, labels, source type, confidence, and value statuses must make that visible.
 - Unavailable financial rows are displayed as unavailable rather than hidden or silently treated as zero.
+- Available Wimbledon financial rows are displayed with operating-company caveats rather than being smoothed into generic tournament-profit language.
 - Filters that match no records show empty states and reset actions.
 - Source limitations for Roland Garros and US Open remain visible instead of being smoothed into high-confidence language.

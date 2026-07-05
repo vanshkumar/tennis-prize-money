@@ -2,7 +2,7 @@
 
 ## Current Status
 
-The active dataset is a small sourced seed dataset for 2025 Grand Slam competition prize money and clearly labeled player-compensation context. Revenue and profit/surplus rows remain unavailable because the project has not added clear tournament-level financial denominators suitable for ratios.
+The active dataset is a small sourced seed dataset for 2025 Grand Slam competition prize money and clearly labeled player-compensation context. It now includes the first compatible primary-question financial slice: Wimbledon 2025 tournament-total competition prize money compared with AELTC Championships Ltd operating-company turnover and operating profit.
 
 The current static JSON contract is schema version `2`. Version `2` adds explicit prize-money scope and numerator-category metadata so player compensation/support totals cannot be mistaken for ratio-eligible competition prize money.
 
@@ -10,7 +10,7 @@ The current static JSON contract is schema version `2`. Version `2` adds explici
 
 - `src/data/static/seedDatasetMetadata.json` stores dataset-level metadata such as schema version, label, notice, data mode, and last refresh timestamp.
 - `src/data/raw/source-metadata/grandSlam2025Sources.json` stores the v0.1 source inventory for Grand Slam prize-money rows.
-- `src/data/normalized/grandSlam2025MensSingles.json` stores the active normalized 2025 Grand Slam records: four men's singles competition-prize rows plus one US Open total-player-compensation context row.
+- `src/data/normalized/grandSlam2025MensSingles.json` stores the active normalized 2025 Grand Slam records: four men's singles competition-prize rows, one Wimbledon tournament-total competition-prize row with compatible financial denominators, and one US Open total-player-compensation context row.
 - `src/data/schemas.ts` defines TypeScript types and runtime validation.
 - `src/data/dashboardDataset.ts` imports the static JSON files, validates them, and exports the typed dataset used by the dashboard.
 - `src/lib/metricEngine.ts` computes derived metrics from validated records.
@@ -50,7 +50,7 @@ Mock source type and mock confidence must be paired. The active seed dataset use
 
 ## Tournament Records
 
-Each normalized record represents one tournament, year, and event. The active seed includes four 2025 men's singles event rows and one US Open tournament-level player-compensation context row:
+Each normalized record represents one tournament, year, and event. The active seed includes four 2025 men's singles event rows, one Wimbledon tournament-level competition-prize-money row, and one US Open tournament-level player-compensation context row:
 
 - `id`
 - `tournament`
@@ -71,6 +71,15 @@ Each normalized record represents one tournament, year, and event. The active se
 `displayCurrency` is a UI convenience. Calculations use each value's own `currency` and refuse to compare incompatible currencies.
 
 For the four event-level competition-prize rows, `prizePool` is the men's singles allocation when an official per-event total is available. When only round payouts are available, `prizePool.status` is `derived` and the value is the weighted sum of the 128-player singles draw payouts.
+
+For `wimbledon-2025-tournament-total`, `prizePool` is the official Wimbledon 2025 `TOTAL TENNIS EVENTS PRIZE MONEY` value of £52.0m. The broader PDF line for `TOTAL PRIZE MONEY` is £53.5m, but that includes £1.5m estimated per diems, so the broader total is not used as the clean `competition_prize_money` numerator.
+
+The Wimbledon tournament-total row uses AELTC Championships Ltd financial statements for the year ended 31 July 2025:
+
+- `revenue.kind: "tournament_revenue"` with £423.626m turnover, documented as Championships operating-company turnover.
+- `profitOrSurplus.kind: "tournament_profit"` with £52.720m operating profit before net finance income, net available surplus division to LTA Operations, taxation, and dividends.
+
+Those values are compatible for the primary question because the filing says AELTC Championships Ltd is the principal contracting party for The Championships and that the statements reflect the results of, and division of surplus from, The Championships. The row still carries explicit caveats because these are operating-company denominators, not separate after-tax retained profit or LTA/AELTC organization-level values.
 
 The US Open total-player-compensation row uses the same money field for display, but `prizeMoneyScope.numeratorCategory` marks it as `total_player_compensation`. The metric engine excludes that category from revenue and profit/surplus ratios.
 
@@ -147,6 +156,7 @@ Compatible denominator rules:
 - Both financial ratios require `prizeMoneyScope.numeratorCategory: "competition_prize_money"`.
 - Organizer-level revenue/profit/surplus, tour-level revenue, expenses, and unknown values are not treated as compatible denominators.
 - Profit or surplus denominators that are zero or negative are unavailable.
+- The current Wimbledon tournament-total row is the first active record with compatible revenue and profit denominators. Its displayed ratios are approximately 12.3% of operating-company turnover and 98.6% of operating profit.
 
 ## Refresh Merge Rules
 
