@@ -84,4 +84,9 @@
 - Action: Before extracting this app into its own repository, preserve continuity through committed `docs/handoffs/`, `docs/TASK_LOG.md`, `AGENTS.md`, and `LEARNINGS.md`; after opening the new repo as a Codex project, create xhigh successor threads seeded with those handoffs instead of assuming old threads will be wholesale moved.
 - Confidence: high
 
+**2026-07-05 - Standalone repo migration**
+- Observation: After extracting `tennis-prize-money/` into its own folder, the local directory had no `.git` metadata while the GitHub `origin` was reachable but had no branch heads; `.git` writes such as init, remote add, branch rename, add, and commit required approved execution in this Codex sandbox.
+- Action: For future standalone migration or recovery work, initialize/fetch first, inspect `origin` heads before pushing, use a normal non-force first push when no remote refs exist, and keep generated `node_modules/` and `dist/` excluded with app-local `.gitignore`.
+- Confidence: high
+
 ## What Has Failed

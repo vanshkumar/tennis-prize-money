@@ -262,3 +262,28 @@ Next:
 - Start with Wimbledon because official prize-money PDFs and AELTC Championships Ltd filings provide the clearest candidate numerator and denominator.
 - Add AO and US Open tournament-total prize-money numerators while keeping financial ratios unavailable until tournament-specific denominators are found.
 - Treat Roland Garros revenue as a secondary-source lead until FFT/Roland Garros official or audited revenue is found.
+
+## 2026-07-05 - Standalone Repository Migration
+
+Status: Complete
+
+Branch: `main`
+
+Summary:
+
+- Initialized `tennis-prize-money/` as a standalone Git repository after extracting it from the parent site workflow.
+- Added `origin` as `https://github.com/vanshkumar/tennis-prize-money.git`.
+- Confirmed `origin` was reachable and had no branch heads before pushing, so no remote history merge or force-push was needed.
+- Added app-local `.gitignore` coverage for generated artifacts including `node_modules/` and `dist/`.
+- Created the initial migration commit and recorded the standalone migration note in `LEARNINGS.md`.
+- Pushed `main` to `origin` with upstream tracking.
+
+Checks:
+
+- `npm run lint` - passed.
+- `npm run test` - passed, 4 test files and 34 tests.
+- `npm run build` - passed.
+
+Next:
+
+- Use this standalone repository for future project threads.
