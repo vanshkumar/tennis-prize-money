@@ -341,10 +341,10 @@ describe('validated seed dashboard dataset', () => {
       'Wimbledon',
     ]);
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'high', count: 6, share: 6 / 9 }),
+      expect.objectContaining({ confidence: 'high', count: 7, share: 7 / 10 }),
     );
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'medium', count: 3, share: 3 / 9 }),
+      expect.objectContaining({ confidence: 'medium', count: 3, share: 3 / 10 }),
     );
     expect(kpis).toHaveLength(9);
     expect(kpis.map((kpi) => kpi.label)).toContain('Prize pool YoY growth');
@@ -436,16 +436,16 @@ describe('validated seed dashboard dataset', () => {
     expect(coverage).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        value: '2/9',
+        value: '2/10',
         answerableCount: 2,
-        totalCount: 9,
+        totalCount: 10,
         unavailable: false,
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        value: '2/9',
+        value: '2/10',
         answerableCount: 2,
-        totalCount: 9,
+        totalCount: 10,
         unavailable: false,
       }),
     ]);
@@ -490,6 +490,60 @@ describe('validated seed dashboard dataset', () => {
     expect(caveats).toContain(
       'Prize money / revenue is unavailable: Numerator is not competition prize money.',
     );
+  });
+
+  it('adds a clean US Open tournament-total competition-prize row without financial denominators', () => {
+    const competitionRecord = dashboardDataset.records.find(
+      (record) => record.id === 'us-open-2025-tournament-total',
+    );
+    const compensationRecord = dashboardDataset.records.find(
+      (record) => record.id === 'us-open-2025-total-player-compensation',
+    );
+
+    expect(competitionRecord).toBeDefined();
+    expect(compensationRecord).toBeDefined();
+    if (!competitionRecord || !compensationRecord) {
+      throw new Error('Expected US Open tournament-total fixtures to exist');
+    }
+
+    expect(competitionRecord.prizeMoneyScope).toMatchObject({
+      type: 'tournament_total',
+      numeratorCategory: 'competition_prize_money',
+    });
+    expect(competitionRecord.prizePool).toMatchObject({
+      amount: 85000000,
+      currency: 'USD',
+      status: 'derived',
+    });
+    expect(competitionRecord.revenue).toMatchObject({
+      amount: null,
+      currency: null,
+      status: 'unavailable',
+      kind: 'unknown',
+    });
+    expect(competitionRecord.profitOrSurplus).toMatchObject({
+      amount: null,
+      currency: null,
+      status: 'unavailable',
+      kind: 'unknown',
+    });
+    expect(competitionRecord.prizePool.notes).toContain('$90m');
+    expect(competitionRecord.prizePool.notes).toContain('$5m');
+    expect(competitionRecord.caveats.join(' ')).toMatch(/total-player-compensation row remains separate/i);
+    expect(competitionRecord.caveats.join(' ')).toMatch(
+      /no tournament-specific compatible financial denominator/i,
+    );
+    expect(compensationRecord.prizeMoneyScope.numeratorCategory).toBe(
+      'total_player_compensation',
+    );
+    expect(calculatePrizePoolToRevenue(competitionRecord)).toMatchObject({
+      status: 'unavailable',
+      reason: 'missing_data',
+    });
+    expect(calculatePrizePoolToProfitOrSurplus(competitionRecord)).toMatchObject({
+      status: 'unavailable',
+      reason: 'missing_data',
+    });
   });
 
   it('marks primary question rows answerable when compatible denominators exist', () => {

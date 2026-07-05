@@ -96,8 +96,8 @@
     "url": "https://www.usopen.org/en_US/news/articles/2025-08-06/2025_us_open_prize_money_sets_record_for_largest_purse_in_tennis_history.html",
     "sourceType": "press_release",
     "accessedAt": "2026-07-05",
-    "confidence": "medium",
-    "notes": "Official US Open release URL for the 2025 player-compensation announcement; the page did not expose parseable text in this environment, so the normalized compensation row is corroborated by the AP source."
+    "confidence": "high",
+    "notes": "Official US Open release confirming $90m total player compensation for 2025 and a separate $5m in travel and hotel support before the prize-money breakdown. Direct HTTP/crawler fetches were not parseable, but the rendered official page text was verified in-browser."
   },
   {
     "id": "us-open-2025-ap-compensation-split",
@@ -107,7 +107,7 @@
     "sourceType": "reputable_secondary",
     "accessedAt": "2026-07-05",
     "confidence": "medium",
-    "notes": "Parseable corroboration that USTA announced nearly $85 million in 2025 prize money across competitions and $90 million in total player compensation, with the difference representing support and expense coverage."
+    "notes": "Parseable corroboration that USTA announced $85 million in 2025 prize money across singles, doubles, qualifying, and wheelchair events, plus $90 million in total player compensation."
   },
   {
     "id": "us-open-2025-secondary-crosscheck",

@@ -2,7 +2,7 @@
 
 ## Current Status
 
-The active dataset is a small sourced seed dataset for Grand Slam competition prize money and clearly labeled player-compensation context. It now includes Australian Open 2025 and 2024 tournament-total competition-prize numerators and compatible primary-question financial slices for Wimbledon 2025 and 2024 tournament-total competition prize money compared with AELTC Championships Ltd operating-company turnover and operating profit.
+The active dataset is a small sourced seed dataset for Grand Slam competition prize money and clearly labeled player-compensation context. It now includes Australian Open 2025/2024 and US Open 2025 tournament-total competition-prize numerators and compatible primary-question financial slices for Wimbledon 2025 and 2024 tournament-total competition prize money compared with AELTC Championships Ltd operating-company turnover and operating profit.
 
 The current static JSON contract is schema version `2`. Version `2` adds explicit prize-money scope and numerator-category metadata so player compensation/support totals cannot be mistaken for ratio-eligible competition prize money.
 
@@ -10,7 +10,7 @@ The current static JSON contract is schema version `2`. Version `2` adds explici
 
 - `src/data/static/seedDatasetMetadata.json` stores dataset-level metadata such as schema version, label, notice, data mode, and last refresh timestamp.
 - `src/data/raw/source-metadata/grandSlam2025Sources.json` stores the v0.1 source inventory for Grand Slam prize-money rows.
-- `src/data/normalized/grandSlam2025MensSingles.json` stores the active normalized Grand Slam records: four 2025 men's singles competition-prize rows, Australian Open 2025 and 2024 tournament-total competition-prize rows with unavailable financial denominators, Wimbledon 2025 and 2024 tournament-total competition-prize rows with compatible financial denominators, and one US Open total-player-compensation context row.
+- `src/data/normalized/grandSlam2025MensSingles.json` stores the active normalized Grand Slam records: four 2025 men's singles competition-prize rows, Australian Open 2025 and 2024 tournament-total competition-prize rows with unavailable financial denominators, US Open 2025 tournament-total competition-prize money with unavailable financial denominators, Wimbledon 2025 and 2024 tournament-total competition-prize rows with compatible financial denominators, and one US Open total-player-compensation context row.
 - `src/data/schemas.ts` defines TypeScript types and runtime validation.
 - `src/data/dashboardDataset.ts` imports the static JSON files, validates them, and exports the typed dataset used by the dashboard.
 - `src/lib/metricEngine.ts` computes derived metrics from validated records.
@@ -50,7 +50,7 @@ Mock source type and mock confidence must be paired. The active seed dataset use
 
 ## Tournament Records
 
-Each normalized record represents one tournament, year, and event. The active seed includes four 2025 men's singles event rows, Australian Open 2025 and 2024 tournament-level competition-prize-money rows, Wimbledon 2025 and 2024 tournament-level competition-prize-money rows, and one US Open tournament-level player-compensation context row:
+Each normalized record represents one tournament, year, and event. The active seed includes four 2025 men's singles event rows, Australian Open 2025 and 2024 tournament-level competition-prize-money rows, US Open 2025 tournament-level competition-prize money, Wimbledon 2025 and 2024 tournament-level competition-prize-money rows, and one US Open tournament-level player-compensation context row:
 
 - `id`
 - `tournament`
@@ -80,6 +80,8 @@ For `wimbledon-2025-tournament-total`, `prizePool` is the official Wimbledon 202
 
 For `wimbledon-2024-tournament-total`, `prizePool` is the official Wimbledon 2024 `TOTAL TENNIS EVENTS PRIZE MONEY` value of £48.55m. The broader PDF line for `TOTAL PRIZE MONEY` is £50.0m, but that includes £1.45m estimated per diems, so the broader total is not used as the clean `competition_prize_money` numerator.
 
+For `us-open-2025-tournament-total`, `prizePool` is US$85.0m in 2025 US Open competition prize money. The official US Open/USTA release confirms US$90.0m total player compensation and separately identifies US$5.0m in overall travel and hotel support before the prize-money breakdown. The clean row excludes that support component and is corroborated by AP's US$85.0m competition-prize-money report. Its revenue and profit/surplus fields remain unavailable because USTA organization-level financials are not a US Open tournament denominator.
+
 The Wimbledon tournament-total rows use AELTC Championships Ltd financial statements:
 
 - `wimbledon-2025-tournament-total` uses `revenue.kind: "tournament_revenue"` with £423.626m turnover, documented as Championships operating-company turnover.
@@ -88,7 +90,7 @@ The Wimbledon tournament-total rows use AELTC Championships Ltd financial statem
 
 Those values are compatible for the primary question because the filings say AELTC Championships Ltd is the principal contracting party for The Championships and that the statements reflect the results of, and division of surplus from, The Championships. The rows still carry explicit caveats because these are operating-company denominators, not separate after-tax retained profit or LTA/AELTC organization-level values.
 
-The US Open total-player-compensation row uses the same money field for display, but `prizeMoneyScope.numeratorCategory` marks it as `total_player_compensation`. The metric engine excludes that category from revenue and profit/surplus ratios.
+The US Open total-player-compensation row uses the same money field for display, but `prizeMoneyScope.numeratorCategory` marks it as `total_player_compensation`. The metric engine excludes that category from revenue and profit/surplus ratios. It remains separate from `us-open-2025-tournament-total` because the US$90.0m value includes the US$5.0m support component.
 
 ## Prize-Money Scope
 
@@ -189,5 +191,6 @@ The test suite covers:
 - rejection of available money values without source ids
 - ratio unavailability for missing, zero, negative, incompatible-currency, and incompatible-financial-kind cases
 - the normalized Australian Open tournament-total numerators with unavailable financial denominators
+- the normalized US Open tournament-total competition-prize numerator and separate total-player-compensation context row
 - the normalized Wimbledon prior-year tournament-total row and 2025-over-2024 year-over-year calculation
 - validation-before-write behavior in the refresh pipeline

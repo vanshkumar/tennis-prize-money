@@ -11,6 +11,7 @@
 - Added a Wimbledon 2024 tournament-total prior-year row using £48.55m total tennis events prize money and compatible AELTC Championships Ltd operating-company turnover/profit denominators.
 - Added an Australian Open 2025 tournament-total competition-prize row using official AO/Tennis Australia A$96.5m total prize money while keeping AO revenue/profit unavailable.
 - Added an Australian Open 2024 tournament-total competition-prize row using official AO/Tennis Australia A$86.5m total prize money while keeping AO revenue/profit unavailable.
+- Added a US Open 2025 tournament-total competition-prize row using official-derived US$85.0m prize money while preserving the US$90.0m total-player-compensation row as support-inclusive context.
 
 ## v0.1.0 - 2026-07-05
 
@@ -27,5 +28,5 @@ Known v0.1 limitations:
 
 - The seed covers only 2025 men's singles Grand Slam rows.
 - Tournament-level revenue, profit, and surplus denominators are not included yet.
-- Roland Garros and US Open prize-money rows remain medium confidence until better official parseable sources are added.
+- Roland Garros and US Open event-level prize-money rows remain medium confidence until better official parseable sources are added.
 - Browser-triggered refresh remains unconfigured unless a separate serverless dispatch backend is deployed.

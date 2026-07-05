@@ -923,6 +923,70 @@
     ]
   },
   {
+    "id": "us-open-2025-tournament-total",
+    "tournament": "US Open",
+    "year": 2025,
+    "event": "Tournament total",
+    "confidence": "high",
+    "displayCurrency": "USD",
+    "sourceIds": [
+      "us-open-2025-compensation-release",
+      "us-open-2025-ap-compensation-split"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total US Open 2025 competition prize money across tournament competitions. Derived from the official $90m total player-compensation package by excluding the official $5m travel and hotel support component, and corroborated by AP's $85m competition-prize-money report."
+    },
+    "prizePool": {
+      "amount": 85000000,
+      "currency": "USD",
+      "status": "derived",
+      "sourceIds": [
+        "us-open-2025-compensation-release",
+        "us-open-2025-ap-compensation-split"
+      ],
+      "notes": "Official US Open release says 2025 total player compensation is $90m and separately identifies $5m in overall travel and hotel support before the prize-money breakdown. AP corroborates $85m in 2025 US Open prize money across competitions."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear tournament-specific US Open 2025 revenue source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear tournament-specific US Open 2025 profit or surplus source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is US Open 2025 competition prize money of $85m, derived by excluding the official $5m travel and hotel support component from the official $90m total player-compensation package.",
+      "The existing $90m US Open total-player-compensation row remains separate because it includes support/expense coverage and is not a clean competition-prize-money numerator.",
+      "US Open revenue and profit/surplus remain unavailable because no tournament-specific compatible financial denominator is included.",
+      "USTA organization-level financials must remain separate from US Open tournament denominators unless a source bridges the scope explicitly."
+    ]
+  },
+  {
     "id": "us-open-2025-total-player-compensation",
     "tournament": "US Open",
     "year": 2025,
@@ -946,7 +1010,7 @@
         "us-open-2025-compensation-release",
         "us-open-2025-ap-compensation-split"
       ],
-      "notes": "Reported 2025 US Open total player compensation. AP parses the split as nearly $85 million in competition prize money across events plus additional player support and expense coverage to reach $90 million, so this value is not a clean competition-prize-money numerator."
+      "notes": "Reported 2025 US Open total player compensation. The official US Open release confirms $90 million in total player compensation and separately identifies $5 million in overall travel and hotel support; AP corroborates $85 million in competition prize money across events."
     },
     "revenue": {
       "amount": null,
@@ -981,7 +1045,7 @@
     "roundPayouts": [],
     "caveats": [
       "This row is total player compensation, not clean competition prize money.",
-      "The AP source reports nearly $85 million in competition prize money across competitions and $90 million in total player compensation; the official US Open release URL was not parseable in this environment.",
+      "The official US Open release confirms $90 million in total player compensation and $5 million in travel and hotel support; the separate clean competition-prize-money row excludes that support component.",
       "The $90 million total includes support and expense coverage, so it is excluded from revenue and profit/surplus ratios.",
       "US Open revenue and profit/surplus remain unavailable because no tournament-specific financial denominator is included.",
       "USTA organization-level financials must remain separate from US Open tournament denominators."
