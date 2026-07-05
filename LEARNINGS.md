@@ -129,4 +129,9 @@
 - Action: Keep Roland Garros headline totals as `total_player_compensation` context or source leads until an official FFT/Roland Garros breakdown separates clean competition prize money from support, per diems, or exhibition payments; do not use FFT organization-level financials as tournament denominators without an explicit source bridge.
 - Confidence: high
 
+**2026-07-05 - Wimbledon older-year normalization**
+- Observation: Wimbledon 2023 keeps the clean source shape but uses a different official PDF URL pattern: `The_Championships_2023_Prize%20Money.pdf` separates £43.25m total tennis events prize money from £1.45m estimated per diems and £44.7m broader total prize money; AELTC Championships Ltd 2023 accounts keep the same principal-contracting-party and statements-reflect-Championships bridge.
+- Action: For Wimbledon years before 2024, find the exact official PDF URL from source citations or archives rather than assuming the newer `Wimbledon_Prize_Money_YEAR.pdf` pattern; normalize only the total tennis events prize-money line and pair it with the same-year AELTC Championships Ltd operating-company turnover/profit when accounts retain the bridge.
+- Confidence: high
+
 ## What Has Failed

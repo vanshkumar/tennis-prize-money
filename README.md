@@ -2,7 +2,7 @@
 
 Static-first React + TypeScript + Vite dashboard for exploring tennis prize money alongside tournament revenue, profit, or surplus where reliable data exists.
 
-Version `0.1.0` is a review-ready first release. The current unreleased data model renders a small sourced Grand Slam seed dataset with filters, a primary answer board for competition prize money as a percentage of revenue/profit, answerability coverage, source links, refresh status, and caveats. The dataset now includes Australian Open 2025/2024 and US Open 2025 tournament-total competition prize money plus support-inclusive US Open and Roland Garros total-player-compensation context rows, while the first compatible primary-question rows remain Wimbledon 2025 and 2024 tournament-total competition prize money against AELTC Championships Ltd operating-company turnover and operating profit.
+Version `0.1.0` is a review-ready first release. The current unreleased data model renders a small sourced Grand Slam seed dataset with filters, a primary answer board for competition prize money as a percentage of revenue/profit, answerability coverage, source links, refresh status, and caveats. The dataset now includes Australian Open 2025/2024 and US Open 2025 tournament-total competition prize money plus support-inclusive US Open and Roland Garros total-player-compensation context rows, while the first compatible primary-question rows remain Wimbledon 2025, 2024, and 2023 tournament-total competition prize money against AELTC Championships Ltd operating-company turnover and operating profit.
 
 ## Quickstart
 
@@ -70,13 +70,13 @@ npm run refresh:data
 
 ## v0.1 Limitations
 
-- The seed covers 2025 men's singles competition-prize rows for the four Grand Slam tournaments, Australian Open 2025/2024, Wimbledon 2025/2024, and US Open 2025 tournament-total competition-prize rows, compatible Wimbledon operating-company denominators, and US Open/Roland Garros total-player-compensation context rows.
+- The seed covers 2025 men's singles competition-prize rows for the four Grand Slam tournaments, Australian Open 2025/2024, Wimbledon 2025/2024/2023, and US Open 2025 tournament-total competition-prize rows, compatible Wimbledon operating-company denominators, and US Open/Roland Garros total-player-compensation context rows.
 - The Australian Open tournament-total rows use official AO/Tennis Australia total prize money as competition-prize-money numerators: A$96.5m for 2025 and A$86.5m for 2024. AO revenue and profit/surplus remain unavailable because no AO-specific compatible financial denominator is normalized.
-- The Wimbledon tournament-total rows use total tennis events prize money as the clean competition-prize-money numerator: £52.0m for 2025 and £48.55m for 2024. The broader Wimbledon total prize money lines include estimated per diems and are not used as clean numerators.
+- The Wimbledon tournament-total rows use total tennis events prize money as the clean competition-prize-money numerator: £52.0m for 2025, £48.55m for 2024, and £43.25m for 2023. The broader Wimbledon total prize money lines include estimated per diems and are not used as clean numerators.
 - The US Open 2025 tournament-total competition-prize row uses US$85.0m, derived from the official US Open/USTA US$90.0m total player-compensation package after excluding the official US$5.0m travel and hotel support component. US Open revenue and profit/surplus remain unavailable because no US Open-specific compatible financial denominator is normalized.
 - The Roland Garros 2025 total-player-compensation row uses AP's €56.352m figure as support-inclusive context because AP says it includes per diems and exhibition payments. No clean Roland Garros tournament-total competition-prize-money row is normalized yet.
-- Wimbledon revenue/profit ratios use AELTC Championships Ltd turnover and operating profit for the years ended 31 July 2025 and 31 July 2024. They are operating-company denominators for The Championships, not after-tax profit, dividends, LTA distributions, or broader organization-level financials.
-- Total player compensation/support rows are not used as prize-money numerators in the primary revenue/profit answer; current answerability coverage is `2/11`.
+- Wimbledon revenue/profit ratios use AELTC Championships Ltd turnover and operating profit for the years ended 31 July 2025, 31 July 2024, and 31 July 2023. They are operating-company denominators for The Championships, not after-tax profit, dividends, LTA distributions, or broader organization-level financials.
+- Total player compensation/support rows are not used as prize-money numerators in the primary revenue/profit answer; current answerability coverage is `3/12`.
 - Roland Garros and US Open event-level prize-money rows remain medium confidence until clearer official, parseable sources replace the secondary/cross-check paths.
 - Non-Wimbledon Grand Slam rows still have unavailable revenue, profit, or surplus denominators.
 - No FX conversion exists; cross-currency comparisons are not computed.
