@@ -367,5 +367,4 @@ Checks:
 
 Next:
 
-- Commit and push to `main`.
 - Create the next xhigh Codex handoff thread for the next primary-question data slice.

@@ -50,11 +50,11 @@ The completed row is `wimbledon-2025-tournament-total`. It answers:
 
 ## Commit Hash
 
-Pending until committed.
+Implementation commit: `045a54b` (`feat: add wimbledon primary question denominator slice`).
 
 ## Push Status
 
-Pending until pushed.
+Pending until pushed to `origin/main`.
 
 ## Commands Run And Results
 
