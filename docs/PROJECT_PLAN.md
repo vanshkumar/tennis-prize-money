@@ -8,7 +8,7 @@ The first version should be honest before it is comprehensive. Prize money is of
 
 ## Current Release Status
 
-Version `0.1.0` is review-ready with a static dashboard, validated Grand Slam seed data, tested calculation/display/refresh logic, docs, changelog, and a secure non-configured browser refresh fallback. The current unreleased data model distinguishes competition prize money from total player compensation/support and includes compatible Wimbledon 2025 and 2024 tournament-total revenue/profit denominator slices. Remaining expansion work is tracked in `docs/FUTURE_WORK.md`.
+Version `0.1.0` is review-ready with a static dashboard, validated Grand Slam seed data, tested calculation/display/refresh logic, docs, changelog, and a secure non-configured browser refresh fallback. The current unreleased data model distinguishes competition prize money from total player compensation/support and includes the Australian Open 2025 tournament-total numerator plus compatible Wimbledon 2025 and 2024 tournament-total revenue/profit denominator slices. Remaining expansion work is tracked in `docs/FUTURE_WORK.md`.
 
 ## Repository Context
 

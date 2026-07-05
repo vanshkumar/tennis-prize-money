@@ -217,6 +217,44 @@ describe('validated seed dashboard dataset', () => {
     expect(record.caveats.join(' ')).toMatch(/not used as this row's denominator/i);
   });
 
+  it('normalizes Australian Open tournament-total competition prize money without financial denominators', () => {
+    const record = dashboardDataset.records.find(
+      (item) => item.id === 'australian-open-2025-tournament-total',
+    );
+
+    expect(record).toBeDefined();
+    if (!record) {
+      throw new Error('Expected australian-open-2025-tournament-total fixture to exist');
+    }
+
+    expect(record.prizeMoneyScope).toMatchObject({
+      type: 'tournament_total',
+      numeratorCategory: 'competition_prize_money',
+    });
+    expect(record.prizePool).toMatchObject({
+      amount: 96500000,
+      currency: 'AUD',
+      status: 'official',
+    });
+    expect(record.revenue).toMatchObject({
+      amount: null,
+      currency: null,
+      status: 'unavailable',
+      kind: 'unknown',
+    });
+    expect(record.profitOrSurplus).toMatchObject({
+      amount: null,
+      currency: null,
+      status: 'unavailable',
+      kind: 'unknown',
+    });
+    expect(record.prizePool.notes).toContain('A$96.5m');
+    expect(record.revenue.notes).toContain('organization-level financials');
+    expect(record.profitOrSurplus.notes).toContain('organization-level surplus');
+    expect(record.caveats.join(' ')).toMatch(/no AO-specific compatible financial denominator/i);
+    expect(record.caveats.join(' ')).toMatch(/support or compensation/i);
+  });
+
   it('matches each event-level competition prize pool to the weighted main-draw round payouts', () => {
     for (const record of dashboardDataset.records.filter(
       (item) => item.prizeMoneyScope.type === 'event_main_draw',
@@ -271,10 +309,10 @@ describe('validated seed dashboard dataset', () => {
       'Wimbledon',
     ]);
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'high', count: 4, share: 4 / 7 }),
+      expect.objectContaining({ confidence: 'high', count: 5, share: 5 / 8 }),
     );
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'medium', count: 3, share: 3 / 7 }),
+      expect.objectContaining({ confidence: 'medium', count: 3, share: 3 / 8 }),
     );
     expect(kpis).toHaveLength(9);
     expect(kpis.map((kpi) => kpi.label)).toContain('Prize pool YoY growth');
@@ -366,16 +404,16 @@ describe('validated seed dashboard dataset', () => {
     expect(coverage).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        value: '2/7',
+        value: '2/8',
         answerableCount: 2,
-        totalCount: 7,
+        totalCount: 8,
         unavailable: false,
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        value: '2/7',
+        value: '2/8',
         answerableCount: 2,
-        totalCount: 7,
+        totalCount: 8,
         unavailable: false,
       }),
     ]);

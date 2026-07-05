@@ -9,6 +9,7 @@
 - Updated metric compatibility checks so revenue/profit ratios require `competition_prize_money`, not total player compensation/support.
 - Added a Wimbledon 2025 tournament-total competition-prize row using £52.0m total tennis events prize money and compatible AELTC Championships Ltd operating-company turnover/profit denominators.
 - Added a Wimbledon 2024 tournament-total prior-year row using £48.55m total tennis events prize money and compatible AELTC Championships Ltd operating-company turnover/profit denominators.
+- Added an Australian Open 2025 tournament-total competition-prize row using official AO/Tennis Australia A$96.5m total prize money while keeping AO revenue/profit unavailable.
 
 ## v0.1.0 - 2026-07-05
 

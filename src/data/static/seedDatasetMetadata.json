@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "datasetId": "grand-slam-2025-economics-seed",
   "datasetLabel": "Grand Slam economics seed dataset",
-  "datasetNotice": "Seed dataset with sourced 2025 Grand Slam men's singles competition-prize rows, Wimbledon 2025 and 2024 tournament-total competition-prize rows with compatible operating-company financial denominators, plus an explicitly labeled US Open total-player-compensation context row. Non-Wimbledon revenue and profit/surplus remain unavailable unless a clear tournament-level financial source is added.",
+  "datasetNotice": "Seed dataset with sourced 2025 Grand Slam men's singles competition-prize rows, Australian Open 2025 and Wimbledon 2025/2024 tournament-total competition-prize rows, compatible Wimbledon operating-company financial denominators, plus an explicitly labeled US Open total-player-compensation context row. Non-Wimbledon revenue and profit/surplus remain unavailable unless a clear tournament-level financial source is added.",
   "dataMode": "real",
-  "lastRefreshedAt": "2026-07-05T21:29:14.059Z"
+  "lastRefreshedAt": "2026-07-05T21:39:50.907Z"
 }

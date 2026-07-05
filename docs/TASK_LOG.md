@@ -400,3 +400,33 @@ Checks:
 Next:
 
 - Create the next xhigh Codex handoff thread for the Australian Open tournament-total competition-prize numerator slice, keeping AO revenue/profit unavailable unless an AO-specific compatible denominator is verified.
+
+## 2026-07-05 - Australian Open 2025 Tournament-Total Numerator Slice
+
+Status: Complete
+
+Branch: `main`
+
+Summary:
+
+- Confirmed latest `main` was up to date with `origin/main` before editing.
+- Verified official AO/Tennis Australia 2025 prize-money sources: the AO article reports A$96.5m in prize money for Australian Open 2025 and the Tennis Australia PDF lists a 2025 total of A$96.5m with all figures in Australian dollars.
+- Added `australian-open-2025-tournament-total` as a tournament-total `competition_prize_money` row using the official A$96.5m total prize pool.
+- Kept Australian Open 2025 revenue and profit/surplus unavailable because no AO-specific compatible financial denominator was verified.
+- Kept Tennis Australia organization-level revenue/surplus and the broader A$120m Australian Summer of Tennis figure out of AO tournament revenue/profit ratios.
+- Preserved schema version `2` and the default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated source metadata, normalized data, tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+
+Checks:
+
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 28 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 43 tests.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `npm run build` - passed.
+- `git diff --check` - passed.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the Australian Open 2024 prior-year tournament-total competition-prize numerator slice, keeping AO revenue/profit unavailable unless an AO-specific compatible denominator is verified.

@@ -109,4 +109,9 @@
 - Action: Add Wimbledon prior-year tournament-total rows after the latest answerable row so the default dashboard still opens on the latest Wimbledon answer, and use same-event `Tournament total` rows to unlock year-over-year checks.
 - Confidence: high
 
+**2026-07-05 - Australian Open numerator normalization**
+- Observation: The official AO 2025 article and Tennis Australia PDF publish a single A$96.5m Australian Open prize-money/prize-pool total, while the article separately mentions A$120m across broader Australian Summer of Tennis events and does not separate AO per diems or player-support compensation.
+- Action: Normalize AO tournament-total rows from official AO/Tennis Australia prize-money totals as `competition_prize_money` only when no support component is identified; keep broader Summer of Tennis figures and Tennis Australia organization-level financials out of AO revenue/profit ratios.
+- Confidence: high
+
 ## What Has Failed

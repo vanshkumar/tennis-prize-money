@@ -4,11 +4,12 @@
 
 - Add more full tournament competition-prize-money totals before adding more denominator ratios; event-level prize money should remain labeled as partial when compared with whole-tournament financials.
 - Extend the completed Wimbledon 2025/2024 tournament-total series to older years only when official prize-money PDFs and AELTC Championships Ltd accounts keep the same clean numerator and operating-company denominator semantics.
-- Add Australian Open total competition-prize-money numerators next. For the US Open, replace or supplement the current total-player-compensation context row only when a clean official competition-prize-money total is parseable or otherwise verifiable.
+- Extend Australian Open tournament-total competition-prize-money coverage to prior years, starting with 2024 A$86.5m, if official AO/Tennis Australia source semantics remain clear. For the US Open, replace or supplement the current total-player-compensation context row only when a clean official competition-prize-money total is parseable or otherwise verifiable.
 - Treat Roland Garros revenue leads as secondary-source candidates until FFT/Roland Garros official or audited tournament revenue is found.
 - Add more tournaments beyond the four Grand Slam men's singles rows, starting with women's singles and prior-year Grand Slam rows so year-over-year growth can become available.
 - Add doubles, mixed doubles, wheelchair, qualifying, per diem, travel, hotel, stringing, and player-support data only when allocation semantics are clear.
 - Add compatible tournament-level revenue, profit, or surplus denominators from official financial statements, annual reports, Form 990 filings, or clearly scoped tournament reports.
+- Find AO-specific revenue/profit/surplus sources before adding Australian Open financial ratios; Tennis Australia organization-level annual-report values should remain contextual unless a source bridges them to the tournament.
 
 ## Source Adapters
 
