@@ -466,3 +466,41 @@ Checks:
 Next:
 
 - Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: re-check US Open tournament-total source semantics and add a clean competition-prize-money row only if official or otherwise clearly corroborated sources distinguish competition prize money from total player compensation/support.
+
+## 2026-07-05 - US Open 2025 Tournament-Total Numerator Slice
+
+Status: Complete
+
+Branch: `main`
+
+Implementation commit: `109de01` (`feat: add us open 2025 numerator slice`)
+
+Summary:
+
+- Confirmed latest `main` was up to date with `origin/main` before editing.
+- Rechecked official US Open/USTA 2025 source semantics. Direct crawler/curl reads still failed or exposed no text, but the rendered official release verified US$90.0m total player compensation and a separate US$5.0m travel/hotel support component before the prize-money breakdown.
+- Verified AP corroboration for US$85.0m in 2025 US Open prize money across competitions and US$90.0m total player compensation.
+- Added `us-open-2025-tournament-total` as a tournament-total `competition_prize_money` row using US$85.0m, derived by excluding the official US$5.0m support component from the official US$90.0m total player-compensation package.
+- Preserved `us-open-2025-total-player-compensation` as a separate `total_player_compensation` context row.
+- Kept US Open 2025 revenue and profit/surplus unavailable because no US Open-specific compatible financial denominator was verified.
+- Kept USTA organization-level financials out of US Open tournament revenue/profit ratios.
+- Preserved schema version `2` and the default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated source metadata, normalized data, tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+
+Checks:
+
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 29 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 44 tests.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `npm run build` - passed.
+- `git diff --check` - passed.
+
+Push:
+
+- Pending final handoff commit and push.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: re-check Roland Garros tournament-total prize-money source semantics and add a clean competition-prize-money row only if official or otherwise clearly corroborated sources distinguish competition prize money from support/compensation and event-level partial allocations.

@@ -119,4 +119,9 @@
 - Action: For AO prior-year tournament-total rows, official AO articles can serve as high-confidence source metadata when they clearly state the tournament prize-pool total and currency; note when no companion PDF was verified and keep revenue/profit unavailable without an AO-specific financial bridge.
 - Confidence: high
 
+**2026-07-05 - US Open tournament-total normalization**
+- Observation: Direct crawler/curl reads of the official US Open 2025 release failed or exposed no text, but the rendered official page in the in-app browser verified US$90.0m total player compensation and a separate US$5.0m travel/hotel support component before the prize-money breakdown.
+- Action: For dynamic US Open official pages, try rendered browser verification before relying on secondary-only corroboration; normalize US Open competition-prize rows by excluding explicitly identified support from total player compensation and keep the support-inclusive row separate.
+- Confidence: high
+
 ## What Has Failed
