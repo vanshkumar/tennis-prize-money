@@ -12,6 +12,7 @@
 - Added an Australian Open 2025 tournament-total competition-prize row using official AO/Tennis Australia A$96.5m total prize money while keeping AO revenue/profit unavailable.
 - Added an Australian Open 2024 tournament-total competition-prize row using official AO/Tennis Australia A$86.5m total prize money while keeping AO revenue/profit unavailable.
 - Added a US Open 2025 tournament-total competition-prize row using official-derived US$85.0m prize money while preserving the US$90.0m total-player-compensation row as support-inclusive context.
+- Added a Roland Garros 2025 total-player-compensation context row using AP's €56.352m support-inclusive semantics, while leaving a clean Roland Garros tournament-total competition-prize row unnormalized until an official split is verified.
 
 ## v0.1.0 - 2026-07-05
 

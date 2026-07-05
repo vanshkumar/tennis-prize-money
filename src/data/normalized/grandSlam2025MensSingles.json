@@ -452,6 +452,69 @@
     ]
   },
   {
+    "id": "roland-garros-2025-total-player-compensation",
+    "tournament": "Roland Garros",
+    "year": 2025,
+    "event": "Tournament player compensation",
+    "confidence": "medium",
+    "displayCurrency": "EUR",
+    "sourceIds": [
+      "roland-garros-2025-ap-compensation-semantics"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "total_player_compensation",
+      "notes": "Tournament-level total player compensation for Roland Garros 2025, including competition prize money plus per diems and exhibition payments."
+    },
+    "prizePool": {
+      "amount": 56352000,
+      "currency": "EUR",
+      "status": "reported",
+      "sourceIds": [
+        "roland-garros-2025-ap-compensation-semantics"
+      ],
+      "notes": "AP describes €56.352m as total player compensation at the 2025 French Open and says it includes per diems and money paid to former players taking part in exhibitions. No official split was verified that separates clean competition prize money from those support/exhibition components."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear Roland Garros 2025 tournament revenue denominator is included; FFT organization-level financials are not treated as tournament revenue.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear Roland Garros 2025 tournament profit or surplus denominator is included; FFT organization-level financials are not treated as tournament profit/surplus.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "This row is total player compensation, not clean competition prize money.",
+      "AP describes the €56.352m total as including per diems and exhibition payments, and no official source split was verified that would support a clean Roland Garros 2025 tournament-total competition-prize-money row.",
+      "No Roland Garros tournament-total competition-prize-money row is normalized in this slice.",
+      "Revenue and profit/surplus remain unavailable because no tournament-specific compatible financial denominator is included.",
+      "FFT organization-level revenue, profit, or surplus must remain separate from Roland Garros tournament denominators unless a source bridges the scope explicitly."
+    ]
+  },
+  {
     "id": "wimbledon-2025-ms",
     "tournament": "Wimbledon",
     "year": 2025,

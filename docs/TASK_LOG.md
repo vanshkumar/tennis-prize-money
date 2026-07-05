@@ -504,3 +504,36 @@ Push:
 Next:
 
 - Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: re-check Roland Garros tournament-total prize-money source semantics and add a clean competition-prize-money row only if official or otherwise clearly corroborated sources distinguish competition prize money from support/compensation and event-level partial allocations.
+
+## 2026-07-05 - Roland Garros 2025 Total-Compensation Source-Semantics Slice
+
+Status: Complete pending commit and push
+
+Branch: `main`
+
+Summary:
+
+- Confirmed latest `main` was up to date with `origin/main` at `d14aed0` before editing.
+- Rechecked Roland Garros/French Open 2025 source semantics. AP reports €56.352m in total player compensation and says the total includes per diems and payments to former players taking part in exhibitions.
+- Did not add a clean Roland Garros tournament-total `competition_prize_money` row because no official split was verified that separates competition prize money from support/exhibition components.
+- Added `roland-garros-2025-total-player-compensation` as a tournament-total `total_player_compensation` context row using €56.352m.
+- Preserved `roland-garros-2025-ms` as the existing event-level competition-prize row.
+- Kept Roland Garros revenue and profit/surplus unavailable because no Roland Garros-specific compatible financial denominator was verified.
+- Kept FFT organization-level financials and secondary revenue leads out of Roland Garros tournament revenue/profit ratios.
+- Preserved schema version `2` and the default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated source metadata, normalized data, tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+- Primary-question answerability coverage is now `2/11` for both revenue and profit/surplus.
+
+Checks:
+
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 30 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 45 tests.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `npm run build` - passed.
+- `git diff --check` - passed.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: extend the Wimbledon tournament-total denominator series to an older year only if official prize-money PDFs and AELTC Championships Ltd accounts keep the same clean numerator and operating-company denominator semantics.

@@ -124,4 +124,9 @@
 - Action: For dynamic US Open official pages, try rendered browser verification before relying on secondary-only corroboration; normalize US Open competition-prize rows by excluding explicitly identified support from total player compensation and keep the support-inclusive row separate.
 - Confidence: high
 
+**2026-07-05 - Roland Garros source semantics**
+- Observation: AP describes the 2025 French Open €56.352m headline total as total player compensation including per diems and exhibition payments; no official source split was verified in this task that separates a clean tournament-total competition-prize amount from those support/exhibition components.
+- Action: Keep Roland Garros headline totals as `total_player_compensation` context or source leads until an official FFT/Roland Garros breakdown separates clean competition prize money from support, per diems, or exhibition payments; do not use FFT organization-level financials as tournament denominators without an explicit source bridge.
+- Confidence: high
+
 ## What Has Failed

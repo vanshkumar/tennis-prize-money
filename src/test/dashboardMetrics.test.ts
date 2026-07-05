@@ -341,10 +341,10 @@ describe('validated seed dashboard dataset', () => {
       'Wimbledon',
     ]);
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'high', count: 7, share: 7 / 10 }),
+      expect.objectContaining({ confidence: 'high', count: 7, share: 7 / 11 }),
     );
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'medium', count: 3, share: 3 / 10 }),
+      expect.objectContaining({ confidence: 'medium', count: 4, share: 4 / 11 }),
     );
     expect(kpis).toHaveLength(9);
     expect(kpis.map((kpi) => kpi.label)).toContain('Prize pool YoY growth');
@@ -436,16 +436,16 @@ describe('validated seed dashboard dataset', () => {
     expect(coverage).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        value: '2/10',
+        value: '2/11',
         answerableCount: 2,
-        totalCount: 10,
+        totalCount: 11,
         unavailable: false,
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        value: '2/10',
+        value: '2/11',
         answerableCount: 2,
-        totalCount: 10,
+        totalCount: 11,
         unavailable: false,
       }),
     ]);
@@ -490,6 +490,78 @@ describe('validated seed dashboard dataset', () => {
     expect(caveats).toContain(
       'Prize money / revenue is unavailable: Numerator is not competition prize money.',
     );
+  });
+
+  it('keeps Roland Garros total compensation separate without a clean tournament-total prize row', () => {
+    const compensationRecord = dashboardDataset.records.find(
+      (record) => record.id === 'roland-garros-2025-total-player-compensation',
+    );
+    const unsupportedCleanRecord = dashboardDataset.records.find(
+      (record) =>
+        record.id === 'roland-garros-2025-tournament-total' ||
+        (record.tournament === 'Roland Garros' &&
+          record.year === 2025 &&
+          record.event === 'Tournament total' &&
+          record.prizeMoneyScope.numeratorCategory === 'competition_prize_money'),
+    );
+
+    expect(compensationRecord).toBeDefined();
+    expect(unsupportedCleanRecord).toBeUndefined();
+    if (!compensationRecord) {
+      throw new Error('Expected Roland Garros total-compensation fixture to exist');
+    }
+
+    expect(compensationRecord.prizeMoneyScope).toMatchObject({
+      type: 'tournament_total',
+      numeratorCategory: 'total_player_compensation',
+    });
+    expect(compensationRecord.prizePool).toMatchObject({
+      amount: 56352000,
+      currency: 'EUR',
+      status: 'reported',
+    });
+    expect(compensationRecord.prizePool.notes).toContain('per diems');
+    expect(compensationRecord.prizePool.notes).toContain('exhibitions');
+    expect(compensationRecord.revenue).toMatchObject({
+      amount: null,
+      currency: null,
+      status: 'unavailable',
+      kind: 'unknown',
+    });
+    expect(compensationRecord.profitOrSurplus).toMatchObject({
+      amount: null,
+      currency: null,
+      status: 'unavailable',
+      kind: 'unknown',
+    });
+    expect(compensationRecord.caveats.join(' ')).toMatch(/not clean competition prize money/i);
+    expect(compensationRecord.caveats.join(' ')).toMatch(
+      /No Roland Garros tournament-total competition-prize-money row/i,
+    );
+    expect(calculatePrizePoolToRevenue(compensationRecord)).toMatchObject({
+      status: 'unavailable',
+      reason: 'incompatible_numerator_kind',
+    });
+    expect(calculatePrizePoolToProfitOrSurplus(compensationRecord)).toMatchObject({
+      status: 'unavailable',
+      reason: 'incompatible_numerator_kind',
+    });
+    expect(getPrimaryQuestionRows(compensationRecord)).toEqual([
+      expect.objectContaining({
+        id: 'revenue-share',
+        eyebrow: 'Needs competition prize money',
+        numeratorLabel: 'Total player compensation (not used)',
+        numeratorValue: '€56,352,000',
+        unavailable: true,
+      }),
+      expect.objectContaining({
+        id: 'profit-surplus-share',
+        eyebrow: 'Needs competition prize money',
+        numeratorLabel: 'Total player compensation (not used)',
+        numeratorValue: '€56,352,000',
+        unavailable: true,
+      }),
+    ]);
   });
 
   it('adds a clean US Open tournament-total competition-prize row without financial denominators', () => {
