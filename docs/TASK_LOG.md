@@ -296,6 +296,8 @@ Status: Complete
 
 Branch: `main`
 
+Implementation commit: `3409eb9` (`feat: add wimbledon 2022 denominator slice`)
+
 Summary:
 
 - Confirmed the standalone repo still uses Vite `base: '/tennis-prize-money/'`, which matches the project-site path.
