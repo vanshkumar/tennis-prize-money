@@ -269,6 +269,8 @@ Status: Complete
 
 Branch: `main`
 
+Implementation commit: `5273060` (`feat: add australian open 2025 numerator slice`)
+
 Summary:
 
 - Initialized `tennis-prize-money/` as a standalone Git repository after extracting it from the parent site workflow.
