@@ -507,7 +507,7 @@ Next:
 
 ## 2026-07-05 - Roland Garros 2025 Total-Compensation Source-Semantics Slice
 
-Status: Complete pending commit and push
+Status: Complete
 
 Branch: `main`
 
@@ -535,6 +535,10 @@ Checks:
 - `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
 - `npm run build` - passed.
 - `git diff --check` - passed.
+
+Push:
+
+- Pushed implementation commit `e092178` and handoff commit `8fbe694` to `origin/main`.
 
 Next:
 
