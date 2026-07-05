@@ -2,7 +2,7 @@
 
 ## Current Status
 
-The active dataset is a small sourced seed dataset for Grand Slam competition prize money and clearly labeled player-compensation context. It now includes an Australian Open 2025 tournament-total competition-prize numerator and compatible primary-question financial slices for Wimbledon 2025 and 2024 tournament-total competition prize money compared with AELTC Championships Ltd operating-company turnover and operating profit.
+The active dataset is a small sourced seed dataset for Grand Slam competition prize money and clearly labeled player-compensation context. It now includes Australian Open 2025 and 2024 tournament-total competition-prize numerators and compatible primary-question financial slices for Wimbledon 2025 and 2024 tournament-total competition prize money compared with AELTC Championships Ltd operating-company turnover and operating profit.
 
 The current static JSON contract is schema version `2`. Version `2` adds explicit prize-money scope and numerator-category metadata so player compensation/support totals cannot be mistaken for ratio-eligible competition prize money.
 
@@ -10,7 +10,7 @@ The current static JSON contract is schema version `2`. Version `2` adds explici
 
 - `src/data/static/seedDatasetMetadata.json` stores dataset-level metadata such as schema version, label, notice, data mode, and last refresh timestamp.
 - `src/data/raw/source-metadata/grandSlam2025Sources.json` stores the v0.1 source inventory for Grand Slam prize-money rows.
-- `src/data/normalized/grandSlam2025MensSingles.json` stores the active normalized Grand Slam records: four 2025 men's singles competition-prize rows, an Australian Open 2025 tournament-total competition-prize row with unavailable financial denominators, Wimbledon 2025 and 2024 tournament-total competition-prize rows with compatible financial denominators, and one US Open total-player-compensation context row.
+- `src/data/normalized/grandSlam2025MensSingles.json` stores the active normalized Grand Slam records: four 2025 men's singles competition-prize rows, Australian Open 2025 and 2024 tournament-total competition-prize rows with unavailable financial denominators, Wimbledon 2025 and 2024 tournament-total competition-prize rows with compatible financial denominators, and one US Open total-player-compensation context row.
 - `src/data/schemas.ts` defines TypeScript types and runtime validation.
 - `src/data/dashboardDataset.ts` imports the static JSON files, validates them, and exports the typed dataset used by the dashboard.
 - `src/lib/metricEngine.ts` computes derived metrics from validated records.
@@ -50,7 +50,7 @@ Mock source type and mock confidence must be paired. The active seed dataset use
 
 ## Tournament Records
 
-Each normalized record represents one tournament, year, and event. The active seed includes four 2025 men's singles event rows, an Australian Open 2025 tournament-level competition-prize-money row, Wimbledon 2025 and 2024 tournament-level competition-prize-money rows, and one US Open tournament-level player-compensation context row:
+Each normalized record represents one tournament, year, and event. The active seed includes four 2025 men's singles event rows, Australian Open 2025 and 2024 tournament-level competition-prize-money rows, Wimbledon 2025 and 2024 tournament-level competition-prize-money rows, and one US Open tournament-level player-compensation context row:
 
 - `id`
 - `tournament`
@@ -73,6 +73,8 @@ Each normalized record represents one tournament, year, and event. The active se
 For the four event-level competition-prize rows, `prizePool` is the men's singles allocation when an official per-event total is available. When only round payouts are available, `prizePool.status` is `derived` and the value is the weighted sum of the 128-player singles draw payouts.
 
 For `australian-open-2025-tournament-total`, `prizePool` is the official AO/Tennis Australia total prize pool of A$96.5m. The official AO article says players compete for A$96.5m in prize money at Australian Open 2025, and the Tennis Australia PDF lists a 2025 total of A$96.5m with all figures in Australian dollars. The cited sources do not identify a separate per-diem or support component, so the row is normalized as `competition_prize_money`. Its revenue and profit/surplus fields remain unavailable because Tennis Australia organization-level financials are not an AO-specific tournament denominator.
+
+For `australian-open-2024-tournament-total`, `prizePool` is the official AO/Tennis Australia total prize pool of A$86.5m. The official AO article says players compete for A$86.5m in prize money at Australian Open 2024 and states all prize-money amounts are in Australian dollars unless specified. The cited source does not identify a separate per-diem or support component within the A$86.5m prize pool, so the row is normalized as `competition_prize_money`. Its revenue and profit/surplus fields remain unavailable because Tennis Australia organization-level financials are not an AO-specific tournament denominator.
 
 For `wimbledon-2025-tournament-total`, `prizePool` is the official Wimbledon 2025 `TOTAL TENNIS EVENTS PRIZE MONEY` value of £52.0m. The broader PDF line for `TOTAL PRIZE MONEY` is £53.5m, but that includes £1.5m estimated per diems, so the broader total is not used as the clean `competition_prize_money` numerator.
 
@@ -186,6 +188,6 @@ The test suite covers:
 - rejection of unpaired mock source type/confidence
 - rejection of available money values without source ids
 - ratio unavailability for missing, zero, negative, incompatible-currency, and incompatible-financial-kind cases
-- the normalized Australian Open tournament-total numerator with unavailable financial denominators
+- the normalized Australian Open tournament-total numerators with unavailable financial denominators
 - the normalized Wimbledon prior-year tournament-total row and 2025-over-2024 year-over-year calculation
 - validation-before-write behavior in the refresh pipeline

@@ -227,6 +227,68 @@
     ]
   },
   {
+    "id": "australian-open-2024-tournament-total",
+    "tournament": "Australian Open",
+    "year": 2024,
+    "event": "Tournament total",
+    "confidence": "high",
+    "displayCurrency": "AUD",
+    "sourceIds": [
+      "ao-2024-prize-money-release"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total Australian Open 2024 prize money across tournament events. The official AO/Tennis Australia article describes the value as prize money or prize pool; no separate per-diem or player-support component is identified in the cited source."
+    },
+    "prizePool": {
+      "amount": 86500000,
+      "currency": "AUD",
+      "status": "official",
+      "sourceIds": [
+        "ao-2024-prize-money-release"
+      ],
+      "notes": "Official AO/Tennis Australia 2024 total prize pool. The AO article says players competed for A$86.5m in prize money at Australian Open 2024 and states that all prize-money amounts are in Australian dollars unless specified."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2024 tournament revenue denominator is included; Tennis Australia organization-level financials are not treated as tournament revenue.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2024 tournament profit or surplus denominator is included; Tennis Australia organization-level surplus is not treated as tournament profit/surplus.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is Australian Open 2024 total prize pool of A$86.5m from the official AO/Tennis Australia article.",
+      "The cited AO/Tennis Australia source describes this as prize money or prize pool and does not identify a separate per-diem or player-support component; if a future source separates support or compensation, keep it out of this competition-prize-money row.",
+      "Revenue and profit/surplus remain unavailable because no AO-specific compatible financial denominator is included.",
+      "Tennis Australia organization-level revenue or surplus must remain separate from Australian Open tournament denominators unless a source bridges the scope explicitly."
+    ]
+  },
+  {
     "id": "roland-garros-2025-ms",
     "tournament": "Roland Garros",
     "year": 2025,

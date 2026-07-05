@@ -218,41 +218,73 @@ describe('validated seed dashboard dataset', () => {
   });
 
   it('normalizes Australian Open tournament-total competition prize money without financial denominators', () => {
-    const record = dashboardDataset.records.find(
+    const record2025 = dashboardDataset.records.find(
       (item) => item.id === 'australian-open-2025-tournament-total',
     );
+    const record2024 = dashboardDataset.records.find(
+      (item) => item.id === 'australian-open-2024-tournament-total',
+    );
 
-    expect(record).toBeDefined();
-    if (!record) {
+    expect(record2025).toBeDefined();
+    expect(record2024).toBeDefined();
+    if (!record2025 || !record2024) {
       throw new Error('Expected australian-open-2025-tournament-total fixture to exist');
     }
 
-    expect(record.prizeMoneyScope).toMatchObject({
+    expect(record2025.prizeMoneyScope).toMatchObject({
       type: 'tournament_total',
       numeratorCategory: 'competition_prize_money',
     });
-    expect(record.prizePool).toMatchObject({
+    expect(record2025.prizePool).toMatchObject({
       amount: 96500000,
       currency: 'AUD',
       status: 'official',
     });
-    expect(record.revenue).toMatchObject({
+    expect(record2025.revenue).toMatchObject({
       amount: null,
       currency: null,
       status: 'unavailable',
       kind: 'unknown',
     });
-    expect(record.profitOrSurplus).toMatchObject({
+    expect(record2025.profitOrSurplus).toMatchObject({
       amount: null,
       currency: null,
       status: 'unavailable',
       kind: 'unknown',
     });
-    expect(record.prizePool.notes).toContain('A$96.5m');
-    expect(record.revenue.notes).toContain('organization-level financials');
-    expect(record.profitOrSurplus.notes).toContain('organization-level surplus');
-    expect(record.caveats.join(' ')).toMatch(/no AO-specific compatible financial denominator/i);
-    expect(record.caveats.join(' ')).toMatch(/support or compensation/i);
+    expect(record2025.prizePool.notes).toContain('A$96.5m');
+    expect(record2025.revenue.notes).toContain('organization-level financials');
+    expect(record2025.profitOrSurplus.notes).toContain('organization-level surplus');
+    expect(record2025.caveats.join(' ')).toMatch(/no AO-specific compatible financial denominator/i);
+    expect(record2025.caveats.join(' ')).toMatch(/support or compensation/i);
+
+    expect(record2024.prizeMoneyScope).toMatchObject({
+      type: 'tournament_total',
+      numeratorCategory: 'competition_prize_money',
+    });
+    expect(record2024.prizePool).toMatchObject({
+      amount: 86500000,
+      currency: 'AUD',
+      status: 'official',
+    });
+    expect(record2024.revenue).toMatchObject({
+      amount: null,
+      currency: null,
+      status: 'unavailable',
+      kind: 'unknown',
+    });
+    expect(record2024.profitOrSurplus).toMatchObject({
+      amount: null,
+      currency: null,
+      status: 'unavailable',
+      kind: 'unknown',
+    });
+    expect(record2024.prizePool.notes).toContain('A$86.5m');
+    expect(record2024.prizePool.notes).toContain('Australian dollars');
+    expect(record2024.revenue.notes).toContain('organization-level financials');
+    expect(record2024.profitOrSurplus.notes).toContain('organization-level surplus');
+    expect(record2024.caveats.join(' ')).toMatch(/no AO-specific compatible financial denominator/i);
+    expect(record2024.caveats.join(' ')).toMatch(/support or compensation/i);
   });
 
   it('matches each event-level competition prize pool to the weighted main-draw round payouts', () => {
@@ -309,10 +341,10 @@ describe('validated seed dashboard dataset', () => {
       'Wimbledon',
     ]);
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'high', count: 5, share: 5 / 8 }),
+      expect.objectContaining({ confidence: 'high', count: 6, share: 6 / 9 }),
     );
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'medium', count: 3, share: 3 / 8 }),
+      expect.objectContaining({ confidence: 'medium', count: 3, share: 3 / 9 }),
     );
     expect(kpis).toHaveLength(9);
     expect(kpis.map((kpi) => kpi.label)).toContain('Prize pool YoY growth');
@@ -404,16 +436,16 @@ describe('validated seed dashboard dataset', () => {
     expect(coverage).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        value: '2/8',
+        value: '2/9',
         answerableCount: 2,
-        totalCount: 8,
+        totalCount: 9,
         unavailable: false,
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        value: '2/8',
+        value: '2/9',
         answerableCount: 2,
-        totalCount: 8,
+        totalCount: 9,
         unavailable: false,
       }),
     ]);
@@ -548,6 +580,13 @@ describe('validated seed dashboard dataset', () => {
     expect(yearOverYearRows).toHaveLength(dashboardDataset.records.length);
     expect(wimbledon2025Row).toMatchObject({
       value: '+7.1%',
+      note: 'Compared with 2024 Tournament total.',
+      unavailable: false,
+    });
+    expect(
+      yearOverYearRows.find((row) => row.id === 'australian-open-2025-tournament-total'),
+    ).toMatchObject({
+      value: '+11.6%',
       note: 'Compared with 2024 Tournament total.',
       unavailable: false,
     });

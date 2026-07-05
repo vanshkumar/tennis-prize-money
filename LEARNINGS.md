@@ -114,4 +114,9 @@
 - Action: Normalize AO tournament-total rows from official AO/Tennis Australia prize-money totals as `competition_prize_money` only when no support component is identified; keep broader Summer of Tennis figures and Tennis Australia organization-level financials out of AO revenue/profit ratios.
 - Confidence: high
 
+**2026-07-05 - Australian Open prior-year normalization**
+- Observation: The official AO 2024 prize-money article is sufficient for the A$86.5m tournament prize-pool numerator and states prize-money amounts are in Australian dollars, but no separate 2024 Tennis Australia prize-money PDF was verified in this task.
+- Action: For AO prior-year tournament-total rows, official AO articles can serve as high-confidence source metadata when they clearly state the tournament prize-pool total and currency; note when no companion PDF was verified and keep revenue/profit unavailable without an AO-specific financial bridge.
+- Confidence: high
+
 ## What Has Failed

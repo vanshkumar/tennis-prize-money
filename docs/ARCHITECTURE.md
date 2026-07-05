@@ -4,7 +4,7 @@
 
 Version `0.1.0` is a static React + TypeScript + Vite dashboard with a validated data layer, sourced seed data, tested calculation engine, CSS visualizations, and a server-side refresh pipeline under `tennis-prize-money/`.
 
-The dashboard currently renders from a small sourced Grand Slam seed dataset: four 2025 men's singles competition-prize rows, an Australian Open 2025 tournament-total competition-prize row, Wimbledon 2025 and 2024 tournament-total competition-prize rows with compatible operating-company turnover/profit denominators, and one US Open total-player-compensation context row. Compatible tournament-level revenue, profit, surplus, and prior-year comparison values remain unavailable for the other records until clearer financial sources and additional years are added.
+The dashboard currently renders from a small sourced Grand Slam seed dataset: four 2025 men's singles competition-prize rows, Australian Open 2025 and 2024 tournament-total competition-prize rows, Wimbledon 2025 and 2024 tournament-total competition-prize rows with compatible operating-company turnover/profit denominators, and one US Open total-player-compensation context row. Compatible tournament-level revenue, profit, and surplus values remain unavailable for non-Wimbledon records until clearer financial sources are added.
 
 ## App Structure
 

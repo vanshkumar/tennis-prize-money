@@ -436,3 +436,33 @@ Checks:
 Next:
 
 - Create the next xhigh Codex handoff thread for the Australian Open 2024 prior-year tournament-total competition-prize numerator slice, keeping AO revenue/profit unavailable unless an AO-specific compatible denominator is verified.
+
+## 2026-07-05 - Australian Open 2024 Prior-Year Tournament-Total Numerator Slice
+
+Status: Complete
+
+Branch: `main`
+
+Summary:
+
+- Confirmed latest `main` was up to date with `origin/main` before editing.
+- Verified the official AO/Tennis Australia 2024 prize-money article: it reports A$86.5m in prize money for Australian Open 2024, states all prize-money amounts are in Australian dollars unless specified, and does not identify a separate per-diem or player-support component within the A$86.5m prize pool.
+- Added `australian-open-2024-tournament-total` as a prior-year tournament-total `competition_prize_money` row using the official A$86.5m total prize pool.
+- Kept Australian Open 2024 revenue and profit/surplus unavailable because no AO-specific compatible financial denominator was verified.
+- Kept Tennis Australia organization-level revenue/surplus out of AO tournament revenue/profit ratios.
+- Preserved schema version `2` and the default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated source metadata, normalized data, tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+
+Checks:
+
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 28 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 43 tests.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `npm run build` - passed.
+- `git diff --check` - passed.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: re-check US Open tournament-total source semantics and add a clean competition-prize-money row only if official or otherwise clearly corroborated sources distinguish competition prize money from total player compensation/support.
