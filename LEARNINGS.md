@@ -104,4 +104,9 @@
 - Action: Use Wimbledon total tennis events prize money as the clean `competition_prize_money` numerator; keep broader total prize money/per diems out of competition-prize ratios, and label AELTC Championships Ltd turnover/profit as operating-company denominators with caveats.
 - Confidence: high
 
+**2026-07-05 - Wimbledon prior-year normalization**
+- Observation: Wimbledon 2024 uses the same source shape as 2025: the official prize-money PDF separates £48.55m total tennis events prize money from £1.45m estimated per diems and the broader £50.0m total prize money line, while AELTC Championships Ltd accounts use the same principal-contracting-party and statements-reflect-Championships bridge.
+- Action: Add Wimbledon prior-year tournament-total rows after the latest answerable row so the default dashboard still opens on the latest Wimbledon answer, and use same-event `Tournament total` rows to unlock year-over-year checks.
+- Confidence: high
+
 ## What Has Failed

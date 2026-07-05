@@ -368,3 +368,35 @@ Checks:
 Next:
 
 - Create the next xhigh Codex handoff thread for the next primary-question data slice.
+
+## 2026-07-05 - Wimbledon 2024 Prior-Year Denominator Slice
+
+Status: Complete
+
+Branch: `main`
+
+Implementation commit: `8c9934a` (`feat: add wimbledon 2024 denominator slice`)
+
+Summary:
+
+- Confirmed latest `main` was up to date with `origin/main` before editing.
+- Verified the official Wimbledon 2024 prize-money PDF. The normalized clean competition-prize numerator is £48.55m total tennis events prize money, excluding £1.45m estimated per diems from the broader £50.0m total prize money line.
+- Verified the official Companies House 2024 AELTC Championships Ltd accounts. The company is the principal contracting party for The Championships and reports turnover of £406.507m and operating profit of £54.332m for the year ended 31 July 2024.
+- Added `wimbledon-2024-tournament-total` as a prior-year tournament-total competition-prize row with compatible operating-company revenue/profit denominators.
+- Kept the row caveated: AELTC Championships Ltd turnover/profit are operating-company values for The Championships, not after-tax profit, dividends, LTA surplus distributions, or broader organization-level financials.
+- Preserved schema version `2` and the default selected comparison behavior by keeping the 2025 Wimbledon answer before the 2024 prior-year row.
+- Updated source metadata, normalized data, tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+
+Checks:
+
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed after fixing a stale fallback expectation exposed by the first focused run.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 42 tests.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `npm run build` - passed.
+- `git diff --check` - passed.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the Australian Open tournament-total competition-prize numerator slice, keeping AO revenue/profit unavailable unless an AO-specific compatible denominator is verified.
