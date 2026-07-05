@@ -1,32 +1,58 @@
 # Deployment
 
-## Recommended GitHub Pages Path
+## GitHub Pages Path
 
-`tennis-prize-money/` is an app-local React + Vite project inside the parent `vanshkumar.github.io` repo. The recommended deployment path is the existing parent GitHub Pages workflow pattern:
+This is now a standalone React + Vite repository deployed directly to GitHub Pages.
 
-1. Install root Astro dependencies and build the root site.
-2. Install `tennis-prize-money/` dependencies with `npm ci`.
-3. Build the app with `npm run build` from `tennis-prize-money/`.
-4. Create `site/tennis-prize-money/` in the combined Pages artifact.
-5. Copy `tennis-prize-money/dist/.` into `site/tennis-prize-money/`.
-6. Preserve `site/.nojekyll` and deploy the combined artifact.
+The Pages settings should use:
 
-The app Vite config already uses:
+- Source: `GitHub Actions`
+- Workflow: `.github/workflows/deploy.yml`
+- Published artifact: `dist/`
+
+The screenshot setting, `Deploy from a branch` with `main` and `/(root)`, is not enough for this app because Vite source files need a build step before GitHub Pages can serve them.
+
+The app Vite config intentionally keeps:
 
 ```ts
 base: '/tennis-prize-money/'
 ```
 
-The parent workflow now builds this app with the same sibling-app pattern used by the existing deployed Vite apps:
+That base path matches a GitHub Pages project site for `vanshkumar/tennis-prize-money`.
 
-- `npm ci` in `tennis-prize-money/`
-- `npm run build` in `tennis-prize-money/`
-- copy `tennis-prize-money/dist/.` into `site/tennis-prize-money/`
-- verify `site/tennis-prize-money/index.html` and the built assets directory exist before uploading the Pages artifact
+## Expected URL
+
+With the current repository name and no repo-specific custom domain, the dashboard should be available at:
+
+```text
+https://vanshkumar.github.io/tennis-prize-money/
+```
+
+Because the account has a user-site custom domain, GitHub Pages may also serve this project site under the custom domain path:
+
+```text
+https://vanshkumar.net/tennis-prize-money/
+```
+
+If this repository gets its own custom domain later, change `base` to `/` before deploying to that domain root.
+
+## Deploy Workflow
+
+`.github/workflows/deploy.yml` runs on pushes to `main` and by manual `workflow_dispatch`.
+
+The workflow:
+
+1. Checks out the repo.
+2. Installs dependencies with `npm ci`.
+3. Builds the static app with `npm run build`.
+4. Uploads `dist/` with `actions/upload-pages-artifact`.
+5. Deploys the artifact with `actions/deploy-pages`.
+
+No committed `dist/` directory or `gh-pages` branch is required.
 
 ## Release Checks
 
-Before promoting a commit for review or deployment, run from `tennis-prize-money/`:
+Before promoting a commit for review or deployment, run:
 
 ```bash
 npm run lint
@@ -53,24 +79,6 @@ The static dashboard must not receive:
 - signed or secret source URLs
 - any other server-side credential
 
-## Data Refresh Deployment
-
-The manual data refresh workflow lives in the parent repo at:
-
-```text
-.github/workflows/tennis-prize-money-refresh.yml
-```
-
-Run it with `workflow_dispatch` to validate, refresh, commit changed static JSON, and push back to the selected branch.
-
-If an external source manifest is needed, set:
-
-```text
-TENNIS_PRIZE_MONEY_REFRESH_SOURCE_MANIFEST_URL
-```
-
-as a GitHub Actions secret.
-
 ## Optional Serverless Refresh Backend
 
 Browser-triggered refresh is optional. To enable it, deploy `serverless/refresh-dispatch.mjs` to a separate serverless host and configure its server-side environment variables:
@@ -89,11 +97,11 @@ Then set the static app variable:
 VITE_REFRESH_DISPATCH_URL=https://your-refresh-backend.example.com/dispatch
 ```
 
-The backend dispatches the GitHub Action; it does not refresh data directly in the browser.
+The backend dispatches a GitHub Action; it does not refresh data directly in the browser.
 
 ## v0.1 Deployment Status
 
 - The app is buildable as a static Vite bundle.
-- The parent refresh workflow exists at `.github/workflows/tennis-prize-money-refresh.yml`.
-- The parent Pages deployment workflow includes explicit install/build/copy steps for `tennis-prize-money/` and an artifact smoke check before upload.
-- No serverless backend is required for the static dashboard. The optional refresh dispatch backend should be deployed separately only if browser-triggered refresh is desired.
+- The standalone Pages deployment workflow exists at `.github/workflows/deploy.yml`.
+- GitHub Pages settings still need Source set to `GitHub Actions` if the repository is currently configured for branch publishing.
+- No serverless backend is required for the static dashboard.

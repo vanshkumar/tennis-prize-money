@@ -287,3 +287,27 @@ Checks:
 Next:
 
 - Use this standalone repository for future project threads.
+
+## 2026-07-05 - Standalone GitHub Pages Deployment
+
+Status: Complete
+
+Branch: `main`
+
+Summary:
+
+- Confirmed the standalone repo still uses Vite `base: '/tennis-prize-money/'`, which matches the project-site path.
+- Added `.github/workflows/deploy.yml` to build the Vite app and deploy `dist/` through GitHub Pages Actions.
+- Kept deployment minimal: no committed `dist/`, no `gh-pages` branch, and no browser/server secrets.
+- Updated README and deployment docs to replace the old parent-site artifact instructions with standalone repo deployment instructions.
+- Documented that the GitHub Pages source should be changed from branch publishing to `GitHub Actions`.
+
+Checks:
+
+- `npm run build` - passed.
+
+Next:
+
+- Push the workflow to `main`.
+- In GitHub repo settings, set Pages Source to `GitHub Actions`.
+- Verify the first deployment at `https://vanshkumar.github.io/tennis-prize-money/` and, if inherited custom-domain routing is enabled, `https://vanshkumar.net/tennis-prize-money/`.

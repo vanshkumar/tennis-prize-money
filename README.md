@@ -13,7 +13,7 @@ npm install
 npm run dev
 ```
 
-The local dev server serves the dashboard with Vite. Deployed builds are configured for the GitHub Pages subpath `/tennis-prize-money/`.
+The local dev server serves the dashboard with Vite. Deployed builds are configured for the GitHub Pages project subpath `/tennis-prize-money/`.
 
 For a release-readiness check:
 
@@ -74,4 +74,4 @@ npm run refresh:data
 - Roland Garros and US Open prize-money rows remain medium confidence until clearer official, parseable sources replace the secondary/cross-check paths.
 - No compatible tournament-level revenue, profit, or surplus denominators are included.
 - No FX conversion exists; cross-currency comparisons are not computed.
-- The parent GitHub Pages workflow builds and copies this app into the combined Pages artifact at `/tennis-prize-money/`.
+- The standalone repo deploys through `.github/workflows/deploy.yml`, which builds the Vite app and publishes `dist/` to GitHub Pages.

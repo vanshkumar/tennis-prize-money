@@ -89,4 +89,9 @@
 - Action: For future standalone migration or recovery work, initialize/fetch first, inspect `origin` heads before pushing, use a normal non-force first push when no remote refs exist, and keep generated `node_modules/` and `dist/` excluded with app-local `.gitignore`.
 - Confidence: high
 
+**2026-07-05 - Standalone Pages deployment**
+- Observation: In the standalone repo, GitHub Pages `Deploy from a branch` with `main` and `/(root)` is insufficient because the Vite app must be built and served from `dist/`.
+- Action: Use Source `GitHub Actions` plus `.github/workflows/deploy.yml` to run `npm ci`, `npm run build`, upload `dist/`, and deploy; keep `base: '/tennis-prize-money/'` for the project-site URL.
+- Confidence: high
+
 ## What Has Failed
