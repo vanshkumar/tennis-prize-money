@@ -341,11 +341,15 @@ describe('validated seed dashboard dataset', () => {
     const record2024 = dashboardDataset.records.find(
       (item) => item.id === 'australian-open-2024-tournament-total',
     );
+    const record2023 = dashboardDataset.records.find(
+      (item) => item.id === 'australian-open-2023-tournament-total',
+    );
 
     expect(record2025).toBeDefined();
     expect(record2024).toBeDefined();
-    if (!record2025 || !record2024) {
-      throw new Error('Expected australian-open-2025-tournament-total fixture to exist');
+    expect(record2023).toBeDefined();
+    if (!record2025 || !record2024 || !record2023) {
+      throw new Error('Expected Australian Open tournament-total fixtures to exist');
     }
 
     expect(record2025.prizeMoneyScope).toMatchObject({
@@ -402,6 +406,34 @@ describe('validated seed dashboard dataset', () => {
     expect(record2024.profitOrSurplus.notes).toContain('organization-level surplus');
     expect(record2024.caveats.join(' ')).toMatch(/no AO-specific compatible financial denominator/i);
     expect(record2024.caveats.join(' ')).toMatch(/support or compensation/i);
+
+    expect(record2023.prizeMoneyScope).toMatchObject({
+      type: 'tournament_total',
+      numeratorCategory: 'competition_prize_money',
+    });
+    expect(record2023.prizePool).toMatchObject({
+      amount: 76500000,
+      currency: 'AUD',
+      status: 'official',
+    });
+    expect(record2023.revenue).toMatchObject({
+      amount: null,
+      currency: null,
+      status: 'unavailable',
+      kind: 'unknown',
+    });
+    expect(record2023.profitOrSurplus).toMatchObject({
+      amount: null,
+      currency: null,
+      status: 'unavailable',
+      kind: 'unknown',
+    });
+    expect(record2023.prizePool.notes).toContain('A$76.5m');
+    expect(record2023.prizePool.notes).toContain('Australian dollars');
+    expect(record2023.revenue.notes).toContain('organization-level financials');
+    expect(record2023.profitOrSurplus.notes).toContain('organization-level surplus');
+    expect(record2023.caveats.join(' ')).toMatch(/no AO-specific compatible financial denominator/i);
+    expect(record2023.caveats.join(' ')).toMatch(/support or compensation/i);
   });
 
   it('matches each event-level competition prize pool to the weighted main-draw round payouts', () => {
@@ -460,10 +492,10 @@ describe('validated seed dashboard dataset', () => {
       'Wimbledon',
     ]);
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'high', count: 10, share: 10 / 14 }),
+      expect.objectContaining({ confidence: 'high', count: 11, share: 11 / 15 }),
     );
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'medium', count: 4, share: 4 / 14 }),
+      expect.objectContaining({ confidence: 'medium', count: 4, share: 4 / 15 }),
     );
     expect(kpis).toHaveLength(9);
     expect(kpis.map((kpi) => kpi.label)).toContain('Prize pool YoY growth');
@@ -555,16 +587,16 @@ describe('validated seed dashboard dataset', () => {
     expect(coverage).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        value: '4/14',
+        value: '4/15',
         answerableCount: 4,
-        totalCount: 14,
+        totalCount: 15,
         unavailable: false,
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        value: '4/14',
+        value: '4/15',
         answerableCount: 4,
-        totalCount: 14,
+        totalCount: 15,
         unavailable: false,
       }),
     ]);
@@ -855,6 +887,13 @@ describe('validated seed dashboard dataset', () => {
     ).toMatchObject({
       value: '+11.6%',
       note: 'Compared with 2024 Tournament total.',
+      unavailable: false,
+    });
+    expect(
+      yearOverYearRows.find((row) => row.id === 'australian-open-2024-tournament-total'),
+    ).toMatchObject({
+      value: '+13.1%',
+      note: 'Compared with 2023 Tournament total.',
       unavailable: false,
     });
     expect(yearOverYearRows[0]).toMatchObject({
