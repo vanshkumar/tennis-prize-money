@@ -134,4 +134,9 @@
 - Action: For Wimbledon years before 2024, find the exact official PDF URL from source citations or archives rather than assuming the newer `Wimbledon_Prize_Money_YEAR.pdf` pattern; normalize only the total tennis events prize-money line and pair it with the same-year AELTC Championships Ltd operating-company turnover/profit when accounts retain the bridge.
 - Confidence: high
 
+**2026-07-05 - Wimbledon 2022 denominator normalization**
+- Observation: The 2022 AELTC Championships Ltd accounts include a segmental reporting note that assigns the full £346.640m turnover and £47.057m operating profit to activities in respect of The Championships, while the official 2022 prize-money PDF URL uses `The_Championships_2022_Prize_Money.pdf`.
+- Action: For future pre-2023 Wimbledon denominator rows, use the segmental reporting note as an extra cross-check when available, and keep looking up exact official PDF URLs instead of assuming one filename convention.
+- Confidence: high
+
 ## What Has Failed

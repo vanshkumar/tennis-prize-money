@@ -578,3 +578,34 @@ Push:
 Next:
 
 - Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: continue primary-question expansion without weakening source semantics; likely candidates are another Wimbledon older year if official PDFs/accounts remain compatible, or a non-Wimbledon tournament-total numerator/denominator slice only when source semantics are clear.
+
+## 2026-07-05 - Wimbledon 2022 Older-Year Denominator Slice
+
+Status: Complete
+
+Branch: `main`
+
+Summary:
+
+- Confirmed latest `main` was up to date with `origin/main` before editing.
+- Verified the official Wimbledon 2022 prize-money PDF. The normalized clean competition-prize numerator is £38.9m total tennis events prize money, excluding £1.45m estimated per diems from the broader £40.35m total prize money line.
+- Verified the official Companies House 2022 AELTC Championships Ltd accounts. The company is the principal contracting party for The Championships and reports turnover of £346.640m and operating profit of £47.057m for the year ended 31 July 2022.
+- Added `wimbledon-2022-tournament-total` as an older-year tournament-total competition-prize row with compatible operating-company revenue/profit denominators.
+- Kept the row caveated: AELTC Championships Ltd turnover/profit are operating-company values for The Championships, not after-tax profit, dividends, LTA surplus distributions, or broader organization-level financials.
+- Preserved schema version `2` and the default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated source metadata, normalized data, tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+- Primary-question answerability coverage is now `4/13` for both revenue and profit/surplus.
+
+Checks:
+
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 32 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 47 tests.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `npm run build` - passed.
+- `git diff --check` - passed.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: continue primary-question expansion without weakening source semantics; likely candidates are another Wimbledon older year if official PDFs/accounts remain compatible, or a non-Wimbledon tournament-total numerator/denominator slice only when source semantics are clear.
