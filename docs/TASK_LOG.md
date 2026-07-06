@@ -761,3 +761,44 @@ Push:
 Next:
 
 - Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: continue primary-question expansion without weakening source semantics; likely candidates are a US Open 2024 tournament-total row only if official/source semantics cleanly separate competition prize money from total player compensation/support, an Australian Open pre-2021 row only if a separate official AO/Tennis Australia source keeps the same prize-money semantics, or another Wimbledon older-year denominator row only if official PDFs/accounts remain compatible.
+
+## 2026-07-06 - US Open 2024 Tournament-Total Numerator Slice
+
+Status: Complete
+
+Branch: `main`
+
+Implementation commit: `97ddf15` (`feat: add us open 2024 numerator slice`)
+
+Summary:
+
+- Confirmed latest `main` started clean at pushed head `e30eaff` before editing.
+- Rechecked official US Open/USTA 2024 source semantics. Direct crawler/web reads still exposed no useful official text, but the rendered official release verified US$75.0m total player compensation, a staged-event payout schedule, and a Wheelchair Championships player-grant note because the wheelchair event was not staged in 2024 due to the Paralympic Games.
+- Derived a medium-confidence US$68.756m clean competition-event payout subtotal from the official staged-event payout schedule, with a secondary cross-check separating US$6.244m in per diem from the US$75.0m total.
+- Added `us-open-2024-tournament-total` as a tournament-total `competition_prize_money` row using US$68.756m, with revenue and profit/surplus unavailable.
+- Added `us-open-2024-total-player-compensation` as a separate `total_player_compensation` context row using US$75.0m.
+- Kept USTA organization-level financials out of US Open tournament revenue/profit ratios.
+- Preserved schema version `2` and the default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+- Recorded 2021 as the current historical floor for manual data pulling: continue 2021-and-newer coverage only when source semantics are compatible, but do not extend the current expansion pass before 2021.
+- Primary-question answerability coverage is now `4/19` for both revenue and profit/surplus.
+
+Checks:
+
+- JSON parse validation for static data files - passed.
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 33 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - initially exposed a stale refresh timestamp expectation; after fixing the fixture-relative assertion, passed, 4 test files and 48 tests.
+- `npm run build` - passed.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+
+Push:
+
+- Pushed implementation commit `97ddf15` to `origin/main`.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the next primary-question data slice.
+- Recommended next slice: continue 2021-and-newer coverage without weakening source semantics. Candidate slices include US Open 2023, 2022, or 2021 tournament-total rows only if official/source semantics distinguish clean competition prize money from total player compensation/support, or Wimbledon 2021 only if the official prize-money PDF and AELTC Championships Ltd accounts keep the existing clean numerator and operating-company denominator bridge.
+- Do not pull data before 2021 in the current expansion phase.
