@@ -12,7 +12,9 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  # Let production Pages deployments finish; rapid serial pushes should queue
+  # the latest deployment rather than interrupt one already publishing.
+  cancel-in-progress: false
 
 jobs:
   deploy:

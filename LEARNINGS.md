@@ -4,6 +4,11 @@
 
 ## Patterns and Preferences
 
+**2026-07-06 - GitHub Pages deploy stabilization**
+- Observation: The latest failed Pages run passed checkout, `npm ci`, `npm run build`, Pages configuration, and artifact upload, then failed only in `actions/deploy-pages` with GitHub's generic `Deployment failed, try again later.` status after rapid serial pushes.
+- Action: Keep the Pages workflow concurrency group on `cancel-in-progress: false` so production Pages deployments finish instead of being interrupted; when deploys fail after a successful artifact upload, inspect deployment/job logs before changing app code.
+- Confidence: medium
+
 **2026-07-05 — Project kickoff planning**
 - Observation: `PLAN.md` defines a serial Codex-thread workflow where each major task must be documented, checked, committed, pushed, handed off under `docs/handoffs/`, and followed by creation of the next Codex thread before stopping.
 - Action: Complete only the current major task in a thread; for Task 0, create the planning docs and Task 1 handoff/thread, then stop without starting Task 1 implementation.

@@ -48,6 +48,8 @@ The workflow:
 4. Uploads `dist/` with `actions/upload-pages-artifact`.
 5. Deploys the artifact with `actions/deploy-pages`.
 
+The Pages workflow uses a single `pages` concurrency group with `cancel-in-progress: false`. GitHub's starter workflow for Pages recommends allowing in-progress production deployments to complete, which is especially useful when this repo receives rapid serial documentation or handoff commits.
+
 No committed `dist/` directory or `gh-pages` branch is required.
 
 ## Release Checks
