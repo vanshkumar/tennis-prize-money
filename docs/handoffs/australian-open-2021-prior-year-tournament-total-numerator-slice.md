@@ -1,0 +1,156 @@
+# Australian Open 2021 Prior-Year Tournament-Total Numerator Slice
+
+## Task Completed
+
+Added `australian-open-2021-tournament-total` as a prior-year Australian Open tournament-total `competition_prize_money` numerator row after rechecking official Tennis Australia source semantics.
+
+The row does not answer the primary revenue/profit-share question yet:
+
+- competition prize money / revenue: unavailable
+- competition prize money / profit/surplus: unavailable
+
+The dashboard answerability coverage is now `4/17` for both revenue and profit/surplus. `wimbledon-2025-tournament-total` remains the first default answerable primary-question row.
+
+## Source Verification
+
+- Official Tennis Australia PDF: `https://www.tennis.com.au/wp-content/uploads/2025/01/AO25-Prize-Money.pdf`
+  - Verified the PDF title/source shape is Australian Open prize money for 2021-2025.
+  - Verified the 2021 Australian Open total prize-money line is A$71.0m.
+  - Verified the PDF states all figures are in Australian dollars.
+  - The PDF does not identify a separate player-support, per-diem, travel, hotel, or total-compensation component within the A$71.0m total, so the row is normalized as `competition_prize_money`.
+- No AO-specific tournament revenue/profit/surplus denominator was added.
+  - Tennis Australia organization-level financials remain out of AO tournament ratios unless a future source explicitly bridges the scope.
+
+## Files Changed
+
+- `CHANGELOG.md`
+- `LEARNINGS.md`
+- `README.md`
+- `docs/ARCHITECTURE.md`
+- `docs/DATA_CAVEATS.md`
+- `docs/DATA_MODEL.md`
+- `docs/DATA_SOURCES.md`
+- `docs/FUTURE_WORK.md`
+- `docs/PROJECT_PLAN.md`
+- `docs/TASK_LOG.md`
+- `docs/handoffs/australian-open-2021-prior-year-tournament-total-numerator-slice.md`
+- `src/data/normalized/grandSlam2025MensSingles.json`
+- `src/data/raw/source-metadata/grandSlam2025Sources.json`
+- `src/data/static/seedDatasetMetadata.json`
+- `src/test/dashboardMetrics.test.ts`
+- `src/test/fixtures/seedDatasetExpectations.ts`
+
+## Current Branch
+
+`main`
+
+## Commit Hash
+
+Implementation commit: `1bf44bb` (`feat: add australian open 2021 numerator slice`).
+
+## Push Status
+
+Pending.
+
+## Commands Run And Results
+
+- `git status --short --branch` - started clean on `main...origin/main`.
+- `git fetch origin main` - first sandboxed attempt failed on `.git/FETCH_HEAD`; approved retry passed and confirmed latest `main`.
+- `git rev-parse HEAD` and `git rev-parse origin/main` - both were `2452be8a0568fd6068c2183fd1f953f18cf717fd` before editing.
+- Read required docs: `LEARNINGS.md`, `AGENTS.md`, `README.md`, `docs/TASK_LOG.md`, `docs/DATA_MODEL.md`, `docs/DATA_SOURCES.md`, `docs/DATA_CAVEATS.md`, `docs/FUTURE_WORK.md`, and `docs/handoffs/australian-open-2022-prior-year-tournament-total-numerator-slice.md`.
+- Used web/source verification for the official Tennis Australia `AO25-Prize-Money.pdf` source.
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 33 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 48 tests.
+- `npm run build` - passed.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `git diff --check` - passed.
+- `git add ...` with explicit changed paths - passed after approved git metadata access.
+- `git commit -m "feat: add australian open 2021 numerator slice"` - passed; created implementation commit `1bf44bb`.
+
+All npm commands used the known working Node path:
+
+```bash
+PATH=/Users/vanshkumar/.local/share/mise/installs/node/24.16.0/bin:/usr/bin:/bin:/usr/sbin:/sbin /Users/vanshkumar/.local/share/mise/installs/node/24.16.0/bin/npm ...
+```
+
+## Implementation Notes
+
+- No schema change was needed; schema version remains `2`.
+- Reused source metadata id `ao-2025-prize-money-pdf` and updated its notes to mention the 2021 A$71.0m coverage explicitly.
+- Added record `australian-open-2021-tournament-total`:
+  - `prizeMoneyScope.type: "tournament_total"`
+  - `prizeMoneyScope.numeratorCategory: "competition_prize_money"`
+  - `prizePool.amount: 71000000`
+  - `prizePool.currency: "AUD"`
+  - `prizePool.status: "official"`
+  - `revenue.status: "unavailable"`
+  - `profitOrSurplus.status: "unavailable"`
+- Preserved record order so Australian Open 2021 follows Australian Open 2022, and `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Tests now verify the 2021 AO row, high/medium confidence coverage of `13/17` and `4/17`, primary answerability coverage of `4/17`, AO 2025-over-2024 growth of +11.6%, AO 2024-over-2023 growth of +13.1%, AO 2023-over-2022 growth of +3.4%, and AO 2022-over-2021 growth of +4.2%.
+
+## Known Issues And Caveats
+
+- Australian Open 2021 financial denominators are not normalized because no AO-specific compatible revenue/profit/surplus source is in the active dataset.
+- Tennis Australia organization-level annual-report values remain out of AO tournament denominators unless a future source bridges the scope explicitly.
+- The AO25 PDF does not show a separate support/per-diem line; if a future source separates support or total compensation from competition prize money, keep that support outside the clean numerator row.
+- The AO25 PDF covers tournament-total prize-money lines for 2021-2025. Further Australian Open older-year expansion needs a separate official AO/Tennis Australia source with compatible semantics.
+- Non-Wimbledon revenue and profit/surplus denominators remain unavailable.
+- The file names `grandSlam2025Sources.json` and `grandSlam2025MensSingles.json` are historical and now contain tournament-total, context, prior-year, and 2026 rows; no filename/schema migration was needed for this slice.
+
+## Assumptions Made
+
+- The AO25 PDF's 2021 `TOTAL` line is semantically comparable to the 2025, 2024, 2023, and 2022 AO tournament-total prize-money rows because it is in the same official prize-money table and no support component is separated.
+- It is safer to leave AO 2021 revenue/profit unavailable than to map Tennis Australia organization-level financials to the tournament without an explicit bridge.
+
+## Next Task Objective
+
+- Continue primary-question data expansion only where official/source semantics remain compatible.
+- Keep broader total prize money/per-diem/support lines separate from clean competition prize money.
+- Keep currency, numerator category, denominator kind, source confidence, and caveats explicit.
+- Preserve `wimbledon-2025-tournament-total` as the first default answerable row.
+- Keep schema version `2` unless a verified source shape truly requires a contract change.
+- Recommended candidates:
+  - Recheck US Open 2024 tournament-total prize-money source semantics and add a clean competition-prize-money row only if official/source semantics distinguish competition prize money from total player compensation/support.
+  - Recheck Australian Open pre-2021 official source availability only if a separate AO/Tennis Australia source preserves the same prize-money semantics.
+  - Extend Wimbledon older-year denominator coverage only if official prize-money PDFs and AELTC Championships Ltd accounts keep the clean numerator and operating-company denominator bridge.
+
+## Exact Next Thread Instructions
+
+Use xhigh effort/thinking for this thread.
+
+You are Codex working in the standalone `tennis-prize-money` repo. Work from latest `main`; the Australian Open 2021 prior-year tournament-total numerator slice has been completed in the current prior thread.
+
+Before starting, read in full:
+
+- `LEARNINGS.md`
+- `AGENTS.md`
+- `README.md`
+- `docs/TASK_LOG.md`
+- `docs/DATA_MODEL.md`
+- `docs/DATA_SOURCES.md`
+- `docs/DATA_CAVEATS.md`
+- `docs/FUTURE_WORK.md`
+- `docs/handoffs/australian-open-2021-prior-year-tournament-total-numerator-slice.md`
+
+Goal:
+Continue primary-question data expansion only where official/source semantics remain compatible.
+
+Expected work:
+
+- Verify official/source semantics before adding any real row.
+- Keep broader total prize money/per-diem/support lines separate from clean competition prize money.
+- Keep currency, numerator category, denominator kind, source confidence, and caveats explicit.
+- Preserve existing row order so `wimbledon-2025-tournament-total` remains the first default answerable row.
+- Do not fabricate real data.
+- Recommended next slice: recheck US Open 2024 tournament-total prize-money source semantics and add a clean `competition_prize_money` row only if official/source semantics distinguish competition prize money from total player compensation/support. If semantics are unclear, leave the row unnormalized and choose another compatible slice.
+- Keep US Open 2024 revenue and profit/surplus unavailable unless a US Open-specific compatible financial denominator is verified.
+- Alternative slice: recheck Australian Open pre-2021 official source availability only if a separate AO/Tennis Australia source preserves the same prize-money semantics.
+- Update tests and dashboard behavior only as needed; schema should stay version `2` unless a verified source shape truly requires a contract change.
+- Update README, data model, sources, caveats, future work, task log, LEARNINGS, changelog if appropriate, and create a new handoff.
+- Run lint, typecheck, tests, build, refresh validation, and `git diff --check`.
+- Commit and push to `main` when complete.
+- If creating another Codex thread, it must use xhigh effort/thinking and the seed prompt must say: "Use xhigh effort/thinking for this thread."
+
+The next Codex thread for this project must be created with xhigh effort/thinking.

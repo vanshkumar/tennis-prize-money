@@ -724,3 +724,40 @@ Push:
 Next:
 
 - Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: continue Australian Open older-year numerator expansion with 2021 only if the official AO/Tennis Australia source semantics remain compatible, while keeping AO revenue/profit unavailable unless an AO-specific compatible financial denominator is verified.
+
+## 2026-07-05 - Australian Open 2021 Prior-Year Tournament-Total Numerator Slice
+
+Status: Complete
+
+Branch: `main`
+
+Implementation commit: `1bf44bb` (`feat: add australian open 2021 numerator slice`)
+
+Summary:
+
+- Confirmed latest `main` was up to date with `origin/main` at `2452be8` before editing.
+- Rechecked the official Tennis Australia `AO25-Prize-Money.pdf` source semantics: the 2021-2025 table lists a 2021 Australian Open total prize-money line of A$71.0m and states all figures are in Australian dollars.
+- Added `australian-open-2021-tournament-total` as a prior-year tournament-total `competition_prize_money` row using the official A$71.0m total prize-money line.
+- Kept Australian Open 2021 revenue and profit/surplus unavailable because no AO-specific compatible financial denominator was verified.
+- Kept Tennis Australia organization-level revenue/surplus out of AO tournament revenue/profit ratios.
+- Preserved schema version `2` and the default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated source metadata, normalized data, tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+- Primary-question answerability coverage is now `4/17` for both revenue and profit/surplus.
+
+Checks:
+
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 33 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 48 tests.
+- `npm run build` - passed.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `git diff --check` - passed.
+
+Push:
+
+- Pending.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: continue primary-question expansion without weakening source semantics; likely candidates are a US Open 2024 tournament-total row only if official/source semantics cleanly separate competition prize money from total player compensation/support, an Australian Open pre-2021 row only if a separate official AO/Tennis Australia source keeps the same prize-money semantics, or another Wimbledon older-year denominator row only if official PDFs/accounts remain compatible.
