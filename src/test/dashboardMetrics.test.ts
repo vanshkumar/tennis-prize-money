@@ -556,10 +556,10 @@ describe('validated seed dashboard dataset', () => {
       'Wimbledon',
     ]);
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'high', count: 13, share: 13 / 21 }),
+      expect.objectContaining({ confidence: 'high', count: 13, share: 13 / 23 }),
     );
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'medium', count: 8, share: 8 / 21 }),
+      expect.objectContaining({ confidence: 'medium', count: 10, share: 10 / 23 }),
     );
     expect(kpis).toHaveLength(9);
     expect(kpis.map((kpi) => kpi.label)).toContain('Prize pool YoY growth');
@@ -651,16 +651,16 @@ describe('validated seed dashboard dataset', () => {
     expect(coverage).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        value: '4/21',
+        value: '4/23',
         answerableCount: 4,
-        totalCount: 21,
+        totalCount: 23,
         unavailable: false,
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        value: '4/21',
+        value: '4/23',
         answerableCount: 4,
-        totalCount: 21,
+        totalCount: 23,
         unavailable: false,
       }),
     ]);
@@ -792,6 +792,12 @@ describe('validated seed dashboard dataset', () => {
     const compensationRecord2024 = dashboardDataset.records.find(
       (record) => record.id === 'us-open-2024-total-player-compensation',
     );
+    const competitionRecord2022 = dashboardDataset.records.find(
+      (record) => record.id === 'us-open-2022-tournament-total',
+    );
+    const compensationRecord2022 = dashboardDataset.records.find(
+      (record) => record.id === 'us-open-2022-total-player-compensation',
+    );
     const competitionRecord2021 = dashboardDataset.records.find(
       (record) => record.id === 'us-open-2021-tournament-total',
     );
@@ -803,6 +809,8 @@ describe('validated seed dashboard dataset', () => {
     expect(compensationRecord2025).toBeDefined();
     expect(competitionRecord2024).toBeDefined();
     expect(compensationRecord2024).toBeDefined();
+    expect(competitionRecord2022).toBeDefined();
+    expect(compensationRecord2022).toBeDefined();
     expect(competitionRecord2021).toBeDefined();
     expect(compensationRecord2021).toBeDefined();
     if (
@@ -810,6 +818,8 @@ describe('validated seed dashboard dataset', () => {
       !compensationRecord2025 ||
       !competitionRecord2024 ||
       !compensationRecord2024 ||
+      !competitionRecord2022 ||
+      !compensationRecord2022 ||
       !competitionRecord2021 ||
       !compensationRecord2021
     ) {
@@ -904,6 +914,57 @@ describe('validated seed dashboard dataset', () => {
       reason: 'missing_data',
     });
     expect(calculatePrizePoolToRevenue(compensationRecord2024)).toMatchObject({
+      status: 'unavailable',
+      reason: 'incompatible_numerator_kind',
+    });
+
+    expect(competitionRecord2022).toMatchObject({
+      confidence: 'medium',
+      prizeMoneyScope: {
+        type: 'tournament_total',
+        numeratorCategory: 'competition_prize_money',
+      },
+      prizePool: {
+        amount: 57530100,
+        currency: 'USD',
+        status: 'derived',
+      },
+      revenue: {
+        amount: null,
+        currency: null,
+        status: 'unavailable',
+        kind: 'unknown',
+      },
+      profitOrSurplus: {
+        amount: null,
+        currency: null,
+        status: 'unavailable',
+        kind: 'unknown',
+      },
+    });
+    expect(competitionRecord2022.prizePool.notes).toContain('$60.102m');
+    expect(competitionRecord2022.prizePool.notes).toContain('$2.5719m in per diem');
+    expect(competitionRecord2022.caveats.join(' ')).toMatch(/medium-confidence/i);
+    expect(competitionRecord2022.caveats.join(' ')).toMatch(/per-diem separation/i);
+    expect(compensationRecord2022).toMatchObject({
+      prizeMoneyScope: {
+        numeratorCategory: 'total_player_compensation',
+      },
+      prizePool: {
+        amount: 60102000,
+        currency: 'USD',
+        status: 'reported',
+      },
+    });
+    expect(calculatePrizePoolToRevenue(competitionRecord2022)).toMatchObject({
+      status: 'unavailable',
+      reason: 'missing_data',
+    });
+    expect(calculatePrizePoolToProfitOrSurplus(competitionRecord2022)).toMatchObject({
+      status: 'unavailable',
+      reason: 'missing_data',
+    });
+    expect(calculatePrizePoolToRevenue(compensationRecord2022)).toMatchObject({
       status: 'unavailable',
       reason: 'incompatible_numerator_kind',
     });
@@ -1106,6 +1167,13 @@ describe('validated seed dashboard dataset', () => {
     ).toMatchObject({
       value: '+23.6%',
       note: 'Compared with 2024 Tournament total.',
+      unavailable: false,
+    });
+    expect(
+      yearOverYearRows.find((row) => row.id === 'us-open-2022-tournament-total'),
+    ).toMatchObject({
+      value: '+5.8%',
+      note: 'Compared with 2021 Tournament total.',
       unavailable: false,
     });
     expect(yearOverYearRows[0]).toMatchObject({
