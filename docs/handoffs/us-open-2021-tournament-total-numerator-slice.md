@@ -72,7 +72,7 @@ Implementation commit: `e9e52a0` (`feat: add us open 2021 numerator slice`).
 
 ## Push Status
 
-Implementation commit `e9e52a0` has been created locally. Push status will be finalized after this handoff commit.
+Pushed to `origin/main`. Implementation commit `e9e52a0` and handoff commit `88eb2f7` were pushed successfully.
 
 ## Commands Run And Results
 
@@ -92,6 +92,9 @@ Implementation commit `e9e52a0` has been created locally. Push status will be fi
 - `git diff --check` - passed.
 - `git add ...` with explicit changed paths - passed after approved git metadata access.
 - `git commit -m "feat: add us open 2021 numerator slice"` - passed after approved git metadata access; created implementation commit `e9e52a0`.
+- `git add LEARNINGS.md docs/TASK_LOG.md docs/handoffs/us-open-2021-tournament-total-numerator-slice.md` - passed after approved git metadata access.
+- `git commit -m "docs: finalize us open 2021 handoff"` - passed after approved git metadata access; created handoff commit `88eb2f7`.
+- `git push origin main` - first sandboxed attempt failed on DNS/network access; approved retry pushed `e9e52a0` and `88eb2f7` to `origin/main`.
 
 All npm commands used the known working Node path:
 
