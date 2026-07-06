@@ -946,3 +946,52 @@ Next:
 - Keep US Open 2023 unnormalized unless a future compatible source supplies the full clean subtotal/split.
 - Keep non-Wimbledon revenue and profit/surplus unavailable unless a tournament-specific compatible financial denominator is verified.
 - Do not pull data before 2021 for any Slam in the current expansion phase.
+
+## 2026-07-06 - Wimbledon 2021 Older-Year Denominator Slice
+
+Status: Complete
+
+Branch: `main`
+
+Implementation commit: `9bceef7` (`feat: add wimbledon 2021 denominator slice`)
+
+Summary:
+
+- Confirmed latest `main` started clean and aligned with `origin/main` before editing.
+- Rechecked Roland Garros 2023/2022/2021 source semantics first. The available official 2023 article and secondary 2023/2022 split leads did not provide a clean tournament-total `competition_prize_money` subtotal separated from other events plus per diem/support-style components, and no official clean 2021 split was verified.
+- Chose the Wimbledon 2021 fallback after finding an official Wimbledon Prize Money and Finance historical table with the 2021 £35.016m total prize-money line.
+- Added `wimbledon-2021-tournament-total` as a high-confidence tournament-total `competition_prize_money` row using £35.016m, cross-checked with a secondary 2021 tournament-page note that the figure excludes accommodation and COVID testing support.
+- Verified the AELTC Championships Ltd 2021 Companies House accounts from rendered scanned pages. The accounts report turnover of £287.970m and operating profit of £43.331m for the year ended 31 July 2021, with the same principal-contracting-party bridge to The Championships.
+- Caveated the 2021 profit denominator because operating profit includes £6.673m in insurance income related to the cancelled 2020 Championships.
+- Kept Wimbledon 2026 revenue/profit unavailable, kept non-Wimbledon revenue/profit unavailable, and preserved schema version `2`.
+- Preserved default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+- Primary-question answerability coverage is now `5/25` for both revenue and profit/surplus.
+
+Checks:
+
+- Roland Garros 2023/2022/2021 source-semantics recheck - completed; no clean row normalized.
+- Official Wimbledon Prize Money and Finance historical table check - completed.
+- Secondary Wimbledon 2021 support-exclusion cross-check - completed.
+- AELTC Championships Ltd 2021 scanned-account page verification - completed.
+- JSON parse validation for static data files - passed.
+- `npm run test -- src/test/dashboardMetrics.test.ts` - passed, 34 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 49 tests.
+- `npm run build` - passed.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `git diff --check` - passed.
+
+Push:
+
+- Pending.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the next primary-question data slice or closure audit.
+- Continue 2021-and-newer coverage without weakening source semantics.
+- Recommended next slice: perform a deeper Roland Garros 2023/2022/2021 official-source archive audit and add a clean `competition_prize_money` row only if official/source semantics distinguish competition prize money from per diems, support, legends/exhibition payments, or other compensation.
+- If Roland Garros 2023/2022/2021 remains unclear, document the exhausted leads and consider the 2021-and-newer manual expansion phase complete until new official sources appear.
+- Keep US Open 2023 unnormalized unless a future compatible source supplies the full clean subtotal/split.
+- Do not pull data before 2021 for any Slam in the current expansion phase.
