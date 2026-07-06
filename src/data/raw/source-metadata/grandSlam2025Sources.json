@@ -170,6 +170,26 @@
     "notes": "Secondary cross-check that the listed 2024 US Open event payout rows sum to $68.756m and that the remaining $6.244m of the $75.0m total is per diem. Used only as corroboration for keeping the clean competition-prize subtotal separate from total player compensation."
   },
   {
+    "id": "us-open-2021-compensation-release",
+    "title": "2021 US Open offers record prize money, $57.5 million in total player compensation",
+    "publisher": "United States Tennis Association / US Open",
+    "url": "https://www.usopen.org/en_US/news/articles/2021-08-23/2021_us_open_offers_record_prize_money_575_million_in_total_player_compensation.html",
+    "sourceType": "press_release",
+    "accessedAt": "2026-07-06",
+    "confidence": "high",
+    "notes": "Official US Open release confirming a rounded $57.5m in 2021 prize money and total player compensation, nearly $6m for qualifying, and prize-money increases across singles, doubles, mixed doubles, and wheelchair competitions. Rendered official page text was verified in-browser."
+  },
+  {
+    "id": "us-open-2021-secondary-split-crosscheck",
+    "title": "2021 US Open prize-money table",
+    "publisher": "Wikipedia, citing the official US Open prize-money release",
+    "url": "https://pt.wikipedia.org/wiki/US_Open_de_2021#Premia%C3%A7%C3%A3o",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-06",
+    "confidence": "medium",
+    "notes": "Secondary split between $53.75944m in listed singles, doubles, mixed doubles, and qualifying event payouts, $0.600m in other competition events, $3.10256m in estimated per diem, and $57.462m total. Used as corroboration for keeping per diem separate from the clean competition-prize subtotal."
+  },
+  {
     "id": "us-open-2025-compensation-release",
     "title": "2025 US Open prize money sets record for largest purse in tennis history",
     "publisher": "United States Tennis Association / US Open",

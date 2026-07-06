@@ -556,10 +556,10 @@ describe('validated seed dashboard dataset', () => {
       'Wimbledon',
     ]);
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'high', count: 13, share: 13 / 19 }),
+      expect.objectContaining({ confidence: 'high', count: 13, share: 13 / 21 }),
     );
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'medium', count: 6, share: 6 / 19 }),
+      expect.objectContaining({ confidence: 'medium', count: 8, share: 8 / 21 }),
     );
     expect(kpis).toHaveLength(9);
     expect(kpis.map((kpi) => kpi.label)).toContain('Prize pool YoY growth');
@@ -651,16 +651,16 @@ describe('validated seed dashboard dataset', () => {
     expect(coverage).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        value: '4/19',
+        value: '4/21',
         answerableCount: 4,
-        totalCount: 19,
+        totalCount: 21,
         unavailable: false,
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        value: '4/19',
+        value: '4/21',
         answerableCount: 4,
-        totalCount: 19,
+        totalCount: 21,
         unavailable: false,
       }),
     ]);
@@ -792,16 +792,26 @@ describe('validated seed dashboard dataset', () => {
     const compensationRecord2024 = dashboardDataset.records.find(
       (record) => record.id === 'us-open-2024-total-player-compensation',
     );
+    const competitionRecord2021 = dashboardDataset.records.find(
+      (record) => record.id === 'us-open-2021-tournament-total',
+    );
+    const compensationRecord2021 = dashboardDataset.records.find(
+      (record) => record.id === 'us-open-2021-total-player-compensation',
+    );
 
     expect(competitionRecord2025).toBeDefined();
     expect(compensationRecord2025).toBeDefined();
     expect(competitionRecord2024).toBeDefined();
     expect(compensationRecord2024).toBeDefined();
+    expect(competitionRecord2021).toBeDefined();
+    expect(compensationRecord2021).toBeDefined();
     if (
       !competitionRecord2025 ||
       !compensationRecord2025 ||
       !competitionRecord2024 ||
-      !compensationRecord2024
+      !compensationRecord2024 ||
+      !competitionRecord2021 ||
+      !compensationRecord2021
     ) {
       throw new Error('Expected US Open tournament-total fixtures to exist');
     }
@@ -894,6 +904,57 @@ describe('validated seed dashboard dataset', () => {
       reason: 'missing_data',
     });
     expect(calculatePrizePoolToRevenue(compensationRecord2024)).toMatchObject({
+      status: 'unavailable',
+      reason: 'incompatible_numerator_kind',
+    });
+
+    expect(competitionRecord2021).toMatchObject({
+      confidence: 'medium',
+      prizeMoneyScope: {
+        type: 'tournament_total',
+        numeratorCategory: 'competition_prize_money',
+      },
+      prizePool: {
+        amount: 54359440,
+        currency: 'USD',
+        status: 'derived',
+      },
+      revenue: {
+        amount: null,
+        currency: null,
+        status: 'unavailable',
+        kind: 'unknown',
+      },
+      profitOrSurplus: {
+        amount: null,
+        currency: null,
+        status: 'unavailable',
+        kind: 'unknown',
+      },
+    });
+    expect(competitionRecord2021.prizePool.notes).toContain('$57.5m');
+    expect(competitionRecord2021.prizePool.notes).toContain('$3.10256m in estimated per diem');
+    expect(competitionRecord2021.caveats.join(' ')).toMatch(/medium confidence/i);
+    expect(competitionRecord2021.caveats.join(' ')).toMatch(/per-diem separation/i);
+    expect(compensationRecord2021).toMatchObject({
+      prizeMoneyScope: {
+        numeratorCategory: 'total_player_compensation',
+      },
+      prizePool: {
+        amount: 57462000,
+        currency: 'USD',
+        status: 'reported',
+      },
+    });
+    expect(calculatePrizePoolToRevenue(competitionRecord2021)).toMatchObject({
+      status: 'unavailable',
+      reason: 'missing_data',
+    });
+    expect(calculatePrizePoolToProfitOrSurplus(competitionRecord2021)).toMatchObject({
+      status: 'unavailable',
+      reason: 'missing_data',
+    });
+    expect(calculatePrizePoolToRevenue(compensationRecord2021)).toMatchObject({
       status: 'unavailable',
       reason: 'incompatible_numerator_kind',
     });

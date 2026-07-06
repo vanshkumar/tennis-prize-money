@@ -1624,5 +1624,135 @@
       "US Open revenue and profit/surplus remain unavailable because no tournament-specific financial denominator is included.",
       "USTA organization-level financials must remain separate from US Open tournament denominators."
     ]
+  },
+  {
+    "id": "us-open-2021-tournament-total",
+    "tournament": "US Open",
+    "year": 2021,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "USD",
+    "sourceIds": [
+      "us-open-2021-compensation-release",
+      "us-open-2021-secondary-split-crosscheck"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total listed US Open 2021 competition-event payouts across singles, doubles, mixed doubles, qualifying, and other competition events. Derived from the official total-player-compensation release plus a secondary split that separates estimated per diem from competition payouts."
+    },
+    "prizePool": {
+      "amount": 54359440,
+      "currency": "USD",
+      "status": "derived",
+      "sourceIds": [
+        "us-open-2021-compensation-release",
+        "us-open-2021-secondary-split-crosscheck"
+      ],
+      "notes": "The official US Open release reports a rounded $57.5m in 2021 prize money and total player compensation, nearly $6m for qualifying, and prize-money increases across singles, doubles, mixed doubles, and wheelchair competitions. The secondary split reports $53.75944m in listed event payouts, $0.600m in other competition events, $3.10256m in estimated per diem, and $57.462m total; the clean row excludes the per-diem component."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear tournament-specific US Open 2021 revenue source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear tournament-specific US Open 2021 profit or surplus source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is the medium-confidence US Open 2021 competition-event payout subtotal of $54.35944m, not the official rounded $57.5m total-player-compensation headline.",
+      "The official release anchors total player compensation and competition categories, but the per-diem separation comes from a secondary split; this row remains medium confidence.",
+      "Secondary cross-check separates $3.10256m in estimated per diem from the $57.462m total; per diem remains outside this clean numerator.",
+      "US Open revenue and profit/surplus remain unavailable because no tournament-specific compatible financial denominator is included.",
+      "USTA organization-level financials must remain separate from US Open tournament denominators unless a source bridges the scope explicitly."
+    ]
+  },
+  {
+    "id": "us-open-2021-total-player-compensation",
+    "tournament": "US Open",
+    "year": 2021,
+    "event": "Tournament player compensation",
+    "confidence": "medium",
+    "displayCurrency": "USD",
+    "sourceIds": [
+      "us-open-2021-compensation-release",
+      "us-open-2021-secondary-split-crosscheck"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "total_player_compensation",
+      "notes": "Tournament-level total player compensation, including competition-event payouts plus estimated per diem."
+    },
+    "prizePool": {
+      "amount": 57462000,
+      "currency": "USD",
+      "status": "reported",
+      "sourceIds": [
+        "us-open-2021-compensation-release",
+        "us-open-2021-secondary-split-crosscheck"
+      ],
+      "notes": "Reported 2021 US Open total player compensation. The official release reports a rounded $57.5m total; the secondary split provides a $57.462m total and separates the competition-event subtotal from estimated per diem."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear tournament-specific US Open 2021 revenue source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear tournament-specific US Open 2021 profit or surplus source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "This row is total player compensation, not clean competition prize money.",
+      "The official US Open release reports a rounded $57.5 million in prize money and total player compensation; the separate clean competition-prize-money row excludes the estimated per-diem component identified by the secondary split.",
+      "The $57.462 million total includes estimated per diem beyond the listed competition-event payout subtotal, so it is excluded from revenue and profit/surplus ratios.",
+      "US Open revenue and profit/surplus remain unavailable because no tournament-specific financial denominator is included.",
+      "USTA organization-level financials must remain separate from US Open tournament denominators."
+    ]
   }
 ]
