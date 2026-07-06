@@ -53,7 +53,7 @@ The dashboard answerability coverage is now `4/24` for both revenue and profit/s
 
 ## Commit Hash
 
-Implementation commit: Pending.
+Implementation commit: `21c45c0` (`feat: add roland garros 2024 compensation context`).
 
 ## Push Status
 
@@ -138,7 +138,7 @@ PATH=/Users/vanshkumar/.local/share/mise/installs/node/24.16.0/bin:/usr/bin:/bin
 
 Use xhigh effort/thinking for this thread.
 
-You are Codex working in the standalone `tennis-prize-money` repo. Work from latest `main`; the Roland Garros 2024 total-compensation source-semantics slice has been completed in the current prior thread. Implementation commit is pending until the current thread pushes.
+You are Codex working in the standalone `tennis-prize-money` repo. Work from latest `main`; the Roland Garros 2024 total-compensation source-semantics slice has been completed in the current prior thread. The implementation commit is `21c45c0` (`feat: add roland garros 2024 compensation context`).
 
 Before starting, read in full:
 
