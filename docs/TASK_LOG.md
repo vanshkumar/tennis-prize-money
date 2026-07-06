@@ -687,3 +687,39 @@ Push:
 Next:
 
 - Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: continue Australian Open older-year numerator expansion with 2022 only if the official AO/Tennis Australia source semantics remain compatible, while keeping AO revenue/profit unavailable unless an AO-specific financial denominator is verified.
+
+## 2026-07-05 - Australian Open 2022 Prior-Year Tournament-Total Numerator Slice
+
+Status: Local implementation verified; commit, push, and next-thread creation blocked by Codex approval usage limit.
+
+Branch: `main`
+
+Summary:
+
+- Confirmed latest `main` was up to date with `origin/main` at `59321e8` before editing.
+- Verified the official Tennis Australia `AO25-Prize-Money.pdf` source semantics: the 2021-2025 table lists a 2022 Australian Open total prize-money line of A$74.0m and states all figures are in Australian dollars.
+- Added `australian-open-2022-tournament-total` as a prior-year tournament-total `competition_prize_money` row using the official A$74.0m total prize-money line.
+- Kept Australian Open 2022 revenue and profit/surplus unavailable because no AO-specific compatible financial denominator was verified.
+- Kept Tennis Australia organization-level revenue/surplus out of AO tournament revenue/profit ratios.
+- Preserved schema version `2` and the default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated normalized data, tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+- Primary-question answerability coverage is now `4/16` for both revenue and profit/surplus.
+
+Checks:
+
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 33 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 48 tests.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `npm run build` - passed.
+- `git diff --check` - passed.
+
+Push:
+
+- Not pushed. `git add` with required escalation was rejected because this Codex environment hit its approval usage limit, so no commit or push was attempted after that rejection.
+
+Next:
+
+- When approval capacity is available, stage the explicit changed paths, commit the verified AO 2022 slice, push `main`, update the handoff push status, and create the next xhigh Codex thread.
+- Recommended next data slice after this one is pushed: continue Australian Open older-year numerator expansion with 2021 only if the official AO/Tennis Australia source semantics remain compatible, while keeping AO revenue/profit unavailable unless an AO-specific financial denominator is verified.

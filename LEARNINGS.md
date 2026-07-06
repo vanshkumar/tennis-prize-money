@@ -124,6 +124,11 @@
 - Action: Use the AO25 PDF as a high-confidence source for older AO tournament-total competition-prize numerators when no support component is separated; keep AO revenue/profit unavailable unless an AO-specific financial bridge is verified.
 - Confidence: high
 
+**2026-07-05 - Australian Open 2022 normalization**
+- Observation: Adding the AO25 PDF's A$74.0m 2022 total after the 2023 AO tournament-total row preserved the default Wimbledon answer while enabling same-event Australian Open 2023-over-2022 prize-money growth.
+- Action: Keep older AO tournament-total rows ordered newest-to-oldest after the newer AO totals, and use the same PDF source only for clean numerator rows unless an AO-specific financial bridge is verified.
+- Confidence: high
+
 **2026-07-05 - US Open tournament-total normalization**
 - Observation: Direct crawler/curl reads of the official US Open 2025 release failed or exposed no text, but the rendered official page in the in-app browser verified US$90.0m total player compensation and a separate US$5.0m travel/hotel support component before the prize-money breakdown.
 - Action: For dynamic US Open official pages, try rendered browser verification before relying on secondary-only corroboration; normalize US Open competition-prize rows by excluding explicitly identified support from total player compensation and keep the support-inclusive row separate.

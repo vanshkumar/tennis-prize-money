@@ -351,6 +351,68 @@
     ]
   },
   {
+    "id": "australian-open-2022-tournament-total",
+    "tournament": "Australian Open",
+    "year": 2022,
+    "event": "Tournament total",
+    "confidence": "high",
+    "displayCurrency": "AUD",
+    "sourceIds": [
+      "ao-2025-prize-money-pdf"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total Australian Open 2022 prize money across tournament events. The official Tennis Australia prize-money PDF lists 2022 in a 2021-2025 Australian Open prize-money table and does not identify a separate per-diem or player-support component."
+    },
+    "prizePool": {
+      "amount": 74000000,
+      "currency": "AUD",
+      "status": "official",
+      "sourceIds": [
+        "ao-2025-prize-money-pdf"
+      ],
+      "notes": "Official Tennis Australia 2021-2025 prize-money PDF lists a 2022 Australian Open total of A$74.0m and states all figures are in Australian dollars."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2022 tournament revenue denominator is included; Tennis Australia organization-level financials are not treated as tournament revenue.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2022 tournament profit or surplus denominator is included; Tennis Australia organization-level surplus is not treated as tournament profit/surplus.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is Australian Open 2022 total prize pool of A$74.0m from the official Tennis Australia prize-money PDF.",
+      "The cited Tennis Australia PDF describes this as Australian Open prize money and does not identify a separate per-diem or player-support component; if a future source separates support or compensation, keep it out of this competition-prize-money row.",
+      "Revenue and profit/surplus remain unavailable because no AO-specific compatible financial denominator is included.",
+      "Tennis Australia organization-level revenue or surplus must remain separate from Australian Open tournament denominators unless a source bridges the scope explicitly."
+    ]
+  },
+  {
     "id": "roland-garros-2025-ms",
     "tournament": "Roland Garros",
     "year": 2025,
