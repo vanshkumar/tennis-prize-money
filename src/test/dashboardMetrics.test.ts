@@ -556,10 +556,10 @@ describe('validated seed dashboard dataset', () => {
       'Wimbledon',
     ]);
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'high', count: 13, share: 13 / 23 }),
+      expect.objectContaining({ confidence: 'high', count: 13, share: 13 / 24 }),
     );
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'medium', count: 10, share: 10 / 23 }),
+      expect.objectContaining({ confidence: 'medium', count: 11, share: 11 / 24 }),
     );
     expect(kpis).toHaveLength(9);
     expect(kpis.map((kpi) => kpi.label)).toContain('Prize pool YoY growth');
@@ -651,16 +651,16 @@ describe('validated seed dashboard dataset', () => {
     expect(coverage).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        value: '4/23',
+        value: '4/24',
         answerableCount: 4,
-        totalCount: 23,
+        totalCount: 24,
         unavailable: false,
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        value: '4/23',
+        value: '4/24',
         answerableCount: 4,
-        totalCount: 23,
+        totalCount: 24,
         unavailable: false,
       }),
     ]);
@@ -707,11 +707,14 @@ describe('validated seed dashboard dataset', () => {
     );
   });
 
-  it('keeps Roland Garros total compensation separate without a clean tournament-total prize row', () => {
-    const compensationRecord = dashboardDataset.records.find(
+  it('keeps Roland Garros total compensation separate without clean tournament-total prize rows', () => {
+    const compensationRecord2025 = dashboardDataset.records.find(
       (record) => record.id === 'roland-garros-2025-total-player-compensation',
     );
-    const unsupportedCleanRecord = dashboardDataset.records.find(
+    const compensationRecord2024 = dashboardDataset.records.find(
+      (record) => record.id === 'roland-garros-2024-total-player-compensation',
+    );
+    const unsupportedCleanRecord2025 = dashboardDataset.records.find(
       (record) =>
         record.id === 'roland-garros-2025-tournament-total' ||
         (record.tournament === 'Roland Garros' &&
@@ -719,49 +722,59 @@ describe('validated seed dashboard dataset', () => {
           record.event === 'Tournament total' &&
           record.prizeMoneyScope.numeratorCategory === 'competition_prize_money'),
     );
+    const unsupportedCleanRecord2024 = dashboardDataset.records.find(
+      (record) =>
+        record.id === 'roland-garros-2024-tournament-total' ||
+        (record.tournament === 'Roland Garros' &&
+          record.year === 2024 &&
+          record.event === 'Tournament total' &&
+          record.prizeMoneyScope.numeratorCategory === 'competition_prize_money'),
+    );
 
-    expect(compensationRecord).toBeDefined();
-    expect(unsupportedCleanRecord).toBeUndefined();
-    if (!compensationRecord) {
-      throw new Error('Expected Roland Garros total-compensation fixture to exist');
+    expect(compensationRecord2025).toBeDefined();
+    expect(compensationRecord2024).toBeDefined();
+    expect(unsupportedCleanRecord2025).toBeUndefined();
+    expect(unsupportedCleanRecord2024).toBeUndefined();
+    if (!compensationRecord2025 || !compensationRecord2024) {
+      throw new Error('Expected Roland Garros total-compensation fixtures to exist');
     }
 
-    expect(compensationRecord.prizeMoneyScope).toMatchObject({
+    expect(compensationRecord2025.prizeMoneyScope).toMatchObject({
       type: 'tournament_total',
       numeratorCategory: 'total_player_compensation',
     });
-    expect(compensationRecord.prizePool).toMatchObject({
+    expect(compensationRecord2025.prizePool).toMatchObject({
       amount: 56352000,
       currency: 'EUR',
       status: 'reported',
     });
-    expect(compensationRecord.prizePool.notes).toContain('per diems');
-    expect(compensationRecord.prizePool.notes).toContain('exhibitions');
-    expect(compensationRecord.revenue).toMatchObject({
+    expect(compensationRecord2025.prizePool.notes).toContain('per diems');
+    expect(compensationRecord2025.prizePool.notes).toContain('exhibitions');
+    expect(compensationRecord2025.revenue).toMatchObject({
       amount: null,
       currency: null,
       status: 'unavailable',
       kind: 'unknown',
     });
-    expect(compensationRecord.profitOrSurplus).toMatchObject({
+    expect(compensationRecord2025.profitOrSurplus).toMatchObject({
       amount: null,
       currency: null,
       status: 'unavailable',
       kind: 'unknown',
     });
-    expect(compensationRecord.caveats.join(' ')).toMatch(/not clean competition prize money/i);
-    expect(compensationRecord.caveats.join(' ')).toMatch(
+    expect(compensationRecord2025.caveats.join(' ')).toMatch(/not clean competition prize money/i);
+    expect(compensationRecord2025.caveats.join(' ')).toMatch(
       /No Roland Garros tournament-total competition-prize-money row/i,
     );
-    expect(calculatePrizePoolToRevenue(compensationRecord)).toMatchObject({
+    expect(calculatePrizePoolToRevenue(compensationRecord2025)).toMatchObject({
       status: 'unavailable',
       reason: 'incompatible_numerator_kind',
     });
-    expect(calculatePrizePoolToProfitOrSurplus(compensationRecord)).toMatchObject({
+    expect(calculatePrizePoolToProfitOrSurplus(compensationRecord2025)).toMatchObject({
       status: 'unavailable',
       reason: 'incompatible_numerator_kind',
     });
-    expect(getPrimaryQuestionRows(compensationRecord)).toEqual([
+    expect(getPrimaryQuestionRows(compensationRecord2025)).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
         eyebrow: 'Needs competition prize money',
@@ -774,6 +787,41 @@ describe('validated seed dashboard dataset', () => {
         eyebrow: 'Needs competition prize money',
         numeratorLabel: 'Total player compensation (not used)',
         numeratorValue: '€56,352,000',
+        unavailable: true,
+      }),
+    ]);
+
+    expect(compensationRecord2024.prizeMoneyScope).toMatchObject({
+      type: 'tournament_total',
+      numeratorCategory: 'total_player_compensation',
+    });
+    expect(compensationRecord2024.prizePool).toMatchObject({
+      amount: 53478000,
+      currency: 'EUR',
+      status: 'reported',
+    });
+    expect(compensationRecord2024.prizePool.notes).toContain('Legends Trophy');
+    expect(compensationRecord2024.prizePool.notes).toContain('Per Diem');
+    expect(compensationRecord2024.prizePool.notes).toContain('other events plus estimated per diem');
+    expect(compensationRecord2024.caveats.join(' ')).toMatch(/not clean competition prize money/i);
+    expect(compensationRecord2024.caveats.join(' ')).toMatch(/bundles other events/i);
+    expect(calculatePrizePoolToRevenue(compensationRecord2024)).toMatchObject({
+      status: 'unavailable',
+      reason: 'incompatible_numerator_kind',
+    });
+    expect(getPrimaryQuestionRows(compensationRecord2024)).toEqual([
+      expect.objectContaining({
+        id: 'revenue-share',
+        eyebrow: 'Needs competition prize money',
+        numeratorLabel: 'Total player compensation (not used)',
+        numeratorValue: '€53,478,000',
+        unavailable: true,
+      }),
+      expect.objectContaining({
+        id: 'profit-surplus-share',
+        eyebrow: 'Needs competition prize money',
+        numeratorLabel: 'Total player compensation (not used)',
+        numeratorValue: '€53,478,000',
         unavailable: true,
       }),
     ]);

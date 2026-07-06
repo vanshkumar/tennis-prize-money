@@ -19,6 +19,7 @@
 - Added a US Open 2022 tournament-total competition-prize row using a medium-confidence US$57.5301m event-payout subtotal while preserving the US$60.102m per-diem-inclusive total-prize-money row as support-inclusive context.
 - Added a US Open 2021 tournament-total competition-prize row using a medium-confidence US$54.35944m event-payout subtotal while preserving the US$57.462m total-player-compensation row as support-inclusive context.
 - Added a Roland Garros 2025 total-player-compensation context row using AP's €56.352m support-inclusive semantics, while leaving a clean Roland Garros tournament-total competition-prize row unnormalized until an official split is verified.
+- Added a Roland Garros 2024 total-player-compensation context row using the official press kit's €53.478m support-inclusive semantics, while leaving a clean Roland Garros tournament-total competition-prize row unnormalized because the available split bundles other events with estimated per diem.
 - Added a Wimbledon 2023 tournament-total prior-year row using £43.25m total tennis events prize money and compatible AELTC Championships Ltd operating-company turnover/profit denominators.
 - Added a Wimbledon 2022 tournament-total prior-year row using £38.9m total tennis events prize money and compatible AELTC Championships Ltd operating-company turnover/profit denominators.
 - Added a Wimbledon 2026 tournament-total competition-prize row using £62.55m total tennis events prize money while keeping 2026 revenue/profit unavailable until same-year AELTC Championships Ltd accounts exist.

@@ -701,6 +701,70 @@
     ]
   },
   {
+    "id": "roland-garros-2024-total-player-compensation",
+    "tournament": "Roland Garros",
+    "year": 2024,
+    "event": "Tournament player compensation",
+    "confidence": "medium",
+    "displayCurrency": "EUR",
+    "sourceIds": [
+      "roland-garros-2024-press-kit-prize-money",
+      "roland-garros-2024-secondary-split-crosscheck"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "total_player_compensation",
+      "notes": "Tournament-level total prize money/player compensation for Roland Garros 2024, including competition prize money plus Legends Trophy prize money and per diem."
+    },
+    "prizePool": {
+      "amount": 53478000,
+      "currency": "EUR",
+      "status": "reported",
+      "sourceIds": [
+        "roland-garros-2024-press-kit-prize-money"
+      ],
+      "notes": "Official Roland Garros 2024 press kit reports €53.478m total prize money and states that the total includes Legends Trophy prize money and Per Diem daily accommodation allowance. A secondary table citing the press kit separates €51.260m for listed events above from €2.218m in other events plus estimated per diem, but that bundled remainder is not a clean competition-prize split."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear Roland Garros 2024 tournament revenue denominator is included; FFT organization-level financials are not treated as tournament revenue.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear Roland Garros 2024 tournament profit or surplus denominator is included; FFT organization-level financials are not treated as tournament profit/surplus.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "This row is total player compensation/support, not clean competition prize money.",
+      "The official press kit says the €53.478m total includes Legends Trophy prize money and Per Diem daily accommodation allowance.",
+      "The secondary split bundles other events with estimated per diem, so no clean Roland Garros 2024 tournament-total competition-prize-money row is normalized in this slice.",
+      "Revenue and profit/surplus remain unavailable because no tournament-specific compatible financial denominator is included.",
+      "FFT organization-level revenue, profit, or surplus must remain separate from Roland Garros tournament denominators unless a source bridges the scope explicitly."
+    ]
+  },
+  {
     "id": "wimbledon-2025-ms",
     "tournament": "Wimbledon",
     "year": 2025,

@@ -50,6 +50,26 @@
     "notes": "AP reports total player compensation at the 2025 French Open of €56.352m and says that total includes per diems and money paid to former players taking part in exhibitions. Used as support-inclusive context, not as clean competition prize money."
   },
   {
+    "id": "roland-garros-2024-press-kit-prize-money",
+    "title": "Press Kit Roland Garros 2024",
+    "publisher": "Federation Francaise de Tennis / Roland Garros",
+    "url": "https://fft-rg-commun-news.cdn.prismic.io/fft-rg-commun-news/beb0c171-022a-4b42-8c1e-3965109997ee_DP+ROLAND+GARROS+2024+UK.pdf",
+    "sourceType": "official_report",
+    "accessedAt": "2026-07-06",
+    "confidence": "high",
+    "notes": "Official Roland Garros 2024 press kit. It reports €53.478m total prize money and states that the total includes Legends Trophy prize money and Per Diem daily accommodation allowance, so the headline total is used only as support-inclusive context."
+  },
+  {
+    "id": "roland-garros-2024-secondary-split-crosscheck",
+    "title": "2024 Roland Garros prize-money table",
+    "publisher": "Wikipedia, citing the official Roland Garros 2024 press kit",
+    "url": "https://pt.wikipedia.org/wiki/Torneio_de_Roland_Garros_de_2024#Premia%C3%A7%C3%A3o",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-06",
+    "confidence": "medium",
+    "notes": "Secondary table citing the official press kit. It separates €51.260m for listed events above from €2.218m in other events plus estimated per diem, but because other events and per diem are bundled, it does not support a clean full tournament-total competition-prize row."
+  },
+  {
     "id": "wimbledon-2026-prize-money-pdf",
     "title": "The Championships, Wimbledon 2026 Prize Money",
     "publisher": "The All England Lawn Tennis Club / Wimbledon",

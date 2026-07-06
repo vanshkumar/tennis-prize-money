@@ -2,7 +2,7 @@
 
 ## Current Dataset
 
-The active dataset is a small sourced seed for Grand Slam economics. It includes 2025 men's singles competition-prize rows for the Australian Open, Roland Garros, Wimbledon, and the US Open, Australian Open 2025, 2024, 2023, 2022, and 2021 tournament-level competition-prize rows with unavailable financial denominators, US Open 2025, 2024, 2022, and 2021 tournament-level competition-prize rows with unavailable financial denominators, Wimbledon 2026 tournament-level competition prize money with unavailable financial denominators, Wimbledon 2025, 2024, 2023, and 2022 tournament-level competition-prize rows with compatible operating-company financial denominators, plus US Open and Roland Garros tournament-level total-player-compensation context rows.
+The active dataset is a small sourced seed for Grand Slam economics. It includes 2025 men's singles competition-prize rows for the Australian Open, Roland Garros, Wimbledon, and the US Open, Australian Open 2025, 2024, 2023, 2022, and 2021 tournament-level competition-prize rows with unavailable financial denominators, US Open 2025, 2024, 2022, and 2021 tournament-level competition-prize rows with unavailable financial denominators, Wimbledon 2026 tournament-level competition prize money with unavailable financial denominators, Wimbledon 2025, 2024, 2023, and 2022 tournament-level competition-prize rows with compatible operating-company financial denominators, plus US Open and Roland Garros 2025/2024 tournament-level total-player-compensation context rows.
 
 The seed includes compatible tournament-level revenue/profit ratios only for the Wimbledon tournament-total rows. Other records keep revenue, profit, or surplus unavailable rather than estimated.
 
@@ -20,14 +20,16 @@ The US Open 2021 tournament-total competition-prize row uses US$54.35944m. That 
 
 US Open 2023 was rechecked but not normalized. The official US Open/USTA release frames US$65.0m as overall player compensation and describes expanded per diem, travel vouchers, hotel support, meal allowance, and racquet stringing without publishing a full clean staged-event payout subtotal or support split. That source shape is not clear enough for a clean tournament-total `competition_prize_money` row.
 
-The Roland Garros 2025 total-player-compensation row uses AP's €56.352m figure as support-inclusive context. AP says the value includes per diems and payments to former players taking part in exhibitions. No official split was verified that separates clean competition prize money from those support/exhibition components, so no Roland Garros tournament-total `competition_prize_money` row is normalized in this slice. Roland Garros revenue and profit/surplus remain unavailable because no Roland Garros-specific compatible financial denominator is normalized, and FFT organization-level financials should remain out of tournament ratios unless a source bridges the scope explicitly.
+The Roland Garros 2025 total-player-compensation row uses AP's €56.352m figure as support-inclusive context. AP says the value includes per diems and payments to former players taking part in exhibitions. No official split was verified that separates clean competition prize money from those support/exhibition components, so no Roland Garros 2025 tournament-total `competition_prize_money` row is normalized in this slice. Roland Garros revenue and profit/surplus remain unavailable because no Roland Garros-specific compatible financial denominator is normalized, and FFT organization-level financials should remain out of tournament ratios unless a source bridges the scope explicitly.
+
+The Roland Garros 2024 total-player-compensation row uses the official press kit's €53.478m total prize-money figure as support-inclusive context. The press kit says that total includes Legends Trophy prize money and Per Diem daily accommodation allowance. A secondary table citing the press kit separates €51.260m for listed events from €2.218m in other events plus estimated per diem, but that bundled remainder does not separate competition payouts from per diem/support. No clean Roland Garros 2024 tournament-total `competition_prize_money` row is normalized.
 
 The Wimbledon denominators are AELTC Championships Ltd operating-company values for the years ended 31 July 2025, 31 July 2024, 31 July 2023, and 31 July 2022. The 2025 row uses £423.626m turnover and £52.720m operating profit. The 2024 row uses £406.507m turnover and £54.332m operating profit. The 2023 row uses £380.156m turnover and £53.776m operating profit. The 2022 row uses £346.640m turnover and £47.057m operating profit. The company filings say AELTC Championships Ltd is the principal contracting party for The Championships and that the statements reflect the results of, and division of surplus from, The Championships. These denominators are still caveated as operating-company values, not a separate two-week cash ledger, after-tax retained profit, dividends, LTA distributions, or broader organization-level values. Wimbledon 2026 denominators remain unavailable because the AELTC Championships Ltd financial year ending 31 July 2026 had not ended as of 2026-07-05, so same-year accounts were not available.
 
 Roland Garros and US Open event-level rows are medium confidence in this seed:
 
 - Roland Garros uses a secondary source because a clear official FFT/Roland Garros prize-money page was not found in this research pass.
-- The Roland Garros headline €56.352m total is also medium confidence as a normalized context row because the parseable AP source describes support-inclusive compensation, not clean competition prize money.
+- The Roland Garros headline €56.352m and €53.478m totals are also medium confidence as normalized context rows because the parseable sources describe or include support-inclusive compensation, not clean competition prize money.
 - The US Open official prize-money page still does not expose parseable crawler text for the event-level row; event values are cross-checked through a secondary page citing the official source. The official 2025 compensation release was verified in the rendered browser for the US$90.0m total-compensation and US$5.0m support split. The official 2024 release was also verified in the rendered browser, but the clean US$68.756m row remains medium confidence because the release does not state the support/per-diem split as explicitly as 2025. The archived official 2022 prize-money page URL and title were verified, but the archived body did not expose usable prize-money text, so the clean US$57.5301m row also remains medium confidence.
 
 ## Semantic Distinctions
@@ -53,7 +55,7 @@ The Australian Open 2025, 2024, 2023, 2022, and 2021 tournament-total numerators
 
 The US Open 2025, 2024, 2022, and 2021 total-player-compensation rows are not clean competition-prize-money totals. The active clean US Open tournament-total rows are US$85.0m for 2025, US$68.756m for 2024, US$57.5301m for 2022, and US$54.35944m for 2021; the US$90.0m, US$75.0m, US$60.102m, and US$57.462m compensation/support rows remain separate and are excluded from primary ratios.
 
-The Roland Garros 2025 total-player-compensation row is also not a clean competition-prize-money total. The active dataset keeps the €56.352m compensation/support total separate from the event-level men's singles row and excludes it from primary ratios until a source verifies a clean tournament-total competition-prize amount.
+The Roland Garros 2025 and 2024 total-player-compensation rows are also not clean competition-prize-money totals. The active dataset keeps the €56.352m and €53.478m compensation/support totals separate from the event-level men's singles row and excludes them from primary ratios until a source verifies a clean tournament-total competition-prize amount.
 
 ## Currency Caveats
 
@@ -84,7 +86,7 @@ Confidence describes source trust and data clarity, not truth in isolation.
 
 Future source expansion should prefer official tournament pages, annual reports, Form 990s, official financial statements, and official press releases. Secondary sources should be clearly labeled with lower confidence and notes.
 
-The active seed applies this by using high-confidence official Australian Open, Wimbledon, and US Open 2025 tournament-total source semantics, and medium-confidence Roland Garros/US Open event-level rows, US Open 2024 and 2021 tournament-total rows, plus Roland Garros total-player-compensation context where source limitations or support-inclusive semantics remain.
+The active seed applies this by using high-confidence official Australian Open, Wimbledon, and US Open 2025 tournament-total source semantics, and medium-confidence Roland Garros/US Open event-level rows, US Open 2024 and 2021 tournament-total rows, plus Roland Garros 2025/2024 total-player-compensation context where source limitations or support-inclusive semantics remain.
 
 ## Refresh Caveats
 
@@ -98,4 +100,4 @@ The generic JSON manifest adapter expects already-normalized rows. Future offici
 - Unavailable financial rows are displayed as unavailable rather than hidden or silently treated as zero.
 - Available Wimbledon financial rows are displayed with operating-company caveats rather than being smoothed into generic tournament-profit language.
 - Filters that match no records show empty states and reset actions.
-- Source limitations for Roland Garros and US Open event-level rows, support-inclusive semantics for Roland Garros compensation, and medium-confidence US Open 2024/2022/2021 split semantics remain visible instead of being smoothed into high-confidence language.
+- Source limitations for Roland Garros and US Open event-level rows, support-inclusive semantics for Roland Garros 2025/2024 compensation, and medium-confidence US Open 2024/2022/2021 split semantics remain visible instead of being smoothed into high-confidence language.

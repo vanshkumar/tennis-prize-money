@@ -897,3 +897,52 @@ Next:
 - Keep US Open 2023 unnormalized unless a future source supplies a full clean competition-event subtotal or support split.
 - Candidate next slices include Roland Garros 2024/2023/2022/2021 or Wimbledon 2021 only if official/source semantics cleanly separate competition prize money from per diems/support and any denominator bridge remains compatible.
 - Do not pull data before 2021 for any Slam in the current expansion phase.
+
+## 2026-07-06 - Roland Garros 2024 Total-Compensation Source-Semantics Slice
+
+Status: Complete
+
+Branch: `main`
+
+Implementation commit: Pending
+
+Summary:
+
+- Confirmed latest `main` started aligned with `origin/main` before editing.
+- Rechecked Roland Garros 2024 source semantics after the recommended Roland Garros slice.
+- Verified the official Roland Garros 2024 press kit PDF text. It reports €53.478m in total prize money and states the total includes Legends Trophy prize money and Per Diem daily accommodation allowance.
+- Used a secondary table citing the official press kit only as a cross-check; it separates €51.260m in listed events from €2.218m in other events plus estimated per diem, but that bundled remainder is not a clean support split.
+- Did not add a clean Roland Garros 2024 tournament-total `competition_prize_money` row.
+- Added `roland-garros-2024-total-player-compensation` as a tournament-total `total_player_compensation` context row using €53.478m.
+- Kept Roland Garros 2024 revenue and profit/surplus unavailable because no Roland Garros-specific compatible financial denominator was verified.
+- Kept FFT organization-level financials out of Roland Garros tournament revenue/profit ratios.
+- Preserved schema version `2` and the default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+- Primary-question answerability coverage is now `4/24` for both revenue and profit/surplus.
+
+Checks:
+
+- Official Roland Garros 2024 press kit PDF source verification - completed.
+- Secondary split cross-check citing the official press kit - completed.
+- JSON parse validation for static data files - passed.
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 33 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 48 tests.
+- `npm run build` - passed.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `git diff --check` - passed.
+
+Push:
+
+- Pending.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the next primary-question data slice.
+- Continue 2021-and-newer coverage without weakening source semantics.
+- Recommended next slice: recheck Roland Garros 2023/2022/2021 source semantics and add a clean `competition_prize_money` row only if official/source semantics distinguish competition prize money from per diems, support, legends/exhibition payments, or other compensation.
+- Alternative slice: recheck Wimbledon 2021 only if an official prize-money PDF or equivalent official source can be found and denominator semantics remain compatible.
+- Keep US Open 2023 unnormalized unless a future compatible source supplies the full clean subtotal/split.
+- Keep non-Wimbledon revenue and profit/surplus unavailable unless a tournament-specific compatible financial denominator is verified.
+- Do not pull data before 2021 for any Slam in the current expansion phase.

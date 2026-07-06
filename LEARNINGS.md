@@ -174,4 +174,9 @@
 - Action: Treat archive-shell-plus-secondary-split US Open rows as medium confidence, cite the archived official URL only as provenance, and make the secondary split responsible for the clean subtotal/per-diem separation in notes and caveats.
 - Confidence: high
 
+**2026-07-06 - Roland Garros 2024 source semantics**
+- Observation: The official Roland Garros 2024 press kit reports €53.478m in total prize money but states the total includes Legends Trophy prize money and Per Diem daily accommodation allowance; the available secondary split bundles other events with estimated per diem.
+- Action: Keep Roland Garros press-kit headline totals as `total_player_compensation` context unless a source separates all competition-event payouts from per diem/support; do not promote a listed-event subtotal to a full clean tournament-total row when other events and per diem remain bundled.
+- Confidence: high
+
 ## What Has Failed
