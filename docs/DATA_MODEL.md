@@ -2,7 +2,7 @@
 
 ## Current Status
 
-The active dataset is a small sourced seed dataset for Grand Slam competition prize money and clearly labeled player-compensation context. It now includes Australian Open 2025/2024/2023/2022, Wimbledon 2026, and US Open 2025 tournament-total competition-prize numerators, US Open and Roland Garros total-player-compensation context rows, and compatible primary-question financial slices for Wimbledon 2025, 2024, 2023, and 2022 tournament-total competition prize money compared with AELTC Championships Ltd operating-company turnover and operating profit.
+The active dataset is a small sourced seed dataset for Grand Slam competition prize money and clearly labeled player-compensation context. It now includes Australian Open 2025/2024/2023/2022/2021, Wimbledon 2026, and US Open 2025 tournament-total competition-prize numerators, US Open and Roland Garros total-player-compensation context rows, and compatible primary-question financial slices for Wimbledon 2025, 2024, 2023, and 2022 tournament-total competition prize money compared with AELTC Championships Ltd operating-company turnover and operating profit.
 
 The current static JSON contract is schema version `2`. Version `2` adds explicit prize-money scope and numerator-category metadata so player compensation/support totals cannot be mistaken for ratio-eligible competition prize money.
 
@@ -10,7 +10,7 @@ The current static JSON contract is schema version `2`. Version `2` adds explici
 
 - `src/data/static/seedDatasetMetadata.json` stores dataset-level metadata such as schema version, label, notice, data mode, and last refresh timestamp.
 - `src/data/raw/source-metadata/grandSlam2025Sources.json` stores the v0.1 source inventory for Grand Slam prize-money rows.
-- `src/data/normalized/grandSlam2025MensSingles.json` stores the active normalized Grand Slam records: four 2025 men's singles competition-prize rows, Australian Open 2025, 2024, 2023, and 2022 tournament-total competition-prize rows with unavailable financial denominators, US Open 2025 tournament-total competition-prize money with unavailable financial denominators, Wimbledon 2026 tournament-total competition-prize money with unavailable financial denominators, Wimbledon 2025, 2024, 2023, and 2022 tournament-total competition-prize rows with compatible financial denominators, plus US Open and Roland Garros total-player-compensation context rows.
+- `src/data/normalized/grandSlam2025MensSingles.json` stores the active normalized Grand Slam records: four 2025 men's singles competition-prize rows, Australian Open 2025, 2024, 2023, 2022, and 2021 tournament-total competition-prize rows with unavailable financial denominators, US Open 2025 tournament-total competition-prize money with unavailable financial denominators, Wimbledon 2026 tournament-total competition-prize money with unavailable financial denominators, Wimbledon 2025, 2024, 2023, and 2022 tournament-total competition-prize rows with compatible financial denominators, plus US Open and Roland Garros total-player-compensation context rows.
 - `src/data/schemas.ts` defines TypeScript types and runtime validation.
 - `src/data/dashboardDataset.ts` imports the static JSON files, validates them, and exports the typed dataset used by the dashboard.
 - `src/lib/metricEngine.ts` computes derived metrics from validated records.
@@ -50,7 +50,7 @@ Mock source type and mock confidence must be paired. The active seed dataset use
 
 ## Tournament Records
 
-Each normalized record represents one tournament, year, and event. The active seed includes four 2025 men's singles event rows, Australian Open 2025, 2024, 2023, and 2022 tournament-level competition-prize-money rows, US Open 2025 tournament-level competition-prize money, Wimbledon 2026, 2025, 2024, 2023, and 2022 tournament-level competition-prize-money rows, and US Open/Roland Garros tournament-level player-compensation context rows:
+Each normalized record represents one tournament, year, and event. The active seed includes four 2025 men's singles event rows, Australian Open 2025, 2024, 2023, 2022, and 2021 tournament-level competition-prize-money rows, US Open 2025 tournament-level competition-prize money, Wimbledon 2026, 2025, 2024, 2023, and 2022 tournament-level competition-prize-money rows, and US Open/Roland Garros tournament-level player-compensation context rows:
 
 - `id`
 - `tournament`
@@ -79,6 +79,8 @@ For `australian-open-2024-tournament-total`, `prizePool` is the official AO/Tenn
 For `australian-open-2023-tournament-total`, `prizePool` is the official Tennis Australia total prize-money line of A$76.5m from the 2021-2025 Australian Open prize-money PDF. The PDF states all figures are in Australian dollars and does not identify a separate per-diem or support component within the A$76.5m prize-money total, so the row is normalized as `competition_prize_money`. Its revenue and profit/surplus fields remain unavailable because Tennis Australia organization-level financials are not an AO-specific tournament denominator.
 
 For `australian-open-2022-tournament-total`, `prizePool` is the official Tennis Australia total prize-money line of A$74.0m from the same 2021-2025 Australian Open prize-money PDF. The PDF states all figures are in Australian dollars and does not identify a separate per-diem or support component within the A$74.0m prize-money total, so the row is normalized as `competition_prize_money`. Its revenue and profit/surplus fields remain unavailable because Tennis Australia organization-level financials are not an AO-specific tournament denominator.
+
+For `australian-open-2021-tournament-total`, `prizePool` is the official Tennis Australia total prize-money line of A$71.0m from the same 2021-2025 Australian Open prize-money PDF. The PDF states all figures are in Australian dollars and does not identify a separate per-diem or support component within the A$71.0m prize-money total, so the row is normalized as `competition_prize_money`. Its revenue and profit/surplus fields remain unavailable because Tennis Australia organization-level financials are not an AO-specific tournament denominator.
 
 For `wimbledon-2026-tournament-total`, `prizePool` is the official Wimbledon 2026 `TOTAL TENNIS EVENTS PRIZE MONEY` value of £62.55m. The broader PDF line for `TOTAL PRIZE MONEY` is £64.2m, but that includes £1.65m estimated per diems, so the broader total is not used as the clean `competition_prize_money` numerator. Revenue and profit/surplus remain unavailable because the AELTC Championships Ltd financial year ending 31 July 2026 had not ended as of 2026-07-05, so same-year accounts were not available.
 
@@ -179,8 +181,8 @@ Compatible denominator rules:
 - Both financial ratios require `prizeMoneyScope.numeratorCategory: "competition_prize_money"`.
 - Organizer-level revenue/profit/surplus, tour-level revenue, expenses, and unknown values are not treated as compatible denominators.
 - Profit or surplus denominators that are zero or negative are unavailable.
-- The current Wimbledon 2025/2024/2023/2022 tournament-total rows are the only active records with compatible revenue and profit denominators. The 2025 row displays approximately 12.3% of operating-company turnover and 98.6% of operating profit. The 2024 row displays approximately 11.9% of operating-company turnover and 89.4% of operating profit. The 2023 row displays approximately 11.4% of operating-company turnover and 80.4% of operating profit. The 2022 row displays approximately 11.2% of operating-company turnover and 82.7% of operating profit. Current primary-question answerability coverage is `4/16`.
-- Year-over-year prize-pool growth is available for the 2026 Wimbledon tournament-total row against the 2025 tournament-total row and displays approximately +20.3%. The 2025 Wimbledon tournament-total row has a 2024 prior-year comparison and displays approximately +7.1%. The 2024 row has a 2023 prior-year comparison and displays approximately +12.3%. The 2023 row has a 2022 prior-year comparison and displays approximately +11.2%. Australian Open tournament-total rows now provide 2025-over-2024 growth of approximately +11.6%, 2024-over-2023 growth of approximately +13.1%, and 2023-over-2022 growth of approximately +3.4%.
+- The current Wimbledon 2025/2024/2023/2022 tournament-total rows are the only active records with compatible revenue and profit denominators. The 2025 row displays approximately 12.3% of operating-company turnover and 98.6% of operating profit. The 2024 row displays approximately 11.9% of operating-company turnover and 89.4% of operating profit. The 2023 row displays approximately 11.4% of operating-company turnover and 80.4% of operating profit. The 2022 row displays approximately 11.2% of operating-company turnover and 82.7% of operating profit. Current primary-question answerability coverage is `4/17`.
+- Year-over-year prize-pool growth is available for the 2026 Wimbledon tournament-total row against the 2025 tournament-total row and displays approximately +20.3%. The 2025 Wimbledon tournament-total row has a 2024 prior-year comparison and displays approximately +7.1%. The 2024 row has a 2023 prior-year comparison and displays approximately +12.3%. The 2023 row has a 2022 prior-year comparison and displays approximately +11.2%. Australian Open tournament-total rows now provide 2025-over-2024 growth of approximately +11.6%, 2024-over-2023 growth of approximately +13.1%, 2023-over-2022 growth of approximately +3.4%, and 2022-over-2021 growth of approximately +4.2%.
 
 ## Refresh Merge Rules
 
@@ -204,7 +206,7 @@ The test suite covers:
 - rejection of unpaired mock source type/confidence
 - rejection of available money values without source ids
 - ratio unavailability for missing, zero, negative, incompatible-currency, and incompatible-financial-kind cases
-- the normalized Australian Open tournament-total numerators with unavailable financial denominators
+- the normalized Australian Open tournament-total numerators with unavailable financial denominators and 2025-over-2024, 2024-over-2023, 2023-over-2022, plus 2022-over-2021 year-over-year calculations
 - the Roland Garros total-player-compensation context row and absence of a clean Roland Garros tournament-total competition-prize row
 - the normalized US Open tournament-total competition-prize numerator and separate total-player-compensation context row
 - the normalized Wimbledon tournament-total rows and 2026-over-2025, 2025-over-2024, 2024-over-2023, plus 2023-over-2022 year-over-year calculations

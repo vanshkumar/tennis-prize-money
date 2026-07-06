@@ -129,6 +129,11 @@
 - Action: Keep older AO tournament-total rows ordered newest-to-oldest after the newer AO totals, and use the same PDF source only for clean numerator rows unless an AO-specific financial bridge is verified.
 - Confidence: high
 
+**2026-07-05 - Australian Open 2021 normalization**
+- Observation: The official Tennis Australia `AO25-Prize-Money.pdf` source also provides the 2021 Australian Open total prize-money line at A$71.0m with the same Australian-dollar and no-separated-support source shape used for 2023 and 2022.
+- Action: Treat the AO25 PDF as exhausted for Australian Open tournament-total coverage after adding 2021; use separate official AO/Tennis Australia sources for years before 2021 and keep AO financial denominators unavailable without an AO-specific bridge.
+- Confidence: high
+
 **2026-07-05 - US Open tournament-total normalization**
 - Observation: Direct crawler/curl reads of the official US Open 2025 release failed or exposed no text, but the rendered official page in the in-app browser verified US$90.0m total player compensation and a separate US$5.0m travel/hotel support component before the prize-money breakdown.
 - Action: For dynamic US Open official pages, try rendered browser verification before relying on secondary-only corroboration; normalize US Open competition-prize rows by excluding explicitly identified support from total player compensation and keep the support-inclusive row separate.
