@@ -164,4 +164,9 @@
 - Action: Normalize US Open 2024-style event-payout subtotals only as medium-confidence `competition_prize_money` rows, keep the total-compensation headline separate, and stop the current manual historical data pull before 2021.
 - Confidence: high
 
+**2026-07-06 - US Open 2021 normalization**
+- Observation: The rendered official US Open 2021 release anchors a rounded US$57.5m total player-compensation headline and competition-category context, but the clean event/per-diem split comes from a secondary table; the 2023 official release explicitly describes expanded per diem, travel, hotel, meal, and stringing support without a full clean staged-event subtotal.
+- Action: Treat US Open 2021-style clean event-payout subtotals as medium confidence when a secondary split separates per diem, keep the support-inclusive total as a separate context row, and leave US Open 2023 unnormalized until a source distinguishes clean competition prize money from support.
+- Confidence: high
+
 ## What Has Failed

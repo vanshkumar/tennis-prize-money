@@ -802,3 +802,51 @@ Next:
 - Create the next xhigh Codex handoff thread for the next primary-question data slice.
 - Recommended next slice: continue 2021-and-newer coverage without weakening source semantics. Candidate slices include US Open 2023, 2022, or 2021 tournament-total rows only if official/source semantics distinguish clean competition prize money from total player compensation/support, or Wimbledon 2021 only if the official prize-money PDF and AELTC Championships Ltd accounts keep the existing clean numerator and operating-company denominator bridge.
 - Do not pull data before 2021 in the current expansion phase.
+
+## 2026-07-06 - US Open 2021 Tournament-Total Numerator Slice
+
+Status: Complete
+
+Branch: `main`
+
+Implementation commit: `e9e52a0` (`feat: add us open 2021 numerator slice`)
+
+Summary:
+
+- Confirmed latest `main` started clean and aligned with `origin/main` before editing.
+- Rechecked US Open 2023 source semantics first. The rendered official US Open/USTA 2023 release frames US$65.0m as overall player compensation and describes expanded per diem, travel vouchers, hotel support, meal allowance, and racquet stringing without publishing a complete clean staged-event subtotal, so no US Open 2023 row was normalized.
+- Checked the Wimbledon 2021 fallback, but the obvious official prize-money PDF URL now resolves to the current Wimbledon not-found page, so no Wimbledon 2021 row was normalized in this slice.
+- Verified the rendered official US Open/USTA 2021 release, which reports a rounded US$57.5m in prize money and total player compensation, nearly US$6m for qualifying, and prize-money increases across singles, doubles, mixed doubles, and wheelchair competitions.
+- Added `us-open-2021-tournament-total` as a medium-confidence tournament-total `competition_prize_money` row using a US$54.35944m listed/other competition-event payout subtotal from a secondary split that separates estimated per diem.
+- Added `us-open-2021-total-player-compensation` as a separate `total_player_compensation` context row using the secondary split's US$57.462m exact total.
+- Kept US Open 2021 revenue and profit/surplus unavailable because no US Open-specific compatible financial denominator was verified.
+- Kept USTA organization-level financials out of US Open tournament revenue/profit ratios.
+- Preserved schema version `2` and the default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+- Recorded that the 2021 historical floor applies across every Grand Slam in the current manual expansion pass; do not pull pre-2021 data for any Slam.
+- Primary-question answerability coverage is now `4/21` for both revenue and profit/surplus.
+
+Checks:
+
+- Rendered-browser verification of the official US Open 2023 release - completed; source semantics were not clean enough to normalize.
+- Rendered-browser probe of the likely official Wimbledon 2021 prize-money PDF URL - completed; current site returned a not-found page.
+- Rendered-browser verification of the official US Open 2021 release - completed.
+- JSON parse validation for static data files - passed.
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 33 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 48 tests.
+- `npm run build` - passed.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `git diff --check` - passed.
+
+Push:
+
+- Implementation commit `e9e52a0` created locally. Push status will be finalized after the handoff commit.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the next primary-question data slice.
+- Recommended next slice: recheck US Open 2022 tournament-total source semantics and add a clean `competition_prize_money` row only if official/source semantics distinguish competition-event payouts from total player compensation/support. Keep US Open 2022 revenue and profit/surplus unavailable unless a US Open-specific compatible financial denominator is verified.
+- US Open 2023 should remain unnormalized unless a future source supplies a full clean competition-event subtotal or support split.
+- Do not pull data before 2021 for any Slam in the current expansion phase.
