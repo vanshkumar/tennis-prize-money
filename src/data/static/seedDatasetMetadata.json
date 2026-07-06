@@ -4,5 +4,5 @@
   "datasetLabel": "Grand Slam economics seed dataset",
   "datasetNotice": "Seed dataset with sourced 2025 Grand Slam men's singles competition-prize rows, Australian Open 2025/2024/2023/2022/2021, Wimbledon 2026/2025/2024/2023/2022, and US Open 2025/2024/2022/2021 tournament-total competition-prize rows, compatible Wimbledon 2025/2024/2023/2022 operating-company financial denominators, plus explicitly labeled US Open and Roland Garros total-player-compensation context rows. Wimbledon 2026 and non-Wimbledon revenue and profit/surplus remain unavailable unless a clear tournament-level financial source is added.",
   "dataMode": "real",
-  "lastRefreshedAt": "2026-07-06T02:20:53.568Z"
+  "lastRefreshedAt": "2026-07-06T02:25:05.241Z"
 }

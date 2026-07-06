@@ -169,4 +169,9 @@
 - Action: Treat US Open 2021-style clean event-payout subtotals as medium confidence when a secondary split separates per diem, keep the support-inclusive total as a separate context row, and leave US Open 2023 unnormalized until a source distinguishes clean competition prize money from support.
 - Confidence: high
 
+**2026-07-06 - US Open archived-source normalization**
+- Observation: The archived official US Open 2022 prize-money page URL and title can be verified in the rendered browser, but the archived body may expose only page shell text; the usable clean event/per-diem split came from a secondary table citing the official page and ATP Tour.
+- Action: Treat archive-shell-plus-secondary-split US Open rows as medium confidence, cite the archived official URL only as provenance, and make the secondary split responsible for the clean subtotal/per-diem separation in notes and caveats.
+- Confidence: high
+
 ## What Has Failed

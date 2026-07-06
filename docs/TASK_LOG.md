@@ -850,3 +850,50 @@ Next:
 - Recommended next slice: recheck US Open 2022 tournament-total source semantics and add a clean `competition_prize_money` row only if official/source semantics distinguish competition-event payouts from total player compensation/support. Keep US Open 2022 revenue and profit/surplus unavailable unless a US Open-specific compatible financial denominator is verified.
 - US Open 2023 should remain unnormalized unless a future source supplies a full clean competition-event subtotal or support split.
 - Do not pull data before 2021 for any Slam in the current expansion phase.
+
+## 2026-07-06 - US Open 2022 Tournament-Total Numerator Slice
+
+Status: Complete
+
+Branch: `main`
+
+Implementation commit: `31a5f1e` (`feat: add us open 2022 numerator slice`)
+
+Summary:
+
+- Confirmed latest `main` started clean and aligned with `origin/main` before editing.
+- Rechecked US Open 2022 source semantics after the recommended 2022 slice.
+- The current official US Open prize-money page rendered only the current 2025 table and did not expose a 2022 historical table.
+- The 2022 secondary source references an archived official US Open prize-money page; the archive URL and official 2022 page title were verified in the rendered browser, but the archived body did not expose usable prize-money text in this environment.
+- Added `us-open-2022-tournament-total` as a medium-confidence tournament-total `competition_prize_money` row using a US$57.5301m competition-event payout subtotal.
+- Added `us-open-2022-total-player-compensation` as a separate `total_player_compensation` context row using the US$60.102m per-diem-inclusive total prize-money line.
+- Kept US Open 2022 revenue and profit/surplus unavailable because no US Open-specific compatible financial denominator was verified.
+- Kept USTA organization-level financials out of US Open tournament revenue/profit ratios.
+- Preserved schema version `2` and the default dashboard selection behavior; `wimbledon-2025-tournament-total` remains the first answerable primary-question row.
+- Updated tests, README, architecture, data model, source inventory, caveats, future work, project plan, changelog, and project memory.
+- Primary-question answerability coverage is now `4/23` for both revenue and profit/surplus.
+
+Checks:
+
+- Rendered-browser check of the current official US Open prize-money page - completed; page only exposed the current 2025 table.
+- Rendered-browser check of the archived official US Open 2022 prize-money page - completed; official page title verified, archived body not usable.
+- JSON parse validation for static data files - passed.
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 33 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 48 tests.
+- `npm run build` - passed.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `git diff --check` - passed.
+
+Push:
+
+- Pending until the final handoff commit is pushed.
+
+Next:
+
+- Create the next xhigh Codex handoff thread for the next primary-question data slice.
+- Continue 2021-and-newer coverage without weakening source semantics.
+- Keep US Open 2023 unnormalized unless a future source supplies a full clean competition-event subtotal or support split.
+- Candidate next slices include Roland Garros 2024/2023/2022/2021 or Wimbledon 2021 only if official/source semantics cleanly separate competition prize money from per diems/support and any denominator bridge remains compatible.
+- Do not pull data before 2021 for any Slam in the current expansion phase.
