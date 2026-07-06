@@ -995,3 +995,46 @@ Next:
 - If Roland Garros 2023/2022/2021 remains unclear, document the exhausted leads and consider the 2021-and-newer manual expansion phase complete until new official sources appear.
 - Keep US Open 2023 unnormalized unless a future compatible source supplies the full clean subtotal/split.
 - Do not pull data before 2021 for any Slam in the current expansion phase.
+
+## 2026-07-06 - Roland Garros 2023/2022/2021 Archive Audit Closure
+
+Status: Complete
+
+Branch: `main`
+
+Implementation commit: `8f08abc` (`docs: close roland garros archive audit`)
+
+Summary:
+
+- Confirmed latest `main` started clean and aligned with `origin/main` before editing.
+- Performed a deeper Roland Garros 2023/2022/2021 source-semantics audit before adding any row.
+- Verified the official Roland Garros 2023 prize-money article text: it reports a €49.6m total prize-money headline and category-level increases, but it does not publish a clean tournament-total competition-prize subtotal separated from per diem, support, legends/exhibition, or other compensation.
+- Queried the Internet Archive CDX index for official Roland Garros English and French article candidates from 2021-2023; the filtered prize-money/dotation candidate path surfaced the 2023 official article but no compatible 2022 or 2021 official prize-money article.
+- Rechecked secondary 2023/2022/2021 split leads. Each remaining usable split bundles other events with estimated per diem or undisclosed components, so none supports a clean full tournament-total `competition_prize_money` row.
+- Added no normalized data rows. Schema version remains `2`, record count remains `25`, `wimbledon-2025-tournament-total` remains the first default answerable row, and primary-question answerability coverage remains `5/25`.
+- Added a dashboard-metrics test guard that rejects unsupported Roland Garros 2023/2022/2021 tournament-total competition-prize rows.
+- Updated README, data model, source inventory, caveats, future work, changelog, and project memory to document that the current 2021-and-newer manual primary-question expansion phase is closed with known sources.
+
+Checks:
+
+- Official Roland Garros 2023 article text verification - completed.
+- Internet Archive CDX official article candidate audit for `rolandgarros.com/en-us/article/*` and `rolandgarros.com/fr-fr/article/*` from 2021-2023 - completed.
+- Secondary Roland Garros 2023/2022/2021 split-lead recheck - completed.
+- `npm run test -- --run src/test/dashboardMetrics.test.ts` - passed, 34 tests.
+- `npm run lint` - passed.
+- `npm run typecheck` - passed.
+- `npm run test` - passed, 4 test files and 49 tests.
+- `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
+- `npm run build` - passed.
+- `git diff --check` - passed.
+
+Push:
+
+- Pending until the handoff and push-status commits are created and pushed.
+
+Next:
+
+- Do not create another 2021-and-newer manual data-expansion thread from the currently known Roland Garros or US Open 2023 leads.
+- Keep Roland Garros 2023/2022/2021 and US Open 2023 unnormalized unless a future compatible official/source split separates clean competition prize money from support, per diem, legends/exhibition payments, other events, and undisclosed compensation.
+- Keep the current manual historical floor at 2021 for every Slam.
+- Future work should shift to maintenance, new official-source discovery, source adapters, deployment verification, or a clearly scoped new expansion phase.
