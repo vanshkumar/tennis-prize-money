@@ -4,7 +4,7 @@
 
 Version `0.1.0` is a static React + TypeScript + Vite dashboard with a validated data layer, sourced seed data, tested calculation engine, CSS visualizations, and a server-side refresh pipeline under `tennis-prize-money/`.
 
-The dashboard currently renders from a small sourced Grand Slam seed dataset: four 2025 men's singles competition-prize rows, Australian Open 2025, 2024, 2023, 2022, and 2021 tournament-total competition-prize rows, US Open 2025 tournament-total competition-prize money, Wimbledon 2026 tournament-total competition-prize money with unavailable financial denominators, Wimbledon 2025, 2024, 2023, and 2022 tournament-total competition-prize rows with compatible operating-company turnover/profit denominators, and US Open/Roland Garros total-player-compensation context rows. Compatible tournament-level revenue, profit, and surplus values remain unavailable for non-Wimbledon records and for Wimbledon 2026 until clearer financial sources are added.
+The dashboard currently renders from a small sourced Grand Slam seed dataset: four 2025 men's singles competition-prize rows, Australian Open 2025, 2024, 2023, 2022, and 2021 tournament-total competition-prize rows, US Open 2025 and 2024 tournament-total competition-prize rows, Wimbledon 2026 tournament-total competition-prize money with unavailable financial denominators, Wimbledon 2025, 2024, 2023, and 2022 tournament-total competition-prize rows with compatible operating-company turnover/profit denominators, and US Open/Roland Garros total-player-compensation context rows. Compatible tournament-level revenue, profit, and surplus values remain unavailable for non-Wimbledon records and for Wimbledon 2026 until clearer financial sources are added.
 
 ## App Structure
 
@@ -80,7 +80,7 @@ Current panels focus on one question: how much prize money do players receive as
 - calculation caveats explaining missing, incompatible, zero, negative, or cross-currency denominators
 - selected-record source cards
 
-Payout curves, finalist comparisons, and year-over-year prize-pool growth remain available as tested helper logic, but they are no longer first-class dashboard visuals because they do not answer the primary revenue/profit-share question. The current seed now has compatible Wimbledon tournament-total 2026-over-2025, 2025-over-2024, 2024-over-2023, and 2023-over-2022 prize-money growth cases plus Australian Open 2025-over-2024, 2024-over-2023, 2023-over-2022, and 2022-over-2021 tournament-total growth cases for future reuse.
+Payout curves, finalist comparisons, and year-over-year prize-pool growth remain available as tested helper logic, but they are no longer first-class dashboard visuals because they do not answer the primary revenue/profit-share question. The current seed now has compatible Wimbledon tournament-total 2026-over-2025, 2025-over-2024, 2024-over-2023, and 2023-over-2022 prize-money growth cases, Australian Open 2025-over-2024, 2024-over-2023, 2023-over-2022, and 2022-over-2021 tournament-total growth cases, plus US Open 2025-over-2024 tournament-total growth for future reuse.
 
 Filtering by tournament, year, event, and confidence happens before chart view models are built. When the filtered set includes a primary-question-answerable record, the page selects that record first; otherwise it falls back to the first matching record. If filters produce zero matching records, the page renders explicit empty states instead of falling back to a hidden default record.
 

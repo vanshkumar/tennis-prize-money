@@ -15,6 +15,7 @@
 - Added an Australian Open 2022 tournament-total competition-prize row using official Tennis Australia A$74.0m total prize money while keeping AO revenue/profit unavailable.
 - Added an Australian Open 2021 tournament-total competition-prize row using official Tennis Australia A$71.0m total prize money while keeping AO revenue/profit unavailable.
 - Added a US Open 2025 tournament-total competition-prize row using official-derived US$85.0m prize money while preserving the US$90.0m total-player-compensation row as support-inclusive context.
+- Added a US Open 2024 tournament-total competition-prize row using a medium-confidence official-derived US$68.756m event-payout subtotal while preserving the US$75.0m total-player-compensation row as support-inclusive context.
 - Added a Roland Garros 2025 total-player-compensation context row using AP's €56.352m support-inclusive semantics, while leaving a clean Roland Garros tournament-total competition-prize row unnormalized until an official split is verified.
 - Added a Wimbledon 2023 tournament-total prior-year row using £43.25m total tennis events prize money and compatible AELTC Championships Ltd operating-company turnover/profit denominators.
 - Added a Wimbledon 2022 tournament-total prior-year row using £38.9m total tennis events prize money and compatible AELTC Championships Ltd operating-company turnover/profit denominators.

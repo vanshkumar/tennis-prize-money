@@ -159,4 +159,9 @@
 - Action: For Wimbledon current-year or recent-year numerators, normalize only the PDF's `TOTAL TENNIS EVENTS PRIZE MONEY` line as `competition_prize_money`; treat official headline table totals as source leads until a PDF or equivalent source separates per diems/support.
 - Confidence: high
 
+**2026-07-06 - US Open 2024 normalization**
+- Observation: The rendered official US Open 2024 release verifies US$75.0m total player compensation and a staged-event payout schedule; the listed event payouts sum to US$68.756m, with a secondary cross-check separating US$6.244m per diem, but the official release does not state the support/per-diem split as explicitly as the 2025 release.
+- Action: Normalize US Open 2024-style event-payout subtotals only as medium-confidence `competition_prize_money` rows, keep the total-compensation headline separate, and stop the current manual historical data pull before 2021.
+- Confidence: high
+
 ## What Has Failed

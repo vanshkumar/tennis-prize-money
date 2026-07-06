@@ -26,6 +26,9 @@ describe('data refresh pipeline', () => {
   it('fetches, normalizes, validates, merges, and writes static JSON outputs', async () => {
     const fixtureSource = createFixtureSource();
     const fixtureRecord = createFixtureRecord(fixtureSource.id);
+    const refreshTimestamp = new Date(
+      Date.parse(dashboardDataset.metadata.lastRefreshedAt) + 1000,
+    ).toISOString();
     const writes: StaticJsonOutput[] = [];
     const logger = createTestLogger();
     const fetcher = createJsonFetch({
@@ -44,14 +47,14 @@ describe('data refresh pipeline', () => {
       ],
       fetch: fetcher,
       logger,
-      now: () => new Date('2026-07-06T00:00:00.000Z'),
+      now: () => new Date(refreshTimestamp),
       writeJsonOutput: async (output) => {
         writes.push(output);
         return { path: output.path, changed: true };
       },
     });
 
-    expect(result.dataset.metadata.lastRefreshedAt).toBe('2026-07-06T00:00:00.000Z');
+    expect(result.dataset.metadata.lastRefreshedAt).toBe(refreshTimestamp);
     expect(result.dataset.sources).toContainEqual(fixtureSource);
     expect(result.dataset.records).toContainEqual(fixtureRecord);
     expect(result.adapterResults).toEqual([

@@ -150,6 +150,26 @@
     "notes": "Official US Open prize-money page URL was reachable but did not expose parseable text to the research crawler; values are cross-checked with a secondary page citing this official source."
   },
   {
+    "id": "us-open-2024-compensation-release",
+    "title": "2024 US Open prize money will be largest purse in tennis history",
+    "publisher": "United States Tennis Association / US Open",
+    "url": "https://www.usopen.org/en_US/news/articles/2024-08-07/2024_us_open_prize_money_will_be_largest_purse_in_tennis_history.html",
+    "sourceType": "press_release",
+    "accessedAt": "2026-07-06",
+    "confidence": "high",
+    "notes": "Official US Open release confirming $75m total player compensation for 2024 and listing the main draw singles, main draw doubles, qualifying singles, and mixed doubles payout breakdown. Direct HTTP/crawler fetches were not parseable, but the rendered official page text was verified in-browser. The release also identifies a Wheelchair Championships player grant because that event was not staged in 2024 due to the Paralympic Games."
+  },
+  {
+    "id": "us-open-2024-secondary-split-crosscheck",
+    "title": "2024 US Open prize-money table",
+    "publisher": "Wikipedia, citing the official US Open prize-money release",
+    "url": "https://pt.wikipedia.org/wiki/US_Open_de_2024#Premia%C3%A7%C3%A3o",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-06",
+    "confidence": "medium",
+    "notes": "Secondary cross-check that the listed 2024 US Open event payout rows sum to $68.756m and that the remaining $6.244m of the $75.0m total is per diem. Used only as corroboration for keeping the clean competition-prize subtotal separate from total player compensation."
+  },
+  {
     "id": "us-open-2025-compensation-release",
     "title": "2025 US Open prize money sets record for largest purse in tennis history",
     "publisher": "United States Tennis Association / US Open",

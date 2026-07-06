@@ -1494,5 +1494,135 @@
       "US Open revenue and profit/surplus remain unavailable because no tournament-specific financial denominator is included.",
       "USTA organization-level financials must remain separate from US Open tournament denominators."
     ]
+  },
+  {
+    "id": "us-open-2024-tournament-total",
+    "tournament": "US Open",
+    "year": 2024,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "USD",
+    "sourceIds": [
+      "us-open-2024-compensation-release",
+      "us-open-2024-secondary-split-crosscheck"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total listed US Open 2024 competition-event payouts for staged singles, doubles, qualifying, and mixed-doubles events. Derived from the official payout breakdown and kept separate from the official $75m total player-compensation headline."
+    },
+    "prizePool": {
+      "amount": 68756000,
+      "currency": "USD",
+      "status": "derived",
+      "sourceIds": [
+        "us-open-2024-compensation-release",
+        "us-open-2024-secondary-split-crosscheck"
+      ],
+      "notes": "Derived by weighting the official 2024 US Open main draw singles, main draw doubles, qualifying singles, and mixed doubles payout tables across the listed draw stages. The official release reports $75m total player compensation; the secondary cross-check separates $68.756m in listed event payouts from $6.244m per diem."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear tournament-specific US Open 2024 revenue source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear tournament-specific US Open 2024 profit or surplus source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is the derived subtotal of listed US Open 2024 competition-event payouts, $68.756m, not the official $75m total player-compensation headline.",
+      "The official US Open release reports $75m in total player compensation and lists the event payout schedule; it does not provide as explicit a support split as the 2025 release, so this row is medium confidence.",
+      "Secondary cross-check separates $6.244m in per diem from the $75m total; broader compensation/support remains outside this clean numerator.",
+      "US Open revenue and profit/surplus remain unavailable because no tournament-specific compatible financial denominator is included.",
+      "USTA organization-level financials must remain separate from US Open tournament denominators unless a source bridges the scope explicitly."
+    ]
+  },
+  {
+    "id": "us-open-2024-total-player-compensation",
+    "tournament": "US Open",
+    "year": 2024,
+    "event": "Tournament player compensation",
+    "confidence": "medium",
+    "displayCurrency": "USD",
+    "sourceIds": [
+      "us-open-2024-compensation-release",
+      "us-open-2024-secondary-split-crosscheck"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "total_player_compensation",
+      "notes": "Tournament-level total player compensation, including listed competition-event payouts plus broader compensation such as per diem or player grants."
+    },
+    "prizePool": {
+      "amount": 75000000,
+      "currency": "USD",
+      "status": "reported",
+      "sourceIds": [
+        "us-open-2024-compensation-release",
+        "us-open-2024-secondary-split-crosscheck"
+      ],
+      "notes": "Reported 2024 US Open total player compensation. The official US Open release confirms $75 million in total player compensation and provides the event payout breakdown; the secondary cross-check separates the listed event payout subtotal from per diem."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear tournament-specific US Open 2024 revenue source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No clear tournament-specific US Open 2024 profit or surplus source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "This row is total player compensation, not clean competition prize money.",
+      "The official US Open release confirms $75 million in total player compensation; the separate clean competition-prize-money row uses the listed event payout subtotal and excludes the broader compensation gap.",
+      "The $75 million total includes compensation beyond the listed competition-event payout subtotal, so it is excluded from revenue and profit/surplus ratios.",
+      "US Open revenue and profit/surplus remain unavailable because no tournament-specific financial denominator is included.",
+      "USTA organization-level financials must remain separate from US Open tournament denominators."
+    ]
   }
 ]
