@@ -690,9 +690,11 @@ Next:
 
 ## 2026-07-05 - Australian Open 2022 Prior-Year Tournament-Total Numerator Slice
 
-Status: Local implementation verified; commit, push, and next-thread creation blocked by Codex approval usage limit.
+Status: Complete
 
 Branch: `main`
+
+Implementation commit: `6edeb7f` (`feat: add australian open 2022 numerator slice`)
 
 Summary:
 
@@ -715,11 +717,7 @@ Checks:
 - `npm run build` - passed.
 - `git diff --check` - passed.
 
-Push:
-
-- Not pushed. `git add` with required escalation was rejected because this Codex environment hit its approval usage limit, so no commit or push was attempted after that rejection.
-
 Next:
 
-- When approval capacity is available, stage the explicit changed paths, commit the verified AO 2022 slice, push `main`, update the handoff push status, and create the next xhigh Codex thread.
-- Recommended next data slice after this one is pushed: continue Australian Open older-year numerator expansion with 2021 only if the official AO/Tennis Australia source semantics remain compatible, while keeping AO revenue/profit unavailable unless an AO-specific financial denominator is verified.
+- Push the implementation and handoff commits to `origin/main`.
+- Create the next xhigh Codex handoff thread for the next primary-question data slice. Recommended next slice: continue Australian Open older-year numerator expansion with 2021 only if the official AO/Tennis Australia source semantics remain compatible, while keeping AO revenue/profit unavailable unless an AO-specific compatible financial denominator is verified.

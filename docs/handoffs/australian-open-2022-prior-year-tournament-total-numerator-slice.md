@@ -1,12 +1,8 @@
 # Australian Open 2022 Prior-Year Tournament-Total Numerator Slice
 
-## Task Status
+## Task Completed
 
-Local implementation and verification are complete, but commit, push, and next-thread creation are blocked.
-
-The blocked step is git metadata write access: `git add` with required escalation was rejected because this Codex environment hit its approval usage limit. No workaround was attempted after that rejection.
-
-The completed local row is `australian-open-2022-tournament-total`.
+Added `australian-open-2022-tournament-total` as a prior-year Australian Open tournament-total `competition_prize_money` numerator row after verifying official Tennis Australia source semantics.
 
 The row does not answer the primary revenue/profit-share question yet:
 
@@ -25,7 +21,7 @@ The dashboard answerability coverage is now `4/16` for both revenue and profit/s
 - No AO-specific tournament revenue/profit/surplus denominator was added.
   - Tennis Australia organization-level financials remain out of AO tournament ratios unless a future source explicitly bridges the scope.
 
-## Files Changed Locally
+## Files Changed
 
 - `CHANGELOG.md`
 - `LEARNINGS.md`
@@ -47,11 +43,13 @@ The dashboard answerability coverage is now `4/16` for both revenue and profit/s
 
 `main`
 
-## Commit And Push Status
+## Commit Hash
 
-- Implementation commit: not created yet.
-- Push status: not pushed.
-- Blocker: approval usage limit rejected the required escalated `git add` command.
+Implementation commit: `6edeb7f` (`feat: add australian open 2022 numerator slice`).
+
+## Push Status
+
+Pending at handoff-write time. Push the implementation commit and this handoff commit to `origin/main`, then update this section with the final pushed hashes.
 
 ## Commands Run And Results
 
@@ -66,7 +64,8 @@ The dashboard answerability coverage is now `4/16` for both revenue and profit/s
 - `npm run refresh:data` - passed; validated schema-version-2 static JSON and updated `lastRefreshedAt`.
 - `npm run build` - passed.
 - `git diff --check` - passed.
-- `git add ...` with explicit changed paths - blocked by approval usage limit before staging.
+- `git add ...` with explicit changed paths - passed after approval capacity was available again.
+- `git commit -m "feat: add australian open 2022 numerator slice"` - passed; created implementation commit `6edeb7f`.
 
 All npm commands used the known working Node path:
 
@@ -102,17 +101,7 @@ PATH=/Users/vanshkumar/.local/share/mise/installs/node/24.16.0/bin:/usr/bin:/bin
 - The AO25 PDF's 2022 `TOTAL` line is semantically comparable to the 2025, 2024, and 2023 AO tournament-total prize-money rows because it is in the same official prize-money table and no support component is separated.
 - It is safer to leave AO 2022 revenue/profit unavailable than to map Tennis Australia organization-level financials to the tournament without an explicit bridge.
 
-## Resume Objective
-
-When approval capacity is available:
-
-- Stage the explicit changed paths.
-- Commit the local AO 2022 slice, likely with `feat: add australian open 2022 numerator slice`.
-- Push `main` to `origin`.
-- Update this handoff with the implementation commit hash and push status.
-- Create the next xhigh Codex thread only after the push succeeds.
-
-Recommended next data slice after this one is pushed:
+## Next Task Objective
 
 - Recheck the official Tennis Australia AO25 prize-money PDF source semantics and add Australian Open 2021 tournament-total `competition_prize_money` only if the source remains compatible.
 - Keep Australian Open 2021 revenue and profit/surplus unavailable unless an AO-specific compatible financial denominator is verified.
@@ -120,11 +109,11 @@ Recommended next data slice after this one is pushed:
 - Keep schema version `2` unless a verified source shape truly requires a contract change.
 - Keep total player compensation/support separate from competition prize money.
 
-## Exact Resume Thread Instructions
+## Exact Next Thread Instructions
 
 Use xhigh effort/thinking for this thread.
 
-You are Codex working in the standalone `tennis-prize-money` repo. The Australian Open 2022 prior-year tournament-total numerator slice is locally implemented and verified, but not committed or pushed because the prior thread hit a Codex approval usage limit when attempting the required escalated `git add`.
+You are Codex working in the standalone `tennis-prize-money` repo. Work from latest `main`; the Australian Open 2022 prior-year tournament-total numerator slice has been completed in the current prior thread.
 
 Before starting, read in full:
 
@@ -139,15 +128,21 @@ Before starting, read in full:
 - `docs/handoffs/australian-open-2022-prior-year-tournament-total-numerator-slice.md`
 
 Goal:
-Complete the task boundary for the locally verified AO 2022 slice.
+Continue primary-question data expansion only where official/source semantics remain compatible.
 
 Expected work:
 
-- Check git status and inspect the existing local diff.
-- Do not discard or overwrite local changes.
-- Re-run any checks needed if the working tree has changed since the handoff; at minimum run `git diff --check`.
-- Stage explicit paths only.
-- Commit with a clear message such as `feat: add australian open 2022 numerator slice`.
-- Push `main` to `origin`.
-- Update `docs/TASK_LOG.md` and this handoff with the implementation commit hash and pushed status.
-- After push, create the next Codex thread with xhigh effort/thinking. The seed prompt must say: "Use xhigh effort/thinking for this thread."
+- Verify official/source semantics before adding any real row.
+- Keep broader total prize money/per-diem/support lines separate from clean competition prize money.
+- Keep currency, numerator category, denominator kind, source confidence, and caveats explicit.
+- Preserve existing row order so `wimbledon-2025-tournament-total` remains the first default answerable row.
+- Do not fabricate real data.
+- Recommended next slice: recheck the official Tennis Australia AO25 prize-money PDF source semantics and add Australian Open 2021 tournament-total `competition_prize_money` only if the source remains compatible.
+- Keep Australian Open 2021 revenue and profit/surplus unavailable unless an AO-specific compatible financial denominator is verified.
+- Update tests and dashboard behavior only as needed; schema should stay version `2` unless a verified source shape truly requires a contract change.
+- Update README, data model, sources, caveats, future work, task log, LEARNINGS, changelog if appropriate, and create a new handoff.
+- Run lint, typecheck, tests, build, refresh validation, and `git diff --check`.
+- Commit and push to `main` when complete.
+- If creating another Codex thread, it must use xhigh effort/thinking and the seed prompt must say: "Use xhigh effort/thinking for this thread."
+
+The next Codex thread for this project must be created with xhigh effort/thinking.
