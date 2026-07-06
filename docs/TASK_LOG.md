@@ -888,7 +888,7 @@ Checks:
 
 Push:
 
-- Pending until the final handoff commit is pushed.
+- Pushed implementation commit `31a5f1e` and handoff commit `1a7b855` to `origin/main`.
 
 Next:
 

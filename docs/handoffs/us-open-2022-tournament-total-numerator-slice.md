@@ -65,7 +65,7 @@ Implementation commit: `31a5f1e` (`feat: add us open 2022 numerator slice`).
 
 ## Push Status
 
-Pending until the final handoff commit is pushed.
+Pushed to `origin/main`. Implementation commit `31a5f1e` and handoff commit `1a7b855` were pushed successfully.
 
 ## Commands Run And Results
 
@@ -84,6 +84,9 @@ Pending until the final handoff commit is pushed.
 - `git diff --check` - passed.
 - `git add ...` with explicit changed paths - initial sandboxed attempt failed on `.git/index.lock`, approved retry passed.
 - `git commit -m "feat: add us open 2022 numerator slice"` - initial sandboxed attempt failed on `.git/index.lock`, approved retry created implementation commit `31a5f1e`.
+- `git add LEARNINGS.md docs/TASK_LOG.md docs/handoffs/us-open-2022-tournament-total-numerator-slice.md src/data/static/seedDatasetMetadata.json` - passed after approved git metadata access.
+- `git commit -m "docs: finalize us open 2022 handoff"` - passed after approved git metadata access; created handoff commit `1a7b855`.
+- `git push origin main` - first sandboxed attempt failed on DNS/network access; approved retry pushed `31a5f1e` and `1a7b855` to `origin/main`.
 
 All npm commands used the known working Node path:
 
