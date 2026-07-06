@@ -179,4 +179,9 @@
 - Action: Keep Roland Garros press-kit headline totals as `total_player_compensation` context unless a source separates all competition-event payouts from per diem/support; do not promote a listed-event subtotal to a full clean tournament-total row when other events and per diem remain bundled.
 - Confidence: high
 
+**2026-07-06 - Wimbledon 2021 denominator normalization**
+- Observation: The current official Wimbledon Prize Money and Finance page carries the 2021 £35.016m historical total, while the matching AELTC Championships Ltd 2021 accounts are scanned Companies House pages and 2021 operating profit includes £6.673m in insurance income related to the cancelled 2020 Championships.
+- Action: For Wimbledon 2021, use the official historical page as the prize-money amount anchor, keep the secondary support-exclusion cross-check visible, render scanned Companies House pages to verify denominators, and caveat the 2020-cancellation insurance income whenever using 2021 operating profit.
+- Confidence: high
+
 ## What Has Failed

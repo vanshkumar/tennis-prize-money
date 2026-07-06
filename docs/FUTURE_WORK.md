@@ -3,7 +3,7 @@
 ## Data Coverage
 
 - Add more full tournament competition-prize-money totals before adding more denominator ratios; event-level prize money should remain labeled as partial when compared with whole-tournament financials.
-- Extend the completed Wimbledon 2025/2024/2023/2022 tournament-total denominator series to 2021 only when official prize-money PDFs and AELTC Championships Ltd accounts keep the same clean numerator and operating-company denominator semantics.
+- Keep the completed Wimbledon 2025/2024/2023/2022/2021 tournament-total denominator series at the current 2021 historical floor during this expansion phase. The 2021 row uses the official historical prize-money table plus a secondary support-exclusion cross-check rather than the newer PDF subtotal shape, so do not extend before 2021 without an explicit future scope change.
 - Add Wimbledon 2026 revenue/profit denominators only after official AELTC Championships Ltd accounts for the year ending 31 July 2026 are available and retain a compatible bridge to The Championships.
 - Treat 2021 as the current historical floor for manual data pulling across every Grand Slam. Complete 2021-and-newer tournament-total coverage where source semantics are compatible, but do not extend the current data-expansion pass before 2021 for any Slam.
 - Extend US Open tournament-total competition-prize-money coverage to 2023 only when official/source semantics distinguish clean competition prize money from total player compensation/support clearly enough to keep support, per diem, grants, or other compensation out of the clean numerator. US Open 2022 and 2021 are normalized at medium confidence because their clean subtotals rely on secondary per-diem splits.
@@ -26,7 +26,7 @@
 
 - Add FX conversion only if needed, with explicit FX source metadata, conversion date, source confidence, and tests that keep original and converted values distinct.
 - Model draw size and allocation basis more explicitly so round-payout percentages can distinguish per-player values from total draw allocation.
-- Keep organization-level financial context separate from tournament/event denominators unless a source provides a compatible bridge. The Wimbledon 2025, 2024, 2023, and 2022 rows should remain the pattern: operating-company turnover/profit can be ratio denominators only because the filings tie AELTC Championships Ltd directly to The Championships and the rows carry explicit caveats. The Wimbledon 2026 numerator-only row should stay unavailable for revenue/profit ratios until same-year accounts exist.
+- Keep organization-level financial context separate from tournament/event denominators unless a source provides a compatible bridge. The Wimbledon 2025, 2024, 2023, 2022, and 2021 rows should remain the pattern: operating-company turnover/profit can be ratio denominators only because the filings tie AELTC Championships Ltd directly to The Championships and the rows carry explicit caveats. The Wimbledon 2021 profit denominator also needs its 2020-cancellation insurance-income caveat. The Wimbledon 2026 numerator-only row should stay unavailable for revenue/profit ratios until same-year accounts exist.
 - Keep total player compensation/support separate from competition-prize-money numerators in every ratio path.
 
 ## Persistence And Refresh

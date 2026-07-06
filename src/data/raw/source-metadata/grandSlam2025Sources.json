@@ -160,6 +160,36 @@
     "notes": "Official Companies House filing for AELTC Championships Ltd, the principal contracting party for The Championships. It reports 2022 turnover of £346.640m, operating profit of £47.057m, and explains the net available surplus division to LTA Operations."
   },
   {
+    "id": "wimbledon-2021-prize-money-finance-page",
+    "title": "Prize Money and Finance",
+    "publisher": "The All England Lawn Tennis Club / Wimbledon",
+    "url": "https://www.wimbledon.com/en_GB/the_championships/prize_money_and_finance",
+    "sourceType": "official_prize_money_page",
+    "accessedAt": "2026-07-06",
+    "confidence": "high",
+    "notes": "Official Wimbledon Prize Money and Finance page historical table listing the 2021 total prize money line of £35.016m."
+  },
+  {
+    "id": "wimbledon-2021-secondary-prize-money-crosscheck",
+    "title": "2021 Wimbledon Championships prize-money table",
+    "publisher": "Wikipedia, citing Wimbledon and Perfect Tennis prize-money sources",
+    "url": "https://en.wikipedia.org/wiki/2021_Wimbledon_Championships#Prize_money",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-06",
+    "confidence": "medium",
+    "notes": "Secondary cross-check for the £35.016m total prize-money figure and the caveat that the prize-money figure does not include accommodation and COVID testing support."
+  },
+  {
+    "id": "wimbledon-aeltc-championships-2021-accounts",
+    "title": "The All England Lawn Tennis Club (Championships) Limited full accounts made up to 31 July 2021",
+    "publisher": "Companies House / The All England Lawn Tennis Club (Championships) Limited",
+    "url": "https://find-and-update.company-information.service.gov.uk/company/07546773/filing-history/MzMzNzY5ODU0NWFkaXF6a2N4/document?format=pdf&download=0",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-06",
+    "confidence": "high",
+    "notes": "Official Companies House filing for AELTC Championships Ltd, the principal contracting party for The Championships. It reports 2021 turnover of £287.970m, operating profit of £43.331m, and net available surplus of £38.829m. The operating profit includes £6.673m in insurance income related to the cancelled 2020 Championships."
+  },
+  {
     "id": "us-open-2025-prize-money-page",
     "title": "2025 US Open Prize Money",
     "publisher": "United States Tennis Association / US Open",

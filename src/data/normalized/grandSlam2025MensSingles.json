@@ -1256,6 +1256,76 @@
     ]
   },
   {
+    "id": "wimbledon-2021-tournament-total",
+    "tournament": "Wimbledon",
+    "year": 2021,
+    "event": "Tournament total",
+    "confidence": "high",
+    "displayCurrency": "GBP",
+    "sourceIds": [
+      "wimbledon-2021-prize-money-finance-page",
+      "wimbledon-2021-secondary-prize-money-crosscheck",
+      "wimbledon-aeltc-championships-2021-accounts"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Wimbledon 2021 total prize money across competition prize-money lines. The current official Wimbledon historical table lists £35.016m; a secondary cross-check says this prize-money figure excludes accommodation and COVID testing support, and no separate 2021 per-diem component was identified."
+    },
+    "prizePool": {
+      "amount": 35016000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-2021-prize-money-finance-page",
+        "wimbledon-2021-secondary-prize-money-crosscheck"
+      ],
+      "notes": "Official Wimbledon Prize Money and Finance historical table lists a 2021 total prize-money line of £35.016m. The secondary 2021 tournament-page cross-check says the figure excludes accommodation and COVID testing support."
+    },
+    "revenue": {
+      "amount": 287970000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-aeltc-championships-2021-accounts"
+      ],
+      "notes": "AELTC Championships Ltd turnover for the year ended 31 July 2021. The company is the principal contracting party for The Championships; turnover includes ticket, broadcast, marketing, retail, food and drink income net of trade discounts, VAT, and other sales-related taxes.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": 43331000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-aeltc-championships-2021-accounts"
+      ],
+      "notes": "AELTC Championships Ltd operating profit for the year ended 31 July 2021, before net finance income, division of net available surplus to LTA Operations, taxation, and dividends. The operating profit includes £6.673m in insurance income related to the cancelled 2020 Championships.",
+      "kind": "tournament_profit"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is Wimbledon 2021 total prize money of £35.016m; available source text says this figure excludes accommodation and COVID testing support, and no separate 2021 per-diem component was identified.",
+      "Revenue denominator is AELTC Championships Ltd operating-company turnover for the year ended 31 July 2021, not a separate cash ledger for only the tournament fortnight.",
+      "Profit/surplus denominator is AELTC Championships Ltd operating profit before finance income, net available surplus division to LTA Operations, taxation, and dividends.",
+      "The 2021 operating profit includes £6.673m in insurance income related to the cancelled 2020 Championships.",
+      "Net available surplus of £38.829m, after-tax profit, dividends, and AELTC/LTA organization-level values are not used as this row's denominator."
+    ]
+  },
+  {
     "id": "us-open-2025-ms",
     "tournament": "US Open",
     "year": 2025,

@@ -128,6 +128,7 @@ describe('validated seed dashboard dataset', () => {
       'wimbledon-2024-tournament-total',
       'wimbledon-2023-tournament-total',
       'wimbledon-2022-tournament-total',
+      'wimbledon-2021-tournament-total',
     ]);
 
     for (const record of dashboardDataset.records.filter(
@@ -334,6 +335,40 @@ describe('validated seed dashboard dataset', () => {
     expect(record.caveats.join(' ')).toMatch(/not used as this row's denominator/i);
   });
 
+  it('normalizes the 2021 Wimbledon tournament-total denominator slice', () => {
+    const record = dashboardDataset.records.find(
+      (item) => item.id === 'wimbledon-2021-tournament-total',
+    );
+
+    expect(record).toBeDefined();
+    if (!record) {
+      throw new Error('Expected wimbledon-2021-tournament-total fixture to exist');
+    }
+
+    expect(record.prizePool).toMatchObject({
+      amount: 35016000,
+      currency: 'GBP',
+      status: 'official',
+    });
+    expect(record.revenue).toMatchObject({
+      amount: 287970000,
+      currency: 'GBP',
+      status: 'official',
+      kind: 'tournament_revenue',
+    });
+    expect(record.profitOrSurplus).toMatchObject({
+      amount: 43331000,
+      currency: 'GBP',
+      status: 'official',
+      kind: 'tournament_profit',
+    });
+    expect(record.prizePool.notes).toContain('excludes accommodation and COVID testing support');
+    expect(record.revenue.notes).toContain('principal contracting party');
+    expect(record.profitOrSurplus.notes).toContain('£6.673m in insurance income');
+    expect(record.caveats.join(' ')).toMatch(/no separate 2021 per-diem component/i);
+    expect(record.caveats.join(' ')).toMatch(/£38\.829m/i);
+  });
+
   it('normalizes Australian Open tournament-total competition prize money without financial denominators', () => {
     const record2025 = dashboardDataset.records.find(
       (item) => item.id === 'australian-open-2025-tournament-total',
@@ -537,6 +572,7 @@ describe('validated seed dashboard dataset', () => {
           'wimbledon-2024-tournament-total',
           'wimbledon-2023-tournament-total',
           'wimbledon-2022-tournament-total',
+          'wimbledon-2021-tournament-total',
         ].includes(record.id),
     );
 
@@ -556,10 +592,10 @@ describe('validated seed dashboard dataset', () => {
       'Wimbledon',
     ]);
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'high', count: 13, share: 13 / 24 }),
+      expect.objectContaining({ confidence: 'high', count: 14, share: 14 / 25 }),
     );
     expect(coverageSummary).toContainEqual(
-      expect.objectContaining({ confidence: 'medium', count: 11, share: 11 / 24 }),
+      expect.objectContaining({ confidence: 'medium', count: 11, share: 11 / 25 }),
     );
     expect(kpis).toHaveLength(9);
     expect(kpis.map((kpi) => kpi.label)).toContain('Prize pool YoY growth');
@@ -651,16 +687,16 @@ describe('validated seed dashboard dataset', () => {
     expect(coverage).toEqual([
       expect.objectContaining({
         id: 'revenue-share',
-        value: '4/24',
-        answerableCount: 4,
-        totalCount: 24,
+        value: '5/25',
+        answerableCount: 5,
+        totalCount: 25,
         unavailable: false,
       }),
       expect.objectContaining({
         id: 'profit-surplus-share',
-        value: '4/24',
-        answerableCount: 4,
-        totalCount: 24,
+        value: '5/25',
+        answerableCount: 5,
+        totalCount: 25,
         unavailable: false,
       }),
     ]);
@@ -1180,6 +1216,13 @@ describe('validated seed dashboard dataset', () => {
     ).toMatchObject({
       value: '+11.2%',
       note: 'Compared with 2022 Tournament total.',
+      unavailable: false,
+    });
+    expect(
+      yearOverYearRows.find((row) => row.id === 'wimbledon-2022-tournament-total'),
+    ).toMatchObject({
+      value: '+11.1%',
+      note: 'Compared with 2021 Tournament total.',
       unavailable: false,
     });
     expect(
