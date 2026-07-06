@@ -119,6 +119,8 @@ The Roland Garros 2025 total-player-compensation row uses AP's reported €56.35
 
 The Roland Garros 2024 total-player-compensation row uses the official press kit's €53.478m total prize-money figure as display-only context. The press kit says the total includes Legends Trophy prize money and Per Diem daily accommodation allowance, and a secondary split citing the press kit bundles other events with estimated per diem. Because that source shape does not separate all clean competition prize money from support-style compensation, no Roland Garros 2024 tournament-total `competition_prize_money` row is normalized. Roland Garros revenue/profit denominators remain unavailable.
 
+A deeper Roland Garros 2023/2022/2021 archive audit did not add records. The official 2023 Roland Garros prize-money article reports a €49.6m headline total and category-level increases, but it does not separate clean tournament competition prize money from any support or per-diem components. The available secondary 2023 split bundles €2.085m as other events plus estimated per diem. The available 2022 and 2021 split leads are secondary and similarly bundle other events plus estimated per diem, with incomplete disclosed event coverage in places. Because those source shapes do not verify a clean full tournament-total `competition_prize_money` subtotal, no Roland Garros 2023, 2022, or 2021 tournament-total row is normalized.
+
 ## Prize-Money Scope
 
 Every record must include `prizeMoneyScope`:

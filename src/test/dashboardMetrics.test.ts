@@ -766,11 +766,19 @@ describe('validated seed dashboard dataset', () => {
           record.event === 'Tournament total' &&
           record.prizeMoneyScope.numeratorCategory === 'competition_prize_money'),
     );
+    const unsupportedOlderCleanRecords = dashboardDataset.records.filter(
+      (record) =>
+        record.tournament === 'Roland Garros' &&
+        [2023, 2022, 2021].includes(record.year) &&
+        record.prizeMoneyScope.type === 'tournament_total' &&
+        record.prizeMoneyScope.numeratorCategory === 'competition_prize_money',
+    );
 
     expect(compensationRecord2025).toBeDefined();
     expect(compensationRecord2024).toBeDefined();
     expect(unsupportedCleanRecord2025).toBeUndefined();
     expect(unsupportedCleanRecord2024).toBeUndefined();
+    expect(unsupportedOlderCleanRecords).toEqual([]);
     if (!compensationRecord2025 || !compensationRecord2024) {
       throw new Error('Expected Roland Garros total-compensation fixtures to exist');
     }

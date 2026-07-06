@@ -184,4 +184,9 @@
 - Action: For Wimbledon 2021, use the official historical page as the prize-money amount anchor, keep the secondary support-exclusion cross-check visible, render scanned Companies House pages to verify denominators, and caveat the 2020-cancellation insurance income whenever using 2021 operating profit.
 - Confidence: high
 
+**2026-07-06 - Roland Garros closure audit**
+- Observation: The official Roland Garros archive path surfaced a 2023 prize-money article but no compatible 2022/2021 official article; the 2023 official article gives only the €49.6m headline total and category increases, while available 2023/2022/2021 secondary split tables bundle other events with estimated per diem or undisclosed components.
+- Action: Keep Roland Garros 2023/2022/2021 tournament-total rows unnormalized unless a new official FFT/Roland Garros source separates clean competition prize money from per diems, support, legends/exhibition payments, and other compensation.
+- Confidence: high
+
 ## What Has Failed
