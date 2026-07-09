@@ -4,6 +4,11 @@
 
 ## Patterns and Preferences
 
+**2026-07-09 - Data archive reset**
+- Observation: The project no longer keeps a deployable React/Vite dashboard; the durable surface is now `data/` JSON plus provenance docs and data-specific handoffs.
+- Action: Do not reintroduce app, npm, GitHub Pages, browser refresh, or serverless dispatch scaffolding unless the user explicitly changes direction; validate maintenance changes with JSON parsing and source-id integrity checks.
+- Confidence: high
+
 **2026-07-06 - GitHub Pages deploy stabilization**
 - Observation: The latest failed Pages run passed checkout, `npm ci`, `npm run build`, Pages configuration, and artifact upload, then failed only in `actions/deploy-pages` with GitHub's generic `Deployment failed, try again later.` status after rapid serial pushes.
 - Action: Keep the Pages workflow concurrency group on `cancel-in-progress: false` so production Pages deployments finish instead of being interrupted; when deploys fail after a successful artifact upload, inspect deployment/job logs before changing app code.

@@ -2,110 +2,29 @@
 
 ## Current Scope
 
-Version `0.1.0` is a static React + TypeScript + Vite dashboard with a validated data layer, sourced seed data, tested calculation engine, CSS visualizations, and a server-side refresh pipeline under `tennis-prize-money/`.
+The repository is a static data archive. It has no runtime app, no deployment target, and no local package manager requirement.
 
-The dashboard currently renders from a small sourced Grand Slam seed dataset: four 2025 men's singles competition-prize rows, Australian Open 2025, 2024, 2023, 2022, and 2021 tournament-total competition-prize rows, US Open 2025, 2024, 2022, and 2021 tournament-total competition-prize rows, Wimbledon 2026 tournament-total competition-prize money with unavailable financial denominators, Wimbledon 2025, 2024, 2023, 2022, and 2021 tournament-total competition-prize rows with compatible operating-company turnover/profit denominators, and US Open plus Roland Garros 2025/2024 total-player-compensation context rows. Compatible tournament-level revenue, profit, and surplus values remain unavailable for non-Wimbledon records and for Wimbledon 2026 until clearer financial sources are added.
+## Directory Layout
 
-## App Structure
-
-- `index.html` mounts the Vite app.
-- `vite.config.ts` configures React and the `/tennis-prize-money/` base path.
-- `src/main.tsx` mounts React.
-- `src/App.tsx` owns the basic React Router setup.
-- `src/pages/DashboardPage.tsx` renders the dashboard route.
-- `src/components/` contains small presentational UI components.
-- `src/data/static/` contains dataset-level static JSON metadata.
-- `src/data/raw/source-metadata/` contains source metadata JSON.
-- `src/data/normalized/` contains normalized tournament economics records.
-- `src/data/schemas.ts` defines TypeScript types and runtime validation, including mock-leakage checks for datasets labeled `real` and required prize-money scope/category fields.
-- `src/data/dashboardDataset.ts` imports and validates JSON before exporting the typed dataset.
-- `src/lib/metricEngine.ts` computes trustworthy metrics with structured unavailable reasons.
-- `src/lib/dashboardMetrics.ts` adapts metric results into dashboard filters, primary-question answer rows, answerability coverage summaries, visible caveats, and formatting.
-- `src/lib/refreshClient.ts` handles browser-safe refresh endpoint configuration and dispatch requests. It only reads public `VITE_` variables.
-- `src/refresh/` contains the server-side refresh pipeline, source-adapter interfaces, validation, merge, and static JSON output code.
-- `scripts/refresh-data.mjs` is the Node CLI wrapper for `npm run refresh:data`.
-- `serverless/refresh-dispatch.mjs` is an optional external serverless dispatch handler. It is not bundled into the static app.
-- `src/styles/main.css` contains app-local CSS.
-- `src/test/` contains Vitest tests for validation-backed data behavior, provenance rules, display helpers, unavailable states, refresh behavior, and calculation edge cases.
+- `data/static/seedDatasetMetadata.json` stores dataset metadata such as schema version, dataset label, data mode, notice, and last refreshed timestamp.
+- `data/raw/source-metadata/grandSlam2025Sources.json` stores source-level provenance.
+- `data/normalized/grandSlam2025MensSingles.json` stores normalized tournament economics records.
+- `docs/DATA_MODEL.md` describes the JSON contract and semantic boundaries.
+- `docs/DATA_SOURCES.md` records source inventory, normalized rows, and research leads.
+- `docs/DATA_CAVEATS.md` records interpretation caveats.
+- `docs/SOURCING_WORKFLOW.md` records how future source pulls should be handled.
+- `docs/handoffs/` stores source-pull handoffs and audit closures.
 
 ## Data Flow
 
-The dashboard imports `dashboardDataset` from `src/data/dashboardDataset.ts`. That module loads static JSON from the app bundle, validates metadata, source rows, and normalized records, and throws a `DataValidationError` if the contract is broken.
+1. A source is identified and recorded with publisher, URL, source type, accessed date, confidence, and notes.
+2. The source is interpreted against the project data rules.
+3. A normalized record is added or updated only when the source semantics are clear enough.
+4. If a source is useful but incompatible, it remains documented as context or a research lead rather than being promoted into a ratio-ready row.
+5. Caveats and handoffs explain the decision.
 
-Dashboard rendering then follows this path:
+## Validation Boundary
 
-1. Validated records provide filter options and selected-record state.
-2. `src/lib/metricEngine.ts` computes derived metrics and unavailable reasons.
-3. `src/lib/dashboardMetrics.ts` formats those results for the primary answer board, ratio-input summaries, answerability coverage, and visible caveats.
-4. `DashboardPage.tsx` renders the dashboard UI with the primary answer board first, then filters, answerability coverage, empty states, unavailable states, record confidence, refresh status, source links, and caveats.
+There is no TypeScript validation layer now. The minimum local check is JSON parsing for the three data files. Model correctness is maintained through `docs/DATA_MODEL.md`, `docs/DATA_SOURCES.md`, and explicit review of source notes.
 
-The app does not fetch tournament data at runtime in the browser. The browser can optionally request a refresh dispatch only when `VITE_REFRESH_DISPATCH_URL` points to a separately hosted external endpoint.
-
-## Refresh Flow
-
-The server-side refresh pipeline follows this path:
-
-1. `scripts/refresh-data.mjs` reads the current static JSON files.
-2. `src/refresh/index.ts` validates the existing dataset.
-3. Configured source adapters fetch raw/source data and normalize it to `Source[]` and `TournamentEconomicsRecord[]`.
-4. Adapter output is merged by stable ids, replacing matching source/record rows and preserving unrelated rows.
-5. The merged dataset is validated with `parseDashboardDataset`.
-6. The pipeline writes the three static JSON outputs only after validation succeeds.
-
-The first adapter implementation is a generic JSON manifest adapter for server-side use. Tournament-specific official-page or PDF adapters are future work.
-
-## Metric Boundaries
-
-The calculation engine only computes ratios when values are compatible:
-
-- same currency
-- available numerator and denominator
-- positive denominator
-- `competition_prize_money` numerator category
-- compatible financial denominator semantics
-
-Organizer-level financials, expenses, unknown values, total player compensation/support, incompatible currencies, missing values, and zero or negative profit/surplus denominators return unavailable results rather than percentages.
-
-The first active compatible denominator rows are Wimbledon 2025, Wimbledon 2024, Wimbledon 2023, Wimbledon 2022, and Wimbledon 2021. They use AELTC Championships Ltd operating-company turnover and operating profit because the official filings tie that company directly to The Championships; the rows caveat that these are not after-tax retained profit, dividends, LTA distributions, or broader organization-level values. The 2021 row also caveats insurance income related to the cancelled 2020 Championships.
-
-## Visualization Flow
-
-The visual layer is app-local and dependency-light. `DashboardPage.tsx` renders CSS answer cards and coverage bars from view models created in `src/lib/dashboardMetrics.ts`.
-
-Current panels focus on one question: how much prize money do players receive as a percentage of tournament revenue or profit/surplus?
-
-- primary answer cards for competition prize money / revenue and competition prize money / profit/surplus
-- ratio-input summaries for the selected numerator category and the two financial denominators
-- answerability coverage for the active filter set
-- calculation caveats explaining missing, incompatible, zero, negative, or cross-currency denominators
-- selected-record source cards
-
-Payout curves, finalist comparisons, and year-over-year prize-pool growth remain available as tested helper logic, but they are no longer first-class dashboard visuals because they do not answer the primary revenue/profit-share question. The current seed now has compatible Wimbledon tournament-total 2026-over-2025, 2025-over-2024, 2024-over-2023, 2023-over-2022, and 2022-over-2021 prize-money growth cases, Australian Open 2025-over-2024, 2024-over-2023, 2023-over-2022, and 2022-over-2021 tournament-total growth cases, plus US Open 2025-over-2024 and 2022-over-2021 tournament-total growth for future reuse.
-
-Filtering by tournament, year, event, and confidence happens before chart view models are built. When the filtered set includes a primary-question-answerable record, the page selects that record first; otherwise it falls back to the first matching record. If filters produce zero matching records, the page renders explicit empty states instead of falling back to a hidden default record.
-
-## Static Deployment Boundary
-
-The app assumes GitHub Pages static hosting. There are no app-local API routes and no client-side secrets. The refresh button is clearly marked as not configured unless `VITE_REFRESH_DISPATCH_URL` is set to an absolute external endpoint URL.
-
-The optional dispatch endpoint requires a separate serverless host with server-side `GITHUB_TOKEN` and `REFRESH_TOKEN` values. Those values must never be exposed through Vite variables.
-
-## v0.1 Hardening Notes
-
-- The active dataset has `dataMode: "real"` and validation rejects mock sources, mock record confidence, or mock value statuses in that mode.
-- Source rows must include title, publisher, URL, source type, accessed date, confidence, and notes before the dashboard can import them.
-- Filters return explicit empty states for zero-match combinations instead of falling back to the first record.
-- Financial rows remain visible but unavailable when denominators are missing, semantically incompatible, zero, negative, or in another currency.
-- Total player compensation/support rows remain visible as context but are unavailable for primary revenue/profit ratios.
-- The browser refresh button remains disabled unless `VITE_REFRESH_DISPATCH_URL` is an absolute external URL.
-
-## Checks
-
-The app provides these app-local scripts:
-
-- `npm run dev`
-- `npm run lint`
-- `npm run typecheck`
-- `npm run test`
-- `npm run build`
-- `npm run refresh:data`
+If future maintenance needs stronger checks, add a small data-focused validator without reintroducing a dashboard build.

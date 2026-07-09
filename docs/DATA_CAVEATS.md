@@ -51,7 +51,7 @@ Competition prize money, total player compensation/support, revenue, profit, sur
 
 For the four event-level records, the prize pool is the men's singles event allocation, not total tournament prize money across singles, doubles, mixed doubles, wheelchair, qualifying, per diems, or player support.
 
-For the primary revenue/profit-share question, future rows should prefer full tournament prize-money totals. If an event-level numerator is ever compared with a tournament-level denominator, the UI must label it as partial rather than presenting it as the players' full tournament share.
+For the primary revenue/profit-share question, future rows should prefer full tournament prize-money totals. If an event-level numerator is ever compared with a tournament-level denominator, the docs or any downstream consumer must label it as partial rather than presenting it as the players' full tournament share.
 
 The Australian Open 2025, 2024, 2023, 2022, and 2021 tournament-total numerators are full-tournament prize money, but their revenue and profit/surplus remain unavailable. Tennis Australia organization-level revenue or surplus should not be used as an AO tournament denominator unless a source explicitly bridges the organization-level accounts to the Australian Open tournament scope.
 
@@ -61,11 +61,11 @@ The Roland Garros 2025 and 2024 total-player-compensation rows are also not clea
 
 ## Currency Caveats
 
-The app does not do currency conversion yet. A ratio is computed only when numerator and denominator currencies match exactly. If later tasks need cross-currency comparisons, they should add explicit FX source metadata, conversion dates, and tests.
+The dataset does not include currency conversion. A ratio should be computed only when numerator and denominator currencies match exactly. If later tasks need cross-currency comparisons, they should add explicit FX source metadata, conversion dates, and validation notes.
 
 ## Profit And Surplus Caveats
 
-Competition prize money / profit or surplus is unavailable when profit/surplus is missing, zero, negative, semantically incompatible, or in another currency. Negative and zero denominators are shown as unavailable because a percentage would be misleading for this dashboard.
+Competition prize money / profit or surplus is unavailable when profit/surplus is missing, zero, negative, semantically incompatible, or in another currency. Negative and zero denominators should remain unavailable because a percentage would be misleading.
 
 For Wimbledon 2025, 2024, 2023, 2022, and 2021, the selected profit denominator is operating profit before net finance income or cost, division of net available surplus to LTA Operations, taxation, and dividends or distribution mechanics. The normalized rows intentionally do not use net available surplus, profit before tax, profit after tax, or dividend values as the primary profit/surplus denominator. The 2021 row additionally discloses the £6.673m 2020-cancellation insurance income included in operating profit. Wimbledon 2026 does not have a normalized profit/surplus denominator yet.
 
@@ -75,7 +75,7 @@ Round payout percentages compare each published round payout to the record's pri
 
 Doubles payouts may be per team while singles payouts are usually per player. The `allocation` field must remain visible where payout rows are shown.
 
-The test fixtures validate the singles prize-pool rows by weighting round payouts across the 128-player main draw. This is still not a replacement for richer draw-size modeling in the app UI.
+The derived singles prize-pool rows use weighted round payouts across the 128-player main draw where an official per-event total was not available. This is still not a replacement for richer draw-size modeling.
 
 ## Source Confidence Caveats
 
@@ -90,16 +90,15 @@ Future source expansion should prefer official tournament pages, annual reports,
 
 The active seed applies this by using high-confidence official Australian Open, Wimbledon, and US Open 2025 tournament-total source semantics, and medium-confidence Roland Garros/US Open event-level rows, US Open 2024/2022/2021 tournament-total rows, plus Roland Garros 2025/2024 total-player-compensation context where source limitations or support-inclusive semantics remain.
 
-## Refresh Caveats
+## Maintenance Caveats
 
-Refresh automation validates and rewrites the current static JSON, but it does not make manually sourced rows more authoritative. A refreshed timestamp means the pipeline ran successfully; source confidence still comes from the underlying source metadata and normalization notes.
+The `lastRefreshedAt` timestamp records the last successful data refresh or validation pass from the earlier workflow. It does not make manually sourced rows more authoritative; source confidence still comes from the underlying source metadata and normalization notes.
 
-The generic JSON manifest adapter expects already-normalized rows. Future official-page, PDF, or financial-report adapters should keep the same caveat discipline: no fabricated values, no hidden currency conversion, and no compatible financial ratios unless denominator semantics are clear.
+Future official-page, PDF, financial-report, or validation tooling should keep the same caveat discipline: no fabricated values, no hidden currency conversion, and no compatible financial ratios unless denominator semantics are clear.
 
 ## v0.1 Audit Notes
 
 - No active mock/sample rows are present. If mock rows are reintroduced, the dataset mode, labels, source type, confidence, and value statuses must make that visible.
-- Unavailable financial rows are displayed as unavailable rather than hidden or silently treated as zero.
-- Available Wimbledon financial rows are displayed with operating-company caveats rather than being smoothed into generic tournament-profit language.
-- Filters that match no records show empty states and reset actions.
+- Unavailable financial rows are kept as unavailable rather than hidden or silently treated as zero.
+- Available Wimbledon financial rows are documented with operating-company caveats rather than being smoothed into generic tournament-profit language.
 - Source limitations for Roland Garros and US Open event-level rows, support-inclusive semantics for Roland Garros 2025/2024 compensation, and medium-confidence US Open 2024/2022/2021 split semantics remain visible instead of being smoothed into high-confidence language.
