@@ -9,6 +9,11 @@
 - Action: Do not reintroduce app, npm, GitHub Pages, browser refresh, or serverless dispatch scaffolding unless the user explicitly changes direction; validate maintenance changes with JSON parsing and source-id integrity checks.
 - Confidence: high
 
+**2026-07-09 - Wimbledon historical data expansion**
+- Observation: The official `https://www.wimbledon.com/pdf/2018_Prize_Money.pdf` file contains both 2018 prize-money lines and 2017 comparative totals/per-diem values, while AELTC Championships Ltd 2020 accounts reflect the canceled Championships and insurance income rather than a normal event year.
+- Action: Use the 2018 Wimbledon PDF to derive clean 2018 and 2017 competition-event subtotals by excluding estimated per diems; keep Wimbledon 2020 out of normal prize/revenue and prize/profit ratios.
+- Confidence: high
+
 **2026-07-06 - GitHub Pages deploy stabilization**
 - Observation: The latest failed Pages run passed checkout, `npm ci`, `npm run build`, Pages configuration, and artifact upload, then failed only in `actions/deploy-pages` with GitHub's generic `Deployment failed, try again later.` status after rapid serial pushes.
 - Action: Keep the Pages workflow concurrency group on `cancel-in-progress: false` so production Pages deployments finish instead of being interrupted; when deploys fail after a successful artifact upload, inspect deployment/job logs before changing app code.

@@ -113,9 +113,10 @@ Payout values also include `allocation`:
 
 ## Active Semantic Notes
 
-- Australian Open 2025/2024/2023/2022/2021 tournament-total rows use official AO/Tennis Australia prize-money totals and keep revenue/profit unavailable because Tennis Australia organization-level financials are not AO-specific denominators.
+- Australian Open 2026/2025/2024/2023/2022/2021 tournament-total rows use official AO/Tennis Australia prize-money totals and keep revenue/profit unavailable because Tennis Australia organization-level financials are not AO-specific denominators.
+- Australian Open 2020/2019/2018/2017 tournament-total rows use medium-confidence secondary historical prize-money totals and keep revenue/profit unavailable for the same denominator-scope reason.
 - Wimbledon 2026 uses the official total tennis events prize-money numerator and keeps revenue/profit unavailable until same-year AELTC Championships Ltd accounts exist.
-- Wimbledon 2025/2024/2023/2022/2021 rows use clean competition-prize-money numerators and AELTC Championships Ltd turnover/operating profit denominators because the filings bridge that company to The Championships.
+- Wimbledon 2025/2024/2023/2022/2021/2019/2018/2017 rows use clean competition-prize-money numerators and AELTC Championships Ltd turnover/operating profit denominators because the filings bridge that company to The Championships. Wimbledon 2020 remains unavailable because The Championships were canceled and the accounts reflect cancellation/insurance economics rather than a normal event.
 - US Open 2025/2024/2022/2021 clean rows remain separate from support-inclusive total-player-compensation rows.
 - Roland Garros 2025/2024 totals remain total-player-compensation context only because known sources include per diems, support, legends/exhibition payments, or bundled other events.
 - Roland Garros 2023/2022/2021 and US Open 2023 remain unnormalized until sources separate clean competition prize money from support or per-diem semantics.

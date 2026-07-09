@@ -1,5 +1,15 @@
 [
   {
+    "id": "ao-2026-prize-money-release",
+    "title": "Australian Open announces record $111.5 million prize pool",
+    "publisher": "Australian Open / Tennis Australia",
+    "url": "https://ausopen.com/articles/news/australian-open-announces-record-1115-million-prize-pool",
+    "sourceType": "press_release",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official Australian Open article confirming the 2026 total prize pool of A$111.5m, headline singles payouts, and separate broader player-support and Summer of Tennis investment context."
+  },
+  {
     "id": "ao-2025-prize-money-release",
     "title": "Australian Open prize money increases more than 11 per cent in 2025",
     "publisher": "Australian Open / Tennis Australia",
@@ -28,6 +38,46 @@
     "accessedAt": "2026-07-05",
     "confidence": "high",
     "notes": "Official Australian Open article confirming the 2024 total prize pool of A$86.5m, Australian-dollar currency, and headline singles, doubles, qualifying, and mixed-doubles payouts. The article discusses separate player facilities and services but does not identify a separate per-diem or player-support component within the A$86.5m prize pool."
+  },
+  {
+    "id": "ao-2020-secondary-prize-money",
+    "title": "2020 Australian Open prize-money table",
+    "publisher": "Wikipedia, citing Australian Open official prize-money release",
+    "url": "https://en.wikipedia.org/wiki/2020_Australian_Open#Prize_money",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Secondary tournament page reporting Australian Open 2020 total prize money of A$71.0m and citing the official AO 'Record $71 million in prize money for Australian Open 2020' release. Used because the official archived release was not retrieved in this pass."
+  },
+  {
+    "id": "ao-2019-secondary-prize-money",
+    "title": "2019 Australian Open prize-money table",
+    "publisher": "Wikipedia, citing Australian Open official prize-money release",
+    "url": "https://en.wikipedia.org/wiki/2019_Australian_Open#Prize_money",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Secondary tournament page reporting Australian Open 2019 total prize money of A$62.5m and citing the official AO 'Record $62.5 million in prize money for Australian Open 2019' release. Used because the official archived release was not retrieved in this pass."
+  },
+  {
+    "id": "ao-2018-secondary-prize-money",
+    "title": "2018 Australian Open prize-money table",
+    "publisher": "Wikipedia, citing Australian Open prize-money reporting",
+    "url": "https://en.wikipedia.org/wiki/2018_Australian_Open#Prize_money",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Secondary tournament page reporting Australian Open 2018 total prize money of A$55.0m. Used as a medium-confidence historical numerator until an official archived AO/Tennis Australia page is retrieved."
+  },
+  {
+    "id": "ao-2017-secondary-prize-money",
+    "title": "2017 Australian Open prize-money table",
+    "publisher": "Wikipedia, citing Australian Open prize-money reporting",
+    "url": "https://en.wikipedia.org/wiki/2017_Australian_Open#Prize_money",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Secondary tournament page reporting Australian Open 2017 total prize money of A$50.0m. Used as a medium-confidence historical numerator until an official archived AO/Tennis Australia page is retrieved."
   },
   {
     "id": "roland-garros-2025-secondary-prize-money",
@@ -188,6 +238,66 @@
     "accessedAt": "2026-07-06",
     "confidence": "high",
     "notes": "Official Companies House filing for AELTC Championships Ltd, the principal contracting party for The Championships. It reports 2021 turnover of £287.970m, operating profit of £43.331m, and net available surplus of £38.829m. The operating profit includes £6.673m in insurance income related to the cancelled 2020 Championships."
+  },
+  {
+    "id": "wimbledon-2019-secondary-prize-money-split",
+    "title": "2019 Wimbledon Championships prize-money table",
+    "publisher": "Wikipedia, citing The Championships, Wimbledon prize money per programme",
+    "url": "https://pt.wikipedia.org/wiki/Torneio_de_Wimbledon_de_2019#Premia%C3%A7%C3%A3o",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Secondary table citing Wimbledon prize-money-per-programme materials. It reports £36.919m total events prize money, £1.081m estimated per diem, and £38.0m total prize money for 2019. Used because the official 2019 PDF URL was not retrieved in this pass."
+  },
+  {
+    "id": "wimbledon-aeltc-championships-2019-accounts",
+    "title": "The All England Lawn Tennis Club (Championships) Limited full accounts made up to 31 July 2019",
+    "publisher": "Companies House / The All England Lawn Tennis Club (Championships) Limited",
+    "url": "https://find-and-update.company-information.service.gov.uk/company/07546773/filing-history/MzI2MzA3NDMxNGFkaXF6a2N4/document?format=pdf&download=0",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official Companies House filing for AELTC Championships Ltd, the principal contracting party for The Championships. It reports 2019 turnover of £292.071m, operating profit of £50.134m, and net available surplus from The Championships of £44.876m."
+  },
+  {
+    "id": "wimbledon-aeltc-championships-2020-accounts",
+    "title": "The All England Lawn Tennis Club (Championships) Limited full accounts made up to 31 July 2020",
+    "publisher": "Companies House / The All England Lawn Tennis Club (Championships) Limited",
+    "url": "https://find-and-update.company-information.service.gov.uk/company/07546773/filing-history/MzI5NzYwODkwOGFkaXF6a2N4/document?download=0&format=pdf",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official Companies House filing for AELTC Championships Ltd. The 2020 report gives comparative 2019 turnover of £292.071m, 2019 operating profit of £50.134m, and 2019 net available surplus of £44.876m. The 2020 year itself reflects cancellation of The Championships and includes insurance income, so the 2020 values are not normalized as a normal tournament denominator."
+  },
+  {
+    "id": "wimbledon-2018-prize-money-pdf",
+    "title": "The Championships, Wimbledon 2018 Prize Money per Programme",
+    "publisher": "The All England Lawn Tennis Club / Wimbledon",
+    "url": "https://www.wimbledon.com/pdf/2018_Prize_Money.pdf",
+    "sourceType": "official_prize_money_page",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official one-page PDF with 2018 prize-money lines and 2017 comparative values. It reports 2018 total prize money of £34.0m, estimated player per diems of £1.079m, and an implied clean events subtotal of £32.921m; it also reports 2017 total prize money of £31.6m, estimated player per diems of £1.077m, and an implied clean events subtotal of £30.523m."
+  },
+  {
+    "id": "wimbledon-aeltc-championships-2018-accounts",
+    "title": "The All England Lawn Tennis Club (Championships) Limited full accounts made up to 31 July 2018",
+    "publisher": "Companies House / The All England Lawn Tennis Club (Championships) Limited",
+    "url": "https://find-and-update.company-information.service.gov.uk/company/07546773/filing-history/MzIzMzI0NzA3OGFkaXF6a2N4/document?download=0&format=pdf",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official Companies House filing for AELTC Championships Ltd, the principal contracting party for The Championships. It reports 2018 turnover of £254.873m, operating profit of £42.237m, and surplus from The Championships available for division of £37.785m."
+  },
+  {
+    "id": "wimbledon-aeltc-championships-2017-accounts",
+    "title": "The All England Lawn Tennis Club (Championships) Limited full accounts made up to 31 July 2017",
+    "publisher": "Companies House / The All England Lawn Tennis Club (Championships) Limited",
+    "url": "https://find-and-update.company-information.service.gov.uk/company/07546773/filing-history/MzIwNDAzOTY1MGFkaXF6a2N4/document?download=0&format=pdf",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official Companies House filing for AELTC Championships Ltd, the principal contracting party for The Championships. It reports 2017 turnover of £216.145m, operating profit of £37.294m, and surplus from The Championships available for division of £33.637m."
   },
   {
     "id": "us-open-2025-prize-money-page",

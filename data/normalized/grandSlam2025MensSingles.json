@@ -163,6 +163,68 @@
     ]
   },
   {
+    "id": "australian-open-2026-tournament-total",
+    "tournament": "Australian Open",
+    "year": 2026,
+    "event": "Tournament total",
+    "confidence": "high",
+    "displayCurrency": "AUD",
+    "sourceIds": [
+      "ao-2026-prize-money-release"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total Australian Open 2026 prize pool across tournament events. The official AO/Tennis Australia article describes the A$111.5m value as the tournament prize pool; broader Summer of Tennis investment and player-support improvements are described separately."
+    },
+    "prizePool": {
+      "amount": 111500000,
+      "currency": "AUD",
+      "status": "official",
+      "sourceIds": [
+        "ao-2026-prize-money-release"
+      ],
+      "notes": "Official AO/Tennis Australia 2026 total prize pool. The AO article says the Australian Open will have a record A$111.5m prize pool, up from A$96.5m in 2025."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2026 tournament revenue denominator is included; Tennis Australia organization-level financials are not treated as tournament revenue.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2026 tournament profit or surplus denominator is included; Tennis Australia organization-level surplus is not treated as tournament profit/surplus.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is Australian Open 2026 total prize pool of A$111.5m from the official AO/Tennis Australia article.",
+      "The cited source describes broader player-support improvements and A$135m Summer of Tennis investment separately from the Australian Open prize-pool line; if a future source separates support or compensation inside the prize pool, keep it out of this competition-prize-money row.",
+      "Revenue and profit/surplus remain unavailable because no AO-specific compatible financial denominator is included.",
+      "Tennis Australia organization-level revenue or surplus must remain separate from Australian Open tournament denominators unless a source bridges the scope explicitly."
+    ]
+  },
+  {
     "id": "australian-open-2025-tournament-total",
     "tournament": "Australian Open",
     "year": 2025,
@@ -470,6 +532,254 @@
     "caveats": [
       "Prize-money numerator is Australian Open 2021 total prize pool of A$71.0m from the official Tennis Australia prize-money PDF.",
       "The cited Tennis Australia PDF describes this as Australian Open prize money and does not identify a separate per-diem or player-support component; if a future source separates support or compensation, keep it out of this competition-prize-money row.",
+      "Revenue and profit/surplus remain unavailable because no AO-specific compatible financial denominator is included.",
+      "Tennis Australia organization-level revenue or surplus must remain separate from Australian Open tournament denominators unless a source bridges the scope explicitly."
+    ]
+  },
+  {
+    "id": "australian-open-2020-tournament-total",
+    "tournament": "Australian Open",
+    "year": 2020,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "AUD",
+    "sourceIds": [
+      "ao-2020-secondary-prize-money"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total Australian Open 2020 prize money across tournament events, sourced from a secondary tournament page citing the official AO prize-money release. No separate per-diem or player-support component was identified in this pass."
+    },
+    "prizePool": {
+      "amount": 71000000,
+      "currency": "AUD",
+      "status": "reported",
+      "sourceIds": [
+        "ao-2020-secondary-prize-money"
+      ],
+      "notes": "Secondary tournament page reports Australian Open 2020 total prize money of A$71.0m and cites the official AO 'Record $71 million in prize money for Australian Open 2020' release."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2020 tournament revenue denominator is included; Tennis Australia organization-level financials are not treated as tournament revenue.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2020 tournament profit or surplus denominator is included; Tennis Australia organization-level surplus is not treated as tournament profit/surplus.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is Australian Open 2020 total prize money of A$71.0m from a secondary tournament page citing an official AO release.",
+      "Confidence is medium because the official archived release was not retrieved in this pass.",
+      "Revenue and profit/surplus remain unavailable because no AO-specific compatible financial denominator is included.",
+      "Tennis Australia organization-level revenue or surplus must remain separate from Australian Open tournament denominators unless a source bridges the scope explicitly."
+    ]
+  },
+  {
+    "id": "australian-open-2019-tournament-total",
+    "tournament": "Australian Open",
+    "year": 2019,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "AUD",
+    "sourceIds": [
+      "ao-2019-secondary-prize-money"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total Australian Open 2019 prize money across tournament events, sourced from a secondary tournament page citing the official AO prize-money release. No separate per-diem or player-support component was identified in this pass."
+    },
+    "prizePool": {
+      "amount": 62500000,
+      "currency": "AUD",
+      "status": "reported",
+      "sourceIds": [
+        "ao-2019-secondary-prize-money"
+      ],
+      "notes": "Secondary tournament page reports Australian Open 2019 total prize money of A$62.5m and cites the official AO 'Record $62.5 million in prize money for Australian Open 2019' release."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2019 tournament revenue denominator is included; Tennis Australia organization-level financials are not treated as tournament revenue.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2019 tournament profit or surplus denominator is included; Tennis Australia organization-level surplus is not treated as tournament profit/surplus.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is Australian Open 2019 total prize money of A$62.5m from a secondary tournament page citing an official AO release.",
+      "Confidence is medium because the official archived release was not retrieved in this pass.",
+      "Revenue and profit/surplus remain unavailable because no AO-specific compatible financial denominator is included.",
+      "Tennis Australia organization-level revenue or surplus must remain separate from Australian Open tournament denominators unless a source bridges the scope explicitly."
+    ]
+  },
+  {
+    "id": "australian-open-2018-tournament-total",
+    "tournament": "Australian Open",
+    "year": 2018,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "AUD",
+    "sourceIds": [
+      "ao-2018-secondary-prize-money"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total Australian Open 2018 prize money across tournament events, sourced from a secondary tournament page. No separate per-diem or player-support component was identified in this pass."
+    },
+    "prizePool": {
+      "amount": 55000000,
+      "currency": "AUD",
+      "status": "reported",
+      "sourceIds": [
+        "ao-2018-secondary-prize-money"
+      ],
+      "notes": "Secondary tournament page reports Australian Open 2018 total prize money of A$55.0m."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2018 tournament revenue denominator is included; Tennis Australia organization-level financials are not treated as tournament revenue.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2018 tournament profit or surplus denominator is included; Tennis Australia organization-level surplus is not treated as tournament profit/surplus.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is Australian Open 2018 total prize money of A$55.0m from a secondary tournament page.",
+      "Confidence is medium because an official archived AO/Tennis Australia source was not retrieved in this pass.",
+      "Revenue and profit/surplus remain unavailable because no AO-specific compatible financial denominator is included.",
+      "Tennis Australia organization-level revenue or surplus must remain separate from Australian Open tournament denominators unless a source bridges the scope explicitly."
+    ]
+  },
+  {
+    "id": "australian-open-2017-tournament-total",
+    "tournament": "Australian Open",
+    "year": 2017,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "AUD",
+    "sourceIds": [
+      "ao-2017-secondary-prize-money"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total Australian Open 2017 prize money across tournament events, sourced from a secondary tournament page. No separate per-diem or player-support component was identified in this pass."
+    },
+    "prizePool": {
+      "amount": 50000000,
+      "currency": "AUD",
+      "status": "reported",
+      "sourceIds": [
+        "ao-2017-secondary-prize-money"
+      ],
+      "notes": "Secondary tournament page reports Australian Open 2017 total prize money of A$50.0m."
+    },
+    "revenue": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2017 tournament revenue denominator is included; Tennis Australia organization-level financials are not treated as tournament revenue.",
+      "kind": "unknown"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No AO-specific Australian Open 2017 tournament profit or surplus denominator is included; Tennis Australia organization-level surplus is not treated as tournament profit/surplus.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is Australian Open 2017 total prize money of A$50.0m from a secondary tournament page.",
+      "Confidence is medium because an official archived AO/Tennis Australia source was not retrieved in this pass.",
       "Revenue and profit/surplus remain unavailable because no AO-specific compatible financial denominator is included.",
       "Tennis Australia organization-level revenue or surplus must remain separate from Australian Open tournament denominators unless a source bridges the scope explicitly."
     ]
@@ -1323,6 +1633,208 @@
       "Profit/surplus denominator is AELTC Championships Ltd operating profit before finance income, net available surplus division to LTA Operations, taxation, and dividends.",
       "The 2021 operating profit includes £6.673m in insurance income related to the cancelled 2020 Championships.",
       "Net available surplus of £38.829m, after-tax profit, dividends, and AELTC/LTA organization-level values are not used as this row's denominator."
+    ]
+  },
+  {
+    "id": "wimbledon-2019-tournament-total",
+    "tournament": "Wimbledon",
+    "year": 2019,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "GBP",
+    "sourceIds": [
+      "wimbledon-2019-secondary-prize-money-split",
+      "wimbledon-aeltc-championships-2019-accounts"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total Wimbledon 2019 events prize money across competition events. The clean subtotal is sourced from a secondary table citing Wimbledon prize-money-per-programme materials and excludes estimated per diems from the broader total prize money line."
+    },
+    "prizePool": {
+      "amount": 36919000,
+      "currency": "GBP",
+      "status": "reported",
+      "sourceIds": [
+        "wimbledon-2019-secondary-prize-money-split"
+      ],
+      "notes": "Secondary table citing Wimbledon prize-money-per-programme materials reports £36.919m total events prize money, £1.081m estimated per diem, and £38.0m total prize money for 2019. The official 2019 PDF was not retrieved in this pass."
+    },
+    "revenue": {
+      "amount": 292071000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-aeltc-championships-2019-accounts"
+      ],
+      "notes": "AELTC Championships Ltd turnover for the year ended 31 July 2019. The company is the principal contracting party for The Championships; turnover includes ticket, broadcast, marketing, retail, food and drink income net of trade discounts, VAT, and other sales-related taxes.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": 50134000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-aeltc-championships-2019-accounts"
+      ],
+      "notes": "AELTC Championships Ltd operating profit for the year ended 31 July 2019, before net finance income, division of net available surplus to LTA Operations, taxation, and dividends.",
+      "kind": "tournament_profit"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is the medium-confidence Wimbledon 2019 total events prize money of £36.919m, excluding £1.081m estimated per diems from the broader £38.0m total prize money line.",
+      "The official 2019 Wimbledon prize-money PDF was not retrieved in this pass; the clean split comes from a secondary table citing Wimbledon prize-money-per-programme materials.",
+      "Revenue denominator is AELTC Championships Ltd operating-company turnover for the year ended 31 July 2019, not a separate cash ledger for only the tournament fortnight.",
+      "Profit/surplus denominator is AELTC Championships Ltd operating profit before finance income, net available surplus division to LTA Operations, taxation, and dividends.",
+      "Net available surplus of £44.876m, after-tax profit, dividends, and AELTC/LTA organization-level values are not used as this row's denominator."
+    ]
+  },
+  {
+    "id": "wimbledon-2018-tournament-total",
+    "tournament": "Wimbledon",
+    "year": 2018,
+    "event": "Tournament total",
+    "confidence": "high",
+    "displayCurrency": "GBP",
+    "sourceIds": [
+      "wimbledon-2018-prize-money-pdf",
+      "wimbledon-aeltc-championships-2018-accounts"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total Wimbledon 2018 competition-event prize money, derived from the official prize-money PDF by excluding estimated player per diems from the broader total prize money line."
+    },
+    "prizePool": {
+      "amount": 32921000,
+      "currency": "GBP",
+      "status": "derived",
+      "sourceIds": [
+        "wimbledon-2018-prize-money-pdf"
+      ],
+      "notes": "Official Wimbledon 2018 prize-money PDF reports £34.0m total prize money and £1.079m estimated player per diems. The clean competition-event subtotal is £32.921m after excluding per diems."
+    },
+    "revenue": {
+      "amount": 254873000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-aeltc-championships-2018-accounts"
+      ],
+      "notes": "AELTC Championships Ltd turnover for the year ended 31 July 2018. The company is the principal contracting party for The Championships; turnover includes ticket, broadcast, marketing, retail, food and drink income net of trade discounts, VAT, and other sales-related taxes.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": 42237000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-aeltc-championships-2018-accounts"
+      ],
+      "notes": "AELTC Championships Ltd operating profit for the year ended 31 July 2018, before surplus division, taxation, and dividends.",
+      "kind": "tournament_profit"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is Wimbledon 2018 total competition-event prize money of £32.921m, derived by excluding £1.079m estimated player per diems from the official £34.0m total prize money line.",
+      "Revenue denominator is AELTC Championships Ltd operating-company turnover for the year ended 31 July 2018, not a separate cash ledger for only the tournament fortnight.",
+      "Profit/surplus denominator is AELTC Championships Ltd operating profit before surplus division, taxation, and dividends.",
+      "Surplus from The Championships available for division of £37.785m, after-tax profit, dividends, and AELTC/LTA organization-level values are not used as this row's denominator."
+    ]
+  },
+  {
+    "id": "wimbledon-2017-tournament-total",
+    "tournament": "Wimbledon",
+    "year": 2017,
+    "event": "Tournament total",
+    "confidence": "high",
+    "displayCurrency": "GBP",
+    "sourceIds": [
+      "wimbledon-2018-prize-money-pdf",
+      "wimbledon-aeltc-championships-2017-accounts"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Total Wimbledon 2017 competition-event prize money, derived from the 2017 comparative column in the official 2018 prize-money PDF by excluding estimated player per diems from the broader total prize money line."
+    },
+    "prizePool": {
+      "amount": 30523000,
+      "currency": "GBP",
+      "status": "derived",
+      "sourceIds": [
+        "wimbledon-2018-prize-money-pdf"
+      ],
+      "notes": "Official Wimbledon 2018 prize-money PDF includes a 2017 comparative column reporting £31.6m total prize money and £1.077m estimated player per diems. The clean competition-event subtotal is £30.523m after excluding per diems."
+    },
+    "revenue": {
+      "amount": 216145000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-aeltc-championships-2017-accounts"
+      ],
+      "notes": "AELTC Championships Ltd turnover for the year ended 31 July 2017. The company is the principal contracting party for The Championships; turnover includes ticket, broadcast, marketing, retail, food and drink income net of trade discounts, VAT, and other sales-related taxes.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": 37294000,
+      "currency": "GBP",
+      "status": "official",
+      "sourceIds": [
+        "wimbledon-aeltc-championships-2017-accounts"
+      ],
+      "notes": "AELTC Championships Ltd operating profit for the year ended 31 July 2017, before surplus division, taxation, and dividends.",
+      "kind": "tournament_profit"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize-money numerator is Wimbledon 2017 total competition-event prize money of £30.523m, derived by excluding £1.077m estimated player per diems from the official £31.6m total prize money line.",
+      "Revenue denominator is AELTC Championships Ltd operating-company turnover for the year ended 31 July 2017, not a separate cash ledger for only the tournament fortnight.",
+      "Profit/surplus denominator is AELTC Championships Ltd operating profit before surplus division, taxation, and dividends.",
+      "Surplus from The Championships available for division of £33.637m, after-tax profit, dividends, and AELTC/LTA organization-level values are not used as this row's denominator."
     ]
   },
   {

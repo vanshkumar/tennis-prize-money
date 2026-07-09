@@ -19,9 +19,9 @@ It keeps the sourced Grand Slam prize-money economics dataset plus the records t
 
 The active dataset is `schemaVersion: 2` and `dataMode: "real"`.
 
-It includes Australian Open 2025/2024/2023/2022/2021, Wimbledon 2026/2025/2024/2023/2022/2021, and US Open 2025/2024/2022/2021 tournament-total competition-prize rows; US Open and Roland Garros 2025/2024 total-player-compensation context rows; and compatible Wimbledon 2025/2024/2023/2022/2021 operating-company revenue/profit denominator slices.
+It includes Australian Open 2026-2017, Wimbledon 2026/2025/2024/2023/2022/2021/2019/2018/2017, and US Open 2025/2024/2022/2021 tournament-total competition-prize rows; US Open and Roland Garros 2025/2024 total-player-compensation context rows; and compatible Wimbledon 2025/2024/2023/2022/2021/2019/2018/2017 operating-company revenue/profit denominator slices.
 
-Revenue and profit/surplus remain unavailable for Wimbledon 2026 and non-Wimbledon rows unless a tournament-specific compatible financial source is verified.
+Revenue and profit/surplus remain unavailable for Wimbledon 2026 and non-Wimbledon rows unless a tournament-specific compatible financial source is verified. Wimbledon 2020 is intentionally treated as canceled rather than a normal ratio row.
 
 ## Data Rules
 
