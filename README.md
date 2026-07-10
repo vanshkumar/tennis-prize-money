@@ -8,20 +8,22 @@ It keeps the sourced Grand Slam prize-money economics dataset plus the records t
 
 - `data/static/seedDatasetMetadata.json` - dataset-level metadata.
 - `data/raw/source-metadata/grandSlam2025Sources.json` - source inventory with publishers, URLs, access dates, source types, confidence, and notes.
-- `data/normalized/grandSlam2025MensSingles.json` - normalized tournament economics records. The filename is historical; it now includes tournament-total rows, total-player-compensation context rows, and Wimbledon financial denominator rows.
+- `data/normalized/grandSlam2025MensSingles.json` - normalized tournament economics records. The filename is historical; it now includes tournament-total rows, total-player-compensation context rows, and compatible tournament financial denominators.
 - `docs/DATA_MODEL.md` - field contract and semantic rules.
 - `docs/DATA_SOURCES.md` - source inventory, normalized row summary, research leads, and access-date notes.
 - `docs/DATA_CAVEATS.md` - caveats for numerator scope, denominator compatibility, unavailable values, and source confidence.
 - `docs/SOURCING_WORKFLOW.md` - how future data pulls should be researched and recorded.
 - `docs/handoffs/` - retained source-pull handoffs and normalization audit notes.
 
+Start future sourcing work with `docs/handoffs/creative-missing-slam-sourcing-2017-2026.md`; it contains the current coverage, source paths, and remaining gaps.
+
 ## Current Dataset
 
 The active dataset is `schemaVersion: 2` and `dataMode: "real"`.
 
-It includes Australian Open 2026-2017, Wimbledon 2026/2025/2024/2023/2022/2021/2019/2018/2017, and US Open 2025/2024/2022/2021 tournament-total competition-prize rows; US Open and Roland Garros 2025/2024 total-player-compensation context rows; and compatible Wimbledon 2025/2024/2023/2022/2021/2019/2018/2017 operating-company revenue/profit denominator slices.
+It includes Australian Open 2017-2026 competition-prize numerators; Wimbledon ratio-ready rows for normal editions from 2017-2025; US Open operating-revenue denominators for 2017-2024 with strict competition-prize ratios where support can be separated; and Roland-Garros clean competition-prize/revenue rows for 2017-2020 and 2022-2025. Support-inclusive headline rows remain separate context records.
 
-Revenue and profit/surplus remain unavailable for Wimbledon 2026 and non-Wimbledon rows unless a tournament-specific compatible financial source is verified. Wimbledon 2020 is intentionally treated as canceled rather than a normal ratio row.
+Australian Open revenue and profit remain unavailable because public Tennis Australia accounts are organization-wide rather than AO-only. US Open profit remains unavailable because USTA audits disclose tournament revenue and expense lines but no labeled tournament profit. Roland-Garros 2017-2019 include explicitly labeled analytical tournament surplus; 2021 keeps revenue but no ratio-ready numerator because the reconstructed schedules miss the official headline by EUR6,002. Wimbledon 2020 is intentionally treated as canceled rather than a normal ratio row.
 
 ## Data Rules
 
@@ -38,7 +40,9 @@ Revenue and profit/surplus remain unavailable for Wimbledon 2026 and non-Wimbled
 There is no app build or npm test suite now. A lightweight integrity check is to parse the JSON files:
 
 ```bash
-node -e 'for (const f of ["data/static/seedDatasetMetadata.json","data/raw/source-metadata/grandSlam2025Sources.json","data/normalized/grandSlam2025MensSingles.json"]) JSON.parse(require("fs").readFileSync(f, "utf8")); console.log("JSON ok")'
+jq empty data/static/seedDatasetMetadata.json \
+  data/raw/source-metadata/grandSlam2025Sources.json \
+  data/normalized/grandSlam2025MensSingles.json
 ```
 
 Before changing data, read `LEARNINGS.md`, `AGENTS.md`, `docs/DATA_MODEL.md`, `docs/DATA_SOURCES.md`, `docs/DATA_CAVEATS.md`, and the relevant handoff under `docs/handoffs/`.

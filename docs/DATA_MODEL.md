@@ -2,7 +2,7 @@
 
 ## Current Status
 
-The active dataset is a sourced Grand Slam economics seed. It includes competition-prize-money rows, total-player-compensation context rows, unavailable financial rows, and compatible Wimbledon operating-company financial denominator rows.
+The active dataset is a sourced Grand Slam economics seed. It includes competition-prize-money rows, total-player-compensation context rows, unavailable financial rows, compatible Wimbledon operating-company financial denominator rows, and US Open 2022/2021 tournament revenue denominator rows.
 
 The JSON contract is schema version `2`. Version `2` requires explicit prize-money scope and numerator-category metadata so total player compensation/support cannot be mistaken for clean competition prize money.
 
@@ -117,6 +117,7 @@ Payout values also include `allocation`:
 - Australian Open 2020/2019/2018/2017 tournament-total rows use medium-confidence secondary historical prize-money totals and keep revenue/profit unavailable for the same denominator-scope reason.
 - Wimbledon 2026 uses the official total tennis events prize-money numerator and keeps revenue/profit unavailable until same-year AELTC Championships Ltd accounts exist.
 - Wimbledon 2025/2024/2023/2022/2021/2019/2018/2017 rows use clean competition-prize-money numerators and AELTC Championships Ltd turnover/operating profit denominators because the filings bridge that company to The Championships. Wimbledon 2020 remains unavailable because The Championships were canceled and the accounts reflect cancellation/insurance economics rather than a normal event.
-- US Open 2025/2024/2022/2021 clean rows remain separate from support-inclusive total-player-compensation rows.
-- Roland Garros 2025/2024 totals remain total-player-compensation context only because known sources include per diems, support, legends/exhibition payments, or bundled other events.
-- Roland Garros 2023/2022/2021 and US Open 2023 remain unnormalized until sources separate clean competition prize money from support or per-diem semantics.
+- US Open support-inclusive rows remain separate from clean competition-prize rows. USTA audited statements now provide US Open operating-revenue denominators for 2017-2024, but profit/surplus remains unavailable because no audit labels an explicit tournament profit or surplus. The 2019 financial row keeps revenue while leaving the strict numerator unavailable because wheelchair and Legends payouts are bundled.
+- Roland-Garros clean competition-prize/revenue rows are normalized for 2017-2020 and 2022-2025. Official or complete category schedules exclude support, per diem, and Legends from the numerator; provisional 2017/2018 schedules and secondary tournament-revenue sources remain visibly lower confidence.
+- Roland-Garros 2017-2019 use FFT `solde analytique` as `tournament_surplus`. It is an explicitly labeled Internationaux de France analytical balance, not FFT statutory net profit or the separately reported `M.B.A.` measure.
+- Roland-Garros 2021 keeps its tournament-revenue value but no clean numerator because the reconstructed category schedules exceed the official headline by EUR6,002. No unexplained balancing adjustment is permitted.

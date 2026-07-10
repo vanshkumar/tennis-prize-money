@@ -2150,7 +2150,8 @@
     "displayCurrency": "USD",
     "sourceIds": [
       "us-open-2024-compensation-release",
-      "us-open-2024-secondary-split-crosscheck"
+      "us-open-2024-secondary-split-crosscheck",
+      "us-open-usta-affiliates-2024-financial-statements"
     ],
     "prizeMoneyScope": {
       "type": "tournament_total",
@@ -2168,19 +2169,21 @@
       "notes": "Derived by weighting the official 2024 US Open main draw singles, main draw doubles, qualifying singles, and mixed doubles payout tables across the listed draw stages. The official release reports $75m total player compensation; the secondary cross-check separates $68.756m in listed event payouts from $6.244m per diem."
     },
     "revenue": {
-      "amount": null,
-      "currency": null,
-      "status": "unavailable",
-      "sourceIds": [],
-      "notes": "No clear tournament-specific US Open 2024 revenue source is included; USTA organization-level financials are not treated as tournament denominators.",
-      "kind": "unknown"
+      "amount": 559658000,
+      "currency": "USD",
+      "status": "reported",
+      "sourceIds": [
+        "us-open-usta-affiliates-2024-financial-statements"
+      ],
+      "notes": "USTA audited consolidated statements report US Open operating revenue of $559.658m for 2024; the source table states amounts in thousands of dollars.",
+      "kind": "tournament_revenue"
     },
     "profitOrSurplus": {
       "amount": null,
       "currency": null,
       "status": "unavailable",
       "sourceIds": [],
-      "notes": "No clear tournament-specific US Open 2024 profit or surplus source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "notes": "The USTA audit reports US Open expense lines but no explicit tournament profit or surplus. Revenue minus selected expense lines is not normalized as profit.",
       "kind": "unknown"
     },
     "winnerPayout": {
@@ -2202,8 +2205,8 @@
       "Prize-money numerator is the derived subtotal of listed US Open 2024 competition-event payouts, $68.756m, not the official $75m total player-compensation headline.",
       "The official US Open release reports $75m in total player compensation and lists the event payout schedule; it does not provide as explicit a support split as the 2025 release, so this row is medium confidence.",
       "Secondary cross-check separates $6.244m in per diem from the $75m total; broader compensation/support remains outside this clean numerator.",
-      "US Open revenue and profit/surplus remain unavailable because no tournament-specific compatible financial denominator is included.",
-      "USTA organization-level financials must remain separate from US Open tournament denominators unless a source bridges the scope explicitly."
+      "Revenue denominator uses the 2024 US Open operating-revenue line from USTA audited consolidated financial statements.",
+      "Profit/surplus remains unavailable because the audit does not label an explicit US Open tournament profit or surplus."
     ]
   },
   {
@@ -2280,7 +2283,8 @@
     "displayCurrency": "USD",
     "sourceIds": [
       "us-open-2022-prize-money-page",
-      "us-open-2022-secondary-split-crosscheck"
+      "us-open-2022-secondary-split-crosscheck",
+      "us-open-usta-affiliates-2022-financial-statements"
     ],
     "prizeMoneyScope": {
       "type": "tournament_total",
@@ -2298,19 +2302,21 @@
       "notes": "The archived official US Open 2022 prize-money page URL and official page title were verified in-browser, but the archive did not expose usable body text in this environment. The secondary split cites the official page and reports $56.4981m in listed professional event payouts, $1.032m in wheelchair event payouts, $2.5719m in per diem, and $60.102m total prize money; the clean row excludes the per-diem component."
     },
     "revenue": {
-      "amount": null,
-      "currency": null,
-      "status": "unavailable",
-      "sourceIds": [],
-      "notes": "No clear tournament-specific US Open 2022 revenue source is included; USTA organization-level financials are not treated as tournament denominators.",
-      "kind": "unknown"
+      "amount": 472172000,
+      "currency": "USD",
+      "status": "reported",
+      "sourceIds": [
+        "us-open-usta-affiliates-2022-financial-statements"
+      ],
+      "notes": "USTA audited consolidated statement of activities reports US Open operating revenue of $472.172m for 2022; the source table states amounts in thousands of dollars.",
+      "kind": "tournament_revenue"
     },
     "profitOrSurplus": {
       "amount": null,
       "currency": null,
       "status": "unavailable",
       "sourceIds": [],
-      "notes": "No clear tournament-specific US Open 2022 profit or surplus source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "notes": "The USTA audited statements list US Open expense lines but no explicit US Open tournament profit or surplus line is normalized; organization-wide excess of revenue over expenses is not treated as US Open profit/surplus.",
       "kind": "unknown"
     },
     "winnerPayout": {
@@ -2332,8 +2338,8 @@
       "Prize-money numerator is the medium-confidence US Open 2022 competition-event payout subtotal of $57.5301m, not the $60.102m total prize-money headline.",
       "The archived official prize-money page was identified, but its body was not readable in this environment; the per-diem separation comes from a secondary split citing the official page and ATP.",
       "Secondary cross-check separates $2.5719m in per diem from the $60.102m total; per diem remains outside this clean numerator.",
-      "US Open revenue and profit/surplus remain unavailable because no tournament-specific compatible financial denominator is included.",
-      "USTA organization-level financials must remain separate from US Open tournament denominators unless a source bridges the scope explicitly."
+      "Revenue denominator uses the US Open operating revenue line from USTA audited consolidated financial statements.",
+      "Profit/surplus remains unavailable because no explicit US Open tournament profit/surplus line is normalized; USTA organization-wide excess must remain separate."
     ]
   },
   {
@@ -2367,7 +2373,7 @@
       "currency": null,
       "status": "unavailable",
       "sourceIds": [],
-      "notes": "No clear tournament-specific US Open 2022 revenue source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "notes": "This support-inclusive row is not eligible for revenue ratios; the compatible 2022 US Open revenue denominator is attached only to the clean competition-prize row.",
       "kind": "unknown"
     },
     "profitOrSurplus": {
@@ -2375,7 +2381,7 @@
       "currency": null,
       "status": "unavailable",
       "sourceIds": [],
-      "notes": "No clear tournament-specific US Open 2022 profit or surplus source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "notes": "This support-inclusive row is not eligible for profit/surplus ratios, and no explicit US Open 2022 tournament profit/surplus line is normalized.",
       "kind": "unknown"
     },
     "winnerPayout": {
@@ -2397,8 +2403,8 @@
       "This row is total prize money/player compensation, not clean competition prize money.",
       "The separate clean competition-prize-money row excludes the per-diem component identified by the secondary split.",
       "The $60.102 million total includes estimated per diem beyond the listed competition-event payout subtotal, so it is excluded from revenue and profit/surplus ratios.",
-      "US Open revenue and profit/surplus remain unavailable because no tournament-specific financial denominator is included.",
-      "USTA organization-level financials must remain separate from US Open tournament denominators."
+      "The 2022 US Open revenue denominator is attached only to the clean competition-prize row.",
+      "Profit/surplus remains unavailable because no explicit US Open tournament profit/surplus line is normalized."
     ]
   },
   {
@@ -2410,7 +2416,8 @@
     "displayCurrency": "USD",
     "sourceIds": [
       "us-open-2021-compensation-release",
-      "us-open-2021-secondary-split-crosscheck"
+      "us-open-2021-secondary-split-crosscheck",
+      "us-open-usta-affiliates-2022-financial-statements"
     ],
     "prizeMoneyScope": {
       "type": "tournament_total",
@@ -2428,19 +2435,21 @@
       "notes": "The official US Open release reports a rounded $57.5m in 2021 prize money and total player compensation, nearly $6m for qualifying, and prize-money increases across singles, doubles, mixed doubles, and wheelchair competitions. The secondary split reports $53.75944m in listed event payouts, $0.600m in other competition events, $3.10256m in estimated per diem, and $57.462m total; the clean row excludes the per-diem component."
     },
     "revenue": {
-      "amount": null,
-      "currency": null,
-      "status": "unavailable",
-      "sourceIds": [],
-      "notes": "No clear tournament-specific US Open 2021 revenue source is included; USTA organization-level financials are not treated as tournament denominators.",
-      "kind": "unknown"
+      "amount": 406172000,
+      "currency": "USD",
+      "status": "reported",
+      "sourceIds": [
+        "us-open-usta-affiliates-2022-financial-statements"
+      ],
+      "notes": "USTA audited consolidated statement of activities reports US Open operating revenue of $406.172m for 2021; the source table states amounts in thousands of dollars.",
+      "kind": "tournament_revenue"
     },
     "profitOrSurplus": {
       "amount": null,
       "currency": null,
       "status": "unavailable",
       "sourceIds": [],
-      "notes": "No clear tournament-specific US Open 2021 profit or surplus source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "notes": "The USTA audited statements list US Open expense lines but no explicit US Open tournament profit or surplus line is normalized; organization-wide excess of revenue over expenses is not treated as US Open profit/surplus.",
       "kind": "unknown"
     },
     "winnerPayout": {
@@ -2462,8 +2471,8 @@
       "Prize-money numerator is the medium-confidence US Open 2021 competition-event payout subtotal of $54.35944m, not the official rounded $57.5m total-player-compensation headline.",
       "The official release anchors total player compensation and competition categories, but the per-diem separation comes from a secondary split; this row remains medium confidence.",
       "Secondary cross-check separates $3.10256m in estimated per diem from the $57.462m total; per diem remains outside this clean numerator.",
-      "US Open revenue and profit/surplus remain unavailable because no tournament-specific compatible financial denominator is included.",
-      "USTA organization-level financials must remain separate from US Open tournament denominators unless a source bridges the scope explicitly."
+      "Revenue denominator uses the US Open operating revenue line from USTA audited consolidated financial statements.",
+      "Profit/surplus remains unavailable because no explicit US Open tournament profit/surplus line is normalized; USTA organization-wide excess must remain separate."
     ]
   },
   {
@@ -2497,7 +2506,7 @@
       "currency": null,
       "status": "unavailable",
       "sourceIds": [],
-      "notes": "No clear tournament-specific US Open 2021 revenue source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "notes": "This support-inclusive row is not eligible for revenue ratios; the compatible 2021 US Open revenue denominator is attached only to the clean competition-prize row.",
       "kind": "unknown"
     },
     "profitOrSurplus": {
@@ -2505,7 +2514,7 @@
       "currency": null,
       "status": "unavailable",
       "sourceIds": [],
-      "notes": "No clear tournament-specific US Open 2021 profit or surplus source is included; USTA organization-level financials are not treated as tournament denominators.",
+      "notes": "This support-inclusive row is not eligible for profit/surplus ratios, and no explicit US Open 2021 tournament profit/surplus line is normalized.",
       "kind": "unknown"
     },
     "winnerPayout": {
@@ -2527,8 +2536,924 @@
       "This row is total player compensation, not clean competition prize money.",
       "The official US Open release reports a rounded $57.5 million in prize money and total player compensation; the separate clean competition-prize-money row excludes the estimated per-diem component identified by the secondary split.",
       "The $57.462 million total includes estimated per diem beyond the listed competition-event payout subtotal, so it is excluded from revenue and profit/surplus ratios.",
-      "US Open revenue and profit/surplus remain unavailable because no tournament-specific financial denominator is included.",
-      "USTA organization-level financials must remain separate from US Open tournament denominators."
+      "The 2021 US Open revenue denominator is attached only to the clean competition-prize row.",
+      "Profit/surplus remains unavailable because no explicit US Open tournament profit/surplus line is normalized."
+    ]
+  },
+  {
+    "id": "us-open-2017-tournament-total",
+    "tournament": "US Open",
+    "year": 2017,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "USD",
+    "sourceIds": [
+      "us-open-2017-prize-money-release",
+      "us-open-2017-prize-money-split",
+      "us-open-2017-wheelchair-prize-money",
+      "us-open-usta-affiliates-2018-financial-statements"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Strict competition subtotal across listed professional draws and wheelchair events, excluding the Champions Invitational and estimated per diem."
+    },
+    "prizePool": {
+      "amount": 48586800,
+      "currency": "USD",
+      "status": "derived",
+      "sourceIds": [
+        "us-open-2017-prize-money-release",
+        "us-open-2017-prize-money-split",
+        "us-open-2017-wheelchair-prize-money"
+      ],
+      "notes": "Derived as $48.3868m in listed professional events plus $0.200m wheelchair prize money. The remaining $0.400m of the $0.600m other-events line is the Champions Invitational and is excluded, as is $1.478m estimated per diem."
+    },
+    "revenue": {
+      "amount": 347593000,
+      "currency": "USD",
+      "status": "reported",
+      "sourceIds": [
+        "us-open-usta-affiliates-2018-financial-statements"
+      ],
+      "notes": "USTA audited consolidated statements report US Open operating revenue of $347.593m for 2017.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No explicit US Open 2017 tournament profit or surplus is reported in the USTA audit.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "The exact full split relies on an archived-official-table transcription plus a separately reported wheelchair total, so the row is medium confidence.",
+      "Legends/Champions Invitational payouts and estimated per diem are excluded from competition prize money.",
+      "Revenue is official US Open operating revenue; profit/surplus remains unavailable."
+    ]
+  },
+  {
+    "id": "us-open-2018-tournament-total",
+    "tournament": "US Open",
+    "year": 2018,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "USD",
+    "sourceIds": [
+      "us-open-2018-prize-money-release",
+      "us-open-2018-prize-money-split",
+      "us-open-usta-affiliates-2018-financial-statements"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Strict competition subtotal across listed professional draws and the wheelchair competition, excluding per diem, support, and non-competition amounts."
+    },
+    "prizePool": {
+      "amount": 50915840,
+      "currency": "USD",
+      "status": "derived",
+      "sourceIds": [
+        "us-open-2018-prize-money-release",
+        "us-open-2018-prize-money-split"
+      ],
+      "notes": "Derived as $50.56584m in listed professional draws plus $0.350m in wheelchair prize money. The remaining $2.08416m of the $53m headline is excluded because it is not established as staged competition prize money."
+    },
+    "revenue": {
+      "amount": 380144000,
+      "currency": "USD",
+      "status": "reported",
+      "sourceIds": [
+        "us-open-usta-affiliates-2018-financial-statements"
+      ],
+      "notes": "USTA audited consolidated statements report US Open operating revenue of $380.144m for 2018.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No explicit US Open 2018 tournament profit or surplus is reported in the USTA audit.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "The full strict subtotal uses a secondary transcription citing the archived official page, so the row is medium confidence.",
+      "The difference between the competition subtotal and the $53m headline is excluded rather than assumed to be prize money.",
+      "Revenue is official US Open operating revenue; profit/surplus remains unavailable."
+    ]
+  },
+  {
+    "id": "us-open-2019-financials",
+    "tournament": "US Open",
+    "year": 2019,
+    "event": "Tournament financials",
+    "confidence": "high",
+    "displayCurrency": "USD",
+    "sourceIds": [
+      "us-open-2019-prize-money-fact-sheet",
+      "us-open-usta-affiliates-2020-financial-statements"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Strict full-tournament competition prize money is unavailable because wheelchair and Legends payouts are bundled together."
+    },
+    "prizePool": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [
+        "us-open-2019-prize-money-fact-sheet"
+      ],
+      "notes": "The official fact sheet reports $53.5175m in listed professional draws and $0.650m bundled across wheelchair and Legends. The bundle cannot be split without inference, so no strict full competition numerator is normalized."
+    },
+    "revenue": {
+      "amount": 399601000,
+      "currency": "USD",
+      "status": "reported",
+      "sourceIds": [
+        "us-open-usta-affiliates-2020-financial-statements"
+      ],
+      "notes": "USTA audited consolidated statements report US Open operating revenue of $399.601m for 2019.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No explicit US Open 2019 tournament profit or surplus is reported in the USTA audit.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "$1m player pension and $2.0712m estimated per diem are support, not competition prize money.",
+      "The $0.650m wheelchair-plus-Legends line prevents a strict full competition numerator.",
+      "Revenue is preserved even though the primary ratio remains unavailable."
+    ]
+  },
+  {
+    "id": "us-open-2020-tournament-total",
+    "tournament": "US Open",
+    "year": 2020,
+    "event": "Tournament total",
+    "confidence": "high",
+    "displayCurrency": "USD",
+    "sourceIds": [
+      "us-open-2020-player-handbook",
+      "us-open-usta-affiliates-2020-financial-statements"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Pandemic-format staged competition prize money across singles, doubles, and wheelchair events; qualifying and mixed doubles were not staged."
+    },
+    "prizePool": {
+      "amount": 43662000,
+      "currency": "USD",
+      "status": "derived",
+      "sourceIds": [
+        "us-open-2020-player-handbook"
+      ],
+      "notes": "Derived from the official handbook as $39.024m singles, $4.288m doubles, and $0.350m wheelchair competition prize money. Relief funds and direct hotel payments are excluded."
+    },
+    "revenue": {
+      "amount": 181210000,
+      "currency": "USD",
+      "status": "reported",
+      "sourceIds": [
+        "us-open-usta-affiliates-2020-financial-statements"
+      ],
+      "notes": "USTA audited consolidated statements report US Open operating revenue of $181.210m for 2020.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No explicit US Open 2020 tournament profit or surplus is reported in the USTA audit.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "This is a COVID-19 special-format tournament and should not be interpreted as a normal operating year.",
+      "$6.6m player relief, $1m international relief, and $2.14m direct hotel payments are excluded from competition prize money.",
+      "Revenue is official US Open operating revenue; profit/surplus remains unavailable."
+    ]
+  },
+  {
+    "id": "us-open-2023-tournament-total",
+    "tournament": "US Open",
+    "year": 2023,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "USD",
+    "sourceIds": [
+      "us-open-2023-compensation-release",
+      "us-open-2023-prize-money-split",
+      "us-open-usta-affiliates-2024-financial-statements"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Staged competition prize money across listed professional and wheelchair events, excluding player-expense assistance."
+    },
+    "prizePool": {
+      "amount": 60343600,
+      "currency": "USD",
+      "status": "derived",
+      "sourceIds": [
+        "us-open-2023-compensation-release",
+        "us-open-2023-prize-money-split"
+      ],
+      "notes": "Derived as $58.9768m in listed professional events plus $1.3668m in wheelchair competition payouts. $4.65642m in per diem and expense support is excluded."
+    },
+    "revenue": {
+      "amount": 514105000,
+      "currency": "USD",
+      "status": "reported",
+      "sourceIds": [
+        "us-open-usta-affiliates-2024-financial-statements"
+      ],
+      "notes": "USTA audited consolidated statements report US Open operating revenue of $514.105m for 2023.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No explicit US Open 2023 tournament profit or surplus is reported in the USTA audit.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "The clean split relies on a secondary complete table citing the archived official page and ATP, so the row is medium confidence.",
+      "Per diem, travel, hotel, meals, and racquet-stringing support are excluded from competition prize money.",
+      "Revenue is official US Open operating revenue; profit/surplus remains unavailable."
+    ]
+  },
+  {
+    "id": "roland-garros-2020-tournament-total",
+    "tournament": "Roland Garros",
+    "year": 2020,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "EUR",
+    "sourceIds": [
+      "roland-garros-2020-prize-money-tables",
+      "roland-garros-2020-complete-prize-crosscheck",
+      "roland-garros-2020-2023-revenue-series"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Pandemic-format staged competition payouts across singles, qualifying, doubles, wheelchair, and quad events, excluding player support."
+    },
+    "prizePool": {
+      "amount": 36409676,
+      "currency": "EUR",
+      "status": "derived",
+      "sourceIds": [
+        "roland-garros-2020-prize-money-tables",
+        "roland-garros-2020-complete-prize-crosscheck"
+      ],
+      "notes": "Draw-weighted competition schedules sum to EUR36.409676m. The EUR2m support component is excluded."
+    },
+    "revenue": {
+      "amount": 147000000,
+      "currency": "EUR",
+      "status": "reported",
+      "sourceIds": [
+        "roland-garros-2020-2023-revenue-series"
+      ],
+      "notes": "SPORSORA's FFT-attributed series reports Roland-Garros 2020 turnover of EUR147.0m.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "Contemporaneous FFT reporting described the event as approximately break-even but did not provide an exact tournament profit or surplus amount.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "This is a COVID-19 special-format tournament and not a normal operating year.",
+      "The numerator combines ATP-published schedules with a secondary complete category table, so confidence is medium.",
+      "The reported turnover denominator is secondary but explicitly tournament-scoped and attributed to FFT."
+    ]
+  },
+  {
+    "id": "roland-garros-2021-financials",
+    "tournament": "Roland Garros",
+    "year": 2021,
+    "event": "Tournament financials",
+    "confidence": "medium",
+    "displayCurrency": "EUR",
+    "sourceIds": [
+      "roland-garros-2020-2023-revenue-series"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Strict full-tournament competition prize money remains unavailable because the reconstructed category schedules do not reconcile exactly to the official headline."
+    },
+    "prizePool": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "The complete category reconstruction exceeds the official headline by EUR6,002. No unexplained adjustment is made, so the numerator remains unavailable."
+    },
+    "revenue": {
+      "amount": 184500000,
+      "currency": "EUR",
+      "status": "reported",
+      "sourceIds": [
+        "roland-garros-2020-2023-revenue-series"
+      ],
+      "notes": "SPORSORA's FFT-attributed series reports Roland-Garros 2021 turnover of EUR184.5m.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No explicit Roland-Garros 2021 tournament profit or surplus was found.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Revenue is preserved, but the primary ratio remains unavailable until the EUR6,002 prize-schedule discrepancy is resolved.",
+      "No profit or surplus denominator is available."
+    ]
+  },
+  {
+    "id": "roland-garros-2022-tournament-total",
+    "tournament": "Roland Garros",
+    "year": 2022,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "EUR",
+    "sourceIds": [
+      "roland-garros-2022-prize-money-tables",
+      "roland-garros-2022-complete-prize-crosscheck",
+      "roland-garros-2020-2023-revenue-series"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Staged competition payouts across singles, qualifying, doubles, mixed, wheelchair, and quad events."
+    },
+    "prizePool": {
+      "amount": 43580600,
+      "currency": "EUR",
+      "status": "derived",
+      "sourceIds": [
+        "roland-garros-2022-prize-money-tables",
+        "roland-garros-2022-complete-prize-crosscheck"
+      ],
+      "notes": "Draw-weighted category schedules sum to EUR43.5806m, excluding non-competition support or per diem."
+    },
+    "revenue": {
+      "amount": 308000000,
+      "currency": "EUR",
+      "status": "reported",
+      "sourceIds": [
+        "roland-garros-2020-2023-revenue-series"
+      ],
+      "notes": "SPORSORA's FFT-attributed series reports Roland-Garros 2022 turnover of EUR308.0m.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No explicit Roland-Garros 2022 tournament profit or surplus was found.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Mixed and para rows come from a secondary complete table reporting FFT-communicated schedules.",
+      "The EUR308m turnover conflicts with a separate EUR325m report lacking a definition; the FFT-attributed series is retained with medium confidence.",
+      "Profit/surplus remains unavailable."
+    ]
+  },
+  {
+    "id": "roland-garros-2023-tournament-total",
+    "tournament": "Roland Garros",
+    "year": 2023,
+    "event": "Tournament total",
+    "confidence": "high",
+    "displayCurrency": "EUR",
+    "sourceIds": [
+      "roland-garros-2023-prize-money-tables",
+      "roland-garros-2020-2023-revenue-series"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Staged competition payouts across singles, qualifying, doubles, mixed, wheelchair, and quad events, excluding the headline residual."
+    },
+    "prizePool": {
+      "amount": 47515000,
+      "currency": "EUR",
+      "status": "derived",
+      "sourceIds": [
+        "roland-garros-2023-prize-money-tables"
+      ],
+      "notes": "Complete official category schedules sum to EUR47.515m. The EUR2.085m difference from the EUR49.6m headline is excluded because it is not staged competition prize money."
+    },
+    "revenue": {
+      "amount": 328000000,
+      "currency": "EUR",
+      "status": "reported",
+      "sourceIds": [
+        "roland-garros-2020-2023-revenue-series"
+      ],
+      "notes": "SPORSORA's FFT-attributed series reports Roland-Garros 2023 turnover of EUR328.0m; displayed category components sum to EUR327.9m due to rounding.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No explicit Roland-Garros 2023 tournament profit or surplus was found.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "The clean numerator comes from complete official FFT/Roland-Garros category tables.",
+      "The turnover denominator is secondary but explicitly tournament-scoped and attributed to FFT.",
+      "Profit/surplus remains unavailable."
+    ]
+  },
+  {
+    "id": "roland-garros-2024-tournament-total",
+    "tournament": "Roland Garros",
+    "year": 2024,
+    "event": "Tournament total",
+    "confidence": "high",
+    "displayCurrency": "EUR",
+    "sourceIds": [
+      "roland-garros-2024-press-kit-prize-money",
+      "roland-garros-2024-secondary-split-crosscheck",
+      "roland-garros-2024-fft-financial-report"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Staged competition payouts across singles, qualifying, doubles, mixed, wheelchair, and quad events, excluding Legends and per diem."
+    },
+    "prizePool": {
+      "amount": 51260000,
+      "currency": "EUR",
+      "status": "derived",
+      "sourceIds": [
+        "roland-garros-2024-press-kit-prize-money",
+        "roland-garros-2024-secondary-split-crosscheck"
+      ],
+      "notes": "Complete official press-kit payout tables sum to EUR51.260m. The EUR2.218m difference from the EUR53.478m headline is Legends and per diem and is excluded."
+    },
+    "revenue": {
+      "amount": 345700000,
+      "currency": "EUR",
+      "status": "official",
+      "sourceIds": [
+        "roland-garros-2024-fft-financial-report"
+      ],
+      "notes": "Official FFT financial reporting states total Roland-Garros products/revenue of EUR345.7m.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "FFT reports EUR201.5m in Roland-Garros charges but does not label the EUR144.2m difference as tournament profit or surplus; the difference is not normalized as profit.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Both numerator and revenue denominator come from official FFT/Roland-Garros records.",
+      "Legends and per diem are excluded from competition prize money.",
+      "Revenue less reported tournament charges is an operating-contribution proxy, not an explicitly labeled profit or surplus."
+    ]
+  },
+  {
+    "id": "roland-garros-2025-tournament-total",
+    "tournament": "Roland Garros",
+    "year": 2025,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "EUR",
+    "sourceIds": [
+      "roland-garros-2025-press-kit-prize-money",
+      "roland-garros-2025-revenue-report"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Staged competition payouts across singles, qualifying, doubles, mixed, wheelchair, and quad events, excluding Legends and per diem."
+    },
+    "prizePool": {
+      "amount": 54032170,
+      "currency": "EUR",
+      "status": "derived",
+      "sourceIds": [
+        "roland-garros-2025-press-kit-prize-money"
+      ],
+      "notes": "Complete official press-kit payout tables sum to EUR54.03217m. The EUR2.31983m difference from the EUR56.352m headline is Legends and per diem and is excluded."
+    },
+    "revenue": {
+      "amount": 395000000,
+      "currency": "EUR",
+      "status": "reported",
+      "sourceIds": [
+        "roland-garros-2025-revenue-report"
+      ],
+      "notes": "The Guardian reports Roland-Garros 2025 tournament revenue of EUR395m from a player statement; no official FFT annual table was found for this value.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "notes": "No explicit Roland-Garros 2025 tournament profit or surplus was found.",
+      "kind": "unknown"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "The clean numerator comes from complete official FFT/Roland-Garros payout tables.",
+      "Legends and per diem are excluded from competition prize money.",
+      "The revenue denominator is secondary and statement-reported, so the combined row is medium confidence; profit/surplus remains unavailable."
+    ]
+  },
+  {
+    "id": "roland-garros-2017-tournament-total",
+    "tournament": "Roland Garros",
+    "year": 2017,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "EUR",
+    "sourceIds": [
+      "roland-garros-2017-prize-money-schedules",
+      "roland-garros-2017-complete-prize-crosscheck",
+      "roland-garros-2017-2018-fft-analytical-pnl"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Provisional staged competition payout total across professional, mixed, and wheelchair events, excluding support, per diem, Legends, and juniors."
+    },
+    "prizePool": {
+      "amount": 34067000,
+      "currency": "EUR",
+      "status": "derived",
+      "sourceIds": [
+        "roland-garros-2017-prize-money-schedules",
+        "roland-garros-2017-complete-prize-crosscheck"
+      ],
+      "notes": "Derived category total from contemporaneous professional schedules plus complete event-table cross-check. Kept medium confidence because the surviving official detailed page is unavailable and secondary tables conflict."
+    },
+    "revenue": {
+      "amount": 222430000,
+      "currency": "EUR",
+      "status": "official",
+      "sourceIds": [
+        "roland-garros-2017-2018-fft-analytical-pnl"
+      ],
+      "notes": "Official FFT Internationaux de France analytical P&L reports total products of EUR222.430m for 2017; La Griffe Roland-Garros is separately reported.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": 85480000,
+      "currency": "EUR",
+      "status": "official",
+      "sourceIds": [
+        "roland-garros-2017-2018-fft-analytical-pnl"
+      ],
+      "notes": "Official FFT tournament analytical balance (solde analytique) for the Internationaux de France, after EUR136.950m in tournament charges. This is an analytical surplus, not FFT statutory net profit.",
+      "kind": "tournament_surplus"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize money is provisional medium confidence because surviving secondary category tables conflict and the original detailed official page was not recovered.",
+      "Revenue and surplus use the core Internationaux de France analytical P&L, which reports La Griffe separately.",
+      "Solde analytique is labeled tournament analytical surplus, not FFT statutory net profit."
+    ]
+  },
+  {
+    "id": "roland-garros-2018-tournament-total",
+    "tournament": "Roland Garros",
+    "year": 2018,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "EUR",
+    "sourceIds": [
+      "roland-garros-2018-prize-money-schedules",
+      "roland-garros-2018-complete-prize-crosscheck",
+      "roland-garros-2017-2018-fft-analytical-pnl"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Provisional staged competition payout total across professional, mixed, and wheelchair events, excluding support, per diem, Legends, and juniors."
+    },
+    "prizePool": {
+      "amount": 37345200,
+      "currency": "EUR",
+      "status": "derived",
+      "sourceIds": [
+        "roland-garros-2018-prize-money-schedules",
+        "roland-garros-2018-complete-prize-crosscheck"
+      ],
+      "notes": "Derived category total from contemporaneous professional schedules plus reconstructed wheelchair values. Kept medium confidence because the surviving detailed sources conflict."
+    },
+    "revenue": {
+      "amount": 225010000,
+      "currency": "EUR",
+      "status": "official",
+      "sourceIds": [
+        "roland-garros-2017-2018-fft-analytical-pnl"
+      ],
+      "notes": "Official FFT Internationaux de France analytical P&L reports total products of EUR225.010m for 2018; La Griffe Roland-Garros is separately reported.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": 80887000,
+      "currency": "EUR",
+      "status": "official",
+      "sourceIds": [
+        "roland-garros-2017-2018-fft-analytical-pnl"
+      ],
+      "notes": "Official FFT tournament analytical balance (solde analytique) for the Internationaux de France, after EUR144.123m in tournament charges. This is an analytical surplus, not FFT statutory net profit.",
+      "kind": "tournament_surplus"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "Prize money is provisional medium confidence because wheelchair values are reconstructed and surviving detailed sources conflict.",
+      "Revenue and surplus use the core Internationaux de France analytical P&L, which reports La Griffe separately.",
+      "Solde analytique is labeled tournament analytical surplus, not FFT statutory net profit."
+    ]
+  },
+  {
+    "id": "roland-garros-2019-tournament-total",
+    "tournament": "Roland Garros",
+    "year": 2019,
+    "event": "Tournament total",
+    "confidence": "medium",
+    "displayCurrency": "EUR",
+    "sourceIds": [
+      "roland-garros-2019-prize-money-tables",
+      "roland-garros-2019-fft-analytical-pnl"
+    ],
+    "prizeMoneyScope": {
+      "type": "tournament_total",
+      "numeratorCategory": "competition_prize_money",
+      "notes": "Staged competition payouts across singles, qualifying, doubles, mixed, wheelchair, and quad events, excluding Legends and per diem."
+    },
+    "prizePool": {
+      "amount": 40671000,
+      "currency": "EUR",
+      "status": "derived",
+      "sourceIds": [
+        "roland-garros-2019-prize-money-tables"
+      ],
+      "notes": "Complete official category schedules sum to EUR40.671m. The EUR1.990m Legends/per-diem residual is excluded."
+    },
+    "revenue": {
+      "amount": 247265000,
+      "currency": "EUR",
+      "status": "reported",
+      "sourceIds": [
+        "roland-garros-2019-fft-analytical-pnl"
+      ],
+      "notes": "FFT Internationaux de France analytical P&L reports total products of EUR247.265m for 2019; the surviving copy is on an affiliated regional-league mirror and La Griffe is separately reported.",
+      "kind": "tournament_revenue"
+    },
+    "profitOrSurplus": {
+      "amount": 90590000,
+      "currency": "EUR",
+      "status": "reported",
+      "sourceIds": [
+        "roland-garros-2019-fft-analytical-pnl"
+      ],
+      "notes": "FFT tournament analytical balance (solde analytique) for the Internationaux de France, after EUR156.675m in tournament charges. This is an analytical surplus, not FFT statutory net profit.",
+      "kind": "tournament_surplus"
+    },
+    "winnerPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "runnerUpPayout": {
+      "amount": null,
+      "currency": null,
+      "status": "unavailable",
+      "sourceIds": [],
+      "allocation": "total_allocation"
+    },
+    "roundPayouts": [],
+    "caveats": [
+      "The numerator comes from complete official category schedules; the financial source survives on an FFT-affiliated regional mirror, so the combined row remains medium confidence.",
+      "Revenue and surplus use the core Internationaux de France analytical P&L, which reports La Griffe separately.",
+      "Solde analytique is labeled tournament analytical surplus, not FFT statutory net profit."
     ]
   }
 ]

@@ -32,8 +32,8 @@ The historical `grandSlam2025MensSingles` filename remains for continuity, even 
 
 ## Near-Term Work
 
-- Maintain and audit the current 2021-and-newer Grand Slam records.
+- Maintain and audit the active 2017-2026 Grand Slam target window.
 - Add new rows only when source semantics are clear enough to preserve the model distinctions.
 - Add Wimbledon 2026 financial denominators only after official AELTC Championships Ltd accounts exist and retain the Championships scope bridge.
-- Revisit Roland Garros and US Open gaps only when new official or clearer source splits are available.
+- Prioritize Australian Open settlement/ledger requests, the US Open 2019 wheelchair/Legends split and 2025 audit, Roland-Garros 2021 reconciliation and modern profit, and Wimbledon 2026 accounts.
 - Consider a small data-validation script only if manual JSON parse checks become too weak for maintenance.

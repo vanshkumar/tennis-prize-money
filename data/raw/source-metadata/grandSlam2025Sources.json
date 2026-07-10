@@ -87,7 +87,7 @@
     "sourceType": "reputable_secondary",
     "accessedAt": "2026-07-05",
     "confidence": "medium",
-    "notes": "Used because a clear official Roland Garros prize-money page was not found in this research pass; values should be replaced by an official FFT/Roland Garros source when available."
+    "notes": "Retained for the historical men's-singles event row. The later tournament-total normalization uses the official 2025 Roland-Garros press kit instead."
   },
   {
     "id": "roland-garros-2025-ap-compensation-semantics",
@@ -350,6 +350,16 @@
     "notes": "Secondary split between $56.4981m in listed professional event payouts, $1.032m in wheelchair event payouts, $2.5719m in per diem, and $60.102m total prize money. Used as corroboration for keeping per diem separate from the clean competition-prize subtotal."
   },
   {
+    "id": "us-open-usta-affiliates-2022-financial-statements",
+    "title": "United States Tennis Association Incorporated and Affiliates consolidated financial statements, years ended December 31, 2022 and 2021",
+    "publisher": "United States Tennis Association / BDO USA LLP",
+    "url": "https://www.usta.com/content/dam/usta/2023-pdfs/USTA-2022-Affiliates-Consolidated-Financial-Statements.pdf",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Audited consolidated financial statements. The consolidated statement of activities reports US Open operating revenue of $472.172m for 2022 and $406.172m for 2021, with amounts stated in thousands of dollars, and separately reports US Open direct expenses plus depreciation, pledge, and debt-interest expense. No explicit US Open profit/surplus line is normalized in this slice."
+  },
+  {
     "id": "us-open-2021-compensation-release",
     "title": "2021 US Open offers record prize money, $57.5 million in total player compensation",
     "publisher": "United States Tennis Association / US Open",
@@ -398,5 +408,285 @@
     "accessedAt": "2026-07-05",
     "confidence": "medium",
     "notes": "Secondary cross-check used because the official US Open page did not provide crawler-readable text in this environment."
+  },
+  {
+    "id": "us-open-usta-affiliates-2018-financial-statements",
+    "title": "United States Tennis Association Incorporated and Affiliates consolidated financial statements, years ended December 31, 2018 and 2017",
+    "publisher": "United States Tennis Association / BDO USA LLP",
+    "url": "https://www.usta.com/content/dam/usta/pdfs/USTA_Consolidated_Financials_2018_FINAL_SIGNED.pdf",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Audited consolidated financial statements. PDF page 7 reports US Open operating revenue of $380.144m for 2018 and $347.593m for 2017, with amounts stated in thousands of dollars. No explicit US Open tournament profit or surplus is reported."
+  },
+  {
+    "id": "us-open-usta-affiliates-2020-financial-statements",
+    "title": "United States Tennis Association Incorporated and Affiliates consolidated financial statements, years ended December 31, 2020 and 2019",
+    "publisher": "United States Tennis Association / BDO USA LLP",
+    "url": "https://www.usta.com/content/dam/usta/990-pdfs/2020-USTA-and-Affiliates-Consolidated-Financial-Statements.pdf",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Audited consolidated financial statements. PDF page 7 reports US Open operating revenue of $181.210m for 2020 and $399.601m for 2019, with amounts stated in thousands of dollars. No explicit US Open tournament profit or surplus is reported."
+  },
+  {
+    "id": "us-open-usta-affiliates-2024-financial-statements",
+    "title": "United States Tennis Association Incorporated and Affiliates consolidated financial statements, years ended December 31, 2024 and 2023",
+    "publisher": "United States Tennis Association / BDO USA, P.C.",
+    "url": "https://www.usta.com/content/dam/usta/2025-pdfs/2025-usta-and-affiliates-consolidated-financial-statements.pdf",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Audited consolidated financial statements. PDF page 6 reports US Open operating revenue of $559.658m for 2024 and $514.105m for 2023, with amounts stated in thousands of dollars. The audit reports tournament expense lines but no explicit US Open tournament profit or surplus."
+  },
+  {
+    "id": "us-open-2017-prize-money-release",
+    "title": "2017 US Open Prize Money to Top $50 Million",
+    "publisher": "United States Tennis Association / US Open",
+    "url": "https://www.usopen.org/en_US/news/articles/2017-07-18/2017_us_open_prize_money_to_top_50_million.html",
+    "sourceType": "press_release",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official release confirming the 2017 player-compensation headline and round payouts. Used with the archived official-table transcription and separate wheelchair total to exclude per diem and the Champions Invitational."
+  },
+  {
+    "id": "us-open-2017-prize-money-split",
+    "title": "2017 US Open prize-money table",
+    "publisher": "Wikipedia, citing the archived official US Open prize-money page",
+    "url": "https://pt.wikipedia.org/wiki/US_Open_de_2017#Premia%C3%A7%C3%A3o",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Transcribes $48.3868m in listed professional-event payouts, $0.600m in other events, $1.478m estimated per diem, and $50.4648m total. A separate event source reports $0.200m wheelchair prize money, allowing the $0.400m Champions Invitational component to be excluded from the strict competition numerator."
+  },
+  {
+    "id": "us-open-2018-prize-money-release",
+    "title": "2018 US Open Prize Money to Reach $53 Million",
+    "publisher": "United States Tennis Association / US Open",
+    "url": "https://www.usopen.org/en_US/news/articles/2018-07-17/2018-07-16_us_open_prize_money_to_reach_record_53_million.html",
+    "sourceType": "press_release",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official release with round-by-round singles and doubles payouts and the $53m player-compensation headline."
+  },
+  {
+    "id": "us-open-2018-prize-money-split",
+    "title": "2018 US Open prize-money table",
+    "publisher": "Wikipedia, citing the archived official US Open prize-money page",
+    "url": "https://en.wikipedia.org/wiki/2018_US_Open_(tennis)#Prize_money",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Reports $50.56584m in listed professional-draw payouts and $0.350m in wheelchair prize money. The clean $50.91584m subtotal excludes the remaining support, per-diem, or non-competition portion of the $53m headline."
+  },
+  {
+    "id": "us-open-2019-prize-money-fact-sheet",
+    "title": "2019 US Open Prize Money - Fact Sheet",
+    "publisher": "United States Tennis Association / US Open",
+    "url": "https://www.usopen.org/pdf/2019%20US%20Open%20Prize%20Money.pdf",
+    "sourceType": "official_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official one-page fact sheet reports $53.5175m in listed professional draws, $0.650m bundled across wheelchair competition and Legends, $1m player pension, $2.0712m estimated per diem, and $57.2387m total player compensation. Wheelchair and Legends are inseparable, so a strict full competition numerator remains unavailable."
+  },
+  {
+    "id": "us-open-2020-player-handbook",
+    "title": "2020 US Open Player Handbook",
+    "publisher": "United States Tennis Association / US Open",
+    "url": "https://www.usopen.org/pdf/2020-US-Open-Player-Handbook.pdf",
+    "sourceType": "official_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Printed page 53 provides the pandemic-format payout schedule. Draw-weighted singles and doubles payouts plus the stated $0.350m wheelchair allocation total $43.662m, excluding player relief, international relief, and direct hotel payments."
+  },
+  {
+    "id": "us-open-2023-compensation-release",
+    "title": "2023 US Open prize money and player compensation to total $65 million",
+    "publisher": "United States Tennis Association / US Open",
+    "url": "https://www.usopen.org/en_US/news/articles/2023-08-08/2023_us_open_prize_money_and_player_compensation_to_total_65_million.html",
+    "sourceType": "press_release",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official release provides main-draw payouts and identifies per diem, travel vouchers, hotel, meals, and racquet stringing as player-expense assistance included in the broader package."
+  },
+  {
+    "id": "us-open-2023-prize-money-split",
+    "title": "2023 US Open prize-money table",
+    "publisher": "Wikipedia, citing the archived official US Open prize-money page and ATP",
+    "url": "https://pt.wikipedia.org/wiki/US_Open_de_2023#Premia%C3%A7%C3%A3o",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Reports $58.9768m in listed professional events, $1.3668m in wheelchair events, and $4.65642m in per diem/support. The clean competition subtotal is $60.3436m."
+  },
+  {
+    "id": "roland-garros-2025-press-kit-prize-money",
+    "title": "Dossier de presse Roland-Garros 2025",
+    "publisher": "Federation Francaise de Tennis / Roland-Garros",
+    "url": "https://fft-rg-commun-news.cdn.prismic.io/fft-rg-commun-news/aAEA0-vxEdbNPMdr_DPROLANDGARROS2025FRVF.pdf",
+    "sourceType": "official_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Pages 33-34 provide complete competition payout tables and state that the EUR56.352m headline includes Legends and per diem. The listed competition tables sum to EUR54.03217m."
+  },
+  {
+    "id": "roland-garros-2023-prize-money-tables",
+    "title": "Roland-Garros 2023: le prize money devoile",
+    "publisher": "Federation Francaise de Tennis / Roland-Garros",
+    "url": "https://www.rolandgarros.com/fr-fr/article/roland-garros-2023-prize-money-dotation-augmentation-tableaux",
+    "sourceType": "official_prize_money_page",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official article and embedded category tables for singles, qualifying, doubles, mixed, wheelchair, and quad competition payouts. The tables sum to EUR47.515m, excluding the EUR2.085m headline residual."
+  },
+  {
+    "id": "roland-garros-2022-prize-money-tables",
+    "title": "Roland Garros Announces 2022 Prize Money",
+    "publisher": "ATP Tour, reporting Roland-Garros prize schedules",
+    "url": "https://www.atptour.com/en/news/roland-garros-2022-prize-money",
+    "sourceType": "official_prize_money_page",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Provides official main singles and doubles schedules. Mixed, wheelchair, and quad categories were cross-checked against the complete FFT-communicated Sport Buzz Business table; all competition categories sum to EUR43.5806m."
+  },
+  {
+    "id": "roland-garros-2022-complete-prize-crosscheck",
+    "title": "Roland-Garros 2022 - le detail du prize money record devoile",
+    "publisher": "Sport Buzz Business, reporting FFT-communicated schedules",
+    "url": "https://www.sportbuzzbusiness.fr/tennis-roland-garros-2022-le-detail-du-prize-money-record-devoile-combien-empochera-le-vainqueur.html",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Complete category table used for qualifying, mixed, wheelchair, and quad payouts omitted from the ATP summary."
+  },
+  {
+    "id": "roland-garros-2020-prize-money-tables",
+    "title": "Roland Garros Reveals 2020 Prize Money Distribution",
+    "publisher": "ATP Tour, reporting Roland-Garros prize schedules",
+    "url": "https://www.atptour.com/en/news/roland-garros-2020-prize-money",
+    "sourceType": "official_prize_money_page",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Provides official qualifying, main-draw singles, and doubles schedules. Para categories were cross-checked against the complete tournament table; competition categories sum to EUR36.409676m after excluding EUR2m in support."
+  },
+  {
+    "id": "roland-garros-2020-complete-prize-crosscheck",
+    "title": "Le detail du prize money de Roland-Garros 2020",
+    "publisher": "Sport Buzz Business, reporting tournament schedules",
+    "url": "https://www.sportbuzzbusiness.fr/tennis-le-detail-du-prize-money-de-roland-garros-2020-primes.html",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Complete category table used to add wheelchair and quad payouts and to keep the explicit EUR2m support component outside competition prize money."
+  },
+  {
+    "id": "roland-garros-2019-prize-money-tables",
+    "title": "Roland-Garros 2019: la dotation globale connue",
+    "publisher": "Federation Francaise de Tennis / Roland-Garros",
+    "url": "https://www.rolandgarros.com/fr-fr/article/roland-garros-2019-dotation-globale-tournoi",
+    "sourceType": "official_prize_money_page",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official article and category images provide complete singles, qualifying, doubles, mixed, wheelchair, and quad schedules. The competition tables sum to EUR40.671m, excluding the EUR1.990m Legends/per-diem residual."
+  },
+  {
+    "id": "roland-garros-2020-2023-revenue-series",
+    "title": "Focus Tennis & Marketing - Roland-Garros 2024",
+    "publisher": "SPORSORA, citing Federation Francaise de Tennis",
+    "url": "https://patrickbayeux.com/wp-content/uploads/2024/05/2405-infographie_sporsora_Roland_Garros_2024_210524.pdf",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "FFT-attributed tournament turnover series used for 2020 EUR147.0m, 2021 EUR184.5m, 2022 EUR308.0m, and 2023 EUR328.0m. The 2022 value conflicts with a separate EUR325m report, so its denominator remains visibly caveated."
+  },
+  {
+    "id": "roland-garros-2024-fft-financial-report",
+    "title": "Proces verbal - Assemblee generale 14 decembre 2024",
+    "publisher": "Federation Francaise de Tennis",
+    "url": "https://fft-site.cdn.prismic.io/fft-site/aNaHjp5xUNkB1Jeo_PROCESVERBALASSEMBLEEGENERALE14DECEMBRE2024.pdf",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official FFT financial report states Roland-Garros products/revenue of EUR345.7m and tournament charges of EUR201.5m. It does not label the EUR144.2m difference as tournament profit or surplus, so profit remains unavailable."
+  },
+  {
+    "id": "roland-garros-2025-revenue-report",
+    "title": "Leading tennis players including Djokovic and Sabalenka unhappy with French Open prize money",
+    "publisher": "The Guardian, reporting a player statement",
+    "url": "https://www.theguardian.com/sport/2026/may/03/tennis-french-open-prize-money-novak-djokovic-jannik-sinner-aryna-sabalenka",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Reports Roland-Garros 2025 tournament revenue of EUR395m from a player statement. Used as a secondary revenue denominator with attribution caveat; no tournament profit is supplied."
+  },
+  {
+    "id": "roland-garros-2017-prize-money-schedules",
+    "title": "Roland Garros 2017 - Le detail de toutes les primes du tournoi",
+    "publisher": "Sportune / 20 Minutes",
+    "url": "https://sportune.20minutes.fr/sport-business/roland-garros-2017-le-detail-de-toutes-les-primes-du-tournoi-159330",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Contemporaneous main singles, qualifying, and doubles schedules. Mixed and wheelchair rows require a complete tournament-table cross-check, so the derived EUR34.067m clean total remains medium confidence and provisional."
+  },
+  {
+    "id": "roland-garros-2018-prize-money-schedules",
+    "title": "Roland-Garros 2018 - Le prize money devoile",
+    "publisher": "Sport Buzz Business, reporting Roland-Garros schedules",
+    "url": "https://www.sportbuzzbusiness.fr/roland-garros-2018-le-prize-money-devoile-combien-gagnera-le-vainqueur.html",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Complete professional schedules through mixed doubles. Wheelchair amounts are reconstructed from later official change disclosures and a secondary event table, so the EUR37.3452m clean total remains medium confidence and provisional."
+  },
+  {
+    "id": "roland-garros-2017-2018-fft-analytical-pnl",
+    "title": "Proces-verbal de l'Assemblee Generale, 19-20 janvier 2019 - Exercice 2018",
+    "publisher": "Federation Francaise de Tennis",
+    "url": "https://guidedudirigeant.fft.fr/wp-content/uploads/2019/03/AG-FFT-19-20-janvier-2019-PV.pdf",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "high",
+    "notes": "Official FFT analytical P&L for the Internationaux de France. Digital PDF page 63 of 79, printed page 122, reports 2017 products EUR222.430m, charges EUR136.950m, solde analytique EUR85.480m; and 2018 products EUR225.010m, charges EUR144.123m, solde analytique EUR80.887m. La Griffe Roland-Garros is separately reported."
+  },
+  {
+    "id": "roland-garros-2019-fft-analytical-pnl",
+    "title": "Proces-verbal de l'Assemblee Generale, 14-15 decembre 2019",
+    "publisher": "Federation Francaise de Tennis, mirrored by Ligue de Tennis de Nouvelle-Caledonie",
+    "url": "https://www.liguetennis-caledonie.com/wp-content/uploads/2020/02/PV-AG-FFT-14-et-15-decembre-2019.pdf",
+    "sourceType": "annual_report",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "FFT general-meeting material on an affiliated regional-league mirror. Digital PDF page 86 of 91, printed pages 168-169, reports 2019 products EUR247.265m, charges EUR156.675m, and solde analytique EUR90.590m in the Internationaux de France analytical P&L. La Griffe is separately reported."
+  },
+  {
+    "id": "us-open-2017-wheelchair-prize-money",
+    "title": "2017 US Open prize-money and wheelchair-event summary",
+    "publisher": "Wikipedia, citing USTA/US Open sources",
+    "url": "https://en.wikipedia.org/wiki/2017_US_Open_(tennis)#Prize_money",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Reports total 2017 US Open wheelchair-event prize money of $0.200m. Used to separate wheelchair competition from the archived official page's $0.600m Champions Invitational/other-events bundle."
+  },
+  {
+    "id": "roland-garros-2017-complete-prize-crosscheck",
+    "title": "2017 French Open complete prize-money table",
+    "publisher": "Wikipedia, citing WTA and tournament sources",
+    "url": "https://en.wikipedia.org/wiki/2017_French_Open#Prize_money",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Complete category cross-check for mixed and wheelchair payouts omitted from the contemporaneous professional-schedule article. Conflicting surviving tables keep the 2017 total provisional."
+  },
+  {
+    "id": "roland-garros-2018-complete-prize-crosscheck",
+    "title": "2018 Roland-Garros complete prize-money table",
+    "publisher": "Wikipedia, citing Roland-Garros and WTA sources",
+    "url": "https://pt.wikipedia.org/wiki/Torneio_de_Roland_Garros_de_2018#Premia%C3%A7%C3%A3o",
+    "sourceType": "reputable_secondary",
+    "accessedAt": "2026-07-09",
+    "confidence": "medium",
+    "notes": "Complete category cross-check for reconstructed wheelchair amounts. Conflicting surviving tables keep the 2018 total provisional."
   }
 ]
